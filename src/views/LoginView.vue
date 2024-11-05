@@ -1,4 +1,4 @@
-<script setup language="ts">
+<script setup lang="ts">
 import { ref } from "vue";
 
 const username = ref("");
