@@ -6,14 +6,11 @@ import { ref } from "vue";
 const username = ref("");
 const password = ref("");
 
+function login() {
+  window.alert("Login");
+}
 </script>
 
 <template>
-    <v-container fluid fill-height>
-        <v-row align-center justify-center>
-          <v-col xs12 sm8 md4>
-
-          </v-col>
-        </v-row>
-    <v-container>
+    <v-text-field label="test"></v-text-field>
 </template>

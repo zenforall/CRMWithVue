@@ -14,16 +14,18 @@ import HelloWorld from './components/HelloWorld.vue'
     />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld mainMessage="CRM With Vue" subMessage="Enjoy your Experience" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/login">Login</RouterLink>
       </nav>
     </div>
   </header>
 
   <RouterView />
+  
 </template>
 
 <style scoped>
