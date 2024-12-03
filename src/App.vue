@@ -4,6 +4,7 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
+  <!--
   <header>
     <img
       alt="Vue logo"
@@ -23,15 +24,23 @@ import HelloWorld from './components/HelloWorld.vue'
       </nav>
     </div>
   </header>
+-->
+  <main>
+    <RouterView />
+  </main>
 
-  <RouterView />
-  
+  <!--
+  <footer>
+    Footer
+  </footer>
+-->
+
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
+  /*max-height: 100vh;*/
 }
 
 .logo {
@@ -63,9 +72,10 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
-
+/*
 @media (min-width: 1024px) {
   header {
+    border: 2px solid black;
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
@@ -90,4 +100,5 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
+*/
 </style>

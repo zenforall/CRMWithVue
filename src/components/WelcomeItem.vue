@@ -14,6 +14,9 @@
 
 <style scoped>
 .item {
+  border-style: dotted;
+  border: 2px;
+  border-color: black;
   margin-top: 2rem;
   display: flex;
   position: relative;
