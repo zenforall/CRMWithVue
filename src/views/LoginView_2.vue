@@ -4,6 +4,10 @@ import { onMounted,onUnmounted,ref } from "vue";
     const username = ref("");
     const password = ref("");
 
+    const formRef = ref(null);
+    const formIsValid = ref(false);
+
+    /*
     function submit() {
       window.alert("Hai cliccato sul pulsante di Login");
       window.alert(username.value + " " +password.value);
@@ -11,6 +15,20 @@ import { onMounted,onUnmounted,ref } from "vue";
       username.value = "";
       password.value = "";
     }
+    */
+
+    const rules = {
+      required: (value) => !!value || 'Il campo è obbligatorio',
+    };
+
+    const submitForm = (validate) => {
+      if (validate()) {
+        alert('Form inviato con successo!');
+      } else {
+        alert('Correggi gli errori nel form.');
+      }
+    };
+
 
     onMounted(() => {
       console.log("Mounted LoginView 2");
@@ -31,34 +49,31 @@ import { onMounted,onUnmounted,ref } from "vue";
               Login
             </v-card-title>
             <v-card-text>
-              <v-form ref="form">
+              <v-form @click="submitForm(validate)">
                 <v-text-field
                   label="Email"
-                  required
-                  v-model="username"
-                ></v-text-field>
-
+                  :rules="[rules.required]"
+                  v-model="username">
+               </v-text-field>
                 <v-text-field
                   label="Password"
                   type="password"
-                  required
-                  v-model="password"
-                ></v-text-field>
-                <v-row style="display: flex; justify-content: end;">
-                    <v-btn
-                      color="primary"
-                      @click="submit">
-                      Login
-                    </v-btn>
-                    <v-btn
-                      style="margin-left: 1vw"
-                      color="required">
-                      Cancel
-                    </v-btn>
+                  v-model="password">
+               </v-text-field>
+               <v-row style="margin:0">
+                <a href="#">Recover forgotten password</a>
+                <v-row style="margin:0;justify-content: end;">
+                  <a href="#">Sign in</a>
                 </v-row>
+               </v-row>
+               <br/>
+                <v-btn
+                  style="display: flex; min-width: 100%;"
+                  color="primary"
+                  @click="submitForm" variant="elevated">
+                  Login
+                </v-btn>
               </v-form>
-              <br/>
-              <a href="#">Recover forgotten password</a>
             </v-card-text>
         </v-card>
         </v-col>
