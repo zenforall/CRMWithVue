@@ -1,11 +1,10 @@
 <script setup lang="ts" >
-import { onMounted,onUnmounted,ref } from "vue";
+import { onMounted,onUnmounted,ref,nextTick } from "vue";
 
     const username = ref("");
     const password = ref("");
 
     const formRef = ref(null);
-    const formIsValid = ref(false);
 
     /*
     function submit() {
@@ -21,14 +20,41 @@ import { onMounted,onUnmounted,ref } from "vue";
       required: (value) => !!value || 'Il campo è obbligatorio',
     };
 
-    const submitForm = (validate) => {
-      if (validate()) {
-        alert('Form inviato con successo!');
-      } else {
-        alert('Correggi gli errori nel form.');
-      }
-    };
+    const handleLogin = async () => {
 
+      const  gg = await formRef.value?.validate();
+
+      let resultAsString: string = JSON.stringify(gg);
+      let resultObject: object = JSON.parse(resultAsString);
+
+      const isValid = resultObject.valid;
+
+      window.alert("Valore from await:"+isValid);
+
+
+      window.alert("GG: "+JSON.stringify(gg));
+
+      gg.then(value => {
+        window.alert("Value: "+JSON.stringify(value))
+      })
+
+      window.alert(gg);
+
+      /*
+      window.alert(formRef.value?.validate().then(value => {
+        window.alert(JSON.stringify(value))
+      }));
+      */
+
+      formRef.value?.validate().then(({valid: isValid}) => {
+        if (isValid) {
+          alert('Login effettuato con successo!');
+        } else {
+          //alert('Correggi gli errori nel form.');
+        }
+      })
+
+    }
 
     onMounted(() => {
       console.log("Mounted LoginView 2");
@@ -49,7 +75,7 @@ import { onMounted,onUnmounted,ref } from "vue";
               Login
             </v-card-title>
             <v-card-text>
-              <v-form @click="submitForm(validate)">
+              <v-form ref="formRef" lazy-validation>
                 <v-text-field
                   label="Email"
                   :rules="[rules.required]"
@@ -70,7 +96,8 @@ import { onMounted,onUnmounted,ref } from "vue";
                 <v-btn
                   style="display: flex; min-width: 100%;"
                   color="primary"
-                  @click="submitForm" variant="elevated">
+                  @click="handleLogin"
+                  variant="elevated">
                   Login
                 </v-btn>
               </v-form>
