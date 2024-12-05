@@ -34,7 +34,7 @@ import { onMounted,onUnmounted,ref,nextTick } from "vue";
     */
 
     const rules = {
-      required: (value) => !!value || 'Il campo è obbligatorio',
+      required: (value:any) => !!value || 'Il campo è obbligatorio',
     };
 
     const handleLogin = async () => {
@@ -50,7 +50,7 @@ import { onMounted,onUnmounted,ref,nextTick } from "vue";
 
       window.alert("GG: "+JSON.stringify(gg));
 
-      gg.then(value => {
+      gg.then((value:any) => {
         window.alert("Value: "+JSON.stringify(value))
       })
 
