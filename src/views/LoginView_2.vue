@@ -6,6 +6,23 @@ import { onMounted,onUnmounted,ref,nextTick } from "vue";
 
     const formRef = ref(null);
 
+    /* Utilizzare una struttura per incapsulare la Promise dopo aver chiamato il validate()
+      interface Person {
+        Name: string;
+        Age: number;
+      }
+
+      const jsonString = '{"Name": "John Doe", "Age": 30}';
+
+      // Parsing della stringa JSON in un oggetto di tipo 'Person'
+      const jsonObject: Person = JSON.parse(jsonString);
+
+      // Accesso alla proprietà 'Name'
+      const name = jsonObject.Name;
+
+      console.log(name);  // Output: "John Doe"
+    */
+
     /*
     function submit() {
       window.alert("Hai cliccato sul pulsante di Login");
@@ -30,7 +47,6 @@ import { onMounted,onUnmounted,ref,nextTick } from "vue";
       const isValid = resultObject.valid;
 
       window.alert("Valore from await:"+isValid);
-
 
       window.alert("GG: "+JSON.stringify(gg));
 
