@@ -1,10 +1,12 @@
 <script setup lang="ts" >
 import { onMounted,onUnmounted,ref,nextTick } from "vue";
+import { VForm } from "vuetify/components";
 
     const username = ref("");
     const password = ref("");
 
-    const formRef = ref(null);
+    const formRef = ref();
+
 
     /* Utilizzare una struttura per incapsulare la Promise dopo aver chiamato il validate()
       interface Person {
@@ -39,36 +41,55 @@ import { onMounted,onUnmounted,ref,nextTick } from "vue";
 
     const handleLogin = async () => {
 
-      const  gg = await formRef.value?.validate();
+      const  gg = await formRef.value.validate();
 
       let resultAsString: string = JSON.stringify(gg);
-      let resultObject: object = JSON.parse(resultAsString);
+
+      interface ErrorObj {
+        id:string;
+        errorMessages:string[];
+      }
+
+      interface ValidateObj {
+         valid: boolean;
+         errors: ErrorObj[];
+      }
+
+
+      let resultObject: ValidateObj = JSON.parse(resultAsString);
+
+      //window.alert(resultAsString);
+
 
       const isValid = resultObject.valid;
 
-      window.alert("Valore from await:"+isValid);
+      if (isValid) {
+          alert('Login effettuato con successo!');
+      } else {
+          //alert('Correggi gli errori nel form.');
+      }      
 
-      window.alert("GG: "+JSON.stringify(gg));
+      //window.alert("Valore from await:"+isValid);
 
+      //window.alert("GG: "+JSON.stringify(gg));
+      
+      /*
       gg.then((value:any) => {
         window.alert("Value: "+JSON.stringify(value))
       })
-
-      window.alert(gg);
-
-      /*
-      window.alert(formRef.value?.validate().then(value => {
-        window.alert(JSON.stringify(value))
-      }));
       */
 
-      formRef.value?.validate().then(({valid: isValid}) => {
+      //window.alert(gg);
+
+      /* Alternativa per leggere la property valid dal json di ritorno dal metodo vlaidate()
+      formRef.value.validate().then(({valid: isValid}) => {
         if (isValid) {
           alert('Login effettuato con successo!');
         } else {
           //alert('Correggi gli errori nel form.');
         }
       })
+      */
 
     }
 
