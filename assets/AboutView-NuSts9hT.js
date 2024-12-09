@@ -1,0 +1,1 @@
+import{_ as s,i as t,h as o,b as a}from"./index-DXvQkD50.js";const n={},r={class:"about"};function c(i,e){return a(),t("div",r,e[0]||(e[0]=[o("h1",null,"This is an about page",-1)]))}const l=s(n,[["render",c]]);export{l as default};
