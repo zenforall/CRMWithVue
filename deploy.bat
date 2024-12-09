@@ -1,9 +1,4 @@
-echo "Ciao a tutti"
-
 npm run build
-
-echo "Ciao a tutti"
-
 cd dist
 
 git init
