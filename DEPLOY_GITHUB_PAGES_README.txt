@@ -12,9 +12,13 @@ E' necessario creare una chiave privata/pubblica per poter eseguire il deploy su
 
 ssh-keygen -t ed25519 -C "warxsg@gmail.com"
 
-Le chiavi devono essere salvate in due file distinti, ma non devono mai essere commitate su GitHub per
+Le chiavi devono essere salvate all'interno dei file, ma non devono mai essere commitate su GitHub per
 motivi di sicurezza (GitHub non permette il commit a meno che l'utente non vada a settare un flag 
 che forzi il commit)
+
+Il file con la chiave pubblicata è salvato nella directory automticamente dell'utente.
+Tale file sarà letto da Git per eseguire il push del contenuto della directory "dist" in un 
+nuovo brach che sarà poi utilizzato come sorgente per le github pages
 
 La chiave pubblica deve essere inserita in GitHub nella sezione SSH and GPG keys dei Settings di GitHub
 
