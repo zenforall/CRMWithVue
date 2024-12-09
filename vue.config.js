@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/CRMWithVue/'
+    publicPath: process.env.NODE_ENV === "production" ? "/CRMWithVue/" : "/",
 }
