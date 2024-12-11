@@ -8,4 +8,12 @@ import Menu from '../components/Menu.vue'
 
 <template>
   <div>Main Dashboard</div>
+  <div>Main Dashboard</div>
+  <div>Main Dashboard</div>
+  <div>Main Dashboard</div>
+  <div>Main Dashboard</div>
+  <div>Main Dashboard</div>
+  <div>Main Dashboard</div>
+  <div>Main Dashboard</div>
+  <div>Main Dashboard</div>
 </template>

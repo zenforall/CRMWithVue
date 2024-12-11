@@ -8,14 +8,16 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <div>
-    <div>
-    <Menu/>
-
-      <Header />
-      <RouterView />
-    </div>
-
-    <Footer/>
-  </div>
+    <v-row>
+        <v-col cols="2">
+          <Menu/>
+        </v-col>
+        <v-col cols="10">
+          <Header/>
+          <RouterView/>
+        </v-col>
+    </v-row>
+    <v-row>
+      <Footer/>
+    </v-row>
 </template>
