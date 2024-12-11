@@ -1,28 +1,39 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import LoginView from '../views/LoginView_2.vue'
+import LoginView from '../views/LoginView.vue'
+import DashboardView from '../views/DashboardView.vue'
+import BlankLayout from '../layouts/BlankLayout.vue'
+import MainLayout from '../layouts/MainLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: LoginView,
+      component: BlankLayout,
+      children: [
+        {path: '', component: () => LoginView}
+      ]
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: LoginView,
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/LoginView_2.vue'),
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'dashboard', component: () => DashboardView },
+      ],
+      meta: { requiresAuth: true }
     }
   ],
+})
+
+router.beforeEach((to,from,next) => {
+  //const authStore = useAuthStore();
+  const isAuthenticated = false; //authStore.isAuthenticated
+
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next('/') // redirige alla pagina di login
+  } else {
+    next() // Se l'utente è autenticato allora prosegue con la navigazione
+  }
 })
 
 export default router

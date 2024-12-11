@@ -1,36 +1,146 @@
-<script lang="ts">
-// https://codesandbox.io/p/sandbox/vuetify-login-base-forked-kzy5pr?file=%2Fsrc%2Fcomponents%2FLogin.vue%3A7%2C1 : link per prendere ispirazione
+<script setup lang="ts" >
+import { onMounted,onUnmounted,ref,nextTick } from "vue";
+import { VForm } from "vuetify/components";
 
-import { ref } from "vue";
-export default {
-  setup() {
     const username = ref("");
     const password = ref("");
 
-    function login() {
+    const formRef = ref();
+
+
+    /* Utilizzare una struttura per incapsulare la Promise dopo aver chiamato il validate()
+      interface Person {
+        Name: string;
+        Age: number;
+      }
+
+      const jsonString = '{"Name": "John Doe", "Age": 30}';
+
+      // Parsing della stringa JSON in un oggetto di tipo 'Person'
+      const jsonObject: Person = JSON.parse(jsonString);
+
+      // Accesso alla proprietà 'Name'
+      const name = jsonObject.Name;
+
+      console.log(name);  // Output: "John Doe"
+    */
+
+    /*
+    function submit() {
       window.alert("Hai cliccato sul pulsante di Login");
       window.alert(username.value + " " +password.value);
 
       username.value = "";
       password.value = "";
     }
+    */
 
-    return {
-      username,password,login
+    const rules = {
+      required: (value:any) => !!value || 'Il campo è obbligatorio',
+    };
+
+    const handleLogin = async () => {
+
+      const  gg = await formRef.value.validate();
+
+      let resultAsString: string = JSON.stringify(gg);
+
+      interface ErrorObj {
+        id:string;
+        errorMessages:string[];
+      }
+
+      interface ValidateObj {
+         valid: boolean;
+         errors: ErrorObj[];
+      }
+
+
+      let resultObject: ValidateObj = JSON.parse(resultAsString);
+
+      //window.alert(resultAsString);
+
+
+      const isValid = resultObject.valid;
+
+      if (isValid) {
+          alert('Login effettuato con successo!');
+      } else {
+          //alert('Correggi gli errori nel form.');
+      }      
+
+      //window.alert("Valore from await:"+isValid);
+
+      //window.alert("GG: "+JSON.stringify(gg));
+      
+      /*
+      gg.then((value:any) => {
+        window.alert("Value: "+JSON.stringify(value))
+      })
+      */
+
+      //window.alert(gg);
+
+      /* Alternativa per leggere la property valid dal json di ritorno dal metodo vlaidate()
+      formRef.value.validate().then(({valid: isValid}) => {
+        if (isValid) {
+          alert('Login effettuato con successo!');
+        } else {
+          //alert('Correggi gli errori nel form.');
+        }
+      })
+      */
+
     }
 
-  },
-  mounted() {
-    console.log("mounted");
-  },
-  unmounted() {
-    console.log("unmounted");
-  }
-}
+    onMounted(() => {
+      console.log("Mounted LoginView 2");
+    })
+
+    onUnmounted(() => {
+      console.log("UnMounted LoginView 2");
+    })
+
 </script>
 
 <template>
-    <v-text-field label="Email" v-model="username" ></v-text-field>
-    <v-text-field label="Password" v-model="password"></v-text-field>
-    <v-btn text="Sign in" @click="login()"></v-btn>
+    <v-container style="display: flex; height: 100vh;">
+      <v-row style="align-content: center;justify-content: center;">
+        <v-col cols="12" sm="8" md="4">
+          <v-card class="pa-4">
+            <v-card-title style="text-align: left;">
+              Login
+            </v-card-title>
+            <v-card-text>
+              <v-form ref="formRef" lazy-validation>
+                <v-text-field
+                  label="Email"
+                  :rules="[rules.required]"
+                  v-model="username">
+               </v-text-field>
+                <v-text-field
+                  label="Password"
+                  type="password"
+                  v-model="password">
+               </v-text-field>
+               <v-row style="margin:0">
+                <a href="#">Recover forgotten password</a>
+                <v-row style="margin:0;justify-content: end;">
+                  <a href="#">Sign in</a>
+                </v-row>
+               </v-row>
+               <br/>
+                <v-btn
+                  style="display: flex; min-width: 100%;"
+                  color="primary"
+                  @click="handleLogin"
+                  variant="elevated">
+                  Login
+                </v-btn>
+              </v-form>
+            </v-card-text>
+        </v-card>
+        </v-col>
+      </v-row>
+  </v-container>
 </template>
