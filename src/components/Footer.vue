@@ -1,5 +1,3 @@
 <template>
-  <div>
-    Footer Component
-  </div>
+Footer Component
 </template>
