@@ -2,12 +2,13 @@
 import { ref,computed } from "vue";
 import { VTreeview } from 'vuetify/labs/VTreeview'
 import { useRouter } from 'vue-router';
+import type { forEachChild } from "typescript";
 
 interface TreeNode {
   id: number;
   title: string;
   children?: TreeNode[] | null;
-  link?: string; // Proprietà opzionale per la navigazione
+  link: string; // Proprietà opzionale per la navigazione
 }
 
   const items = ref<TreeNode[]>([
@@ -20,6 +21,7 @@ interface TreeNode {
       {
         id: 2,
         title: 'Contacts',
+        link : '',
         children: [
           { id: 3, title: 'Customers',link: '/customers' },
           { id: 4, title: 'Prospects',link: '/prospects' },
@@ -41,20 +43,41 @@ const selected = ref<number[]>([]);
 // Funzione per gestire il click sui nodi e ottenere l'ID
 const onNodeClick = (newSelected: unknown): void => {
   const selectedNodes = newSelected as number[];
+
+  if (selectedNodes.length == 0) return; // Se clicco due volte sullo stesso nodo esco dalla funzione
   console.log('Nodi selezionati:', selectedNodes);
   selected.value = selectedNodes;
+
+  console.log(items);
+
+  let idToSearch : number;
+
+  idToSearch = selected.value[0];
+
+  let result : TreeNode | null;
+
+  result  = findNodeById(items.value,idToSearch);
+
+  if (result != null) {
+    router.push(result.link);
+  }
 };
 
-// Funzione per gestire il click su un nodo specifico e ottenere l'ID
-const handleNodeClick = (item: TreeNode) => {
-  console.log('ID del nodo cliccato:', item.id);
-  // Puoi anche fare altre operazioni qui, come navigare verso una pagina o aggiornare uno stato
-};
 
-const handleToggle = (item: TreeNode) => {
-      console.log('Nodo espanso/compresso:', item);
-    };
-
+function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
+  for (const node of data) {
+    if (node.id === targetId) {
+      return node; // Nodo trovato
+    }
+    if (node.children) {
+      const found = findNodeById(node.children, targetId);
+      if (found) {
+        return found; // Nodo trovato nei figli
+      }
+    }
+  }
+  return null; // Nodo non trovato
+}
 
 </script>
 
@@ -65,11 +88,13 @@ const handleToggle = (item: TreeNode) => {
       item-value="id"
       item-text="title"
       item-children="children"
+      density="compact"
       selectable
+      activatable
       open-on-click
       elevation="6"
       min-height="100%"
-      @update:model-value="onNodeClick">
+      @update:activated="onNodeClick">
     </v-treeview>
 
 </template>
