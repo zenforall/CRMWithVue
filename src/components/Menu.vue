@@ -1,55 +1,26 @@
 <script setup lang="ts">
-import { ref,computed } from "vue";
+import { onMounted, ref } from "vue";
 import { VTreeview } from 'vuetify/labs/VTreeview'
 import { useRouter } from 'vue-router';
-import type { forEachChild } from "typescript";
-
-interface TreeNode {
-  id: number;
-  title: string;
-  icon?: string,
-  children?: TreeNode[] | null;
-  link: string; // Proprietà opzionale per la navigazione
-}
-
-  const items = ref<TreeNode[]>([
-      {
-        id: 1,
-        title: 'Home',
-        children: null,
-        link: '/dashboard' // Collegamento alla Home
-      },
-      {
-        id: 2,
-        title: 'Contacts',
-        link : '',
-        children: [
-          { id: 3, title: 'Customers',link: '/customers' },
-          { id: 4, title: 'Prospects',link: '/prospects' },
-          { id: 5, title: 'Leads',link: '/leads' }
-        ]
-      },
-      {
-        id: 6,
-        title: 'Sales',
-        children: null,
-        link: '/sales'
-      }
-    ]);
+import { useMenuStore } from "../stores/menu"
 
 const router = useRouter();
-
+let items = ref<TreeNode[]>([])
 const selected = ref<number[]>([]);
+
+const menuStore = useMenuStore();
+
+onMounted(async () => {
+  await menuStore.getMenu(); // costuisce il menu ed attende finchè il metodo è terminato
+  items.value = menuStore.menu; // assegna il menù costruito alla variabile principali con i valori del menu visualizzato
+})
 
 // Funzione per gestire il click sui nodi e ottenere l'ID
 const onNodeClick = (newSelected: unknown): void => {
   const selectedNodes = newSelected as number[];
 
   if (selectedNodes.length == 0) return; // Se clicco due volte sullo stesso nodo esco dalla funzione
-  console.log('Nodi selezionati:', selectedNodes);
   selected.value = selectedNodes;
-
-  console.log(items);
 
   let idToSearch : number;
 
