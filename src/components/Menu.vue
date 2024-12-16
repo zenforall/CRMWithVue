@@ -7,6 +7,7 @@ import type { forEachChild } from "typescript";
 interface TreeNode {
   id: number;
   title: string;
+  icon?: string,
   children?: TreeNode[] | null;
   link: string; // Proprietà opzionale per la navigazione
 }
@@ -33,7 +34,7 @@ interface TreeNode {
         title: 'Sales',
         children: null,
         link: '/sales'
-      }      
+      }
     ]);
 
 const router = useRouter();
@@ -93,6 +94,8 @@ function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
       activatable
       open-on-click
       elevation="6"
+      expand-icon="mdi-folder"
+      collapse-icon="mdi-folder-open"
       min-height="100%"
       @update:activated="onNodeClick">
     </v-treeview>

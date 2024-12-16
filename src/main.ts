@@ -7,6 +7,7 @@ import router from './router'
 
 import { createVuetify } from 'vuetify';
 import 'vuetify/styles'; // Stili di base Vuetify
+import '@mdi/font/css/materialdesignicons.css'; // Assicura il CSS per le icone
 
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
@@ -15,6 +16,9 @@ import * as directives from 'vuetify/directives';
 const vuetify = createVuetify({
   components,
   directives,
+  icons: {
+    defaultSet: 'mdi', // Specifica il set di icone
+  }
 });
 
 const app = createApp(App)

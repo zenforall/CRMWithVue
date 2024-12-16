@@ -59,3 +59,7 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+
+### Installare le icon per il menù ad albero
+npm install @mdi/font
+
