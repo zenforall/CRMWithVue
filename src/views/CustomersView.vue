@@ -15,30 +15,18 @@
               <!-- Name Column with Editing -->
               <template v-slot:item.name="{ item }">
                 <div v-if="!editingCell || editingCell.rowId !== item.id || editingCell.field !== 'name'">
-                  <v-chip
-                    label
-                    class="cursor-pointer"
-                    @click="enableEditing(item.id, 'name', item.name)"
-                    style="background-color: #f5f5f5; color: #333; border-radius: 25px; padding: 8px 16px; transition: background-color 0.2s ease;"
-                  >
+                  <div @click="enableEditing(item.id, 'name', item.name)" style="cursor: pointer;">
                     {{ item.name }}
-                  </v-chip>
+                  </div>
                 </div>
-
                 <v-row v-else>
-                  <v-col cols="8">
-                    <v-text-field
-                      v-model="editingCell.value"
-                      dense
-                      outlined
-                      label="Edit Name"
-                      class="text-h6"
-                      style="background-color: #fff; border-radius: 8px;"
-                      @focus="focusField = 'name'"
-                      @blur="focusField = null"
-                    />
+                  <v-col cols="8" style="border-radius: 8px;border: #333 1px solid; padding: 0;">
+
+                    <input type="text" v-model="editingCell.value"/>
+
+
                   </v-col>
-                  <v-col cols="4" class="d-flex justify-center align-center">
+                  <v-col cols="4" class="d-flex" style="align-items: center;padding: 0;">
                     <v-btn icon density="compact" color="primary" @click="confirmEditing(item)">
                       <v-icon>mdi-check-circle</v-icon>
                     </v-btn>
@@ -68,7 +56,7 @@
                       v-model="editingCell.value"
                       dense
                       outlined
-                      label="Edit Age"
+                      density="compact"
                       type="number"
                       style="background-color: #fff; border-radius: 8px;"
                       @focus="focusField = 'age'"
