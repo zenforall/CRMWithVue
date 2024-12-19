@@ -1,5 +1,4 @@
 <template>
-  <v-app>
     <v-container>
       <v-row justify="center">
         <v-col cols="12" md="10">
@@ -40,10 +39,10 @@
                     />
                   </v-col>
                   <v-col cols="4" class="d-flex justify-center align-center">
-                    <v-btn icon color="primary" @click="confirmEditing(item)">
+                    <v-btn icon density="compact" color="primary" @click="confirmEditing(item)">
                       <v-icon>mdi-check-circle</v-icon>
                     </v-btn>
-                    <v-btn icon color="grey" @click="cancelEditing">
+                    <v-btn icon density="compact" color="grey" @click="cancelEditing">
                       <v-icon>mdi-close-circle</v-icon>
                     </v-btn>
                   </v-col>
@@ -71,17 +70,16 @@
                       outlined
                       label="Edit Age"
                       type="number"
-                      class="text-h6"
                       style="background-color: #fff; border-radius: 8px;"
                       @focus="focusField = 'age'"
                       @blur="focusField = null"
                     />
                   </v-col>
                   <v-col cols="4" class="d-flex justify-center align-center">
-                    <v-btn icon color="primary" @click="confirmEditing(item)">
+                    <v-btn icon density="compact" color="primary" @click="confirmEditing(item)">
                       <v-icon>mdi-check-circle</v-icon>
                     </v-btn>
-                    <v-btn icon color="grey" @click="cancelEditing">
+                    <v-btn icon density="compact" color="grey" @click="cancelEditing">
                       <v-icon>mdi-close-circle</v-icon>
                     </v-btn>
                   </v-col>
@@ -92,7 +90,6 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-app>
 </template>
 
 <script lang="ts">
@@ -130,7 +127,16 @@ export default defineComponent({
         const { rowId, field, value } = editingCell.value;
         const itemToUpdate = items.value.find((i) => i.id === rowId);
         if (itemToUpdate) {
-          itemToUpdate[field] = value;
+          console.log(itemToUpdate);
+          console.log(field);
+
+          //(itemToUpdate[field] as any) = value; // altra soluzione
+          if (field === 'name' && typeof value === 'string') {
+            itemToUpdate.name = value;
+          } else if (field === 'age' && typeof value === 'number') {
+            itemToUpdate.age = value;
+          }
+
         }
         editingCell.value = null;
       }
