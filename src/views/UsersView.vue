@@ -31,12 +31,21 @@ import { useUserStore } from "../stores/user"
 
         headers.value.push({
             title : "Actions",
-            value: ""
+            value: "actions"
         });
 
         await userStore.getUsers()
         users.value = userStore.users;
     })
+
+    function editItem(item: User): void {
+      window.alert("Editing "+item.userName);
+    }
+
+    function deleteItem(item: User): void {
+      window.alert("Deleting "+item.userName);
+    }
+
 </script>
 
 <template>
@@ -52,31 +61,11 @@ import { useUserStore } from "../stores/user"
     <template v-slot:item.activationDate="{ item }">
         <span>{{ formatDate(item.activationDate) }}</span>
     </template> 
-
     <template v-slot:item.actions="{ item }">
-      <v-icon
-        class="me-2"
-        size="small"
-        @click=""
-      >
-        mdi-pencil
-      </v-icon>
-      <v-icon
-        size="small"
-        @click=""
-      >
-        mdi-delete
-      </v-icon>
-    </template>
-    <template v-slot:no-data>
-      <v-btn
-        color="primary"
-        @click=""
-      >
-        Reset
-      </v-btn>
-    </template>    
-
+          <v-icon class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
+          <v-icon class="me-2" size="small" @click="deleteItem(item)">mdi-delete</v-icon>
+     </template>
+    
   </v-data-table>
 </template>
 
