@@ -19,32 +19,21 @@ export const useUserStore = defineStore({
 
         try {
 
-          let user1: User;
-          user1 = {
-           id: "1",
-           activationDate: new Date(),
-           company:"Company 1",
-           email:"user1@company1.com",
-           enabled:true,
-           password:"pippo123",
-           userName:"user1"
-         }
 
-         this.users.push(user1);
 
-         let user2: User;
-         user2 = {
-          id: "2",
-          activationDate: new Date(),
-          company:"Company 1",
-          email:"user2@company1.com",
-          enabled:true,
-          password:"pippo123",
-          userName:"user2"
+
+          
+        for (var i=1;i<21;i++) {
+                this.users.push({
+                    id:i.toString(),
+                    userName: "test"+i.toString()+"@test.com",
+                    password:"testPassword"+i.toString(),
+                    email:"test"+i.toString()+"@test.com",
+                    company:"",
+                    activationDate: new Date(),
+                    enabled:true
+            })
         }
-
-        this.users.push(user2);
-
        } catch (error) {
          console.log(error)
        }

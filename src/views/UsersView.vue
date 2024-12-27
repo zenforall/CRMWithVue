@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import { useUserStore } from "../stores/user"
 
     const headers = ref<TableHeader[]>([]);
     const users = ref<User[]>([]);
@@ -10,7 +11,9 @@ import { onMounted, ref } from "vue";
         month: "2-digit",
         day: "2-digit",
       });
-    };    
+    }; 
+    
+    const userStore = useUserStore();
 
     onMounted(async () => {
         headers.value.push({
@@ -26,17 +29,13 @@ import { onMounted, ref } from "vue";
             value: "activationDate"
         });
 
-        for (var i=1;i<21;i++) {
-                users.value.push({
-                    id:i.toString(),
-                    userName: "test"+i.toString()+"@test.com",
-                    password:"testPassword"+i.toString(),
-                    email:"test"+i.toString()+"@test.com",
-                    company:"",
-                    activationDate: new Date(),
-                    enabled:true
-            })
-        }
+        headers.value.push({
+            title : "Actions",
+            value: ""
+        });
+
+        await userStore.getUsers()
+        users.value = userStore.users;
     })
 </script>
 
@@ -46,11 +45,38 @@ import { onMounted, ref } from "vue";
     :items="users"
     item-key="username"
     density="compact"
+    select-strategy="all"
+    show-select
     class="fixed-height-table"
     :items-per-page-options="[5, 10]">
     <template v-slot:item.activationDate="{ item }">
         <span>{{ formatDate(item.activationDate) }}</span>
+    </template> 
+
+    <template v-slot:item.actions="{ item }">
+      <v-icon
+        class="me-2"
+        size="small"
+        @click=""
+      >
+        mdi-pencil
+      </v-icon>
+      <v-icon
+        size="small"
+        @click=""
+      >
+        mdi-delete
+      </v-icon>
+    </template>
+    <template v-slot:no-data>
+      <v-btn
+        color="primary"
+        @click=""
+      >
+        Reset
+      </v-btn>
     </template>    
+
   </v-data-table>
 </template>
 
