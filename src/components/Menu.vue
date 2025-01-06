@@ -68,7 +68,60 @@ function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
       expand-icon="mdi-folder"
       collapse-icon="mdi-folder-open"
       min-height="100%"
-      @update:activated="onNodeClick">
+      @update:activated="onNodeClick"
+      class="gmail-treeview">
+      <template  #title="{ item }">
+        <div class="tree-node">
+          <v-icon v-if="item.icon" class="tree-icon">{{ item.icon }}</v-icon>
+          <span class="tree-label">{{ item.title }}</span>
+        </div>
+      </template>
     </v-treeview>
 
 </template>
+
+<style scoped>
+.gmail-treeview {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 8px;
+  max-width: 300px;
+}
+
+/* Nodo attivo */
+.v-treeview-node__content--active {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Nodo hover */
+.v-treeview-node__content:hover {
+  background-color: #f5f5f5;
+}
+
+/* Icona accanto al nodo */
+.tree-icon {
+  margin-right: 8px;
+  color: #757575;
+}
+
+/* Label del nodo */
+.tree-label {
+  font-size: 14px;
+  color: #424242;
+}
+
+/* Nodo espandibile (freccia) */
+.v-treeview-node__toggle {
+  color: #757575;
+  transition: transform 0.3s ease;
+}
+
+/* Nodo espandibile attivo */
+.v-treeview-node__toggle--open {
+  transform: rotate(90deg);
+}
+</style>

@@ -16,6 +16,7 @@ import { useUserStore } from "../stores/user"
     const userStore = useUserStore();
 
     onMounted(async () => {
+
         headers.value.push({
             title : "Username",
             value: "userName"
@@ -71,7 +72,7 @@ import { useUserStore } from "../stores/user"
 
 <style>
 .fixed-height-table {
-max-height: 55vh; /* Imposta un'altezza massima */
+max-height: 60vh; /* Imposta un'altezza massima */
 overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
 }
 </style>

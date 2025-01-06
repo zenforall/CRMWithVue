@@ -18,22 +18,18 @@ export const useUserStore = defineStore({
       async getUsers() {
 
         try {
-
-
-
-
-          
-        for (var i=1;i<21;i++) {
-                this.users.push({
-                    id:i.toString(),
-                    userName: "test"+i.toString()+"@test.com",
-                    password:"testPassword"+i.toString(),
-                    email:"test"+i.toString()+"@test.com",
-                    company:"",
-                    activationDate: new Date(),
-                    enabled:true
-            })
-        }
+          this.users = []; // pulisce l'array
+          for (var i=1;i<21;i++) {
+                  this.users.push({
+                      id:i.toString(),
+                      userName: "test"+i.toString()+"@test.com",
+                      password:"testPassword"+i.toString(),
+                      email:"test"+i.toString()+"@test.com",
+                      company:"",
+                      activationDate: new Date(),
+                      enabled:true
+              })
+          }
        } catch (error) {
          console.log(error)
        }

@@ -7,17 +7,25 @@ import { RouterView } from 'vue-router'
 
 <template>
   <v-row>
-    <v-col cols="2" style="height: 94vh;border:solid 1px black">
-      <Menu />
+    <v-col cols="12" style="height: 6vh;border: solid 1px black">
+      <header>
+        <Header/>
+      </header>
     </v-col>
-    <v-col cols="10" style="height: 94vh;border:solid 1px black">
-      <Header />
-      <RouterView />
+    <v-col cols="2" style="height: 86vh;border:solid 1px black">
+      <nav>
+        <Menu />
+      </nav>
+    </v-col>
+    <v-col cols="10" style="height: 86vh;border:solid 1px black">
+      <main><RouterView /></main>
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="12" style="border: solid 1px black">
-      <Footer />
+    <v-col cols="12" style="height: 6vh;border: solid 1px black">
+      <footer>
+        <Footer />
+      </footer>
     </v-col>
   </v-row>
 

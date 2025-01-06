@@ -1,5 +1,5 @@
 <template>
-  <div>
-      Header Component
-  </div>
+    <div style="display: flex">
+        CRM With Vue
+    </div>
 </template>

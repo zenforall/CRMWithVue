@@ -16,6 +16,7 @@ export const useMenuStore = defineStore({
     actions: {
         async getMenu() {
             try {
+                this.menu = [];
 
                 let root: TreeNode;
                 root = {
