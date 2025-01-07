@@ -34,7 +34,7 @@ export const useMenuStore = defineStore({
                  title: 'Admin',
                  link : '',
                  children: [
-                   { id: 3, title: 'Users',link: '/users' },
+                   { id: 3, icon:'mdi-account', title: 'Users',link: '/users' },
                    { id: 4, title: 'Companies',link: '/companies' },
                    { id: 5, title: 'Scheduler',link: '/scheduler' }
                  ]

@@ -63,3 +63,4 @@ npm run lint
 ### Installare le icon per il menù ad albero
 npm install @mdi/font
 
+### Lista di icone utilizzabili : https://pictogrammers.github.io/@mdi/font/7.0.96/

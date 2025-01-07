@@ -61,7 +61,6 @@ function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
       item-text="title"
       item-children="children"
       density="compact"
-      selectable
       activatable
       open-on-click
       elevation="6"
