@@ -11,8 +11,8 @@ import { useUserStore } from "../stores/user"
         month: "2-digit",
         day: "2-digit",
       });
-    }; 
-    
+    };
+
     const userStore = useUserStore();
 
     onMounted(async () => {
@@ -61,18 +61,18 @@ import { useUserStore } from "../stores/user"
     :items-per-page-options="[5, 10]">
     <template v-slot:item.activationDate="{ item }">
         <span>{{ formatDate(item.activationDate) }}</span>
-    </template> 
+    </template>
     <template v-slot:item.actions="{ item }">
           <v-icon class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
           <v-icon class="me-2" size="small" @click="deleteItem(item)">mdi-delete</v-icon>
      </template>
-    
+
   </v-data-table>
 </template>
 
 <style>
 .fixed-height-table {
-max-height: 60vh; /* Imposta un'altezza massima */
+/*max-height: 60vh;*/ /* Imposta un'altezza massima */
 overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
 }
 </style>

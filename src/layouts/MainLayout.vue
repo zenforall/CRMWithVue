@@ -7,22 +7,22 @@ import { RouterView } from 'vue-router'
 
 <template>
   <v-row>
-    <v-col cols="12" style="height: 6vh;border: solid 1px black">
+    <v-col cols="12" style="border: solid 1px black;padding: 0px;">
       <header>
         <Header/>
       </header>
     </v-col>
-    <v-col cols="2" style="height: 86vh;border:solid 1px black">
+    <v-col cols="2" style="height: 86vh;border: solid 1px black;padding: 0px;">
       <nav>
         <Menu />
       </nav>
     </v-col>
-    <v-col cols="10" style="height: 86vh;border:solid 1px black">
+    <v-col cols="10" style="height: 86vh;border:solid 1px black;padding: 0px">
       <main><RouterView /></main>
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="12" style="height: 6vh;border: solid 1px black">
+    <v-col cols="12" style="height: 5vh;border: solid 1px black;padding: 0px;">
       <footer>
         <Footer />
       </footer>
@@ -30,7 +30,7 @@ import { RouterView } from 'vue-router'
   </v-row>
 
   <!-- Traduzione in CSS puro-->
-  <!-- 
+  <!--
     <div class="row">
       <div class="col-2">
         <Menu />
