@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import { useRouter } from 'vue-router'
 import { useUserStore } from "../stores/user"
 
     const headers = ref<TableHeader[]>([]);
@@ -14,6 +15,7 @@ import { useUserStore } from "../stores/user"
     };
 
     const userStore = useUserStore();
+    const router = useRouter();
 
     onMounted(async () => {
 
@@ -41,6 +43,7 @@ import { useUserStore } from "../stores/user"
 
     function editItem(item: User): void {
       window.alert("Editing "+item.userName);
+      router.push({name:'userDetail',state:{user: JSON.parse(JSON.stringify(item))}});
     }
 
     function deleteItem(item: User): void {

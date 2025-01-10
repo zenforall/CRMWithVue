@@ -1,5 +1,8 @@
 <script setup lang="ts">
-    import { ref } from "vue";
+    import { ref,onMounted } from "vue";
+    import { useRoute } from 'vue-router';
+
+    const router = useRoute();
 
     const isFormValid = ref(false);
     const form = ref(null);
@@ -11,6 +14,13 @@
       activationDate: null,
       enable: false,
     });
+
+    onMounted(async () => {
+      //const user = router.state?.user as User | undefined;
+    }
+
+
+
 </script>
 
 <template>
@@ -56,11 +66,10 @@
 
         <!-- Activation Date -->
         <v-col cols="12" md="6">
-          <v-date-picker
-            v-model="formData.activationDate"
-            label="Activation Date"
-            required
-          ></v-date-picker>
+            <v-date-input
+              label="Select a date"
+              v-model="formData.activationDate">
+            </v-date-input>
         </v-col>
 
         <!-- Enable -->

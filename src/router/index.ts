@@ -3,6 +3,7 @@ import LoginView from '../views/LoginView.vue'
 import DashboardView from '../views/DashboardView.vue'
 import CustomersView from '../views/CustomersView.vue'
 import UsersView from '../views/UsersView.vue'
+import UserFormView from '../views/UserFormView.vue'
 import BlankLayout from '../layouts/BlankLayout.vue'
 import MainLayout from '../layouts/MainLayout.vue'
 
@@ -37,6 +38,14 @@ const router = createRouter({
       component: MainLayout,
       children: [
         { path: 'users', component: () => UsersView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'userDetail',name: 'userDetail', component: () => UserFormView },
       ],
       meta: { requiresAuth: true }
     }
