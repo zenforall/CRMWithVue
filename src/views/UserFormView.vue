@@ -15,12 +15,6 @@
       enable: false,
     });
 
-    onMounted(async () => {
-      //const user = router.state?.user as User | undefined;
-    }
-
-
-
 </script>
 
 <template>

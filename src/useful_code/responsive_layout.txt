@@ -1,0 +1,69 @@
+<template>
+  <v-app>
+    <!-- Header -->
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>My Application</v-toolbar-title>
+    </v-app-bar>
+
+    <!-- Navbar a sinistra -->
+    <v-navigation-drawer app v-model="drawer" :permanent="false">
+      <v-list>
+        <v-list-item v-for="item in menuItems" :key="item.title" link :to="item.link">
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <!-- Contenuto principale -->
+    <v-main>
+      <v-container>
+        <router-view />
+      </v-container>
+    </v-main>
+
+    <!-- Footer -->
+    <v-footer app>
+      <v-col class="text-center">© 2025 My Application</v-col>
+    </v-footer>
+  </v-app>
+</template>
+
+<script lang="ts">
+import { ref } from 'vue';
+import { defineComponent } from 'vue';
+
+interface MenuItem {
+  title: string;
+  icon: string;
+  link: string;
+}
+
+export default defineComponent({
+  setup() {
+    const drawer = ref(false);
+    const menuItems: MenuItem[] = [
+      { title: 'Home', icon: 'mdi-home', link: '/' },
+      { title: 'About', icon: 'mdi-information', link: '/about' },
+      { title: 'Contact', icon: 'mdi-email', link: '/contact' },
+    ];
+
+    const toggleDrawer = () => {
+      drawer.value = !drawer.value;
+    };
+
+    return {
+      drawer,
+      menuItems,
+      toggleDrawer,
+    };
+  },
+});
+</script>
+
+<style>
+/* Personalizza lo stile se necessario */
+</style>
