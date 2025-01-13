@@ -4,9 +4,11 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <main>
-    <RouterView />
-  </main>
+  <v-responsive class="border rounded">
+    <v-app>
+      <RouterView />
+    </v-app>
+  </v-responsive>
 </template>
 
 <style scoped>
