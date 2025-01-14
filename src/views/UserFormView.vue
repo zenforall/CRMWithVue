@@ -1,10 +1,10 @@
 <script setup lang="ts">
     import { ref,onMounted } from "vue";
-    import { useRoute } from 'vue-router';
-    import { format, parse } from 'date-fns';
+    import { useRoute,useRouter } from 'vue-router';
+    //import { format, parse } from 'date-fns';
     import { useUserStore } from "../stores/user"
 
-    const router = useRoute();
+    const router = useRouter();
     const userStore = useUserStore();
 
     const isFormValid = ref(false);
@@ -33,7 +33,7 @@
     onMounted(async () => {
       //window.alert(router.params.id);
       userStore.getUserDetail();
-      if (userStore.userDetail === null || undefined) {
+      if (userStore.userDetail === undefined || userStore.userDetail === null) {
         window.alert("No User Detail found --> Go Back to Users List");
       } else {
         if (userStore.userDetail != null && userStore.userDetail != undefined) {
@@ -46,6 +46,12 @@
         }
       }
     })
+
+    function backToUsers() {
+      router.push("/users");
+    }
+
+
 </script>
 
 <template>
@@ -53,7 +59,7 @@
     <v-form ref="form">
       <v-row>
         <v-col>
-          <v-btn color="primary">Back to Users</v-btn>
+          <v-btn color="primary" @click="backToUsers">Back to Users</v-btn>
           <span style="margin-left: 10px;font-size: large;color: #42b883;">User Details</span>
         </v-col>
       </v-row>

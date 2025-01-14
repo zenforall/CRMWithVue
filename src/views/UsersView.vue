@@ -57,12 +57,28 @@ import { useUserStore } from "../stores/user"
     }
 
     function deleteItem(item: User): void {
-      window.alert("Deleting "+item.userName);
+      let confirmed: boolean = window.confirm("Are you sure to delete User "+item.userName+" ?");
+      if (confirmed) {
+        userStore.setUserId(item.id);
+        userStore.deleteUser();
+      }
+    }
+
+    function addNewUser() : void {
+      userStore.setUserId("");
+      userStore.getUserDetail();
+      router.push({name:'userDetail'});
     }
 
 </script>
 
 <template>
+
+  <v-row>
+      <v-col>
+        <v-btn color="primary" @click="addNewUser">Add New User</v-btn>
+      </v-col>
+  </v-row>
   <v-data-table
     :headers="headers"
     :items="users"

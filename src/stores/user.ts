@@ -17,16 +17,19 @@ export const useUserStore = defineStore({
         // Metodi che sfruttano la variabile di stato menu
     },
     actions: {
-      getUserDetail() {
-        if (this.users === null || this.users.length == 0) return;
-        if (this.userId === null || this.userId === "") return;
-        this.userDetail = this.users.find(value => value.id === this.userId);
+      async getUserDetail() {
+        try {
+          if (this.users === null || this.users.length == 0) {this.userDetail = null; return;}
+          if (this.userId === null || this.userId === "") {this.userDetail = null; return;}
+          this.userDetail = this.users.find(value => value.id === this.userId);
+        } catch (error) {
+          console.log(error);
+        }
       },
       setUserId(id:string) {
         this.userId = id;
       },
       async getUsers() {
-
         try {
           this.users = []; // pulisce l'array
           for (var i=1;i<21;i++) {
@@ -43,6 +46,18 @@ export const useUserStore = defineStore({
        } catch (error) {
          console.log(error)
        }
+      },
+      async deleteUser() {
+        try {
+          if (this.users === null || this.users.length == 0) {return;}
+          if (this.userId === null || this.userId === "") {return;}
+          let index:number = this.users.findIndex(value => value.id === this.userId);
+          if (index > -1) {
+            this.users.splice(index,1);
+          }
+        } catch (error) {
+          console.log(error);
+        }
       }
     }
 })
