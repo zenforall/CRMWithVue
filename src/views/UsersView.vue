@@ -42,8 +42,18 @@ import { useUserStore } from "../stores/user"
     })
 
     function editItem(item: User): void {
-      window.alert("Editing "+item.userName);
-      router.push({name:'userDetail',state:{user: JSON.parse(JSON.stringify(item))}});
+      //router.push({name:'userDetail',params:{id:item.id}});
+
+      /* Aggiungere un parametro nel Router userDetail/:id
+      router.push({
+        name: 'userDetail',
+        state: {
+          userId: item.id,
+        },
+      });
+      */
+      userStore.setUserId(item.id);
+      router.push({name:'userDetail'});
     }
 
     function deleteItem(item: User): void {

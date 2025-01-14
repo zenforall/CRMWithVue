@@ -1,36 +1,55 @@
 <script setup lang="ts">
     import { ref,onMounted } from "vue";
     import { useRoute } from 'vue-router';
+    import { format, parse } from 'date-fns';
+    import { useUserStore } from "../stores/user"
 
     const router = useRoute();
+    const userStore = useUserStore();
 
     const isFormValid = ref(false);
     const form = ref(null);
     const formData = ref({
-      userName: '',
-      password: '',
-      email: '',
-      company: '',
-      activationDate: null,
-      enable: false,
+      userName: '' as string,
+      password: '' as string,
+      email: '' as string,
+      company: '' as string,
+      activationDate: null as Date | null,
+      activationDateFormatted: '' as string,
+      enable: false as boolean,
     });
 
+    const formatDate = (date: Date): string => {
+      return date.toLocaleDateString("it-IT", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      });
+    };
     function saveUser() {
       ;
     }
 
     onMounted(async () => {
-      ;
+      //window.alert(router.params.id);
+      userStore.getUserDetail();
+      if (userStore.userDetail === null || undefined) {
+        window.alert("No User Detail found --> Go Back to Users List");
+      } else {
+        if (userStore.userDetail != null && userStore.userDetail != undefined) {
+          formData.value.userName = userStore.userDetail?.userName;
+          formData.value.password = userStore.userDetail?.password;
+          formData.value.email = userStore.userDetail?.email;
+          formData.value.company = userStore.userDetail?.company;
+          formData.value.activationDate = userStore.userDetail?.activationDate;
+          formData.value.enable = userStore.userDetail?.enabled;
+        }
+      }
     })
-
-
 </script>
 
 <template>
   <v-container>
-
-
-
     <v-form ref="form">
       <v-row>
         <v-col>

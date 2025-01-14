@@ -10,11 +10,21 @@ export const useUserStore = defineStore({
     id: "userStore",
     state: () => ({
         users: ref([] as User[]),
+        userId: "",
+        userDetail: null as User | null | undefined,
     }),
     getters: {
         // Metodi che sfruttano la variabile di stato menu
     },
     actions: {
+      getUserDetail() {
+        if (this.users === null || this.users.length == 0) return;
+        if (this.userId === null || this.userId === "") return;
+        this.userDetail = this.users.find(value => value.id === this.userId);
+      },
+      setUserId(id:string) {
+        this.userId = id;
+      },
       async getUsers() {
 
         try {
@@ -25,7 +35,7 @@ export const useUserStore = defineStore({
                       userName: "test"+i.toString()+"@test.com",
                       password:"testPassword"+i.toString(),
                       email:"test"+i.toString()+"@test.com",
-                      company:"",
+                      company:"company"+i.toString(),
                       activationDate: new Date(),
                       enabled:true
               })
