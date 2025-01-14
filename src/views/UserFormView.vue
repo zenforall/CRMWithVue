@@ -32,18 +32,17 @@
 
     onMounted(async () => {
       //window.alert(router.params.id);
+
+      if (userStore.userAction === 'C') return;
+
       userStore.getUserDetail();
-      if (userStore.userDetail === undefined || userStore.userDetail === null) {
-        window.alert("No User Detail found --> Go Back to Users List");
-      } else {
-        if (userStore.userDetail != null && userStore.userDetail != undefined) {
-          formData.value.userName = userStore.userDetail?.userName;
-          formData.value.password = userStore.userDetail?.password;
-          formData.value.email = userStore.userDetail?.email;
-          formData.value.company = userStore.userDetail?.company;
-          formData.value.activationDate = userStore.userDetail?.activationDate;
-          formData.value.enable = userStore.userDetail?.enabled;
-        }
+      if (userStore.userDetail != null && userStore.userDetail != undefined) {
+        formData.value.userName = userStore.userDetail?.userName;
+        formData.value.password = userStore.userDetail?.password;
+        formData.value.email = userStore.userDetail?.email;
+        formData.value.company = userStore.userDetail?.company;
+        formData.value.activationDate = userStore.userDetail?.activationDate;
+        formData.value.enable = userStore.userDetail?.enabled;
       }
     })
 
@@ -60,7 +59,8 @@
       <v-row>
         <v-col>
           <v-btn color="primary" @click="backToUsers">Back to Users</v-btn>
-          <span style="margin-left: 10px;font-size: large;color: #42b883;">User Details</span>
+          <span v-if="userStore.userAction === 'U'" style="margin-left: 10px;font-size: large;color: #42b883;">Edit User</span>
+          <span v-else-if="userStore.userAction === 'C'" style="margin-left: 10px;font-size: large;color: #42b883;">New User</span>
         </v-col>
       </v-row>
 

@@ -53,6 +53,14 @@ import { useUserStore } from "../stores/user"
       });
       */
       userStore.setUserId(item.id);
+
+      userStore.getUserDetail();
+      if (userStore.userDetail === undefined || userStore.userDetail === null) {
+        window.alert("No User Detail found --> Maybe has been deleted by another User");
+        return;
+      }
+
+      userStore.setUserAction("U"); // Azione Update
       router.push({name:'userDetail'});
     }
 
@@ -66,6 +74,7 @@ import { useUserStore } from "../stores/user"
 
     function addNewUser() : void {
       userStore.setUserId("");
+      userStore.setUserAction("C"); // Azione Create
       userStore.getUserDetail();
       router.push({name:'userDetail'});
     }

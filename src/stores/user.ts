@@ -12,6 +12,7 @@ export const useUserStore = defineStore({
         users: ref([] as User[]),
         userId: "",
         userDetail: null as User | null | undefined,
+        userAction: "",
     }),
     getters: {
         // Metodi che sfruttano la variabile di stato menu
@@ -28,6 +29,9 @@ export const useUserStore = defineStore({
       },
       setUserId(id:string) {
         this.userId = id;
+      },
+      setUserAction(action:string) {
+        this.userAction = action;
       },
       async getUsers() {
         try {
