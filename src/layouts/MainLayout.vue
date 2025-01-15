@@ -7,19 +7,28 @@ const drawer = ref(true);
 
 const toggleDrawer = () => {
       drawer.value = !drawer.value;
-    };
+};
 
+const items = ref([] as BreaCrumbItem[]);
 
+function breadCrumbItemsHandler(itemsToDisplay: BreaCrumbItem[]) : void {
+  items.value = itemsToDisplay;
+}
 </script>
 
 <template>
   <v-app-bar>
     <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
     <v-toolbar-title style="color: #42b883;font-weight: bold;">CRM With Vue</v-toolbar-title>
+    <v-breadcrumbs :items="items">
+      <template v-slot:divider>
+        <v-icon icon="mdi-forward"></v-icon>
+      </template>
+    </v-breadcrumbs>
   </v-app-bar>
 
   <v-navigation-drawer app v-model="drawer" :permanent="false">
-      <Menu/>
+      <Menu @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->

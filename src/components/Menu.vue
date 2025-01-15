@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import { VTreeview } from 'vuetify/labs/VTreeview'
 import { useRouter } from 'vue-router';
 import { useMenuStore } from "../stores/menu"
+import { EmitFlags } from "typescript";
 
 const router = useRouter();
 let items = ref<TreeNode[]>([])
@@ -31,6 +32,9 @@ const onNodeClick = (newSelected: unknown): void => {
   result  = findNodeById(items.value,idToSearch);
 
   if (result != null) {
+      emit("",null);
+
+
     router.push(result.link);
   }
 };
