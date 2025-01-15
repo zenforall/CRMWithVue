@@ -41,6 +41,10 @@ import { useUserStore } from "../stores/user"
         users.value = userStore.users;
     })
 
+    const emit =defineEmits<{
+      (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
+    }>();
+
     function editItem(item: User): void {
       //router.push({name:'userDetail',params:{id:item.id}});
 
@@ -59,6 +63,27 @@ import { useUserStore } from "../stores/user"
         return;
       }
 
+      const breadCrumbItems :  BreaCrumbItem[] = [];
+      breadCrumbItems.push(
+         {
+            title: "Admin",
+            disabled : false,
+            href : ""
+         },
+         {
+            title: "Users",
+            disabled : false,
+            href : ""
+         },
+         {
+            title: "Edit User",
+            disabled : false,
+            href : ""
+         }
+      );
+
+      emit("breadCrumbHandler",breadCrumbItems);
+
       userStore.setUserAction("U"); // Azione Update
       router.push({name:'userDetail'});
     }
@@ -75,6 +100,28 @@ import { useUserStore } from "../stores/user"
       userStore.setUserId("");
       userStore.setUserAction("C"); // Azione Create
       userStore.getUserDetail();
+
+      const breadCrumbItems :  BreaCrumbItem[] = [];
+      breadCrumbItems.push(
+         {
+            title: "Admin",
+            disabled : false,
+            href : ""
+         },
+         {
+            title: "Users",
+            disabled : false,
+            href : ""
+         },
+         {
+            title: "New User",
+            disabled : false,
+            href : ""
+         }
+      );
+
+      emit("breadCrumbHandler",breadCrumbItems);
+
       router.push({name:'userDetail'});
     }
 

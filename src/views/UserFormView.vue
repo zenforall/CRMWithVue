@@ -26,6 +26,11 @@
         day: "2-digit",
       });
     };
+
+    const emit =defineEmits<{
+      (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
+    }>();
+
     function saveUser() {
       ;
     }
@@ -47,6 +52,23 @@
     })
 
     function backToUsers() {
+
+      const breadCrumbItems :  BreaCrumbItem[] = [];
+      breadCrumbItems.push(
+         {
+            title: "Admin",
+            disabled : false,
+            href : ""
+         },
+         {
+            title: "Users",
+            disabled : false,
+            href : ""
+         }
+      );
+
+      emit("breadCrumbHandler",breadCrumbItems);
+
       router.push("/users");
     }
 

@@ -11,13 +11,19 @@ const selected = ref<number[]>([]);
 
 const menuStore = useMenuStore();
 
+const emit =defineEmits<{
+  (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
+}>();
+
 onMounted(async () => {
   await menuStore.getMenu(); // costuisce il menu ed attende finchè il metodo è terminato
   items.value = menuStore.menu; // assegna il menù costruito alla variabile principali con i valori del menu visualizzato
 })
 
+
 // Funzione per gestire il click sui nodi e ottenere l'ID
 const onNodeClick = (newSelected: unknown): void => {
+
   const selectedNodes = newSelected as number[];
 
   if (selectedNodes.length == 0) return; // Se clicco due volte sullo stesso nodo esco dalla funzione
@@ -32,9 +38,24 @@ const onNodeClick = (newSelected: unknown): void => {
   result  = findNodeById(items.value,idToSearch);
 
   if (result != null) {
-      emit("",null);
 
+    const breadCrumbItems :  BreaCrumbItem[] = [];
+    if (idToSearch === 3) {
+      breadCrumbItems.push(
+         {
+            title: "Admin",
+            disabled : false,
+            href : ""
+         },
+         {
+            title: "Users",
+            disabled : false,
+            href : ""
+         }
+      );
+    }
 
+    emit("breadCrumbHandler",breadCrumbItems);
     router.push(result.link);
   }
 };

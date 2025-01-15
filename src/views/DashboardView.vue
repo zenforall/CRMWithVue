@@ -1,19 +1,28 @@
 <script setup lang="ts" >
+import { onMounted } from 'vue';
 
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
-import Menu from '../components/Menu.vue'
+
+    const emit =defineEmits<{
+      (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
+    }>();
+
+    onMounted(async () => {
+      const breadCrumbItems :  BreaCrumbItem[] = [];
+      breadCrumbItems.push(
+         {
+            title: "Home",
+            disabled : false,
+            href : ""
+         }
+      );
+
+      emit("breadCrumbHandler",breadCrumbItems);
+    })
 
 </script>
 
 <template>
-  <div>Main Dashboard</div>
-  <div>Main Dashboard</div>
-  <div>Main Dashboard</div>
-  <div>Main Dashboard</div>
-  <div>Main Dashboard</div>
-  <div>Main Dashboard</div>
-  <div>Main Dashboard</div>
-  <div>Main Dashboard</div>
-  <div>Main Dashboard</div>
+  <v-container>
+    <div style="text-align: center; font-size: 30px; font-weight: bold;color: #42b883;">Dashboard</div>
+  </v-container>
 </template>

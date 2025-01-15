@@ -2,17 +2,19 @@
 import { ref } from 'vue';
 import { RouterView } from 'vue-router'
 import Menu from '../components/Menu.vue'
+import Footer from '../components/Footer.vue'
 
 const drawer = ref(true);
 
 const toggleDrawer = () => {
+      alert("toggleDrawer");
       drawer.value = !drawer.value;
 };
 
 const items = ref([] as BreaCrumbItem[]);
 
-function breadCrumbItemsHandler(itemsToDisplay: BreaCrumbItem[]) : void {
-  items.value = itemsToDisplay;
+function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
+  items.value = message;
 }
 </script>
 
@@ -27,6 +29,7 @@ function breadCrumbItemsHandler(itemsToDisplay: BreaCrumbItem[]) : void {
     </v-breadcrumbs>
   </v-app-bar>
 
+
   <v-navigation-drawer app v-model="drawer" :permanent="false">
       <Menu @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-navigation-drawer>
@@ -34,12 +37,12 @@ function breadCrumbItemsHandler(itemsToDisplay: BreaCrumbItem[]) : void {
   <!-- Contenuto principale -->
   <v-main>
     <v-content>
-      <RouterView/>
+      <RouterView @breadCrumbHandler="breadCrumbItemsHandler"/>
     </v-content>
   </v-main>
 
   <!-- Footer -->
   <v-footer app>
-    <v-col class="text-center" style="color: #42b883;">© 2025 CRM With Vue</v-col>
+    <Footer/>
   </v-footer>
 </template>
