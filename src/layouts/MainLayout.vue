@@ -24,7 +24,9 @@ const toggleDrawer = () => {
 
   <!-- Contenuto principale -->
   <v-main>
-    <RouterView/>
+    <v-content>
+      <RouterView/>
+    </v-content>
   </v-main>
 
   <!-- Footer -->
