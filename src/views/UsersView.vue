@@ -53,7 +53,6 @@ import { useUserStore } from "../stores/user"
       });
       */
       userStore.setUserId(item.id);
-
       userStore.getUserDetail();
       if (userStore.userDetail === undefined || userStore.userDetail === null) {
         window.alert("No User Detail found --> Maybe has been deleted by another User");
@@ -83,6 +82,7 @@ import { useUserStore } from "../stores/user"
 
 <template>
 
+  <v-container>
   <v-row>
       <v-col>
         <v-btn color="primary" @click="addNewUser">Add New User</v-btn>
@@ -106,6 +106,8 @@ import { useUserStore } from "../stores/user"
      </template>
 
   </v-data-table>
+</v-container>
+
 </template>
 
 <style>
