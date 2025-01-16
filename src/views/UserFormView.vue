@@ -7,8 +7,6 @@
     const router = useRouter();
     const userStore = useUserStore();
 
-    const isFormValid = ref(false);
-    const form = ref(null);
     const formData = ref({
       userName: '' as string,
       password: '' as string,
@@ -31,25 +29,55 @@
       (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
     }>();
 
-    function saveUser() {
-      ;
+    const formRef = ref();
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    const displaySnackBar  = ref(false);
+
+    const rules = {
+      required: (value:any) => !!value || 'The field is compulsory ',
+      emailValidation: (value:any) => emailRegex.test(formData.value.email) || 'The email is not valid',
+    };
+
+
+    const saveUser = async () => {
+      const  gg = await formRef.value.validate();
+
+      try {
+
+        displaySnackBar.value = true;
+
+      } catch (error) {
+        console.log(error);
+      }
+
+    }
+
+    // Ripristina i valori originali dell'utente
+    function cancel() : void {
+      assignOriginalUserDataToForm(userStore.userDetail);
     }
 
     onMounted(async () => {
-      //window.alert(router.params.id);
 
       if (userStore.userAction === 'C') return;
 
       userStore.getUserDetail();
-      if (userStore.userDetail != null && userStore.userDetail != undefined) {
-        formData.value.userName = userStore.userDetail?.userName;
-        formData.value.password = userStore.userDetail?.password;
-        formData.value.email = userStore.userDetail?.email;
-        formData.value.company = userStore.userDetail?.company;
-        formData.value.activationDate = userStore.userDetail?.activationDate;
-        formData.value.enable = userStore.userDetail?.enabled;
-      }
+      assignOriginalUserDataToForm(userStore.userDetail);
     })
+
+    function assignOriginalUserDataToForm(userDetail: User | null | undefined) {
+      if (userDetail != null && userDetail != undefined) {
+        formData.value.userName = userDetail?.userName;
+        formData.value.password = userDetail?.password;
+        formData.value.email = userDetail?.email;
+        formData.value.company = userDetail?.company;
+        formData.value.activationDate = userDetail?.activationDate;
+        formData.value.enable = userDetail?.enabled;
+      }
+    }
+
 
     function backToUsers() {
 
@@ -77,7 +105,10 @@
 
 <template>
   <v-container>
-    <v-form ref="form">
+    <v-snackbar :timeout="1000" v-model="displaySnackBar">
+      Saved
+    </v-snackbar>
+
       <v-row>
         <v-col>
           <v-btn color="primary" @click="backToUsers">Back to Users</v-btn>
@@ -86,10 +117,12 @@
         </v-col>
       </v-row>
 
+      <v-form ref="formRef" lazy-validation>
        <v-row>
         <!-- User Name -->
         <v-col cols="12" md="6">
           <v-text-field
+            :rules="[rules.required]"
             v-model="formData.userName"
             label="User Name"
             density="compact"
@@ -100,7 +133,9 @@
         <!-- Password -->
         <v-col cols="12" md="6">
           <v-text-field
+            :rules="[rules.required]"
             v-model="formData.password"
+            append-inner-icon="mdi-eye"
             label="Password"
             type="password"
             density="compact"
@@ -111,6 +146,7 @@
         <!-- Email -->
         <v-col cols="12" md="6">
           <v-text-field
+            :rules="[rules.required,rules.emailValidation]"
             v-model="formData.email"
             label="Email"
             type="email"
@@ -122,6 +158,7 @@
         <!-- Company -->
         <v-col cols="12" md="6">
           <v-text-field
+            :rules="[rules.required]"
             v-model="formData.company"
             label="Company"
             density="compact"
@@ -131,6 +168,7 @@
         <!-- Activation Date -->
         <v-col cols="12" md="6">
             <v-date-input
+              :rules="[rules.required]"
               label="Select a date"
               density="compact"
               v-model="formData.activationDate">
@@ -147,19 +185,19 @@
         </v-col>
 
         <v-col cols="12" style="display: flex; justify-content: flex-end;">
-          <v-btn :disabled="!isFormValid"
+          <v-btn
                @click="saveUser"
                variant="elevated"
                color="blue">
           Save
         </v-btn>
-        <v-btn
-               @click=""
-               variant="elevated"
-               style="margin-left: 5px;"
-               color="blue">
-          Cancel
-        </v-btn>
+        <v-btn v-if="userStore.userAction === 'U'"
+                @click="cancel"
+                variant="elevated"
+                style="margin-left: 5px;"
+                color="blue">
+            Cancel
+          </v-btn>
         </v-col>
       </v-row>
     </v-form>

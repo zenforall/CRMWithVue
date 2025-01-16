@@ -36,7 +36,7 @@ import { VForm } from "vuetify/components";
     */
 
     const rules = {
-      required: (value:any) => !!value || 'Il campo è obbligatorio',
+      required: (value:any) => !!value || 'The field is compulsory ',
     };
 
     const handleLogin = async () => {
@@ -67,12 +67,12 @@ import { VForm } from "vuetify/components";
           alert('Login effettuato con successo!');
       } else {
           //alert('Correggi gli errori nel form.');
-      }      
+      }
 
       //window.alert("Valore from await:"+isValid);
 
       //window.alert("GG: "+JSON.stringify(gg));
-      
+
       /*
       gg.then((value:any) => {
         window.alert("Value: "+JSON.stringify(value))
@@ -120,6 +120,7 @@ import { VForm } from "vuetify/components";
                </v-text-field>
                 <v-text-field
                   label="Password"
+                  :rules="[rules.required]"
                   type="password"
                   v-model="password">
                </v-text-field>

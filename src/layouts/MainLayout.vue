@@ -7,7 +7,6 @@ import Footer from '../components/Footer.vue'
 const drawer = ref(true);
 
 const toggleDrawer = () => {
-      alert("toggleDrawer");
       drawer.value = !drawer.value;
 };
 
@@ -22,23 +21,20 @@ function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
   <v-app-bar>
     <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
     <v-toolbar-title style="color: #42b883;font-weight: bold;">CRM With Vue</v-toolbar-title>
-    <v-breadcrumbs :items="items">
-      <template v-slot:divider>
-        <v-icon icon="mdi-forward"></v-icon>
-      </template>
-    </v-breadcrumbs>
   </v-app-bar>
 
-
-  <v-navigation-drawer app v-model="drawer" :permanent="false">
+  <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px;">
       <Menu @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->
   <v-main>
-    <v-content>
+      <v-breadcrumbs :items="items">
+        <template v-slot:divider>
+          <v-icon icon="mdi-forward"></v-icon>
+        </template>
+      </v-breadcrumbs>
       <RouterView @breadCrumbHandler="breadCrumbItemsHandler"/>
-    </v-content>
   </v-main>
 
   <!-- Footer -->

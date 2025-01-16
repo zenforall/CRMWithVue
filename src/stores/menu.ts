@@ -35,8 +35,8 @@ export const useMenuStore = defineStore({
                  link : '',
                  children: [
                    { id: 3, icon:'mdi-account', title: 'Users',link: '/users' },
-                   { id: 4, title: 'Companies',link: '/companies' },
-                   { id: 5, title: 'Scheduler',link: '/scheduler' }
+                   { id: 4, icon:'mdi-office-building', title: 'Companies',link: '/companies' },
+                   { id: 5, icon:'mdi-archive-clock', title: 'Scheduler',link: '/scheduler' }
                  ]
                };
 
@@ -48,9 +48,9 @@ export const useMenuStore = defineStore({
                  title: 'Contacts',
                  link : '',
                  children: [
-                   { id: 21, title: 'Customers',link: '/customers' },
-                   { id: 22, title: 'Prospects',link: '/prospects' },
-                   { id: 23, title: 'Leads',link: '/leads' }
+                   { id: 21, icon:'mdi-account-tie', title: 'Customers',link: '/customers' },
+                   { id: 22, icon:'mdi-account-tie-hat-outline', title: 'Prospects',link: '/prospects' },
+                   { id: 23, icon:'mdi-account-tie-outline', title: 'Leads',link: '/leads' }
                  ]
                };
 
@@ -59,6 +59,7 @@ export const useMenuStore = defineStore({
                let sales: TreeNode;
                sales = {
                  id: 40,
+                 icon: 'mdi-hand-coin',
                  title: 'Sales',
                  children: null,
                  link: '/sales'

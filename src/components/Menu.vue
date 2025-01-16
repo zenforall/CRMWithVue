@@ -3,7 +3,6 @@ import { onMounted, ref } from "vue";
 import { VTreeview } from 'vuetify/labs/VTreeview'
 import { useRouter } from 'vue-router';
 import { useMenuStore } from "../stores/menu"
-import { EmitFlags } from "typescript";
 
 const router = useRouter();
 let items = ref<TreeNode[]>([])
@@ -101,7 +100,6 @@ function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
         </div>
       </template>
     </v-treeview>
-
 </template>
 
 <style scoped>

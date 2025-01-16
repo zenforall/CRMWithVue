@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <v-responsive class="border rounded">
+  <v-responsive>
     <v-app>
       <RouterView />
     </v-app>
@@ -12,13 +12,5 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
 
 </style>
