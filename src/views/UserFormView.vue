@@ -59,6 +59,7 @@
       } catch (error) {
         displaySnackBarKO.value = true;
         console.log(error);
+
       }
 
     }
