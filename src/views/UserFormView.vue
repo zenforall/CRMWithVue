@@ -3,7 +3,7 @@
     import { useRouter } from 'vue-router';
     //import { format, parse } from 'date-fns';
     import { useUserStore } from "../stores/user";
-    import { getValidationResult } from "../utils/FormValidation";
+    import {getValidationResult}  from "../utils/FormValidation";
 
     const router = useRouter();
     const userStore = useUserStore();
@@ -59,7 +59,6 @@
       } catch (error) {
         displaySnackBarKO.value = true;
         console.log(error);
-
       }
 
     }
