@@ -88,8 +88,7 @@ function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
       activatable
       open-on-click
       elevation="6"
-      expand-icon="mdi-folder"
-      collapse-icon="mdi-folder-open"
+
       min-height="100%"
       @update:activated="onNodeClick"
       class="gmail-treeview">
@@ -98,6 +97,16 @@ function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
           <v-icon v-if="item.icon" class="tree-icon">{{ item.icon }}</v-icon>
           <span class="tree-label">{{ item.title }}</span>
         </div>
+      </template>
+      <template v-slot:prepend ="{item,isOpen}">
+        <v-icon v-if="item.children">
+          <template v-if="item.id === 2">
+            {{ isOpen ? 'mdi-folder-open' : 'mdi-folder' }}
+          </template>
+          <template v-if="item.id === 20">
+            {{ isOpen ? 'mdi-archive-outline' : 'mdi-archive' }}
+          </template>
+        </v-icon>
       </template>
     </v-treeview>
 </template>

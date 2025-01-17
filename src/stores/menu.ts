@@ -66,6 +66,19 @@ export const useMenuStore = defineStore({
                }
 
                this.menu.push(sales);
+
+               let reports: TreeNode;
+               reports = {
+                 id: 50,
+                 icon: 'mdi-file-document',
+                 title: 'Reports',
+                 children: null,
+                 link: '/reports'
+               }
+
+               this.menu.push(reports);
+
+
              } catch (error) {
                console.log(error)
              }
