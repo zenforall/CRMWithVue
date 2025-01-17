@@ -1,4 +1,5 @@
 interface TableHeader {
     title: string,
-    value: string
+    value: string,
+    sortable: boolean
   }

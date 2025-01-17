@@ -29,7 +29,7 @@ function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
 
   <!-- Contenuto principale -->
   <v-main>
-      <v-breadcrumbs :items="items">
+      <v-breadcrumbs :items="items" color="success">
         <template v-slot:divider>
           <v-icon icon="mdi-forward"></v-icon>
         </template>

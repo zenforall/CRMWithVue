@@ -1,6 +1,7 @@
 <script setup lang="ts" >
 import { onMounted,onUnmounted,ref,nextTick } from "vue";
 import { VForm } from "vuetify/components";
+import { getValidationResult } from "../utils/FormValidation";
 
     const username = ref("");
     const password = ref("");
@@ -41,45 +42,14 @@ import { VForm } from "vuetify/components";
 
     const handleLogin = async () => {
 
-      const  gg = await formRef.value.validate();
+      const validationResult = await formRef.value.validate();
+      let resultObject: ValidateObj = getValidationResult(validationResult);
 
-      let resultAsString: string = JSON.stringify(gg);
-
-      interface ErrorObj {
-        id:string;
-        errorMessages:string[];
-      }
-
-      interface ValidateObj {
-         valid: boolean;
-         errors: ErrorObj[];
-      }
-
-
-      let resultObject: ValidateObj = JSON.parse(resultAsString);
-
-      //window.alert(resultAsString);
-
-
-      const isValid = resultObject.valid;
-
-      if (isValid) {
+      if (resultObject.valid) {
           alert('Login effettuato con successo!');
       } else {
           //alert('Correggi gli errori nel form.');
       }
-
-      //window.alert("Valore from await:"+isValid);
-
-      //window.alert("GG: "+JSON.stringify(gg));
-
-      /*
-      gg.then((value:any) => {
-        window.alert("Value: "+JSON.stringify(value))
-      })
-      */
-
-      //window.alert(gg);
 
       /* Alternativa per leggere la property valid dal json di ritorno dal metodo vlaidate()
       formRef.value.validate().then(({valid: isValid}) => {

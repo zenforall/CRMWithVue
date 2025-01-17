@@ -21,20 +21,29 @@ import { useUserStore } from "../stores/user"
 
         headers.value.push({
             title : "Username",
-            value: "userName"
+            value: "userName",
+            sortable: true
         });
         headers.value.push({
-            title : "Password",
-            value: "password"
+            title : "Email",
+            value: "email",
+            sortable: true
         });
         headers.value.push({
-            title : "Activation Date",
-            value: "activationDate"
+            title : "Company",
+            value: "company",
+            sortable: true
+        });
+        headers.value.push({
+            title : "Enabled",
+            value: "enabled",
+            sortable: true
         });
 
         headers.value.push({
             title : "Actions",
-            value: "actions"
+            value: "actions",
+            sortable: true
         });
 
         await userStore.getUsers()
@@ -138,18 +147,21 @@ import { useUserStore } from "../stores/user"
   <v-data-table
     :headers="headers"
     :items="users"
+    items-per-page="5"
     item-key="username"
     density="compact"
     select-strategy="all"
     show-select
     class="fixed-height-table"
-    :items-per-page-options="[5, 10]">
+    :items-per-page-options="[5,7]">
     <template v-slot:item.activationDate="{ item }">
         <span>{{ formatDate(item.activationDate) }}</span>
     </template>
     <template v-slot:item.actions="{ item }">
+      <div style="text-wrap: nowrap;">
           <v-icon class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
           <v-icon class="me-2" size="small" @click="deleteItem(item)">mdi-delete</v-icon>
+      </div>
      </template>
 
   </v-data-table>

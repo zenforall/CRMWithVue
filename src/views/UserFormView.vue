@@ -1,13 +1,15 @@
 <script setup lang="ts">
     import { ref,onMounted } from "vue";
-    import { useRoute,useRouter } from 'vue-router';
+    import { useRouter } from 'vue-router';
     //import { format, parse } from 'date-fns';
-    import { useUserStore } from "../stores/user"
+    import { useUserStore } from "../stores/user";
+    import { getValidationResult } from "../utils/FormValidation";
 
     const router = useRouter();
     const userStore = useUserStore();
 
     const formData = ref({
+      id : '' as string,
       userName: '' as string,
       password: '' as string,
       email: '' as string,
@@ -33,7 +35,8 @@
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    const displaySnackBar  = ref(false);
+    const displaySnackBarOK  = ref(false);
+    const displaySnackBarKO  = ref(false);
 
     const rules = {
       required: (value:any) => !!value || 'The field is compulsory ',
@@ -42,13 +45,19 @@
 
 
     const saveUser = async () => {
-      const  gg = await formRef.value.validate();
+
+      const validationResult = await formRef.value.validate();
+      let resultObject: ValidateObj = getValidationResult(validationResult);
 
       try {
-
-        displaySnackBar.value = true;
+        if (resultObject.valid) {
+          let userToUpdate =  getUserFromUserDataForm();
+          userStore.updateUser(userToUpdate);
+          displaySnackBarOK.value = true;
+        }
 
       } catch (error) {
+        displaySnackBarKO.value = true;
         console.log(error);
       }
 
@@ -69,6 +78,7 @@
 
     function assignOriginalUserDataToForm(userDetail: User | null | undefined) {
       if (userDetail != null && userDetail != undefined) {
+        formData.value.id = userDetail?.id;
         formData.value.userName = userDetail?.userName;
         formData.value.password = userDetail?.password;
         formData.value.email = userDetail?.email;
@@ -76,6 +86,22 @@
         formData.value.activationDate = userDetail?.activationDate;
         formData.value.enable = userDetail?.enabled;
       }
+    }
+
+    function getUserFromUserDataForm() : User {
+      let result : User = <User>{}; // crea un oggetto vuoto dove User  è un'interfaccia
+
+      result.id = formData.value.id;
+      if (formData.value.activationDate != null) {
+        result.activationDate = formData.value.activationDate;
+      }
+      result.company = formData.value.company;
+      result.email = formData.value.email;
+      result.enabled = formData.value.enable;
+      result.password = formData.value.password;
+      result.userName = formData.value.userName;
+
+      return result;
     }
 
 
@@ -96,24 +122,26 @@
       );
 
       emit("breadCrumbHandler",breadCrumbItems);
-
       router.push("/users");
     }
-
 
 </script>
 
 <template>
   <v-container>
-    <v-snackbar :timeout="1000" v-model="displaySnackBar">
-      Saved
+    <v-snackbar :timeout="1000" color="success" v-model="displaySnackBarOK">
+      <div style="text-align: center;">User Saved Successfully</div>
+    </v-snackbar>
+
+    <v-snackbar :timeout="1000" color="error" v-model="displaySnackBarKO">
+      There were errors saving (check the log)
     </v-snackbar>
 
       <v-row>
         <v-col>
           <v-btn color="primary" @click="backToUsers">Back to Users</v-btn>
-          <span v-if="userStore.userAction === 'U'" style="margin-left: 10px;font-size: large;color: #42b883;">Edit User</span>
-          <span v-else-if="userStore.userAction === 'C'" style="margin-left: 10px;font-size: large;color: #42b883;">New User</span>
+          <!--<span v-if="userStore.userAction === 'U'" style="margin-left: 10px;font-size: large;color: #42b883;">Edit User</span>
+          <span v-else-if="userStore.userAction === 'C'" style="margin-left: 10px;font-size: large;color: #42b883;">New User</span> -->
         </v-col>
       </v-row>
 
@@ -188,14 +216,14 @@
           <v-btn
                @click="saveUser"
                variant="elevated"
-               color="blue">
+               color="primary">
           Save
         </v-btn>
         <v-btn v-if="userStore.userAction === 'U'"
                 @click="cancel"
                 variant="elevated"
                 style="margin-left: 5px;"
-                color="blue">
+                color="primary">
             Cancel
           </v-btn>
         </v-col>

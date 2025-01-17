@@ -25,6 +25,7 @@ export const useUserStore = defineStore({
           this.userDetail = this.users.find(value => value.id === this.userId);
         } catch (error) {
           console.log(error);
+          throw error;
         }
       },
       setUserId(id:string) {
@@ -35,20 +36,22 @@ export const useUserStore = defineStore({
       },
       async getUsers() {
         try {
-          this.users = []; // pulisce l'array
-          for (var i=1;i<21;i++) {
-                  this.users.push({
-                      id:i.toString(),
-                      userName: "test"+i.toString()+"@test.com",
-                      password:"testPassword"+i.toString(),
-                      email:"test"+i.toString()+"@test.com",
-                      company:"company"+i.toString(),
-                      activationDate: new Date(),
-                      enabled:true
-              })
+          if (this.users.length === 0) {
+            for (var i=1;i<8;i++) {
+                    this.users.push({
+                        id:i.toString(),
+                        userName: "test"+i.toString()+"@test.com",
+                        password:"testPassword"+i.toString(),
+                        email:"test"+i.toString()+"@test.com",
+                        company:"company"+i.toString(),
+                        activationDate: new Date(),
+                        enabled:true
+                })
+            }
           }
        } catch (error) {
          console.log(error)
+         throw error;
        }
       },
       async deleteUser() {
@@ -61,6 +64,34 @@ export const useUserStore = defineStore({
           }
         } catch (error) {
           console.log(error);
+          throw error;
+        }
+      },
+      async updateUser(user: User) {
+        try {
+          if (user.id === null || user.id === '') {
+            let currentDate : Date = new Date();
+            user.id =currentDate.toString();
+            this.users.push(user);
+          } else {
+            let userDetail : User | undefined | null;
+            userDetail  = this.users.find(value => value.id === this.userId);
+
+            if (userDetail != null && userDetail != undefined) {
+              userDetail.activationDate = user.activationDate;
+              userDetail.company = user.company;
+              userDetail.email = user.email;
+              userDetail.enabled = user.enabled;
+              userDetail.password = user.password;
+              userDetail.userName = user.userName;
+            } else {
+              throw("User with Id "+user.id+" is not in Database anymore");
+            }
+          }
+
+        } catch (error) {
+          console.log(error);
+          throw error;
         }
       }
     }
