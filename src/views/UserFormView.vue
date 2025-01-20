@@ -137,14 +137,20 @@
       There were errors saving (check the log)
     </v-snackbar>
 
+      <!--
       <v-row>
         <v-col>
-          <v-btn color="primary" @click="backToUsers">Back to Users</v-btn>
+        -->
           <!--<span v-if="userStore.userAction === 'U'" style="margin-left: 10px;font-size: large;color: #42b883;">Edit User</span>
           <span v-else-if="userStore.userAction === 'C'" style="margin-left: 10px;font-size: large;color: #42b883;">New User</span> -->
+        <!--
         </v-col>
       </v-row>
+    -->
 
+      <v-toolbar density="compact" style="margin-bottom: 20px;">
+        <v-btn color="primary" @click="backToUsers">Back to Users</v-btn>
+      </v-toolbar> 
       <v-form ref="formRef" lazy-validation>
        <v-row>
         <!-- User Name -->
