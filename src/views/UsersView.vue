@@ -139,11 +139,10 @@ import { useUserStore } from "../stores/user"
 <template>
 
   <v-container>
-  <v-row>
-      <v-col>
-        <v-btn color="primary" @click="addNewUser">Add New User</v-btn>
-      </v-col>
-  </v-row>
+    <v-toolbar density="compact" style="margin-bottom: 20px;">
+      <v-btn color="primary" @click="addNewUser">Add New User</v-btn>
+    </v-toolbar>
+
   <v-data-table
     :headers="headers"
     :items="users"

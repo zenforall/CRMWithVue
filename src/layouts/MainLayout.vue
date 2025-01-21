@@ -20,7 +20,19 @@ function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
 <template>
   <v-app-bar>
     <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
-    <v-toolbar-title style="color: #42b883;font-weight: bold;">CRM With Vue</v-toolbar-title>
+
+    <div style="display: flex; align-items: center;width: 80%; ">
+      <v-toolbar-title style="color: #42b883;font-weight: bold; ">CRM With Vue</v-toolbar-title>
+    <v-text-field
+        density="compact"
+        label="Search"
+        prepend-inner-icon="mdi-magnify"
+        variant="solo-filled"
+        flat
+        hide-details
+        single-line
+      ></v-text-field>    
+    </div>
   </v-app-bar>
 
   <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px;">
