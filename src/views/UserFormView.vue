@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref,onMounted } from "vue";
+    import { ref,onMounted,computed } from "vue";
     import { useRouter } from 'vue-router';
     //import { format, parse } from 'date-fns';
     import { useUserStore } from "../stores/user";
@@ -125,6 +125,18 @@
       router.push("/users");
     }
 
+    const customDateFormat = 'DD-MM-YYYY' // Definisci il formato desiderato
+
+    const formattedDate = computed(() => {
+      if (!formData.value.activationDate) return '';
+
+      formData.value.activationDate = new Date("01/02/2031");
+
+      return "01/02/2031";
+
+      //return formData.value.activationDate.format(customDateFormat) // Usa day.js per formattare
+    })
+
 </script>
 
 <template>
@@ -203,8 +215,12 @@
         <v-col cols="12">
             <v-date-input
               :rules="[rules.required]"
+              :locale="'it'"
+              :mask="'####-##-##'"
+              :first-day-of-week="1"
               label="Activation Date"
               density="compact"
+              :format="customDateFormat"
               v-model="formData.activationDate">
             </v-date-input>
         </v-col>

@@ -15,13 +15,19 @@ export const useAppStore = defineStore({
   actions: {
     async authenticateUser(userName: string, password:string) {
       try {
-        if ("admin@admin.com" === userName && "admin" === password) {
+
+        this.isUserAutheticated = true;
+        this.currentSession = Date.now();
+
+        /*
+        if ("admin" === userName && "admin" === password) {
           this.isUserAutheticated = true;
           this.currentSession = Date.now();
         } else {
           this.isUserAutheticated = false;
           this.currentSession = 0;
         }
+        */
       } catch (error) {
         console.log(error);
       }
@@ -35,10 +41,13 @@ export const useAppStore = defineStore({
         if (this.isUserAutheticated) {
           let now = Date.now();
 
+          /*
           if ( now > (this.currentSession + 120000)  ) {
             this.isUserAutheticated = false;
             this.currentSession = 0;
           }
+          */
+
         }
       } catch (error) {
         console.log(error);

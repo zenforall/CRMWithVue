@@ -105,6 +105,11 @@ import { useUserStore } from "../stores/user"
       }
     }
 
+    function displayFilters() : void {
+      drawer.value = !drawer.value;
+    }
+
+
     function addNewUser() : void {
       userStore.setUserId("");
       userStore.setUserAction("C"); // Azione Create
@@ -134,15 +139,85 @@ import { useUserStore } from "../stores/user"
       router.push({name:'userDetail'});
     }
 
+    const drawer = ref(false);
+
 </script>
 
 <template>
 
   <v-container>
     <v-toolbar density="compact" elevation="1" rounded="lg" style="margin-bottom: 20px;" color="#F8F8F8">
-      <v-btn color="#42b883" rounded @click="addNewUser">+ Create User</v-btn>
+      <div style="display: flex;direction: row; justify-content: space-between;width: 100%;">
+        <v-btn color="#42b883" rounded @click="addNewUser">+ Create User</v-btn>
+        <div style="display: flex; direction: row; justify-items: end;">
+          <v-btn color="#42b883" rounded @click="displayFilters">Filters</v-btn>
+        </div>
+      </div>
     </v-toolbar>
 
+    <v-navigation-drawer app v-model="drawer" location="right" :permanent="false" style="border: 0px;margin-top: 10px;">
+      <v-row>
+          <v-col cols="12">
+          <v-text-field
+            label="User Name"
+            width="90%"
+            density="compact"
+          ></v-text-field>
+        </v-col>
+
+        <!-- Email -->
+        <v-col cols="12">
+          <v-text-field
+            label="Email"
+            width="90%"
+            density="compact"
+          ></v-text-field>
+        </v-col>
+        <!-- Email -->
+        <v-col cols="12">
+          <v-text-field
+            label="Company"
+            width="90%"
+            density="compact"
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12">
+            <v-date-input
+              label="From"
+              width="90%"
+              density="compact">
+            </v-date-input>
+        </v-col>
+        <v-col cols="12">
+            <v-date-input
+              width="90%"
+              label="To"
+              density="compact">
+            </v-date-input>
+        </v-col>
+        <v-col cols="12">
+          <v-checkbox
+            label="Enabled"
+            density="compact"
+          ></v-checkbox>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <div style="width: 100%; display: flex;flex-direction: row;justify-content: center;">
+            <v-toolbar density="compact" color="#F8F8F8" elevation="1">
+              <div style="width:100%; display: flex; flex-direction: row;justify-content: center">
+                <v-btn color="#42b883" rounded>> Search</v-btn>
+                <v-btn color="#42b883" rounded>> Reset</v-btn>
+              </div>
+          </v-toolbar>
+        </div>
+        </v-col>
+      </v-row>
+    </v-navigation-drawer>
+
+    <!--
     <v-expansion-panels>
       <v-expansion-panel style="margin-bottom: 10px;">
         <v-expansion-panel-title style="background-color: #F8F8F8; color: #42b883;">FILTERS</v-expansion-panel-title>
@@ -155,14 +230,12 @@ import { useUserStore } from "../stores/user"
           ></v-text-field>
         </v-col>
 
-        <!-- Email -->
         <v-col cols="12" md="4">
           <v-text-field
             label="Email"
             density="compact"
           ></v-text-field>
         </v-col>
-        <!-- Email -->
         <v-col cols="12" md="4">
           <v-text-field
             label="Company"
@@ -203,6 +276,7 @@ import { useUserStore } from "../stores/user"
         </v-expansion-panel-text>
       </v-expansion-panel>
   </v-expansion-panels>
+-->
 
   <v-data-table
     :headers="headers"
