@@ -148,13 +148,13 @@
       </v-row>
     -->
 
-      <v-toolbar density="compact" style="margin-bottom: 20px;">
-        <v-btn color="primary" @click="backToUsers">Back to Users</v-btn>
-      </v-toolbar> 
+      <v-toolbar density="compact" rounded="lg" elevation="1" style="margin-bottom: 20px;" color="#F8F8F8">
+        <v-btn color="#42b883" rounded @click="backToUsers">< Back to Users</v-btn>
+      </v-toolbar>
       <v-form ref="formRef" lazy-validation>
        <v-row>
         <!-- User Name -->
-        <v-col cols="12" md="6">
+        <v-col cols="12">
           <v-text-field
             :rules="[rules.required]"
             v-model="formData.userName"
@@ -165,7 +165,7 @@
         </v-col>
 
         <!-- Password -->
-        <v-col cols="12" md="6">
+        <v-col cols="12">
           <v-text-field
             :rules="[rules.required]"
             v-model="formData.password"
@@ -178,7 +178,7 @@
         </v-col>
 
         <!-- Email -->
-        <v-col cols="12" md="6">
+        <v-col cols="12">
           <v-text-field
             :rules="[rules.required,rules.emailValidation]"
             v-model="formData.email"
@@ -190,7 +190,7 @@
         </v-col>
 
         <!-- Company -->
-        <v-col cols="12" md="6">
+        <v-col cols="12">
           <v-text-field
             :rules="[rules.required]"
             v-model="formData.company"
@@ -200,38 +200,45 @@
         </v-col>
 
         <!-- Activation Date -->
-        <v-col cols="12" md="6">
+        <v-col cols="12">
             <v-date-input
               :rules="[rules.required]"
-              label="Select a date"
+              label="Activation Date"
               density="compact"
               v-model="formData.activationDate">
             </v-date-input>
         </v-col>
 
         <!-- Enable -->
-        <v-col cols="12" md="6">
+        <v-col cols="12">
           <v-checkbox
             v-model="formData.enable"
-            label="Enable"
+            label="Enabled"
             density="compact"
           ></v-checkbox>
         </v-col>
 
-        <v-col cols="12" style="display: flex; justify-content: flex-end;">
-          <v-btn
-               @click="saveUser"
-               variant="elevated"
-               color="primary">
-          Save
-        </v-btn>
-        <v-btn v-if="userStore.userAction === 'U'"
-                @click="cancel"
-                variant="elevated"
-                style="margin-left: 5px;"
-                color="primary">
-            Cancel
-          </v-btn>
+        <v-col cols="12">
+          <v-toolbar density="compact" color="#F8F8F8" rounded="lg" elevation="1">
+            <div class="button-container">
+              <v-btn color="#42b883" rounded @click="backToUsers">< Back to Users</v-btn>
+              <div class="right-buttons">
+                <v-btn
+                color="#42b883"
+                    rounded=""
+                    @click="saveUser">
+                > Save User
+              </v-btn>
+              <v-btn v-if="userStore.userAction === 'U'"
+                      @click="cancel"
+                      color="#42b883"
+                      rounded=""
+                      style="margin-left: 5px;">
+                  > Cancel Modifications
+                </v-btn>
+              </div>
+            </div>
+          </v-toolbar>
         </v-col>
       </v-row>
     </v-form>
@@ -239,5 +246,17 @@
 </template>
 
 <style scoped>
+.button-container {
+  width: 100%;
+  display: flex;              /* Abilita Flexbox */
+  justify-content: space-between; /* Posiziona i pulsanti agli estremi */
+  align-items: center;        /* Allinea verticalmente i pulsanti */
+  padding: 10px;              /* Spaziatura interna (opzionale) */
+}
 
+.right-buttons {
+  display: flex;              /* Abilita Flexbox per i pulsanti a destra */
+  align-items: end;
+  gap: 10px;                  /* Spazio tra i pulsanti a destra */
+}
 </style>

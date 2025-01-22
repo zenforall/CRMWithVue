@@ -6,6 +6,9 @@ import UsersView from '../views/UsersView.vue'
 import UserFormView from '../views/UserFormView.vue'
 import BlankLayout from '../layouts/BlankLayout.vue'
 import MainLayout from '../layouts/MainLayout.vue'
+import NotAvailableView from '../views/NotAvailableView.vue'
+
+import { useAppStore } from "../stores/app"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,6 +28,8 @@ const router = createRouter({
       ],
       meta: { requiresAuth: true }
     },
+
+    /*
     {
       path: '/',
       component: MainLayout,
@@ -33,6 +38,7 @@ const router = createRouter({
       ],
       meta: { requiresAuth: true }
     },
+    */
     {
       path: '/',
       component: MainLayout,
@@ -48,17 +54,78 @@ const router = createRouter({
         { path: 'userDetail',name: 'userDetail', component: () => UserFormView },
       ],
       meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'companies',name: 'Companies', component: () => NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'scheduler',name: 'Scheduler', component: () => NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'customers',name: 'Customers', component: () => NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'prospects',name: 'Prospects', component: () => NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'leads',name: 'Leads', component: () => NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'sales',name: 'Sales', component: () => NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'reports',name: 'Reports', component: () => NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
     }
+
   ],
 })
 
 router.beforeEach((to,from,next) => {
   //const authStore = useAuthStore();
-  const isAuthenticated = true; //authStore.isAuthenticated
+  const appStore = useAppStore();
+
+  appStore.checkIfSessionIsValid(); // Controlla se la sessione è valida ogni volta che l'utente si sposta nell'applicazione
+  const isAuthenticated = appStore.isUserAutheticated;
 
   if (to.meta.requiresAuth && !isAuthenticated) {
     next('/') // redirige alla pagina di login
   } else {
+    appStore.renewCurrentSession(); // Se l'utente è autenticato prima di redirigere l'utente su un altra pagina aggiorna la sessione per continuarla a renderla valida
     next() // Se l'utente è autenticato allora prosegue con la navigazione
   }
 })

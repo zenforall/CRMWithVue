@@ -3,8 +3,16 @@ import { ref } from 'vue';
 import { RouterView } from 'vue-router'
 import Menu from '../components/Menu.vue'
 import Footer from '../components/Footer.vue'
+import { useDisplay } from 'vuetify';
 
-const drawer = ref(true);
+const drawer = ref(false);
+
+const display = useDisplay();
+
+if ( display.name.value === 'lg') {
+  drawer.value = true;
+}
+
 
 const toggleDrawer = () => {
       drawer.value = !drawer.value;
@@ -22,7 +30,7 @@ function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
     <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
 
     <div style="display: flex; align-items: center;width: 80%; ">
-      <v-toolbar-title style="color: #42b883;font-weight: bold; ">CRM With Vue</v-toolbar-title>
+      <v-toolbar-title style="color: #42b883">CRM With Vue</v-toolbar-title>
     <v-text-field
         density="compact"
         label="Search"
@@ -31,7 +39,7 @@ function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
         flat
         hide-details
         single-line
-      ></v-text-field>    
+      ></v-text-field>
     </div>
   </v-app-bar>
 
@@ -41,9 +49,10 @@ function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
 
   <!-- Contenuto principale -->
   <v-main>
-      <v-breadcrumbs :items="items" color="success">
+      <v-breadcrumbs :items="items" color="#42b883">
         <template v-slot:divider>
-          <v-icon icon="mdi-forward"></v-icon>
+          <!--<v-icon icon="mdi-forward"></v-icon>-->
+          >
         </template>
       </v-breadcrumbs>
       <RouterView @breadCrumbHandler="breadCrumbItemsHandler"/>

@@ -1,13 +1,18 @@
 <script setup lang="ts" >
 import { onMounted,onUnmounted,ref,nextTick } from "vue";
 import { VForm } from "vuetify/components";
+import { useRouter } from 'vue-router'
 import { getValidationResult } from "../utils/FormValidation";
+import { useAppStore } from "../stores/app"
 
     const username = ref("");
     const password = ref("");
 
     const formRef = ref();
 
+    const appStore = useAppStore();
+
+    const router = useRouter();
 
     /* Utilizzare una struttura per incapsulare la Promise dopo aver chiamato il validate()
       interface Person {
@@ -46,7 +51,13 @@ import { getValidationResult } from "../utils/FormValidation";
       let resultObject: ValidateObj = getValidationResult(validationResult);
 
       if (resultObject.valid) {
-          alert('Login effettuato con successo!');
+          appStore.authenticateUser(username.value,password.value);
+          if (appStore.isUserAutheticated) {
+            router.push("/dashboard");
+          } else {
+            window.alert('Login or Password are not valid');
+          }
+
       } else {
           //alert('Correggi gli errori nel form.');
       }
@@ -78,9 +89,11 @@ import { getValidationResult } from "../utils/FormValidation";
       <v-row style="align-content: center;justify-content: center;">
         <v-col cols="12" sm="8" md="4">
           <v-card class="pa-4">
-            <v-card-title style="text-align: left;">
+            <!--
+            <v-card-title style="text-align: left;color: #42b883;">
               Login
             </v-card-title>
+          -->
             <v-card-text>
               <v-form ref="formRef" lazy-validation>
                 <v-text-field
@@ -103,8 +116,9 @@ import { getValidationResult } from "../utils/FormValidation";
                <br/>
                 <v-btn
                   style="display: flex; min-width: 100%;"
-                  color="primary"
                   @click="handleLogin"
+                  rounded
+                  color="#42b883"
                   variant="elevated">
                   Login
                 </v-btn>

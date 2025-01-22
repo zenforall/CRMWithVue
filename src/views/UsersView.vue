@@ -139,9 +139,70 @@ import { useUserStore } from "../stores/user"
 <template>
 
   <v-container>
-    <v-toolbar density="compact" style="margin-bottom: 20px;">
-      <v-btn color="primary" @click="addNewUser">Add New User</v-btn>
+    <v-toolbar density="compact" elevation="1" rounded="lg" style="margin-bottom: 20px;" color="#F8F8F8">
+      <v-btn color="#42b883" rounded @click="addNewUser">+ Create User</v-btn>
     </v-toolbar>
+
+    <v-expansion-panels>
+      <v-expansion-panel style="margin-bottom: 10px;">
+        <v-expansion-panel-title style="background-color: #F8F8F8; color: #42b883;">FILTERS</v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <v-row>
+          <v-col cols="12" md="4">
+          <v-text-field
+            label="User Name"
+            density="compact"
+          ></v-text-field>
+        </v-col>
+
+        <!-- Email -->
+        <v-col cols="12" md="4">
+          <v-text-field
+            label="Email"
+            density="compact"
+          ></v-text-field>
+        </v-col>
+        <!-- Email -->
+        <v-col cols="12" md="4">
+          <v-text-field
+            label="Company"
+            density="compact"
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12" md="4">
+            <v-date-input
+              label="From"
+              density="compact">
+            </v-date-input>
+        </v-col>
+        <v-col cols="12" md="4">
+            <v-date-input
+              label="To"
+              density="compact">
+            </v-date-input>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-checkbox
+            label="Enabled"
+            density="compact"
+          ></v-checkbox>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <v-toolbar density="compact" color="#F8F8F8" elevation="1">
+            <div style="width: 100%; display: flex; flex-direction: row;justify-content: end;">
+              <v-btn color="#42b883" rounded>> Apply Filters</v-btn>
+              <v-btn color="#42b883" rounded>> Reset Filters</v-btn>
+            </div>
+        </v-toolbar>
+        </v-col>
+      </v-row>
+
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+  </v-expansion-panels>
 
   <v-data-table
     :headers="headers"
@@ -152,7 +213,7 @@ import { useUserStore } from "../stores/user"
     select-strategy="all"
     show-select
     class="fixed-height-table"
-    :items-per-page-options="[5,7]">
+    :items-per-page-options="[5,10]">
     <template v-slot:item.activationDate="{ item }">
         <span>{{ formatDate(item.activationDate) }}</span>
     </template>

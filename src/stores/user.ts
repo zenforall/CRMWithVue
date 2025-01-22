@@ -1,10 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export type RootState = {
-    users: User[];
-};
-
 export const useUserStore = defineStore({
 
     id: "userStore",

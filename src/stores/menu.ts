@@ -1,9 +1,5 @@
 import { defineStore } from "pinia";
 
-export type RootState = {
-    menu: TreeNode[];
-};
-
 export const useMenuStore = defineStore({
 
     id: "menuStore",

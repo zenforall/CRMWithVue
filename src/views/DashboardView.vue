@@ -23,6 +23,6 @@ import { onMounted } from 'vue';
 
 <template>
   <v-container>
-    <div style="text-align: center; font-size: 30px; font-weight: bold;color: #42b883;">Dashboard</div>
+    <div style="text-align: center; font-size: 30px;color: #42b883;">Dashboard</div>
   </v-container>
 </template>
