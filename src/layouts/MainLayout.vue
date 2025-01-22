@@ -75,7 +75,8 @@ function logout(): void {
             <v-list-item-title @click="logout" style="cursor: pointer;">Logout</v-list-item-title>
           </v-list-item>
         </v-list>
-      </v-menu>      </div>
+      </v-menu>
+    </div>
   </v-app-bar>
 
   <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px;">
