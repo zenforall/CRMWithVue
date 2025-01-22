@@ -4,10 +4,18 @@ import { RouterView } from 'vue-router'
 import Menu from '../components/Menu.vue'
 import Footer from '../components/Footer.vue'
 import { useDisplay } from 'vuetify';
+import { useAppStore } from "../stores/app"
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const drawer = ref(false);
 
+const appStore = useAppStore();
+
 const display = useDisplay();
+
+const menu = ref(false); // Stato del menu
 
 if ( display.name.value === 'lg') {
   drawer.value = true;
@@ -23,6 +31,13 @@ const items = ref([] as BreaCrumbItem[]);
 function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
   items.value = message;
 }
+
+function logout(): void {
+  appStore.logout();
+  router.push("/");
+}
+
+
 </script>
 
 <template>
@@ -41,6 +56,26 @@ function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
         single-line
       ></v-text-field>
     </div>
+    <div style="width: 20%;display: flex;flex-direction: row;justify-content: end;">
+      <v-menu
+        v-model="menu"
+        offset="y"
+        location="bottom end"
+      >
+        <template #activator="{ props }">
+          <v-btn
+            v-bind="props"
+            icon
+            class="rounded-circle">
+            <v-icon>mdi-account</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item>
+            <v-list-item-title @click="logout" style="cursor: pointer;">Logout</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>      </div>
   </v-app-bar>
 
   <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px;">
@@ -63,3 +98,9 @@ function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
     <Footer/>
   </v-footer>
 </template>
+<style>
+.rounded-circle {
+  border-radius: 50%;
+  border: solid black 1px;
+}
+</style>

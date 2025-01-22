@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 
+
 export const useAppStore = defineStore({
 
   id: "appStore",
@@ -25,9 +26,12 @@ export const useAppStore = defineStore({
         console.log(error);
       }
     },
+    async logout() {
+      this.isAuthenticated = false;
+      this.currentSession = 0;
+    },
     async checkIfSessionIsValid() {
       try {
-
         if (this.isUserAutheticated) {
           let now = Date.now();
 
@@ -36,7 +40,6 @@ export const useAppStore = defineStore({
             this.currentSession = 0;
           }
         }
-
       } catch (error) {
         console.log(error);
       }

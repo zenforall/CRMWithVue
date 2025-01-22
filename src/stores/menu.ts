@@ -17,6 +17,7 @@ export const useMenuStore = defineStore({
                 let root: TreeNode;
                 root = {
                  id: 1,
+                 icon:'mdi-home-circle',
                  title: 'Home',
                  children: null,
                  link: '/dashboard' // Collegamento alla Home
