@@ -34,6 +34,14 @@ export const useUserStore = defineStore({
         try {
           if (this.users.length === 0) {
             for (var i=1;i<8;i++) {
+                   let loc = '' as string;
+                   if ( (i / 2) === 0 )
+                      loc = 'it';
+                   else if ( (i / 5 === 0) )
+                      loc = 'es';
+                   else if ( (i / 7 ) === 0 )
+                      loc = 'en'
+
                     this.users.push({
                         id:i.toString(),
                         userName: "test"+i.toString()+"@test.com",
@@ -41,6 +49,7 @@ export const useUserStore = defineStore({
                         email:"test"+i.toString()+"@test.com",
                         company:"company"+i.toString(),
                         activationDate: new Date(),
+                        locale: loc,
                         enabled:true
                 })
             }

@@ -4,6 +4,7 @@ import { VForm } from "vuetify/components";
 import { useRouter } from 'vue-router'
 import { getValidationResult } from "../utils/FormValidation";
 import { useAppStore } from "../stores/app"
+import { vuetify } from '../main'; // Importa l'istanza Vuetify
 
     const username = ref("");
     const password = ref("");
@@ -13,33 +14,6 @@ import { useAppStore } from "../stores/app"
     const appStore = useAppStore();
 
     const router = useRouter();
-
-    /* Utilizzare una struttura per incapsulare la Promise dopo aver chiamato il validate()
-      interface Person {
-        Name: string;
-        Age: number;
-      }
-
-      const jsonString = '{"Name": "John Doe", "Age": 30}';
-
-      // Parsing della stringa JSON in un oggetto di tipo 'Person'
-      const jsonObject: Person = JSON.parse(jsonString);
-
-      // Accesso alla proprietà 'Name'
-      const name = jsonObject.Name;
-
-      console.log(name);  // Output: "John Doe"
-    */
-
-    /*
-    function submit() {
-      window.alert("Hai cliccato sul pulsante di Login");
-      window.alert(username.value + " " +password.value);
-
-      username.value = "";
-      password.value = "";
-    }
-    */
 
     const rules = {
       required: (value:any) => !!value || 'The field is compulsory ',
@@ -53,6 +27,13 @@ import { useAppStore } from "../stores/app"
       if (resultObject.valid) {
           appStore.authenticateUser(username.value,password.value);
           if (appStore.isUserAutheticated) {
+
+            // Ottiene il dettaglio dell'utente ed assegna il valore corretto del locale
+            /* Da abilitare
+            vuetify.locale.current.value = "es";
+            vuetify.date.options.locale.value = "es";
+            */
+
             router.push("/dashboard");
           } else {
             window.alert('Login or Password are not valid');

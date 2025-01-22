@@ -5,5 +5,6 @@ interface User {
   email:string,
   company:string,
   activationDate:Date,
+  locale:string,
   enabled: boolean
 }
