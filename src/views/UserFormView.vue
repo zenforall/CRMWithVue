@@ -129,11 +129,11 @@
 
 <template>
   <v-container>
-    <v-snackbar :timeout="1000" color="success" v-model="displaySnackBarOK">
+    <v-snackbar :timeout="1000" color="success" location="center" v-model="displaySnackBarOK">
       <div style="text-align: center;">User Saved Successfully</div>
     </v-snackbar>
 
-    <v-snackbar :timeout="1000" color="error" v-model="displaySnackBarKO">
+    <v-snackbar :timeout="1000" location="center" color="error" v-model="displaySnackBarKO">
       There were errors saving (check the log)
     </v-snackbar>
 
