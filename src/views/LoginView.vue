@@ -15,6 +15,8 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
 
     const router = useRouter();
 
+    const loginKO = ref(false);
+
     const rules = {
       required: (value:any) => !!value || 'The field is compulsory ',
     };
@@ -36,7 +38,7 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
 
             router.push("/dashboard");
           } else {
-            window.alert('Login or Password are not valid');
+            loginKO.value = true;
           }
 
       } else {
@@ -66,6 +68,11 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
 </script>
 
 <template>
+
+    <v-snackbar :timeout="1000" location="center" color="error" v-model="loginKO">
+      Invalid Credentials
+    </v-snackbar>
+
     <v-container style="display: flex; height: 100vh;">
       <v-row style="align-content: center;justify-content: center;">
         <v-col cols="12" sm="8" md="4">

@@ -16,10 +16,10 @@ export const useAppStore = defineStore({
     async authenticateUser(userName: string, password:string) {
       try {
 
-        this.isUserAutheticated = true;
-        this.currentSession = Date.now();
+        //this.isUserAutheticated = true;
+        //this.currentSession = Date.now();
 
-        /*
+
         if ("admin" === userName && "admin" === password) {
           this.isUserAutheticated = true;
           this.currentSession = Date.now();
@@ -27,7 +27,7 @@ export const useAppStore = defineStore({
           this.isUserAutheticated = false;
           this.currentSession = 0;
         }
-        */
+
       } catch (error) {
         console.log(error);
       }
