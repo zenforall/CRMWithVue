@@ -70,12 +70,18 @@ function logout(): void {
             <v-icon>mdi-account</v-icon>
           </v-btn>
         </template>
+        <!--
         <v-list>
           <v-list-item>
             <v-list-item-title @click="logout" style="cursor: pointer;">Logout</v-list-item-title>
           </v-list-item>
         </v-list>
+        -->
       </v-menu>
+
+      <v-btn icon @click="logout">
+         <v-icon>mdi-logout</v-icon>
+      </v-btn>
     </div>
   </v-app-bar>
 

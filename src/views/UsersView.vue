@@ -6,6 +6,10 @@ import { useUserStore } from "../stores/user"
     const headers = ref<TableHeader[]>([]);
     const users = ref<User[]>([]);
 
+    const showDeleteConfirmDialog = ref(false);
+
+    const userToDelete = ref<User>();
+
     const formatDate = (date: Date): string => {
       return date.toLocaleDateString("it-IT", {
         year: "numeric",
@@ -97,13 +101,18 @@ import { useUserStore } from "../stores/user"
       router.push({name:'userDetail'});
     }
 
-    function deleteItem(item: User): void {
-      let confirmed: boolean = window.confirm("Are you sure to delete User "+item.userName+" ?");
-      if (confirmed) {
-        userStore.setUserId(item.id);
+    function askForDeletingItem(item: User): void {
+      userToDelete.value = item;
+      showDeleteConfirmDialog.value = true;
+    }
+
+    function doDeleteItem() {
+      if (userToDelete.value != null) {
+        userStore.setUserId(userToDelete.value.id);
         userStore.deleteUser();
       }
     }
+
 
     function displayFilters() : void {
       drawer.value = !drawer.value;
@@ -146,14 +155,12 @@ import { useUserStore } from "../stores/user"
 <template>
 
   <v-container>
-    <v-toolbar density="compact" elevation="1" rounded="lg" style="margin-bottom: 20px;" color="#F8F8F8">
-      <div style="display: flex;direction: row; justify-content: space-between;width: 100%;">
+      <div style="display: flex;direction: row; justify-content: space-between;width: 100%;margin-bottom: 10px;">
         <v-btn color="#42b883" rounded @click="addNewUser">+ Create User</v-btn>
         <div style="display: flex; direction: row; justify-items: end;">
           <v-btn color="#42b883" rounded @click="displayFilters">Filters</v-btn>
         </div>
       </div>
-    </v-toolbar>
 
     <v-navigation-drawer app v-model="drawer" location="right" :permanent="false" style="border: 0px;margin-top: 10px;">
       <v-row>
@@ -205,14 +212,10 @@ import { useUserStore } from "../stores/user"
       </v-row>
       <v-row>
         <v-col cols="12">
-          <div style="width: 100%; display: flex;flex-direction: row;justify-content: center;">
-            <v-toolbar density="compact" color="#F8F8F8" elevation="1">
-              <div style="width:100%; display: flex; flex-direction: row;justify-content: center">
-                <v-btn color="#42b883" rounded>> Search</v-btn>
-                <v-btn color="#42b883" rounded>> Reset</v-btn>
-              </div>
-          </v-toolbar>
-        </div>
+            <div style="width:100%; display: flex; flex-direction: row;justify-content: center;">
+              <v-btn color="#42b883" rounded style="margin-right: 5px;">Search</v-btn>
+              <v-btn color="#42b883" rounded>Reset</v-btn>
+            </div>
         </v-col>
       </v-row>
     </v-navigation-drawer>
@@ -294,12 +297,38 @@ import { useUserStore } from "../stores/user"
     <template v-slot:item.actions="{ item }">
       <div style="text-wrap: nowrap;">
           <v-icon class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
-          <v-icon class="me-2" size="small" @click="deleteItem(item)">mdi-delete</v-icon>
+          <v-icon class="me-2" size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
       </div>
      </template>
 
   </v-data-table>
 </v-container>
+
+<v-dialog
+      v-model="showDeleteConfirmDialog"
+      width="auto"
+    >
+      <v-card
+        max-width="400"
+        prepend-icon="mdi-delete-alert"
+        title="Confirm Deletion">
+        <v-card-text>Are you sure to delete User {{userToDelete?.userName}} ?</v-card-text>
+        <template v-slot:actions>
+          <div style="display: flex;flex-direction: row;justify-content: end;">
+            <v-btn
+              class="ms-auto"
+              text="YES"
+              @click="doDeleteItem();showDeleteConfirmDialog = false"
+            ></v-btn>
+            <v-btn
+              class="ms-auto"
+              text="NO"
+              @click="showDeleteConfirmDialog = false"
+            ></v-btn>
+          </div>
+        </template>
+      </v-card>
+    </v-dialog>
 
 </template>
 

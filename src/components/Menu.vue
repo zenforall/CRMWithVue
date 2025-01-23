@@ -19,7 +19,6 @@ onMounted(async () => {
   items.value = menuStore.menu; // assegna il menù costruito alla variabile principali con i valori del menu visualizzato
 })
 
-
 // Funzione per gestire il click sui nodi e ottenere l'ID
 const onNodeClick = (newSelected: unknown): void => {
 
