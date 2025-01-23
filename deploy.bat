@@ -1,6 +1,8 @@
 npm run build
 cd dist
 
+echo "Sto per fare il deploy"
+
 git init
 git add -A
 git commit -m 'New Deployment'

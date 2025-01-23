@@ -33,7 +33,7 @@ export const useAppStore = defineStore({
       }
     },
     async logout() {
-      this.isAuthenticated = false;
+      this.isUserAutheticated = false;
       this.currentSession = 0;
     },
     async checkIfSessionIsValid() {
