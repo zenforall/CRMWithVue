@@ -77,7 +77,6 @@ function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
 </script>
 
 <template>
-<!--
     <v-treeview
       :items="items"
       item-value="id"
@@ -108,7 +107,8 @@ function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
         </v-icon>
       </template>
     </v-treeview>
-  -->
+
+  <!--
   <v-card elevation="0" style="margin-bottom: 0px;">
       <v-card-title style="padding: 16px 24px;font-size: .9375rem;font-weight: normal;">
         <v-icon icon="mdi-account-key-outline" style="margin-right: 10px;"></v-icon>Home
@@ -142,6 +142,8 @@ function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
         <v-icon icon="mdi-account-key-outline" style="margin-right: 10px;"></v-icon>Reports
       </v-card-title>
     </v-card>
+
+  -->
 </template>
 
 <style scoped>

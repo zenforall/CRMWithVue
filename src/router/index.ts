@@ -17,14 +17,14 @@ const router = createRouter({
       path: '/',
       component: BlankLayout,
       children: [
-        {path: '', component: () => LoginView}
+        {path: '', component: LoginView}
       ]
     },
     {
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'dashboard', component: () => DashboardView },
+        { path: 'dashboard', component: DashboardView },
       ],
       meta: { requiresAuth: true }
     },
@@ -43,7 +43,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'users', component: () => UsersView },
+        { path: 'users', component: UsersView },
       ],
       meta: { requiresAuth: true }
     },
@@ -51,7 +51,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'userDetail',name: 'userDetail', component: () => UserFormView },
+        { path: 'userDetail',name: 'userDetail', component: UserFormView },
       ],
       meta: { requiresAuth: true }
     },
@@ -59,7 +59,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'companies',name: 'Companies', component: () => NotAvailableView },
+        { path: 'companies',name: 'Companies', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     },
@@ -67,7 +67,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'scheduler',name: 'Scheduler', component: () => NotAvailableView },
+        { path: 'scheduler',name: 'Scheduler', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     },
@@ -75,7 +75,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'customers',name: 'Customers', component: () => NotAvailableView },
+        { path: 'customers',name: 'Customers', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     },
@@ -83,7 +83,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'prospects',name: 'Prospects', component: () => NotAvailableView },
+        { path: 'prospects',name: 'Prospects', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     },
@@ -91,7 +91,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'leads',name: 'Leads', component: () => NotAvailableView },
+        { path: 'leads',name: 'Leads', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     },
@@ -99,7 +99,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'sales',name: 'Sales', component: () => NotAvailableView },
+        { path: 'sales',name: 'Sales', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     },
@@ -107,7 +107,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'reports',name: 'Reports', component: () => NotAvailableView },
+        { path: 'reports',name: 'Reports', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     }
