@@ -156,7 +156,7 @@ import { useUserStore } from "../stores/user"
 
   <v-container>
       <div style="display: flex;direction: row; justify-content: space-between;width: 100%;margin-bottom: 10px;">
-        <v-btn color="#42b883" rounded @click="addNewUser">+ Create User</v-btn>
+        <v-btn color="#42b883" rounded @click="addNewUser">Create User</v-btn>
         <div style="display: flex; direction: row; justify-items: end;">
           <v-btn color="#42b883" rounded @click="displayFilters">Filters</v-btn>
         </div>

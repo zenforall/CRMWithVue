@@ -148,7 +148,7 @@
       </v-row>
     -->
 
-      <v-btn color="#42b883" style="margin-bottom: 20px;"  rounded @click="backToUsers">< Back to Users</v-btn>
+      <v-btn color="#42b883" style="margin-bottom: 20px;"  rounded @click="backToUsers">< BACK</v-btn>
       <v-form ref="formRef" lazy-validation>
        <v-row>
         <!-- User Name -->
