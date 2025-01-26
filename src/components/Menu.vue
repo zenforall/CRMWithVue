@@ -1,4 +1,7 @@
 <script setup lang="ts">
+
+// Visualizza un menù ad Albero
+
 import { onMounted, ref } from "vue";
 import { VTreeview } from 'vuetify/labs/VTreeview'
 import { useRouter } from 'vue-router';
@@ -107,43 +110,6 @@ function findNodeById(data: TreeNode[], targetId: number): TreeNode | null {
         </v-icon>
       </template>
     </v-treeview>
-
-  <!--
-  <v-card elevation="0" style="margin-bottom: 0px;">
-      <v-card-title style="padding: 16px 24px;font-size: .9375rem;font-weight: normal;">
-        <v-icon icon="mdi-account-key-outline" style="margin-right: 10px;"></v-icon>Home
-      </v-card-title>
-    </v-card>
-    <v-expansion-panels elevation="0">
-      <v-expansion-panel style="margin-right: 10px;">
-        <v-expansion-panel-title>
-          <v-icon icon="mdi-account-key-outline" style="margin-right: 10px;"></v-icon>Admin
-        </v-expansion-panel-title>
-        <v-expansion-panel-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </v-expansion-panel-text>
-      </v-expansion-panel>
-      <v-expansion-panel style="margin-right: 10px;">
-        <v-expansion-panel-title>
-          <v-icon icon="mdi-account-key-outline" style="margin-right: 10px;"></v-icon>Contacts
-        </v-expansion-panel-title>
-        <v-expansion-panel-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </v-expansion-panel-text>
-      </v-expansion-panel>
-    </v-expansion-panels>
-    <v-card elevation="0" style="margin-bottom: 0px;">
-      <v-card-title style="padding: 16px 24px;font-size: .9375rem;font-weight: normal;">
-        <v-icon icon="mdi-account-key-outline" style="margin-right: 10px;"></v-icon>Sales
-      </v-card-title>
-    </v-card>
-    <v-card elevation="0" style="margin-bottom: 0px;">
-      <v-card-title style="padding: 16px 24px;font-size: .9375rem;font-weight: normal;">
-        <v-icon icon="mdi-account-key-outline" style="margin-right: 10px;"></v-icon>Reports
-      </v-card-title>
-    </v-card>
-
-  -->
 </template>
 
 <style scoped>

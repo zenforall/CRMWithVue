@@ -128,7 +128,7 @@
 </script>
 
 <template>
-  <v-container>
+  <v-container style="overflow: auto;">
     <v-snackbar :timeout="1000" color="success" location="center" v-model="displaySnackBarOK">
       <div style="text-align: center;">User Saved Successfully</div>
     </v-snackbar>
@@ -232,7 +232,7 @@
                       color="#42b883"
                       rounded=""
                       style="margin-left: 5px;">
-                  Cancel Modifications
+                  Cancel
                 </v-btn>
               </div>
             <!--</div>-->
