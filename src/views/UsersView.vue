@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted,onUnmounted, ref } from "vue";
 import { useRouter } from 'vue-router'
 import { useUserStore } from "../stores/user"
 
@@ -20,8 +20,32 @@ import { useUserStore } from "../stores/user"
 
     const userStore = useUserStore();
     const router = useRouter();
+    const drawerFilter = ref(false);
+
+    let isMobile = ref(false);
+
+    function checkAndassignMobileStatus() : void {
+      if (window.innerWidth < 769) {
+        isMobile.value = true;
+      } else {
+        isMobile.value = false;
+      }
+    }
+
+    function myEventHandler(event: any) {
+      checkAndassignMobileStatus();
+    }
+
+    onUnmounted(async () => {
+      window.removeEventListener("resize", myEventHandler);
+    })
 
     onMounted(async () => {
+
+        window.addEventListener("resize", myEventHandler);
+
+        drawerFilter.value = false;
+        checkAndassignMobileStatus();
 
         headers.value.push({
             title : "Username",
@@ -115,7 +139,7 @@ import { useUserStore } from "../stores/user"
 
 
     function displayFilters() : void {
-      drawer.value = !drawer.value;
+      drawerFilter.value = !drawerFilter.value;
     }
 
 
@@ -148,8 +172,6 @@ import { useUserStore } from "../stores/user"
       router.push({name:'userDetail'});
     }
 
-    const drawer = ref(false);
-
 </script>
 
 <template>
@@ -162,15 +184,18 @@ import { useUserStore } from "../stores/user"
         </div>
       </div>
 
-    <v-navigation-drawer app v-model="drawer" location="right" :permanent="false" style="border: 0px;margin-top: 10px;">
-      <v-row>
+    <v-navigation-drawer app v-model="drawerFilter" location="right" :temporary="true" :permanent="false" style="border: 0px;margin-top: 10px;">
+      <v-row style="padding: 0px;margin: 0px;">
           <v-col cols="12">
-          <v-text-field
-            label="User Name"
-            width="90%"
-            density="compact"
-          ></v-text-field>
-        </v-col>
+            <v-icon class="me-2" size="small" @click="">mdi-close</v-icon>
+          </v-col>
+          <v-col cols="12">
+            <v-text-field
+              label="User Name"
+              width="90%"
+              density="compact">
+            </v-text-field>
+         </v-col>
 
         <!-- Email -->
         <v-col cols="12">
@@ -220,81 +245,38 @@ import { useUserStore } from "../stores/user"
       </v-row>
     </v-navigation-drawer>
 
-    <!--
-    <v-expansion-panels>
-      <v-expansion-panel style="margin-bottom: 10px;">
-        <v-expansion-panel-title style="background-color: #F8F8F8; color: #42b883;">FILTERS</v-expansion-panel-title>
-        <v-expansion-panel-text>
-          <v-row>
-          <v-col cols="12" md="4">
-          <v-text-field
-            label="User Name"
-            density="compact"
-          ></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="4">
-          <v-text-field
-            label="Email"
-            density="compact"
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" md="4">
-          <v-text-field
-            label="Company"
-            density="compact"
-          ></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="4">
-            <v-date-input
-              label="From"
-              density="compact">
-            </v-date-input>
-        </v-col>
-        <v-col cols="12" md="4">
-            <v-date-input
-              label="To"
-              density="compact">
-            </v-date-input>
-        </v-col>
-        <v-col cols="12" md="4">
-          <v-checkbox
-            label="Enabled"
-            density="compact"
-          ></v-checkbox>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12">
-          <v-toolbar density="compact" color="#F8F8F8" elevation="1">
-            <div style="width: 100%; display: flex; flex-direction: row;justify-content: end;">
-              <v-btn color="#42b883" rounded>> Apply Filters</v-btn>
-              <v-btn color="#42b883" rounded>> Reset Filters</v-btn>
-            </div>
-        </v-toolbar>
-        </v-col>
-      </v-row>
-
-        </v-expansion-panel-text>
-      </v-expansion-panel>
-  </v-expansion-panels>
--->
-
-  <v-data-table
+    <v-data-table
     :headers="headers"
     :items="users"
     items-per-page="5"
     item-key="username"
     density="compact"
+    ref="vTablee"
     select-strategy="all"
     show-select
     class="fixed-height-table"
+    :hide-default-header="isMobile"
     :items-per-page-options="[5,10]">
-    <template v-slot:item.activationDate="{ item }">
+
+    <template v-slot:body="{ items }" v-if="isMobile">
+      <div v-for="item in items" :key="item.id" class="mobile-row">
+          <v-card class="mb-2">
+            <v-card-title>User: {{ item.userName }}</v-card-title>
+            <v-card-subtitle>Email: {{ item.email }}</v-card-subtitle>
+            <v-card-subtitle>Enabled: {{ item.enabled }}</v-card-subtitle>
+            <v-card-text>
+              <div style="display: flex;direction: row;justify-content: end;">
+                <v-icon class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
+                <v-icon class="me-2" size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
+              </div>
+            </v-card-text>
+          </v-card>
+        </div>
+    </template>
+    <template v-slot:item.activationDate="{ item }" v-if="!isMobile">
         <span>{{ formatDate(item.activationDate) }}</span>
     </template>
-    <template v-slot:item.actions="{ item }">
+    <template v-slot:item.actions="{ item }" v-if="!isMobile">
       <div style="text-wrap: nowrap;">
           <v-icon class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
           <v-icon class="me-2" size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
@@ -306,8 +288,7 @@ import { useUserStore } from "../stores/user"
 
 <v-dialog
       v-model="showDeleteConfirmDialog"
-      width="auto"
-    >
+      width="auto">
       <v-card
         max-width="400"
         prepend-icon="mdi-delete-alert"

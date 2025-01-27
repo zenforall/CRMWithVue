@@ -137,18 +137,7 @@
       There were errors saving (check the log)
     </v-snackbar>
 
-      <!--
-      <v-row>
-        <v-col>
-        -->
-          <!--<span v-if="userStore.userAction === 'U'" style="margin-left: 10px;font-size: large;color: #42b883;">Edit User</span>
-          <span v-else-if="userStore.userAction === 'C'" style="margin-left: 10px;font-size: large;color: #42b883;">New User</span> -->
-        <!--
-        </v-col>
-      </v-row>
-    -->
-
-      <v-btn color="#42b883" style="margin-bottom: 20px;"  rounded @click="backToUsers">< BACK</v-btn>
+    <v-btn color="#42b883" style="margin-bottom: 20px;"  rounded @click="backToUsers">< BACK</v-btn>
       <v-form ref="formRef" lazy-validation>
        <v-row>
         <!-- User Name -->
@@ -163,7 +152,7 @@
         </v-col>
 
         <!-- Password -->
-        <v-col cols="12" md="6" class="pa-0 ma-0">
+        <v-col cols="12" md="6">
           <v-text-field
             :rules="[rules.required]"
             v-model="formData.password"
@@ -176,7 +165,7 @@
         </v-col>
 
         <!-- Email -->
-        <v-col cols="12" md="6" class="pa-0 ma-0">
+        <v-col cols="12" md="6">
           <v-text-field
             :rules="[rules.required,rules.emailValidation]"
             v-model="formData.email"
@@ -188,7 +177,7 @@
         </v-col>
 
         <!-- Company -->
-        <v-col cols="12" md="6" class="pa-0 ma-0">
+        <v-col cols="12" md="6">
           <v-text-field
             :rules="[rules.required]"
             v-model="formData.company"
@@ -198,7 +187,7 @@
         </v-col>
 
         <!-- Activation Date -->
-        <v-col cols="12" md="6" class="pa-0 ma-0">
+        <v-col cols="12" md="6">
             <v-date-input
               :rules="[rules.required]"
               :first-day-of-week="1"
@@ -209,7 +198,7 @@
         </v-col>
 
         <!-- Enable -->
-        <v-col cols="12" md="6" class="pa-0 ma-0">
+        <v-col cols="12" md="6">
           <v-checkbox
             v-model="formData.enable"
             label="Enabled"
@@ -217,7 +206,7 @@
           ></v-checkbox>
         </v-col>
 
-        <v-col cols="12" class="pa-0 ma-0">
+        <v-col cols="12">
             <!--<div class="button-container">-->
               <!--<v-btn color="#42b883" rounded @click="backToUsers">< Back to Users</v-btn>-->
               <div class="right-buttons">
