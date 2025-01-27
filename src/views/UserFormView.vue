@@ -128,7 +128,7 @@
 </script>
 
 <template>
-  <v-container style="overflow: auto;">
+  <v-container>
     <v-snackbar :timeout="1000" color="success" location="center" v-model="displaySnackBarOK">
       <div style="text-align: center;">User Saved Successfully</div>
     </v-snackbar>
@@ -163,7 +163,7 @@
         </v-col>
 
         <!-- Password -->
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="6" class="pa-0 ma-0">
           <v-text-field
             :rules="[rules.required]"
             v-model="formData.password"
@@ -176,7 +176,7 @@
         </v-col>
 
         <!-- Email -->
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="6" class="pa-0 ma-0">
           <v-text-field
             :rules="[rules.required,rules.emailValidation]"
             v-model="formData.email"
@@ -188,7 +188,7 @@
         </v-col>
 
         <!-- Company -->
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="6" class="pa-0 ma-0">
           <v-text-field
             :rules="[rules.required]"
             v-model="formData.company"
@@ -198,7 +198,7 @@
         </v-col>
 
         <!-- Activation Date -->
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="6" class="pa-0 ma-0">
             <v-date-input
               :rules="[rules.required]"
               :first-day-of-week="1"
@@ -209,7 +209,7 @@
         </v-col>
 
         <!-- Enable -->
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="6" class="pa-0 ma-0">
           <v-checkbox
             v-model="formData.enable"
             label="Enabled"
@@ -217,7 +217,7 @@
           ></v-checkbox>
         </v-col>
 
-        <v-col cols="12">
+        <v-col cols="12" class="pa-0 ma-0">
             <!--<div class="button-container">-->
               <!--<v-btn color="#42b883" rounded @click="backToUsers">< Back to Users</v-btn>-->
               <div class="right-buttons">
@@ -243,6 +243,7 @@
 </template>
 
 <style scoped>
+
 .button-container {
   width: 100%;
   display: flex;              /* Abilita Flexbox */
@@ -256,5 +257,6 @@
   display: flex;              /* Abilita Flexbox per i pulsanti a destra */
   justify-content: end;
   gap: 10px;                  /* Spazio tra i pulsanti a destra */
+  background-color: transparent;
 }
 </style>

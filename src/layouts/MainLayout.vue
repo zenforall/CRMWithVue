@@ -44,7 +44,7 @@ function logout(): void {
   <v-app-bar>
     <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
 
-    <div style="display: flex; align-items: center;width: 80%; ">
+    <div style="display: flex; align-items: center;width: 80%;">
       <v-toolbar-title style="color: #42b883">CRM With Vue</v-toolbar-title>
     <v-text-field
         density="compact"
