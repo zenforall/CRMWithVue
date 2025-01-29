@@ -172,6 +172,11 @@ import { useUserStore } from "../stores/user"
       router.push({name:'userDetail'});
     }
 
+
+    function closeDrawer() : void {
+      drawerFilter.value = false;
+    }
+
 </script>
 
 <template>
@@ -184,15 +189,16 @@ import { useUserStore } from "../stores/user"
         </div>
       </div>
 
-    <v-navigation-drawer app v-model="drawerFilter" location="right" :temporary="true" :permanent="false" style="border: 0px;margin-top: 10px;">
-      <v-row style="padding: 0px;margin: 0px;">
+    <v-navigation-drawer app v-model="drawerFilter" location="right" :temporary="true" :permanent="false" style="margin-top: 10px;">
+      <v-row>
           <v-col cols="12">
-            <v-icon class="me-2" size="small" @click="">mdi-close</v-icon>
+            <v-icon class="me-2" size="small" @click="closeDrawer">mdi-close</v-icon>
           </v-col>
           <v-col cols="12">
             <v-text-field
               label="User Name"
               width="90%"
+              style="margin-left: 5px;"
               density="compact">
             </v-text-field>
          </v-col>
@@ -202,6 +208,7 @@ import { useUserStore } from "../stores/user"
           <v-text-field
             label="Email"
             width="90%"
+            style="margin-left: 5px;"
             density="compact"
           ></v-text-field>
         </v-col>
@@ -210,6 +217,7 @@ import { useUserStore } from "../stores/user"
           <v-text-field
             label="Company"
             width="90%"
+            style="margin-left: 5px;"
             density="compact"
           ></v-text-field>
         </v-col>
@@ -236,7 +244,7 @@ import { useUserStore } from "../stores/user"
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="12">
+        <v-col cols="12" style="padding: 0px;">
             <div style="width:100%; display: flex; flex-direction: row;justify-content: center;">
               <v-btn color="#42b883" rounded style="margin-right: 5px;">Search</v-btn>
               <v-btn color="#42b883" rounded>Reset</v-btn>
