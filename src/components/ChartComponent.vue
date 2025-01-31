@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Chart :type="type" :chart-data="chartData" :options="chartOptions" />
+  <div style="margin: 1px solid black;">
+    <ChartJS :type="type" :chart-data="chartData" :options="chartOptions" />
   </div>
 </template>
 

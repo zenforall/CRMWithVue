@@ -12,7 +12,6 @@ Dopo aver eseguito il deploy era sempre visualizzata una pagina bianca.
 Il motivo, e questo lo aveva segnalato anche chatGPT, era nella scorretta configurazione
 nel file di routing
 
-
 I was having the same problem. My local build was working fine, but after building for production and deploying to my server, I was getting a similar error.
 
 My console error was
