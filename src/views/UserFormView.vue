@@ -1,7 +1,6 @@
 <script setup lang="ts">
-    import { ref,onMounted,computed } from "vue";
+    import { ref,onMounted } from "vue";
     import { useRouter } from 'vue-router';
-    //import { format, parse } from 'date-fns';
     import { useUserStore } from "../stores/user";
     import {getValidationResult}  from "../utils/FormValidation";
 
@@ -52,7 +51,7 @@
       try {
         if (resultObject.valid) {
           let userToUpdate =  getUserFromUserDataForm();
-          userStore.updateUser(userToUpdate);
+          await userStore.updateUser(userToUpdate);
           displaySnackBarOK.value = true;
         }
 
@@ -72,7 +71,7 @@
 
       if (userStore.userAction === 'C') return;
 
-      userStore.getUserDetail();
+      await userStore.getUserDetail();
       assignOriginalUserDataToForm(userStore.userDetail);
     })
 
@@ -207,8 +206,6 @@
         </v-col>
 
         <v-col cols="12">
-            <!--<div class="button-container">-->
-              <!--<v-btn color="#42b883" rounded @click="backToUsers">< Back to Users</v-btn>-->
               <div class="right-buttons">
                 <v-btn
                 color="#42b883"
@@ -224,7 +221,6 @@
                   Cancel
                 </v-btn>
               </div>
-            <!--</div>-->
         </v-col>
       </v-row>
     </v-form>

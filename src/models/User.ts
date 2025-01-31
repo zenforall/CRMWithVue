@@ -4,7 +4,7 @@ interface User {
   password: string,
   email:string,
   company:string,
-  activationDate:Date,
+  activationDate:Date | null,
   locale:string,
   enabled: boolean
 }

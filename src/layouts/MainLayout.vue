@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterView } from 'vue-router'
-import Menu from '../components/Menu.vue'
 import MenuList from '../components/MenuList.vue'
+import Menu from '../components/Menu.vue'
 import Footer from '../components/Footer.vue'
 import { useDisplay } from 'vuetify';
 import { useAppStore } from "../stores/app"
@@ -68,29 +68,19 @@ function logout(): void {
             <v-icon>mdi-account</v-icon>
           </v-btn>
         </template>
-              <!-- Menu a discesa -->
-            <v-list>
-              <v-list-item link>
-                <v-list-item-title>Opzione 1</v-list-item-title>
-              </v-list-item>
-              <v-list-item link>
-                <v-list-item-title>Opzione 2</v-list-item-title>
-              </v-list-item>
-              <v-list-item link>
-                <v-list-item-title>Opzione 3</v-list-item-title>
+            <!-- Menu a discesa -->
+            <v-list style="margin-top: 5px">
+              <v-list-item link @click="logout">
+                <v-list-item-title><v-icon>mdi-logout</v-icon> Logout</v-list-item-title>
               </v-list-item>
             </v-list>
       </v-menu>
-
-      <v-btn icon @click="logout">
-         <v-icon>mdi-logout</v-icon>
-      </v-btn>
     </div>
   </v-app-bar>
 
   <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px;">
       <!--<Menu @breadCrumbHandler="breadCrumbItemsHandler"/>-->
-      <MenuList @breadCrumbHandler="breadCrumbItemsHandler"/>
+      <Menu @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->
@@ -113,10 +103,6 @@ function logout(): void {
 .rounded-circle {
   border-radius: 50%;
   border: solid black 1px;
-}
-
-.v-overlay__content {
-  margin-top: 15px;
 }
 
 </style>

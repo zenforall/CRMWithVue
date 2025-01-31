@@ -2,6 +2,8 @@
 import { onMounted,onUnmounted, ref } from "vue";
 import { useRouter } from 'vue-router'
 import { useUserStore } from "../stores/user"
+import UserFormFilterView from "./UserFormFilterView.vue";
+
 
     const headers = ref<TableHeader[]>([]);
     const users = ref<User[]>([]);
@@ -10,7 +12,10 @@ import { useUserStore } from "../stores/user"
 
     const userToDelete = ref<User>();
 
-    const formatDate = (date: Date): string => {
+    const formatDate = (date: Date | null): string => {
+
+      if (date == null) return "";
+
       return date.toLocaleDateString("it-IT", {
         year: "numeric",
         month: "2-digit",
@@ -63,6 +68,11 @@ import { useUserStore } from "../stores/user"
             sortable: true
         });
         headers.value.push({
+            title : "Activation",
+            value: "activationDate",
+            sortable: true
+        });
+        headers.value.push({
             title : "Enabled",
             value: "enabled",
             sortable: true
@@ -83,16 +93,6 @@ import { useUserStore } from "../stores/user"
     }>();
 
     function editItem(item: User): void {
-      //router.push({name:'userDetail',params:{id:item.id}});
-
-      /* Aggiungere un parametro nel Router userDetail/:id
-      router.push({
-        name: 'userDetail',
-        state: {
-          userId: item.id,
-        },
-      });
-      */
       userStore.setUserId(item.id);
       userStore.getUserDetail();
       if (userStore.userDetail === undefined || userStore.userDetail === null) {
@@ -172,9 +172,21 @@ import { useUserStore } from "../stores/user"
       router.push({name:'userDetail'});
     }
 
+    function openCloseUserFilterDrawerHandler(message:string) : void {
+        drawerFilter.value = !drawerFilter.value;
+    }
 
-    function closeDrawer() : void {
-      drawerFilter.value = false;
+   // const handleLoadUsers = async (value: string) => {
+
+    const doFilterUsersHandler = async (message:UserFilter) => {
+        await userStore.search(message);
+        users.value = userStore.users;
+    }
+
+
+    const doResetFilterUsersHandler = async (message:string) => {
+      await userStore.resetSearch();
+      users.value = userStore.users;
     }
 
 </script>
@@ -185,72 +197,14 @@ import { useUserStore } from "../stores/user"
       <div style="display: flex;direction: row; justify-content: space-between;width: 100%;margin-bottom: 10px;">
         <v-btn color="#42b883" rounded @click="addNewUser">Create User</v-btn>
         <div style="display: flex; direction: row; justify-items: end;">
-          <v-btn color="#42b883" rounded @click="displayFilters">Filters</v-btn>
+          <v-btn color="#42b883" rounded @click="displayFilters">Search</v-btn>
         </div>
       </div>
 
     <v-navigation-drawer app v-model="drawerFilter" location="right" :temporary="true" :permanent="false" style="margin-top: 10px;">
-      <v-row>
-          <v-col cols="12">
-            <v-icon class="me-2" size="small" @click="closeDrawer">mdi-close</v-icon>
-          </v-col>
-          <v-col cols="12">
-            <v-text-field
-              label="User Name"
-              width="90%"
-              style="margin-left: 5px;"
-              density="compact">
-            </v-text-field>
-         </v-col>
-
-        <!-- Email -->
-        <v-col cols="12">
-          <v-text-field
-            label="Email"
-            width="90%"
-            style="margin-left: 5px;"
-            density="compact"
-          ></v-text-field>
-        </v-col>
-        <!-- Email -->
-        <v-col cols="12">
-          <v-text-field
-            label="Company"
-            width="90%"
-            style="margin-left: 5px;"
-            density="compact"
-          ></v-text-field>
-        </v-col>
-
-        <v-col cols="12">
-            <v-date-input
-              label="From"
-              width="90%"
-              density="compact">
-            </v-date-input>
-        </v-col>
-        <v-col cols="12">
-            <v-date-input
-              width="90%"
-              label="To"
-              density="compact">
-            </v-date-input>
-        </v-col>
-        <v-col cols="12">
-          <v-checkbox
-            label="Enabled"
-            density="compact"
-          ></v-checkbox>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" style="padding: 0px;">
-            <div style="width:100%; display: flex; flex-direction: row;justify-content: center;">
-              <v-btn color="#42b883" rounded style="margin-right: 5px;">Search</v-btn>
-              <v-btn color="#42b883" rounded>Reset</v-btn>
-            </div>
-        </v-col>
-      </v-row>
+      <UserFormFilterView @openCloseUserFilterDrawerHandler="openCloseUserFilterDrawerHandler"
+                          @doFilterUsersHandler="doFilterUsersHandler"
+                          @doResetFilterUsersHandler="doResetFilterUsersHandler"/>
     </v-navigation-drawer>
 
     <v-data-table
@@ -282,7 +236,7 @@ import { useUserStore } from "../stores/user"
         </div>
     </template>
     <template v-slot:item.activationDate="{ item }" v-if="!isMobile">
-        <span>{{ formatDate(item.activationDate) }}</span>
+        <span>{{ formatDate( item.activationDate  ) }}</span>
     </template>
     <template v-slot:item.actions="{ item }" v-if="!isMobile">
       <div style="text-wrap: nowrap;">

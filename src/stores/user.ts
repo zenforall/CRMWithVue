@@ -72,6 +72,24 @@ export const useUserStore = defineStore({
           throw error;
         }
       },
+      async resetSearch() {
+          this.users = [] as User[];
+          this.getUsers();
+      },
+
+      // Da completare : devono essere gestiti tutti i filtri disponibili
+      async search(filter: UserFilter) {
+        try {
+          this.users = this.users.filter(
+              user => {
+                  return user.userName.includes(filter.userName)
+              }
+          )
+        } catch (error) {
+          console.log(error);
+          throw error;
+        }
+      },
       async updateUser(user: User) {
         try {
           if (user.id === null || user.id === '') {
