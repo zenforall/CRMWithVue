@@ -41,8 +41,6 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
             loginKO.value = true;
           }
 
-      } else {
-          //alert('Correggi gli errori nel form.');
       }
 
       /* Alternativa per leggere la property valid dal json di ritorno dal metodo vlaidate()
@@ -58,11 +56,9 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
     }
 
     onMounted(() => {
-      console.log("Mounted LoginView 2");
     })
 
     onUnmounted(() => {
-      console.log("UnMounted LoginView 2");
     })
 
 </script>
@@ -77,11 +73,6 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
       <v-row style="align-content: center;justify-content: center;">
         <v-col cols="12" sm="8" md="4">
           <v-card class="pa-4">
-            <!--
-            <v-card-title style="text-align: left;color: #42b883;">
-              Login
-            </v-card-title>
-          -->
             <v-card-text>
               <v-form ref="formRef" lazy-validation>
                 <v-text-field
