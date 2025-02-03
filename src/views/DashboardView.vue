@@ -1,8 +1,6 @@
 <script setup lang="ts" >
 import { onMounted,ref } from 'vue';
-//import ChartComponent from '../components/ChartComponent.vue'
-
-import { DoughnutChart } from 'vue-chart-3';
+import { DoughnutChart,BarChart,LineChart,PieChart } from 'vue-chart-3';
 import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables);
@@ -29,31 +27,23 @@ Chart.register(...registerables);
       datasets: [
         {
           data: [30, 40, 60, 70, 5],
-          backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
+          backgroundColor: ['#42b883', '#0079AF', '#123E6B', '#97B0C4', '#A5CEFF'],
         },
       ],
     };
-
-    const chartOptions = ref({
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true, // Impostiamo l'asse Y per iniziare da zero
-        },
-      },
-      plugins: {
-        legend: {
-          position: 'top', // Posizione della legenda
-        },
-      },
-    });
-
 </script>
 
 <template>
   <v-container>
-    <div style="text-align: center; font-size: 30px;color: #42b883;">Dashboard</div>
-    <DoughnutChart :chartData="testData" />
-
+    <v-row>
+      <v-col cols="12" md="6" lg="6">
+        <DoughnutChart :chartData="testData" style="margin-bottom: 10px;"/>
+        <BarChart :chartData="testData" />
+      </v-col>
+      <v-col cols="12" md="6" lg="6">
+        <LineChart :chartData="testData" style="margin-bottom: 10px;"/>
+        <PieChart :chartData="testData" />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
