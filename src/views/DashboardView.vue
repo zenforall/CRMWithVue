@@ -1,6 +1,11 @@
 <script setup lang="ts" >
 import { onMounted,ref } from 'vue';
-import ChartComponent from '../components/ChartComponent.vue'
+//import ChartComponent from '../components/ChartComponent.vue'
+
+import { DoughnutChart } from 'vue-chart-3';
+import { Chart, registerables } from "chart.js";
+
+Chart.register(...registerables);
 
     const emit =defineEmits<{
       (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
@@ -19,16 +24,15 @@ import ChartComponent from '../components/ChartComponent.vue'
       emit("breadCrumbHandler",breadCrumbItems);
     })
 
-    const chartData = ref({
-      labels: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu'],
+    const testData = {
+      labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
       datasets: [
         {
-          label: 'Vendite',
-          backgroundColor: '#42A5F5', // Colore delle barre
-          data: [50, 75, 100, 125, 150, 175], // Dati
+          data: [30, 40, 60, 70, 5],
+          backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
         },
       ],
-    });
+    };
 
     const chartOptions = ref({
       responsive: true,
@@ -49,7 +53,7 @@ import ChartComponent from '../components/ChartComponent.vue'
 <template>
   <v-container>
     <div style="text-align: center; font-size: 30px;color: #42b883;">Dashboard</div>
-    <ChartComponent :type="'bar'" :chartData="chartData" :chartOptions="chartOptions" ></ChartComponent>
+    <DoughnutChart :chartData="testData" />
 
   </v-container>
 </template>

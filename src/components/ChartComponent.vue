@@ -1,12 +1,12 @@
 <template>
   <div style="margin: 1px solid black;">
-    <ChartJS :type="type" :chart-data="chartData" :options="chartOptions" />
+    <DoughnutChart :chartData="testData" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, type PropType, computed } from 'vue'
-import { PieChart, BarChart, LineChart, RadarChart } from 'vue-chart-3'
+import { PieChart, BarChart, LineChart, RadarChart,DoughnutChart } from 'vue-chart-3'
 import {
   Chart as ChartJS,
   Title,
