@@ -4,10 +4,13 @@ import { useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 
 const router = useRouter()
-const openedGroups = ref<Record<number, boolean>>({});
 let items = ref<TreeNode[]>([])
-
 const menuStore = useMenuStore()
+
+const emit =defineEmits<{
+  (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
+}>();
+
 
 // Funzione per ottenere i figli di un nodo
 const hasChildren = (node: TreeNode) => {
@@ -24,6 +27,25 @@ const getNodeChildren = (node: TreeNode) => {
 // Funzione di navigazione
 const navigate = (node: TreeNode) => {
   if (node.link) {
+
+    const breadCrumbItems :  BreaCrumbItem[] = [];
+    if (node.id === 3) {
+      breadCrumbItems.push(
+         {
+            title: "Admin",
+            disabled : false,
+            href : ""
+         },
+         {
+            title: "Users",
+            disabled : false,
+            href : ""
+         }
+      );
+    }
+
+    emit("breadCrumbHandler",breadCrumbItems);
+
     router.push(node.link)
   }
 }
