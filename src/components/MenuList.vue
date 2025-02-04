@@ -37,8 +37,8 @@ onMounted(async () => {
 <template>
   <v-container>
     <v-list density="compact" nav open-strategy="single">
-      <template v-for="(item, index) in items" :key="item.id">
-        <v-list-group :key="item.id" v-if="hasChildren(item)">
+      <template v-for="(item, index) in items">
+        <v-list-group v-if="hasChildren(item)">
           <template v-slot:activator="{ props }" :key="item.id">
             <v-list-item
               v-bind="props"
