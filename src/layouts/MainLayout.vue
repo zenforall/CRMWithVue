@@ -46,7 +46,7 @@ function logout(): void {
     <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
 
     <div style="display: flex; align-items: center;width: 80%;">
-      <v-toolbar-title style="color: #42b883">CRM With Vue</v-toolbar-title>
+      <v-toolbar-title style="color: #42b883;">CRM*With*Vue</v-toolbar-title>
     <v-text-field
         density="compact"
         label="Search"
@@ -85,7 +85,7 @@ function logout(): void {
 
   <!-- Contenuto principale -->
   <v-main>
-      <v-breadcrumbs :items="items" color="#42b883">
+      <v-breadcrumbs :items="items" color="#42b883" style="font-weight: bold;">
         <template v-slot:divider>
           <!--<v-icon icon="mdi-forward"></v-icon>-->
           >
@@ -103,6 +103,14 @@ function logout(): void {
 .rounded-circle {
   border-radius: 50%;
   border: solid black 1px;
+}
+
+.v-breadcrumbs-item {
+  font-weight: bold;
+}
+
+.v-toolbar-title__placeholder {
+  font-weight: bold;
 }
 
 </style>
