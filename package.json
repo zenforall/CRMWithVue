@@ -21,6 +21,7 @@
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
     "pinia": "^2.2.4",
+    "pinia-plugin-persistedstate": "^4.2.0",
     "vue": "^3.5.12",
     "vue-chart-3": "^3.1.8",
     "vue-router": "^4.4.5",

@@ -1,9 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export const useUserStore = defineStore({
-
-    id: "userStore",
+export const useUserStore = defineStore('userStore',{
     state: () => ({
         users: ref([] as User[]),
         userId: "",
@@ -119,5 +117,3 @@ export const useUserStore = defineStore({
       }
     }
 })
-
-

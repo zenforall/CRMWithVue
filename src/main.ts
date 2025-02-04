@@ -14,7 +14,7 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 
 import { VDateInput } from 'vuetify/labs/VDateInput'
-
+import piniaPersistedstate from 'pinia-plugin-persistedstate';
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/it' // Importa la lingua italiana per day.js
@@ -42,8 +42,11 @@ const vuetify = createVuetify({
 export { vuetify }; // rende utilizzabile l'oggetto da altre parti dell'applicazione
 
 const app = createApp(App)
+const pinia = createPinia();
 
-app.use(createPinia())
+pinia.use(piniaPersistedstate);
+
+app.use(pinia)
 app.use(router)
 app.use(vuetify);
 

@@ -2,26 +2,28 @@
 import { ref } from 'vue';
 import { RouterView } from 'vue-router'
 import MenuList from '../components/MenuList.vue'
-import Menu from '../components/Menu.vue'
 import Footer from '../components/Footer.vue'
 import { useDisplay } from 'vuetify';
 import { useAppStore } from "../stores/app"
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-
 const drawer = ref(false);
-
 const appStore = useAppStore();
-
 const display = useDisplay();
-
 const menu = ref(false); // Stato del menu
+
+const displayOnMobile = ref(false);
+const displayAfterClickingSearchButtonOnMobileView = ref(false);
 
 if ( display.name.value === 'lg') {
   drawer.value = true;
 }
 
+if (display.name.value === 'xs')
+  displayOnMobile.value = true;
+else
+  displayOnMobile.value = false;
 
 const toggleDrawer = () => {
       drawer.value = !drawer.value;
@@ -38,6 +40,10 @@ function logout(): void {
   router.push("/");
 }
 
+function manageSearchForMobileView() : void {
+  displayAfterClickingSearchButtonOnMobileView.value = true;
+}
+
 
 </script>
 
@@ -47,15 +53,32 @@ function logout(): void {
 
     <div style="display: flex; align-items: center;width: 80%;">
       <v-toolbar-title style="color: #42b883;">CRM*With*Vue</v-toolbar-title>
-    <v-text-field
-        density="compact"
-        label="Search"
-        prepend-inner-icon="mdi-magnify"
-        variant="solo-filled"
-        flat
-        hide-details
-        single-line
-      ></v-text-field>
+      <v-text-field
+          class="d-none d-sm-block"
+          density="compact"
+          label="Search"
+          prepend-inner-icon="mdi-magnify"
+          variant="solo-filled"
+          flat
+          hide-details
+          single-line></v-text-field>
+
+          <v-text-field
+          v-show="displayOnMobile"
+          density="compact"
+          label="Search"
+          prepend-inner-icon="mdi-magnify"
+          variant="solo-filled"
+          flat
+          hide-details
+          single-line></v-text-field>
+
+          <v-btn
+            @click="manageSearchForMobileView"
+            icon
+            class="d-xs-block d-sm-none rounded-circle">
+            <v-icon>mdi-magnify</v-icon>
+          </v-btn>
     </div>
     <div style="width: 20%;display: flex;flex-direction: row;justify-content: end;">
       <v-menu

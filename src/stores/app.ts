@@ -1,9 +1,7 @@
 import { defineStore } from "pinia";
 
 
-export const useAppStore = defineStore({
-
-  id: "appStore",
+export const useAppStore = defineStore('appStore',{
   state: () => ({
       breadCrumbMenu: [] as BreaCrumbItem[],
       isUserAutheticated: false,
@@ -28,6 +26,8 @@ export const useAppStore = defineStore({
           this.currentSession = 0;
         }
 
+        localStorage.setItem('isUserAutheticated',""+this.isUserAutheticated);
+
       } catch (error) {
         console.log(error);
       }
@@ -35,9 +35,15 @@ export const useAppStore = defineStore({
     async logout() {
       this.isUserAutheticated = false;
       this.currentSession = 0;
+      localStorage.setItem('isUserAutheticated','');
     },
     async checkIfSessionIsValid() {
       try {
+
+        if (localStorage.getItem("isUserAutheticated")) {
+          this.isUserAutheticated = (localStorage.getItem("isUserAutheticated") === 'true');
+        }
+
         if (this.isUserAutheticated) {
           let now = Date.now();
 

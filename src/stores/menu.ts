@@ -1,8 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useMenuStore = defineStore({
-
-    id: "menuStore",
+export const useMenuStore = defineStore('menuStore',{
     state: () => ({
         menu: [] as TreeNode[],
     }),
