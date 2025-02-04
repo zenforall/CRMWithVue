@@ -10,6 +10,7 @@ Chart.register(...registerables);
     }>();
 
     onMounted(async () => {
+      /*
       const breadCrumbItems :  BreaCrumbItem[] = [];
       breadCrumbItems.push(
          {
@@ -20,6 +21,7 @@ Chart.register(...registerables);
       );
 
       emit("breadCrumbHandler",breadCrumbItems);
+      */
     })
 
     const testData = {
@@ -27,7 +29,7 @@ Chart.register(...registerables);
       datasets: [
         {
           data: [30, 40, 60, 70, 5],
-          backgroundColor: ['#42b883', '#0079AF', '#123E6B', '#97B0C4', '#A5CEFF'],
+          backgroundColor: ['#42b883', '#35495e', '#ffb400', '#f2f2f2', '#e07a5f'],
         },
       ],
     };

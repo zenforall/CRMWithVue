@@ -80,7 +80,7 @@ function logout(): void {
 
   <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px;">
       <!--<Menu @breadCrumbHandler="breadCrumbItemsHandler"/>-->
-      <Menu @breadCrumbHandler="breadCrumbItemsHandler"/>
+      <MenuList @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->
