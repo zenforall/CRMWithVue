@@ -3,25 +3,12 @@ import { onMounted,ref } from 'vue';
 import { DoughnutChart,BarChart,LineChart,PieChart } from 'vue-chart-3';
 import { Chart, registerables } from "chart.js";
 
+import Test  from "../components/Test.vue"
+
 Chart.register(...registerables);
 
-    const emit =defineEmits<{
-      (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
-    }>();
-
     onMounted(async () => {
-      /*
-      const breadCrumbItems :  BreaCrumbItem[] = [];
-      breadCrumbItems.push(
-         {
-            title: "Home",
-            disabled : false,
-            href : ""
-         }
-      );
-
-      emit("breadCrumbHandler",breadCrumbItems);
-      */
+      ;
     })
 
     const testData = {
@@ -36,6 +23,7 @@ Chart.register(...registerables);
 </script>
 
 <template>
+  <Test/>
   <v-container>
     <v-row>
       <v-col cols="12" md="6" lg="6">

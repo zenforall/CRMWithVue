@@ -22,14 +22,12 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
     };
 
     const handleLogin = async () => {
-
       const validationResult = await formRef.value.validate();
       let resultObject: ValidateObj = getValidationResult(validationResult);
 
       if (resultObject.valid) {
           appStore.authenticateUser(username.value,password.value);
           if (appStore.isUserAutheticated) {
-
             // Ottiene il dettaglio dell'utente ed assegna il valore corretto del locale
             /* Da abilitare
             vuetify.locale.current.value = "es";
@@ -55,7 +53,14 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
 
     }
 
+    const handleKey = async (event: any) => {
+        if (event.key === 'Enter') {
+          await handleLogin();
+        }
+    }
+
     onMounted(() => {
+      window.addEventListener('keydown', handleKey);
     })
 
     onUnmounted(() => {
@@ -96,6 +101,7 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
                 <v-btn
                   style="display: flex; min-width: 100%;"
                   @click="handleLogin"
+                  @keydown.enter="handleLogin"
                   rounded
                   color="#42b883"
                   variant="elevated">
