@@ -19,6 +19,8 @@ import piniaPersistedstate from 'pinia-plugin-persistedstate';
 import dayjs from 'dayjs'
 import 'dayjs/locale/it' // Importa la lingua italiana per day.js
 
+import i18n from './i18n'
+
 // Crea un'istanza di Vuetify
 const vuetify = createVuetify({
   components: {
@@ -49,5 +51,5 @@ pinia.use(piniaPersistedstate);
 app.use(pinia)
 app.use(router)
 app.use(vuetify);
-
+app.use(i18n);
 app.mount('#app')

@@ -3,8 +3,9 @@ import { onMounted,onUnmounted, ref } from "vue";
 import { useRouter } from 'vue-router'
 import { useUserStore } from "../stores/user"
 import UserFormFilterView from "./UserFormFilterView.vue";
+import { useI18n } from "vue-i18n";
 
-
+    const { t } = useI18n();
     const headers = ref<TableHeader[]>([]);
     const users = ref<User[]>([]);
 
@@ -53,7 +54,7 @@ import UserFormFilterView from "./UserFormFilterView.vue";
         checkAndassignMobileStatus();
 
         headers.value.push({
-            title : "Username",
+            title : t("userName"),
             value: "userName",
             sortable: true
         });
@@ -73,7 +74,7 @@ import UserFormFilterView from "./UserFormFilterView.vue";
             sortable: true
         });
         headers.value.push({
-            title : "Enabled",
+            title : t("enabled"),
             value: "enabled",
             sortable: true
         });
