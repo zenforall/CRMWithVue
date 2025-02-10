@@ -42,6 +42,19 @@ const navigate = (node: TreeNode) => {
             href : ""
          }
       );
+    } else if (node.id === 4) {
+        breadCrumbItems.push(
+          {
+              title: "Admin",
+              disabled : false,
+              href : ""
+          },
+          {
+              title: "Companies",
+              disabled : false,
+              href : ""
+          }
+        );
     }
 
     emit("breadCrumbHandler",breadCrumbItems);
