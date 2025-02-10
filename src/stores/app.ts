@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-
+import { encryptData, decryptData } from "../utils/crypto";
 
 export const useAppStore = defineStore('appStore',{
   state: () => ({
@@ -17,7 +17,6 @@ export const useAppStore = defineStore('appStore',{
         //this.isUserAutheticated = true;
         //this.currentSession = Date.now();
 
-
         if ("admin" === userName && "admin" === password) {
           this.isUserAutheticated = true;
           this.currentSession = Date.now();
@@ -26,7 +25,7 @@ export const useAppStore = defineStore('appStore',{
           this.currentSession = 0;
         }
 
-        localStorage.setItem('isUserAutheticated',""+this.isUserAutheticated);
+        localStorage.setItem('isUserAutheticated',encryptData(""+this.isUserAutheticated));
 
       } catch (error) {
         console.log(error);
@@ -41,7 +40,10 @@ export const useAppStore = defineStore('appStore',{
       try {
 
         if (localStorage.getItem("isUserAutheticated")) {
-          this.isUserAutheticated = (localStorage.getItem("isUserAutheticated") === 'true');
+          let temp : string | null;
+          temp = decryptData(localStorage.getItem("isUserAutheticated"));
+
+          this.isUserAutheticated = (temp === 'true');
         }
 
         if (this.isUserAutheticated) {
