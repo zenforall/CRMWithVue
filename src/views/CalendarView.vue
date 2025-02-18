@@ -25,6 +25,4 @@ function addNewEvent() : void {
 
 <style>
 
-
-
 </style>
