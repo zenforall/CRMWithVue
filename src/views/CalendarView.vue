@@ -1,28 +1,25 @@
 <script setup lang="ts">
 
+import { Qalendar } from "qalendar";
+
 function addNewEvent() : void {
   window.alert("Add new Event");
 }
 
 
 // TODO: Utilizzare il componente leggendo la documentazione:
-// https://github.com/richardtallent/vue-simple-calendar
+// https://tomosterlund.github.io/qalendar/
 
 </script>
 
 <template>
   <v-row class="fill-height">
     <v-col>
-        <v-calendar
-          ref="calendar"
-          color="primary"
-          type="month"
-          @click="addNewEvent">
-        </v-calendar>
+      <Qalendar></Qalendar>
     </v-col>
   </v-row>
 </template>
 
 <style>
-
+@import "qalendar/dist/style.css";
 </style>
