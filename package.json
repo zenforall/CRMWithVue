@@ -27,6 +27,7 @@
     "vue-chart-3": "^3.1.8",
     "vue-i18n": "^9.14.2",
     "vue-router": "^4.4.5",
+    "vue-simple-calendar": "^7.1.0",
     "vuetify": "^3.7.0-beta.1"
   },
   "devDependencies": {

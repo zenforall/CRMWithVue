@@ -14,6 +14,8 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 
 import { VDateInput } from 'vuetify/labs/VDateInput'
+import { VCalendar } from 'vuetify/labs/VCalendar'
+
 import piniaPersistedstate from 'pinia-plugin-persistedstate';
 
 import dayjs from 'dayjs'
@@ -26,6 +28,7 @@ const vuetify = createVuetify({
   components: {
     ...components,
     VDateInput,
+    VCalendar
   },
   directives,
   icons: {

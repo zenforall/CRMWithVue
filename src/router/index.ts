@@ -4,6 +4,7 @@ import DashboardView from '../views/DashboardView.vue'
 import CustomersView from '../views/CustomersView.vue'
 import UsersView from '../views/UsersView.vue'
 import UserFormView from '../views/UserFormView.vue'
+import CalendarView from '../views/CalendarView.vue'
 import BlankLayout from '../layouts/BlankLayout.vue'
 import MainLayout from '../layouts/MainLayout.vue'
 import NotAvailableView from '../views/NotAvailableView.vue'
@@ -100,6 +101,14 @@ const router = createRouter({
       component: MainLayout,
       children: [
         { path: 'sales',name: 'Sales', component: NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'calendar',name: 'Calendar', component: CalendarView },
       ],
       meta: { requiresAuth: true }
     },
