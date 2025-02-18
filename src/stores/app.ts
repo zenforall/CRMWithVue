@@ -26,7 +26,9 @@ export const useAppStore = defineStore('appStore',{
         }
 
         localStorage.setItem('isUserAutheticated',encryptData(""+this.isUserAutheticated));
-
+        localStorage.setItem('userName',encryptData(userName));
+        localStorage.setItem('userLocale',encryptData("en"));
+        localStorage.setItem('userLocaleLanguage',encryptData("en-GB"));
       } catch (error) {
         console.log(error);
       }

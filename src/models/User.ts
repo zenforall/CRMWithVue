@@ -5,6 +5,7 @@ interface User {
   email:string,
   company:string,
   activationDate:Date | null,
-  locale:string,
+  locale:string,          // https://www.science.co.il/language/Locale-codes.php
+  localeLanguage:string,  // https://www.science.co.il/language/Locale-codes.php
   enabled: boolean
 }

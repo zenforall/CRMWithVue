@@ -33,12 +33,18 @@ export const useUserStore = defineStore('userStore',{
           if (this.users.length === 0) {
             for (var i=1;i<8;i++) {
                    let loc = '' as string;
-                   if ( (i / 2) === 0 )
+                   let locLan = '' as string;
+                   if ( (i / 2) === 0 ) {
                       loc = 'it';
-                   else if ( (i / 5 === 0) )
+                      locLan = 'it-IT';
+                   } else if ( (i / 5 === 0) ) {
                       loc = 'es';
-                   else if ( (i / 7 ) === 0 )
-                      loc = 'en'
+                      locLan = 'es-ES';
+                   } else if ( (i / 7 ) === 0 ) {
+                      loc = 'en';
+                      locLan = 'en-GB';
+                   }
+
 
                     this.users.push({
                         id:i.toString(),
@@ -48,6 +54,7 @@ export const useUserStore = defineStore('userStore',{
                         company:"company"+i.toString(),
                         activationDate: new Date(),
                         locale: loc,
+                        localeLanguage: locLan,
                         enabled:true
                 })
             }
