@@ -9,6 +9,7 @@ function addNewEvent() : void {
 
 // TODO: Utilizzare il componente leggendo la documentazione:
 // https://tomosterlund.github.io/qalendar/
+// https://github.com/tomosterlund
 
 </script>
 
