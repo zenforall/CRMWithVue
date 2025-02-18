@@ -40,6 +40,18 @@ const calendarApp = createCalendar({
       start: '2023-12-20 12:00',
       end: '2023-12-20 13:00',
     },
+    {
+      id: 3,
+      title: 'Event 3',
+      start: '2023-12-20 12:30',
+      end: '2023-12-20 13:00',
+    },
+    {
+      id: 4,
+      title: 'Event 4',
+      start: '2023-12-20 12:45',
+      end: '2023-12-20 13:00',
+    },
   ],
 })
 </script>

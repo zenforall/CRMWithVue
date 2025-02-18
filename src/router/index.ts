@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import DashboardView from '../views/DashboardView.vue'
 import CustomersView from '../views/CustomersView.vue'
+import MyCalendar from '../views/MyCalendarView.vue'
 import UsersView from '../views/UsersView.vue'
 import UserFormView from '../views/UserFormView.vue'
 import CalendarView from '../views/CalendarView.vue'
@@ -119,8 +120,15 @@ const router = createRouter({
         { path: 'reports',name: 'Reports', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'mycalendar',name: 'My Calendar', component: MyCalendar },
+      ],
+      meta: { requiresAuth: true }
     }
-
   ],
 })
 

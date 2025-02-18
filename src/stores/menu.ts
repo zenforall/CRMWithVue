@@ -84,6 +84,16 @@ export const useMenuStore = defineStore('menuStore',{
 
                this.menu.push(reports);
 
+               let myCalendar: TreeNode;
+               myCalendar = {
+                 id: 70,
+                 icon: 'mdi-calendar',
+                 title: 'My Calendar',
+                 children: null,
+                 link: '/mycalendar'
+               }
+
+               this.menu.push(myCalendar);
 
              } catch (error) {
                console.log(error)
