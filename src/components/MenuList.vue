@@ -55,6 +55,19 @@ const navigate = (node: TreeNode) => {
               href : ""
           }
         );
+    } else if (node.id === 70) {
+        breadCrumbItems.push(
+          {
+              title: "My Calendar",
+              disabled : false,
+              href : ""
+          },
+          {
+              title: "",
+              disabled : false,
+              href : ""
+          }
+        );
     }
 
     emit("breadCrumbHandler",breadCrumbItems);
