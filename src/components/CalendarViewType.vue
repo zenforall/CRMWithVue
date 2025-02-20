@@ -2,13 +2,18 @@
   <v-container>
 
     <v-row>
-      <v-col v-for="day in weekDays" :key="day" class="text-center font-weight-bold">
-        <v-label style="font-weight: bold;"> {{ day }} </v-label>
+      <v-col cols="12">
+        <v-label>TUESDAY</v-label>
+        <br/>
+        <v-label style="font-weight: bold;">{{ format(today,"dd") }}</v-label>
       </v-col>
     </v-row>
-    <v-row v-for="(week, index) in monthGrid" :key="index">
-      <v-col v-for="(day, i) in week" :key="i" class="border text-center;">
-        <v-label>{{ day || '' }}</v-label>
+    <v-row v-for="hour in allHours" :key="hour">
+      <v-col style="padding-top: 20px;padding-bottom: 0px;text-align: right;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">
+        <v-label> {{ hour }} </v-label>
+      </v-col>
+      <v-col class="border p-2" cols="11">
+        <!-- Celle della griglia, qui puoi inserire il contenuto desiderato -->
       </v-col>
     </v-row>
 
@@ -30,6 +35,18 @@
         <!-- Celle della griglia, qui puoi inserire il contenuto desiderato -->
       </v-col>
     </v-row>
+
+    <v-row>
+      <v-col v-for="day in weekDays" :key="day" class="text-center font-weight-bold">
+        <v-label> {{ day }} </v-label>
+      </v-col>
+    </v-row>
+    <v-row v-for="(week, index) in monthGrid" :key="index">
+      <v-col v-for="(day, i) in week" :key="i" class="border text-center;">
+        <v-label class="font-weight-bold">{{ day || '' }}</v-label>
+      </v-col>
+    </v-row>
+
   </v-container>
 </template>
 
@@ -44,7 +61,7 @@ const currentWeek = ref(
   Array.from({ length: 7 }, (_, i) => {
     const date = addDays(startOfWeek(today, { weekStartsOn: 1 }), i);
     return {
-      name: format(date, 'EEEE'),
+      name: format(date, 'EEEE').toUpperCase(),
       date: format(date, 'dd')
     };
   })
@@ -65,7 +82,7 @@ onMounted(async () => {
 });
 
 
-const weekDays: string[] = ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'];
+const weekDays: string[] = ['LUN', 'MAR', 'MER', 'GIO', 'VEN', 'SAB', 'DOM'];
 const currentMonth: Date = new Date();
 
 type DayInfo = {
