@@ -18,8 +18,8 @@ const dateSelected = (newDate:string) => {
       <div style="display: flex;direction: row; justify-content: space-between; align-items:center; width: 100%; margin-bottom: 10px;">
         <div style="width: 50%;">
           <v-btn color="#42b883" rounded>Today</v-btn>
-          <v-btn icon="mdi-page-first" size="small" style="margin-left: 20px;"></v-btn>
-          <v-btn icon="mdi-page-last" size="small" style="margin-left: 20px;"></v-btn>
+          <v-btn icon="mdi-chevron-left" size="small" style="margin-left: 20px;"></v-btn>
+          <v-btn icon="mdi-chevron-right" size="small" style="margin-left: 20px;"></v-btn>
           <v-label style="margin-left: 20px;font-weight: bold;color:rgba(0, 0, 0, 0.87)">FEBRUARY 2025</v-label>
         </div>
         <div style="width: 50%;display: flex; direction: row;justify-content: end;margin-right: 30px;">
