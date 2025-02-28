@@ -77,10 +77,23 @@ import { it } from 'date-fns/locale';
 
 import {CssClassInfo} from '../utils/CSS';
 
+import { useEventBus } from '../utils/EventBus';
+import { watch } from 'vue';
+
+const { eventMessage,eventType } = useEventBus();
+
 onMounted(async () => {
   //console.log(CssClassInfo(".v-col"));
 });
 
+window.alert("fff"+JSON.stringify(eventType.value));
+
+watch(eventType, (newEventType) => {
+  if (newEventType) {
+      window.alert(JSON.stringify(newEventType));
+      window.alert(JSON.stringify(eventMessage));
+  }
+},{ immediate: true });
 
 const weekDays: string[] = ['LUN', 'MAR', 'MER', 'GIO', 'VEN', 'SAB', 'DOM'];
 const currentMonth: Date = new Date();
