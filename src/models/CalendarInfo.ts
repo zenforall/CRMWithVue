@@ -7,5 +7,6 @@ interface CalendarInfo {
   actualDay:number,
   actualMonth:number,
   actualYear:number,
-  choosedDate:Date
+  choosedDate:Date,
+  viewType:string
 }

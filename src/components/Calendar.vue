@@ -22,10 +22,12 @@ const todayClick = () => {
             actualDay: 0,
             actualMonth: 0,
             actualYear: 0,
-            choosedDate: new Date()
+            choosedDate: new Date(),
+            viewType : EVENTS.TODAY.toString()
   };
 
-  emitEvent(info,EVENTS.TODAY);
+  window.alert("emitEvent");
+  emitEvent(info);
 
 }
 

@@ -86,12 +86,9 @@ onMounted(async () => {
   //console.log(CssClassInfo(".v-col"));
 });
 
-window.alert("fff"+JSON.stringify(eventType.value));
-
-watch(eventType, (newEventType) => {
-  if (newEventType) {
-      window.alert(JSON.stringify(newEventType));
-      window.alert(JSON.stringify(eventMessage));
+watch(eventMessage, (newEventMessage) => {
+  if (newEventMessage) {
+      window.alert(JSON.stringify(newEventMessage));
   }
 },{ immediate: true });
 
