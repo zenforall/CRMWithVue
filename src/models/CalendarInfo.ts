@@ -1,6 +1,6 @@
-//import type { VIEWS } from "./CalendarInfoConstants";
+import type { VIEWS } from "./CalendarInfoConstants";
 
-interface CalendarInfo {
+export interface CalendarInfo {
   today:Date,
   next:boolean,
   prev:boolean,
@@ -8,5 +8,5 @@ interface CalendarInfo {
   actualMonth:number,
   actualYear:number,
   choosedDate:Date,
-  viewType:string
+  viewType:VIEWS
 }

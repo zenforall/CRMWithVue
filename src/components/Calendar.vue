@@ -2,10 +2,23 @@
 import { onMounted, ref } from 'vue'
 
 import CalendarViewType from './CalendarViewType.vue'
-import { useEventBus } from '../utils/EventBus';
+import { useCalendarEventBus } from './CalendarEventBus';
 import {VIEWS,EVENTS} from '../models/CalendarInfoConstants';
 
-const { emitEvent } = useEventBus();
+import type { CalendarInfo } from '@/models/CalendarInfo';
+
+const { emitEvent } = useCalendarEventBus();
+
+interface Item {
+  text: string;
+  value: VIEWS;
+}
+
+const items :Item[]=[
+  { text: 'Day', value: VIEWS.DAY },
+  { text: 'Week', value: VIEWS.WEEK },
+  { text: 'Month', value: VIEWS.MONTH }
+];
 
 onMounted(async () => {
 })
@@ -13,6 +26,21 @@ onMounted(async () => {
 const dateSelected = (newDate:string) => {
 
 }
+
+const viewSelectChange = (selectedItem: Item) => {
+  let info:CalendarInfo = {
+            today: new Date(),
+            next: false,
+            prev: false,
+            actualDay: 0,
+            actualMonth: 0,
+            actualYear: 0,
+            choosedDate: new Date(),
+            viewType : selectedItem.value
+  };
+  emitEvent(info);
+}
+
 
 const todayClick = () => {
   let info:CalendarInfo = {
@@ -23,12 +51,9 @@ const todayClick = () => {
             actualMonth: 0,
             actualYear: 0,
             choosedDate: new Date(),
-            viewType : EVENTS.TODAY.toString()
+            viewType : VIEWS.DAY
   };
-
-  window.alert("emitEvent");
   emitEvent(info);
-
 }
 
 
@@ -45,8 +70,10 @@ const todayClick = () => {
           <v-label style="margin-left: 20px;font-weight: bold;color:rgba(0, 0, 0, 0.87)">FEBRUARY 2025</v-label>
         </div>
         <div style="width: 50%;display: flex; direction: row;justify-content: end;margin-right: 30px;">
-          <v-select label="View type" hide-details variant="solo-filled" density="compact"
-            :items="['Day', 'Week', 'Month']" style="width: 150px;margin-right: 30px; margin-bottom: 0px; padding-bottom: 0px;">
+          <v-select label="View type" hide-details variant="solo-filled" density="compact" @update:modelValue="viewSelectChange"
+            :items="items"  item-title="text"
+                            item-value="value"
+                            style="width: 150px;margin-right: 30px; margin-bottom: 0px; padding-bottom: 0px;">
           </v-select>
           <v-date-input variant="solo-filled" hide-details placeholder=""
               @update:model-value="dateSelected"
@@ -66,3 +93,4 @@ const todayClick = () => {
 
 </style>
 ../utils/EventBus
+../utils/CalendarEventBus

@@ -1,6 +1,7 @@
 <template>
   <v-container>
 
+    <!-- Giorno -->
     <v-row>
       <v-col cols="12">
         <v-label>TUESDAY</v-label>
@@ -17,7 +18,7 @@
       </v-col>
     </v-row>
 
-  <!-- Intestazione con nome del giorno sopra al numero del giorno -->
+  <!-- Settimana -->
   <v-row>
       <v-col></v-col>
       <v-col v-for="day in currentWeek" :key="day.date" class="text-center font-bold">
@@ -36,6 +37,7 @@
       </v-col>
     </v-row>
 
+    <!-- Month -->
     <v-row>
       <v-col v-for="day in weekDays" :key="day" class="text-center font-weight-bold">
         <v-label> {{ day }} </v-label>
@@ -77,10 +79,10 @@ import { it } from 'date-fns/locale';
 
 import {CssClassInfo} from '../utils/CSS';
 
-import { useEventBus } from '../utils/EventBus';
+import { useCalendarEventBus } from './CalendarEventBus';
 import { watch } from 'vue';
 
-const { eventMessage,eventType } = useEventBus();
+const { eventMessage } = useCalendarEventBus();
 
 onMounted(async () => {
   //console.log(CssClassInfo(".v-col"));
@@ -90,7 +92,7 @@ watch(eventMessage, (newEventMessage) => {
   if (newEventMessage) {
       window.alert(JSON.stringify(newEventMessage));
   }
-},{ immediate: true });
+});
 
 const weekDays: string[] = ['LUN', 'MAR', 'MER', 'GIO', 'VEN', 'SAB', 'DOM'];
 const currentMonth: Date = new Date();
@@ -132,3 +134,4 @@ const monthGrid = computed<string[][]>(() => {
   text-align: center;
 }
 </style>
+../utils/CalendarEventBus
