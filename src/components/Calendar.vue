@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 
 import CalendarViewType from './CalendarViewType.vue'
 import { useCalendarEventBus } from './CalendarEventBus';
@@ -11,51 +11,72 @@ const { emitEvent } = useCalendarEventBus();
 
 interface Item {
   text: string;
-  value: VIEWS;
+  value: string;
 }
 
 const items :Item[]=[
-  { text: 'Day', value: VIEWS.DAY },
-  { text: 'Week', value: VIEWS.WEEK },
-  { text: 'Month', value: VIEWS.MONTH }
+  { value: "0",text: 'Day' },
+  { value: "1", text: 'Week' },
+  { value: "2",text: 'Month' }
 ];
 
 onMounted(async () => {
+
+  let info:CalendarInfo = {
+            day: 0,
+            month: 0,
+            year: 0,
+            viewType :  VIEWS.DAY
+  };
+
+  emitEvent(info);
+
 })
 
-const dateSelected = (newDate:string) => {
 
+
+const dateSelected = (newDate:string) => {
+  console.log(newDate);
 }
 
-const viewSelectChange = (selectedItem: Item) => {
+const selectedValue = ref<string | null>("0");
+
+const viewSelectChange = async () => {
+
+  await nextTick(); // Attende che la variabile nel v-model sia aggionrata dal metodo @update:model-value
+                    // l'evento @update:model aggiorna la variabile del v-model in modo asincrono
+
+  let selectedViewType: VIEWS = VIEWS.DAY;
+  if (selectedValue.value != null) {
+    if (selectedValue.value == VIEWS.DAY.toString())
+      selectedViewType = VIEWS.DAY;
+    else if (selectedValue.value == VIEWS.WEEK.toString())
+      selectedViewType = VIEWS.WEEK;
+    else if (selectedValue.value == VIEWS.MONTH.toString())
+      selectedViewType = VIEWS.MONTH;
+  }
+
+
   let info:CalendarInfo = {
-            today: new Date(),
-            next: false,
-            prev: false,
-            actualDay: 0,
-            actualMonth: 0,
-            actualYear: 0,
-            choosedDate: new Date(),
-            viewType : selectedItem.value
+            day: 0,
+            month: 0,
+            year: 0,
+            viewType :  selectedViewType
   };
+
   emitEvent(info);
 }
 
 
 const todayClick = () => {
   let info:CalendarInfo = {
-            today: new Date(),
-            next: false,
-            prev: false,
-            actualDay: 0,
-            actualMonth: 0,
-            actualYear: 0,
-            choosedDate: new Date(),
+            day: 0,
+            month: 0,
+            year: 0,
             viewType : VIEWS.DAY
   };
   emitEvent(info);
 }
-
 
 </script>
 
@@ -71,6 +92,7 @@ const todayClick = () => {
         </div>
         <div style="width: 50%;display: flex; direction: row;justify-content: end;margin-right: 30px;">
           <v-select label="View type" hide-details variant="solo-filled" density="compact" @update:modelValue="viewSelectChange"
+            v-model="selectedValue"
             :items="items"  item-title="text"
                             item-value="value"
                             style="width: 150px;margin-right: 30px; margin-bottom: 0px; padding-bottom: 0px;">

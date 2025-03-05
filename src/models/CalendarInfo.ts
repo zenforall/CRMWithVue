@@ -1,12 +1,12 @@
 import type { VIEWS } from "./CalendarInfoConstants";
 
 export interface CalendarInfo {
-  today:Date,
-  next:boolean,
-  prev:boolean,
-  actualDay:number,
-  actualMonth:number,
-  actualYear:number,
-  choosedDate:Date,
+  //today:Date |null,
+  //next:boolean, // forse non serve
+  //prev:boolean, // forse non serve
+  //actualDay:number,
+  day:number | null,
+  month:number | null,
+  year:number | null,
   viewType:VIEWS
 }
