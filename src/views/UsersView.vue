@@ -4,7 +4,9 @@ import { useRouter } from 'vue-router'
 import { useUserStore } from "../stores/user"
 import UserFormFilterView from "./UserFormFilterView.vue";
 import { useI18n } from "vue-i18n";
+import { UserService } from "../services/UserService";
 
+    const userService = new UserService();
     const { t } = useI18n();
     const headers = ref<TableHeader[]>([]);
     const users = ref<User[]>([]);
@@ -87,6 +89,10 @@ import { useI18n } from "vue-i18n";
 
         await userStore.getUsers()
         users.value = userStore.users;
+
+        //await userService.fetchUsers();
+        //users.value = userService.users;
+
     })
 
     const emit =defineEmits<{
