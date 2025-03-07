@@ -3,7 +3,7 @@ import { nextTick, onMounted, ref } from 'vue'
 
 import CalendarViewType from './CalendarViewType.vue'
 import { useCalendarEventBus } from './CalendarEventBus';
-import {VIEWS,EVENTS} from '../models/CalendarInfoConstants';
+import {VIEWS} from '../models/CalendarInfoConstants';
 
 import type { CalendarInfo } from '@/models/CalendarInfo';
 
@@ -114,5 +114,3 @@ const todayClick = () => {
 <style>
 
 </style>
-../utils/EventBus
-../utils/CalendarEventBus
