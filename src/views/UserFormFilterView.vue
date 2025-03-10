@@ -17,6 +17,7 @@ const filter = ref<UserFilter>({
   company: '',
   activationDate: null,
   locale: '',
+  localeLanguage : '',
   enabled: false,
 })
 

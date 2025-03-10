@@ -2,8 +2,15 @@
 import { ref } from "vue";
 import { useUserStore } from "../stores/user";
 import { useI18n } from "vue-i18n";
+import { useRouter } from 'vue-router'
 
-export class UserService {
+export class UserComposableService {
+  checkAndassignMobileStatus() {
+      throw new Error("Method not implemented.");
+  }
+
+  private emit: (event: string, message: BreadCrumbItem[]) => void;
+
   userStore = useUserStore();
   headers = ref<TableHeader[]>([]);
   users = ref<User[]>([]);
@@ -11,10 +18,12 @@ export class UserService {
   userToDelete = ref<User | null>(null);
   drawerFilter = ref(false);
   isMobile = ref(false);
+  router = useRouter();
 
-  constructor() {
+  constructor(emit: (event: breadCrumbHandler, message: BreadCrumbItem[]) => void) {
     const { t } = useI18n();
     this.initHeaders(t);
+    this.emit = emit;
   }
 
   async fetchUsers() {
@@ -46,7 +55,7 @@ export class UserService {
     this.isMobile.value = window.innerWidth < 769;
   }
 
-  editItem(item: User, emit: (event: string, data: any) => void, router: any) {
+  editItem(item: User) : void {
     this.userStore.setUserId(item.id);
     this.userStore.getUserDetail();
     if (!this.userStore.userDetail) {
@@ -54,14 +63,29 @@ export class UserService {
       return;
     }
 
-    emit("breadCrumbHandler", [
+    this.emit("breadCrumbHandler", [
       { title: "Admin", disabled: false, href: "" },
       { title: "Users", disabled: false, href: "" },
       { title: "Edit User", disabled: false, href: "" },
     ]);
 
     this.userStore.setUserAction("U");
-    router.push({ name: "userDetail" });
+    this.router.push({ name: "userDetail" });
+  }
+
+  addNewUser() : void {
+    this.userStore.setUserId("");
+    this.userStore.setUserAction("C");
+    this.userStore.getUserDetail();
+
+
+    this.emit("breadCrumbHandler", [
+      { title: "Admin", disabled: false, href: "" },
+      { title: "Users", disabled: false, href: "" },
+      { title: "New User", disabled: false, href: "" },
+    ]);
+
+    this.router.push({ name: "userDetail" });
   }
 
   askForDeletingItem(item: User) {
@@ -81,27 +105,13 @@ export class UserService {
     this.drawerFilter.value = !this.drawerFilter.value;
   }
 
-  addNewUser(emit: (event: string, data: any) => void, router: any) {
-    this.userStore.setUserId("");
-    this.userStore.setUserAction("C");
-    this.userStore.getUserDetail();
-
-    emit("breadCrumbHandler", [
-      { title: "Admin", disabled: false, href: "" },
-      { title: "Users", disabled: false, href: "" },
-      { title: "New User", disabled: false, href: "" },
-    ]);
-
-    router.push({ name: "userDetail" });
-  }
-
-  async doFilterUsersHandler(message: UserFilter) {
-    await this.userStore.search(message);
-    this.users.value = this.userStore.users;
-  }
-
   async doResetFilterUsersHandler() {
     await this.userStore.resetSearch();
     this.users.value = this.userStore.users;
   }
+
+  openCloseUserFilterDrawerHandler() : void {
+    this.drawerFilter.value = !this.drawerFilter.value;
+  }
+
 }
