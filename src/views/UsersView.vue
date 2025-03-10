@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted,onUnmounted} from "vue";
 import UserFormFilterView from "./UserFormFilterView.vue";
-import { UserComposableService } from "../composable/UserComposableService";
+import { UserComposableService } from "../composables/UserComposableService";
 
     const emit =defineEmits<{
       (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
@@ -121,3 +121,4 @@ import { UserComposableService } from "../composable/UserComposableService";
 overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
 }
 </style>
+../composables/UserComposableService
