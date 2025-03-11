@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { Qalendar } from "qalendar";
+import {Qalendar} from "qalendar";
 
 function addNewEvent() : void {
   window.alert("Add new Event");

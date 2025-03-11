@@ -6,6 +6,7 @@ import { onMounted, ref } from "vue";
 import { VTreeview } from 'vuetify/labs/VTreeview'
 import { useRouter } from 'vue-router';
 import { useMenuStore } from "../stores/menu"
+import type {BreadCrumbItem} from '../models/BreadCrumbItem';
 
 const router = useRouter();
 let items = ref<TreeNode[]>([])
@@ -14,7 +15,7 @@ const selected = ref<number[]>([]);
 const menuStore = useMenuStore();
 
 const emit =defineEmits<{
-  (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
+  (event: "breadCrumbHandler", message: BreadCrumbItem[]): void;
 }>();
 
 onMounted(async () => {
@@ -40,7 +41,7 @@ const onNodeClick = (newSelected: unknown): void => {
 
   if (result != null) {
 
-    const breadCrumbItems :  BreaCrumbItem[] = [];
+    const breadCrumbItems :  BreadCrumbItem[] = [];
     if (idToSearch === 3) {
       breadCrumbItems.push(
          {

@@ -1,4 +1,4 @@
-interface BreaCrumbItem {
+export interface BreadCrumbItem {
   title:string,
   disabled:boolean,
   href:string

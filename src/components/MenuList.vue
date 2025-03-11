@@ -2,13 +2,14 @@
 import { useMenuStore } from '@/stores/menu'
 import { useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
+import type { BreadCrumbItem } from '../models/BreadCrumbItem';
 
 const router = useRouter()
 let items = ref<TreeNode[]>([])
 const menuStore = useMenuStore()
 
 const emit =defineEmits<{
-  (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
+  (event: "breadCrumbHandler", message: BreadCrumbItem[]): void;
 }>();
 
 
@@ -28,7 +29,7 @@ const getNodeChildren = (node: TreeNode) => {
 const navigate = (node: TreeNode) => {
   if (node.link) {
 
-    const breadCrumbItems :  BreaCrumbItem[] = [];
+    const breadCrumbItems :  BreadCrumbItem[] = [];
     if (node.id === 3) {
       breadCrumbItems.push(
          {

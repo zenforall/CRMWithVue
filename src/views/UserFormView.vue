@@ -3,6 +3,7 @@
     import { useRouter } from 'vue-router';
     import { useUserStore } from "../stores/user";
     import {getValidationResult}  from "../utils/FormValidation";
+    import type { BreadCrumbItem } from "@/models/BreadCrumbItem";
 
     const router = useRouter();
     const userStore = useUserStore();
@@ -27,7 +28,7 @@
     };
 
     const emit =defineEmits<{
-      (event: "breadCrumbHandler", message: BreaCrumbItem[]): void;
+      (event: "breadCrumbHandler", message: BreadCrumbItem[]): void;
     }>();
 
     const formRef = ref();
@@ -106,7 +107,7 @@
 
     function backToUsers() {
 
-      const breadCrumbItems :  BreaCrumbItem[] = [];
+      const breadCrumbItems :  BreadCrumbItem[] = [];
       breadCrumbItems.push(
          {
             title: "Admin",

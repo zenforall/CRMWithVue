@@ -1,9 +1,11 @@
 import { defineStore } from "pinia";
 import { encryptData, decryptData } from "../utils/crypto";
+import type { BreadCrumbItem } from '../models/BreadCrumbItem';
+import { setLanguage } from "../i18n"; // Importa la funzione
 
 export const useAppStore = defineStore('appStore',{
   state: () => ({
-      breadCrumbMenu: [] as BreaCrumbItem[],
+      breadCrumbMenu: [] as BreadCrumbItem[],
       isUserAutheticated: false,
       currentSession: 0 as number,
   }),
@@ -20,6 +22,7 @@ export const useAppStore = defineStore('appStore',{
         if ("admin" === userName && "admin" === password) {
           this.isUserAutheticated = true;
           this.currentSession = Date.now();
+          setLanguage("en"); // Setta in modo dinamico la lingua per l'internazionalizzazione
         } else {
           this.isUserAutheticated = false;
           this.currentSession = 0;

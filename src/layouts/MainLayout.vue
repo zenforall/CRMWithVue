@@ -6,6 +6,7 @@ import Footer from '../components/Footer.vue'
 import { useDisplay } from 'vuetify';
 import { useAppStore } from "../stores/app"
 import { useRouter } from 'vue-router';
+import type { BreadCrumbItem } from '@/models/BreadCrumbItem';
 
 const router = useRouter();
 const drawer = ref(false);
@@ -29,9 +30,9 @@ const toggleDrawer = () => {
       drawer.value = !drawer.value;
 };
 
-const items = ref([] as BreaCrumbItem[]);
+const items = ref([] as BreadCrumbItem[]);
 
-function breadCrumbItemsHandler(message:BreaCrumbItem[]) : void {
+function breadCrumbItemsHandler(message:BreadCrumbItem[]) : void {
   items.value = message;
 }
 
