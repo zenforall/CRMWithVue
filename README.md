@@ -4,6 +4,11 @@ It is a CRM developed with Vue 3 and Vuetify 3
 
 URL: https://crmwithvue.netlify.app/
 
+Credentials: 
+               - Email: admin (I know it's not an email address, but was short)
+               - Password: admin
+
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
