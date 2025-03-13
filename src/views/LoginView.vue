@@ -2,7 +2,7 @@
 import { onMounted,onUnmounted,ref,nextTick } from "vue";
 import { VForm } from "vuetify/components";
 import { useRouter } from 'vue-router'
-import { getValidationResult } from "@/utils/formValidation";
+import { getValidationResult } from "../utils/formValidation";
 import { useAppStore } from "../stores/app"
 import { vuetify } from '../main'; // Importa l'istanza Vuetify
 
