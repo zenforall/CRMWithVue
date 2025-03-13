@@ -42,17 +42,15 @@
       let resultObject: ValidateObj = getValidationResult(validationResult);
 
       try {
-        //if (resultObject.valid) {
+        if (resultObject.valid) {
           let userToUpdate =  getUserFromUserDataForm();
           await userStore.updateUser(userToUpdate);
           displaySnackBarOK.value = true;
-        //}
-
+        }
       } catch (error) {
         displaySnackBarKO.value = true;
         console.log(error);
       }
-
     }
 
     // Ripristina i valori originali dell'utente
