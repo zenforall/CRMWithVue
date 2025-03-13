@@ -5,54 +5,26 @@ import { useUserStore } from "../stores/user"
 import UserFormFilterView from "./UserFormFilterView.vue";
 import { useI18n } from "vue-i18n";
 import type { BreadCrumbItem } from "@/models/BreadCrumbItem";
+import { useIsMobile } from "@/composables/useIsMobile";
+import { formatDate }  from "@/utils/formatData";
 
     const { t } = useI18n();
     const headers = ref<TableHeader[]>([]);
     const users = ref<User[]>([]);
-
     const showDeleteConfirmDialog = ref(false);
-
     const userToDelete = ref<User>();
-
-    const formatDate = (date: Date | null): string => {
-
-      if (date == null) return "";
-
-      return date.toLocaleDateString("it-IT", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      });
-    };
 
     const userStore = useUserStore();
     const router = useRouter();
     const drawerFilter = ref(false);
-
-    let isMobile = ref(false);
-
-    function checkAndassignMobileStatus() : void {
-      if (window.innerWidth < 769) {
-        isMobile.value = true;
-      } else {
-        isMobile.value = false;
-      }
-    }
-
-    function myEventHandler(event: any) {
-      checkAndassignMobileStatus();
-    }
+    const { isMobile } = useIsMobile(); // Verifica se la risoluzione del dispositivo è Mobile
 
     onUnmounted(async () => {
-      window.removeEventListener("resize", myEventHandler);
+      //
     })
 
     onMounted(async () => {
-
-        window.addEventListener("resize", myEventHandler);
-
         drawerFilter.value = false;
-        checkAndassignMobileStatus();
 
         headers.value.push({
             title : t("userName"),
@@ -238,7 +210,7 @@ import type { BreadCrumbItem } from "@/models/BreadCrumbItem";
         </div>
     </template>
     <template v-slot:item.activationDate="{ item }" v-if="!isMobile">
-        <span>{{ formatDate( item.activationDate  ) }}</span>
+        <span>{{ formatDate( item.activationDate,"it-IT") }}</span>
     </template>
     <template v-slot:item.actions="{ item }" v-if="!isMobile">
       <div style="text-wrap: nowrap;">

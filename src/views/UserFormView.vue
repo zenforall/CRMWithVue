@@ -1,8 +1,8 @@
 <script setup lang="ts">
     import { ref,onMounted } from "vue";
     import { useRouter } from 'vue-router';
-    import { useUserStore } from "../stores/user";
-    import {getValidationResult}  from "../utils/FormValidation";
+    import { useUserStore } from "@/stores/user";
+    import {getValidationResult}  from "@/utils/formValidation";
     import type { BreadCrumbItem } from "@/models/BreadCrumbItem";
 
     const router = useRouter();
@@ -18,14 +18,6 @@
       activationDateFormatted: '' as string,
       enable: false as boolean,
     });
-
-    const formatDate = (date: Date): string => {
-      return date.toLocaleDateString("it-IT", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      });
-    };
 
     const emit =defineEmits<{
       (event: "breadCrumbHandler", message: BreadCrumbItem[]): void;

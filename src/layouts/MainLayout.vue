@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterView } from 'vue-router'
-import MenuList from '../components/MenuList.vue'
-import Footer from '../components/Footer.vue'
+import MenuList from '@/components/MenuList.vue'
+import Footer from '@/components/Footer.vue'
 import { useDisplay } from 'vuetify';
-import { useAppStore } from "../stores/app"
+import { useAppStore } from "@/stores/app"
 import { useRouter } from 'vue-router';
 import type { BreadCrumbItem } from '@/models/BreadCrumbItem';
 
