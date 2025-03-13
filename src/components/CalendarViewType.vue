@@ -7,6 +7,7 @@ import { startOfMonth, endOfMonth, endOfWeek, eachDayOfInterval } from 'date-fns
 import { useCalendarEventBus } from '@/components/CalendarEventBus';
 import { watch } from 'vue';
 import { VIEWS } from '@/models/CalendarInfoConstants';
+import { it } from 'date-fns/locale';
 
 // Calcolo dei giorni della settimana corrente
 const today = new Date();
