@@ -2,7 +2,7 @@
     import { ref,onMounted } from "vue";
     import { useRouter } from 'vue-router';
     import { useUserStore } from "@/stores/user";
-    import {getValidationResult}  from "@/utils/formValidation";
+    //import {getValidationResult}  from "@/utils/formValidation";
     import type { BreadCrumbItem } from "@/models/BreadCrumbItem";
 
     const router = useRouter();
@@ -38,15 +38,15 @@
 
     const saveUser = async () => {
 
-      const validationResult = await formRef.value.validate();
-      let resultObject: ValidateObj = getValidationResult(validationResult);
+      //const validationResult = await formRef.value.validate();
+      //let resultObject: ValidateObj = getValidationResult(validationResult);
 
       try {
-        if (resultObject.valid) {
+        //if (resultObject.valid) {
           let userToUpdate =  getUserFromUserDataForm();
           await userStore.updateUser(userToUpdate);
           displaySnackBarOK.value = true;
-        }
+        //}
 
       } catch (error) {
         displaySnackBarKO.value = true;
