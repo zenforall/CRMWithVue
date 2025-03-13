@@ -7,3 +7,11 @@ export function formatDate(date: Date | null, locale: string): string {
     day: '2-digit',
   })
 }
+
+export function getValidationResult(validationResultObject : any) : ValidateObj {
+
+  let resultAsString: string = JSON.stringify(validationResultObject);
+  let resultObject: ValidateObj = JSON.parse(resultAsString);
+
+  return resultObject;
+}
