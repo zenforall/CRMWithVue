@@ -1,6 +1,13 @@
 # crmwithvue
 
-This template should help get you started developing with Vue 3 in Vite.
+It is a CRM developed with Vue 3 and Vuetify 3
+
+URL: https://crmwithvue.netlify.app/
+
+Credentials: 
+               - Email: admin (I know it's not an email address, but was short)
+               - Password: admin
+
 
 ## Recommended IDE Setup
 
