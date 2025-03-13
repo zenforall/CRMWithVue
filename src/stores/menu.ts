@@ -26,6 +26,7 @@ export const useMenuStore = defineStore('menuStore',{
                let administration: TreeNode;
                administration = {
                  id: 2,
+                 icon: 'mdi-application-cog',
                  title: 'Admin',
                  link : '',
                  children: [
@@ -40,6 +41,7 @@ export const useMenuStore = defineStore('menuStore',{
                let contacts: TreeNode;
                contacts = {
                  id: 20,
+                 icon: 'mdi-contacts',
                  title: 'Contacts',
                  link : '',
                  children: [
