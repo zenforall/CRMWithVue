@@ -8,6 +8,10 @@ import { getValidationResult } from "@/utils/formValidation";
 import { useAppStore } from "../stores/app"
 import { vuetify } from '../main'; // Importa l'istanza Vuetify
 
+    const  gg : string = formatDate(new Date(), "it-IT");
+
+    console.log(gg);
+
     const username = ref("");
     const password = ref("");
 
