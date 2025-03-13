@@ -17,6 +17,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.6.0",
     "@mdi/font": "^7.4.47",
     "@schedule-x/theme-default": "^2.19.0",
     "@schedule-x/vue": "^2.17.0",

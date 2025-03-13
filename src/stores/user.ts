@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { faker } from '@faker-js/faker';
 
 export const useUserStore = defineStore('userStore',{
     state: () => ({
@@ -48,11 +49,11 @@ export const useUserStore = defineStore('userStore',{
 
                     this.users.push({
                         id:i.toString(),
-                        userName: "test"+i.toString()+"@test.com",
-                        password:"testPassword"+i.toString(),
-                        email:"test"+i.toString()+"@test.com",
-                        company:"company"+i.toString(),
-                        activationDate: new Date(),
+                        userName: faker.person.firstName(),
+                        password:faker.internet.password(),
+                        email:faker.internet.email(),
+                        company:faker.company.name(),
+                        activationDate: faker.date.anytime(),
                         locale: loc,
                         localeLanguage: locLan,
                         enabled:true
