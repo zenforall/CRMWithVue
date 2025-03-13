@@ -3,7 +3,7 @@ import { onMounted,onUnmounted,ref,nextTick } from "vue";
 import { VForm } from "vuetify/components";
 import { useRouter } from 'vue-router'
 import { formatDate} from "@/utils/formatData"
-import { getValidationResult } from "@/utils/formValidation";
+//import { getValidationResult } from "@/utils/formValidation";
 
 import { useAppStore } from "../stores/app"
 import { vuetify } from '../main'; // Importa l'istanza Vuetify
@@ -28,10 +28,10 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
     };
 
     const handleLogin = async () => {
-      const validationResult = await formRef.value.validate();
-      let resultObject: ValidateObj = getValidationResult(validationResult);
+      //const validationResult = await formRef.value.validate();
+      //let resultObject: ValidateObj = getValidationResult(validationResult);
 
-      if (resultObject.valid) {
+      //if (resultObject.valid) {
           appStore.authenticateUser(username.value,password.value);
           if (appStore.isUserAutheticated) {
             // Ottiene il dettaglio dell'utente ed assegna il valore corretto del locale
@@ -45,7 +45,7 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
             loginKO.value = true;
           }
 
-      }
+      //}
 
       /* Alternativa per leggere la property valid dal json di ritorno dal metodo vlaidate()
       formRef.value.validate().then(({valid: isValid}) => {
