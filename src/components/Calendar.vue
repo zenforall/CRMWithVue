@@ -90,18 +90,18 @@ const todayClick = () => {
           <v-btn icon="mdi-chevron-right" size="small" style="margin-left: 20px;"></v-btn>
           <v-label style="margin-left: 20px;font-weight: bold;color:rgba(0, 0, 0, 0.87)">FEBRUARY 2025</v-label>
         </div>
-        <div style="width: 50%;display: flex; direction: row;justify-content: end;margin-right: 30px;">
+        <div style="width: 50%;display: flex; direction: row;justify-content: end;">
           <v-select label="View type" hide-details variant="solo-filled" density="compact" @update:modelValue="viewSelectChange"
             v-model="selectedValue"
             :items="items"  item-title="text"
                             item-value="value"
-                            style="width: 150px;margin-right: 30px; margin-bottom: 0px; padding-bottom: 0px;">
+                            style="max-width: 120px;margin-right: 30px; margin-bottom: 0px; padding-bottom: 0px;">
           </v-select>
           <v-date-input variant="solo-filled" hide-details placeholder=""
               @update:model-value="dateSelected"
               :first-day-of-week="1"
               label="Date"
-              density="compact" style="width: 200px;">
+              density="compact" style="max-width: 170px;">
             </v-date-input>
         </div>
       </div>
