@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted,onUnmounted, ref } from "vue";
 import { useRouter } from 'vue-router'
-import { useUserStore } from "../stores/user"
+import { useUserStore } from "@/stores/user"
 import UserFormFilterView from "./UserFormFilterView.vue";
 import { useI18n } from "vue-i18n";
 import type { BreadCrumbItem } from "@/models/BreadCrumbItem";

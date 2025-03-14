@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import LoginView from '../views/LoginView.vue'
-import DashboardView from '../views/DashboardView.vue'
+import LoginView from '@/views/LoginView.vue'
+import DashboardView from '@/views/DashboardView.vue'
 import CustomersView from '../views/CustomersView.vue'
-import MyCalendar from '../views/MyCalendarView.vue'
-import UsersView from '../views/UsersView.vue'
-import UserFormView from '../views/UserFormView.vue'
-import CalendarView from '../views/CalendarView.vue'
-import BlankLayout from '../layouts/BlankLayout.vue'
-import MainLayout from '../layouts/MainLayout.vue'
-import NotAvailableView from '../views/NotAvailableView.vue'
+import MyCalendar from '@/views/MyCalendarView.vue'
+import UsersView from '@/views/users/UsersView.vue'
+import UserFormView from '@/views/users/UserFormView.vue'
+import CalendarView from '@/views/CalendarView.vue'
+import BlankLayout from '@/layouts/BlankLayout.vue'
+import MainLayout from '@/layouts/MainLayout.vue'
+import NotAvailableView from '@/views/NotAvailableView.vue'
 
-import { useAppStore } from "../stores/app"
+import { useAppStore } from "@/stores/app"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
