@@ -66,7 +66,7 @@ const monthGrid = computed<string[][]>(() => {
   const grid: string[][] = [];
   let week: string[] = [];
   daysInMonth.value.forEach((day, index) => {
-    week.push(index < 7 || day.dayNumber !== '1' ? day.dayNumber : '');
+    week.push(index < 7 || day.dayNumber !== '1' ? day.dayNumber : '1');
     if ((index + 1) % 7 === 0) {
       grid.push(week);
       week = [];
@@ -76,6 +76,13 @@ const monthGrid = computed<string[][]>(() => {
   return grid;
 });
 
+const selectUnSelectCell = ref("unselectedCell");
+
+const selectedCell = () => {
+  window.alert("Ho cliccato su una cella !!!");
+}
+
+
 </script>
 
 <template>
@@ -83,46 +90,46 @@ const monthGrid = computed<string[][]>(() => {
 
     <!-- Giorno -->
     <v-scroll-x-transition>
-    <div v-if="isDay">
-      <v-row transition="slide-x-transition">
-        <v-col cols="12">
-          <v-label>TUESDAY</v-label>
-          <br/>
-          <v-label style="font-weight: bold;">{{ format(today,"dd") }}</v-label>
-        </v-col>
-      </v-row>
-      <v-row v-for="hour in allHours" :key="hour">
-        <v-col style="padding-top: 20px;padding-bottom: 0px;text-align: right;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">
-          <v-label> {{ hour }} </v-label>
-        </v-col>
-        <v-col class="border p-2" cols="11">
-          <!-- Celle della griglia, qui puoi inserire il contenuto desiderato -->
-        </v-col>
-      </v-row>
-    </div>
+      <div v-if="isDay">
+        <v-row transition="slide-x-transition">
+          <v-col cols="12">
+            <v-label>TUESDAY</v-label>
+            <br/>
+            <v-label style="font-weight: bold;">{{ format(today,"dd") }}</v-label>
+          </v-col>
+        </v-row>
+        <v-row v-for="hour in allHours" :key="hour">
+          <v-col style="padding-top: 20px;padding-bottom: 0px;text-align: right;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">
+            <v-label> {{ hour }} </v-label>
+          </v-col>
+          <v-col class="border p-2" cols="11">
+            <!-- Celle della griglia, qui puoi inserire il contenuto desiderato -->
+          </v-col>
+        </v-row>
+      </div>
   </v-scroll-x-transition>
 
   <!-- Settimana -->
   <v-scroll-x-transition>
-  <div v-if="isWeek">
-    <v-row transition="slide-x-transition">
-        <v-col></v-col>
-        <v-col v-for="day in currentWeek" :key="day.date" class="text-center font-bold">
-          <v-label>{{ day.name }}</v-label>
-          <br/>
-          <v-label style="font-weight: bold;">{{ day.date }}</v-label>
-        </v-col>
-      </v-row>
-      <!-- Righe con tutte le ore del giorno -->
-      <v-row v-for="hour in allHours" :key="hour">
-        <v-col style="padding-top: 20px;padding-bottom: 0px;text-align: right;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">
-          <v-label> {{ hour }} </v-label>
-        </v-col>
-        <v-col v-for="day in currentWeek" :key="day.date" class="border p-2">
-          <!-- Celle della griglia, qui puoi inserire il contenuto desiderato -->
-        </v-col>
-      </v-row>
-    </div>
+    <div v-if="isWeek">
+      <v-row transition="slide-x-transition">
+          <v-col></v-col>
+          <v-col v-for="day in currentWeek" :key="day.date" class="text-center font-bold">
+            <v-label>{{ day.name }}</v-label>
+            <br/>
+            <v-label style="font-weight: bold;">{{ day.date }}</v-label>
+          </v-col>
+        </v-row>
+        <!-- Righe con tutte le ore del giorno -->
+        <v-row v-for="hour in allHours" :key="hour">
+          <v-col style="padding-top: 20px;padding-bottom: 0px;text-align: right;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">
+            <v-label> {{ hour }} </v-label>
+          </v-col>
+          <v-col v-for="day in currentWeek" :key="day.date" class="border p-2">
+            <!-- Celle della griglia, qui puoi inserire il contenuto desiderato -->
+          </v-col>
+        </v-row>
+      </div>
     </v-scroll-x-transition>
 
     <!-- Month -->
@@ -134,7 +141,7 @@ const monthGrid = computed<string[][]>(() => {
         </v-col>
       </v-row>
       <v-row v-for="(week, index) in monthGrid" :key="index">
-        <v-col v-for="(day, i) in week" :key="i" class="border text-center;">
+        <v-col @click="selectedCell" :class="selectUnSelectCell" v-for="(day, i) in week" :key="i">
           <v-label class="font-weight-bold">{{ day || '' }}</v-label>
         </v-col>
       </v-row>
@@ -149,5 +156,16 @@ const monthGrid = computed<string[][]>(() => {
   min-width: 40px;
   text-align: center;
 }
+
+.selectedCell {
+  border: 2px solid black;
+  text-align: center;
+}
+
+.unselectedCell {
+  border: 1px solid grey;
+  text-align: center;
+}
+
 </style>
 

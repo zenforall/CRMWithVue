@@ -1,24 +1,38 @@
 <script setup lang="ts">
 import { nextTick, onMounted, ref } from 'vue'
-
+import { useDisplay } from 'vuetify';
 import CalendarViewType from './CalendarViewType.vue'
 import { useCalendarEventBus } from './CalendarEventBus';
 import {VIEWS} from '../models/CalendarInfoConstants';
-
 import type { CalendarInfo } from '@/models/CalendarInfo';
 
+const display = useDisplay();
 const { emitEvent } = useCalendarEventBus();
+
+const filterAlignmentClass = ref("filter-align-for-small-devices");
 
 interface Item {
   text: string;
   value: string;
 }
 
-const items :Item[]=[
+let items :Item[]=[
   { value: "0",text: 'Day' },
-  { value: "1", text: 'Week' },
   { value: "2",text: 'Month' }
 ];
+
+// Visualizza il codice della risoluzione
+// window.alert(display.name.value);
+
+if ( display.name.value === 'sm' || display.name.value === 'md' || display.name.value === 'lg' || display.name.value === 'xl') {
+  filterAlignmentClass.value = "filter-align-for-big-devices";
+  items =[
+    { value: "0",text: 'Day' },
+    { value: "1", text: 'Week' },
+    { value: "2",text: 'Month' }
+  ];
+}
+
 
 onMounted(async () => {
 
@@ -30,10 +44,7 @@ onMounted(async () => {
   };
 
   emitEvent(info);
-
 })
-
-
 
 const dateSelected = (newDate:string) => {
   console.log(newDate);
@@ -82,15 +93,22 @@ const todayClick = () => {
 
 <template>
   <v-row>
-    <v-col>
-      <div style="display: flex;direction: row; justify-content: space-between; align-items:center; width: 100%; margin-bottom: 10px;">
-        <div style="width: 50%;">
-          <v-btn color="#42b883" rounded @click="todayClick">Today</v-btn>
-          <v-btn icon="mdi-chevron-left" size="small" style="margin-left: 20px;"></v-btn>
-          <v-btn icon="mdi-chevron-right" size="small" style="margin-left: 20px;"></v-btn>
-          <v-label style="margin-left: 20px;font-weight: bold;color:rgba(0, 0, 0, 0.87)">FEBRUARY 2025</v-label>
-        </div>
-        <div style="width: 50%;display: flex; direction: row;justify-content: end;">
+    <!-- Quando il v-col occupa tutte le 12 colonne i dati contenuti sono visualizzati -->
+    <!-- su due righe diverse-->
+
+    <!-- >= 960 occupa lo spazio di 6 colonne : il 50 % dello spazio -->
+    <!-- < 960 occupa lo spazioe di 12 colonne: il 100% dello spazio -->
+    <v-col xs="12" sm="6" md="6" style="display: flex;direction: row;align-items:center;justify-content: start;">
+        <v-btn color="#42b883" rounded @click="todayClick">Today</v-btn>
+        <v-btn icon="mdi-chevron-left" size="small" style="margin-left: 20px;"></v-btn>
+        <v-btn icon="mdi-chevron-right" size="small" style="margin-left: 20px;"></v-btn>
+        <v-label style="margin-left: 20px;font-weight: bold;color:rgba(0, 0, 0, 0.87)">FEBRUARY 2025</v-label>
+     </v-col>
+
+      <!-- >= 960 occupa lo spazio di 6 colonne : il 50 % dello spazio -->
+      <!-- < 960 occupa lo spazioe di 12 colonne: il 100% dello spazio -->
+      <!-- Per utilizzare la variabile reattiva filterAlignmentClass utilizzare la proprietà :class-->
+    <v-col  xs="12" sm="6" md="6" :class="filterAlignmentClass">
           <v-select label="View type" hide-details variant="solo-filled" density="compact" @update:modelValue="viewSelectChange"
             v-model="selectedValue"
             :items="items"  item-title="text"
@@ -103,14 +121,29 @@ const todayClick = () => {
               label="Date"
               density="compact" style="max-width: 170px;">
             </v-date-input>
-        </div>
-      </div>
-
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col>
       <CalendarViewType/>
     </v-col>
   </v-row>
 </template>
 
-<style>
+<style scoped>
+
+.filter-align-for-big-devices {
+  display: flex;
+  direction: row;
+  align-items:center;
+  justify-content: end;
+}
+
+.filter-align-for-small-devices {
+  display: flex;
+  direction: row;
+  align-items:center;
+  justify-content: center;
+}
 
 </style>
