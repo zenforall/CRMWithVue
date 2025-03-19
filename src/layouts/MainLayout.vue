@@ -55,6 +55,8 @@ function manageSearchForMobileView() : void {
     <div style="display: flex; align-items: center;width: 80%;">
       <v-toolbar color="surface">
       <v-toolbar-title class="text-accent">CRM*With*Vue</v-toolbar-title>
+
+      <!--
       <v-text-field
           class="d-none d-sm-block"
           density="compact"
@@ -65,7 +67,8 @@ function manageSearchForMobileView() : void {
           hide-details
           single-line></v-text-field>
 
-          <v-text-field
+
+      <v-text-field
           v-show="displayOnMobile"
           density="compact"
           label="Search"
@@ -76,11 +79,13 @@ function manageSearchForMobileView() : void {
           single-line></v-text-field>
 
           <v-btn
-            @click="manageSearchForMobileView"
+              @click="manageSearchForMobileView"
             icon
             class="d-xs-block d-sm-none rounded-circle">
             <v-icon>mdi-magnify</v-icon>
           </v-btn>
+        -->
+
         </v-toolbar>
     </div>
     <div style="width: 20%;display: flex;flex-direction: row;justify-content: end;">

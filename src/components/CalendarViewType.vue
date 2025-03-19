@@ -77,11 +77,27 @@ const monthGrid = computed<string[][]>(() => {
 });
 
 const selectUnSelectCell = ref("unselectedCell");
-
+/*
 const selectedCell = () => {
   window.alert("Ho cliccato su una cella !!!");
 }
+*/
 
+interface SelectedCell {
+  row: number;
+  col: number;
+}
+
+// Memorizza la cella selezionata
+const selectedCell = ref<SelectedCell | null>(null);
+
+const selectCell = (row: number, col:number) => {
+  selectedCell.value = { row, col };
+};
+
+const dbClick = () => {
+  window.alert("Doppio Click");
+}
 
 </script>
 
@@ -141,7 +157,7 @@ const selectedCell = () => {
         </v-col>
       </v-row>
       <v-row v-for="(week, index) in monthGrid" :key="index">
-        <v-col @click="selectedCell" class="border p-2" v-for="(day, i) in week" :key="i">
+        <v-col @dblclick="dbClick" @click="selectCell(index, i)" :class="{'selected-cell': selectedCell?.row === index && selectedCell?.col === i}"  class="border p-2" v-for="(day, i) in week" :key="i">
           <v-label class="text-text">{{ day || '' }}</v-label>
         </v-col>
       </v-row>
@@ -157,15 +173,10 @@ const selectedCell = () => {
   text-align: center;
 }
 
-.selectedCell {
-  border: 2px solid black;
-  text-align: center;
+.selected-cell {
+  border: 1px solid #005F73 !important; /* Bordo verde marcato */
+  background-color: #F9F9F9 !important; /* Leggero verde di sfondo */
+  font-weight: bold;
 }
-
-.unselectedCell {
-  border: 1px solid grey;
-  text-align: center;
-}
-
 </style>
 

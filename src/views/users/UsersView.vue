@@ -87,7 +87,7 @@ import { formatDate }  from "@/utils/formatData";
             href : ""
          },
          {
-            title: "Edit User",
+            title: "Edit",
             disabled : false,
             href : ""
          }
@@ -190,7 +190,6 @@ import { formatDate }  from "@/utils/formatData";
     ref="vTablee"
     select-strategy="all"
     show-select
-    class="custom-table"
     :hide-default-header="isMobile"
     :items-per-page-options="[5,10]">
 
@@ -202,8 +201,8 @@ import { formatDate }  from "@/utils/formatData";
             <v-card-subtitle>Enabled: {{ item.enabled }}</v-card-subtitle>
             <v-card-text>
               <div style="display: flex;direction: row;justify-content: end;">
-                <v-icon class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
-                <v-icon class="me-2" size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
+                <v-icon color="secondary" class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
+                <v-icon color="secondary" class="me-2" size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
               </div>
             </v-card-text>
           </v-card>
@@ -226,7 +225,7 @@ import { formatDate }  from "@/utils/formatData";
       v-model="showDeleteConfirmDialog"
       width="auto">
       <v-card
-        class="bg-background"
+        color="background"
         max-width="400"
         prepend-icon="mdi-delete-alert"
         title="Confirm Deletion">
@@ -254,10 +253,6 @@ import { formatDate }  from "@/utils/formatData";
 .fixed-height-table {
 /*max-height: 60vh;*/ /* Imposta un'altezza massima */
 overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
-}
-
-.custom-table {
-  background-color: #F9F9F9; /* Colore di sfondo */
 }
 
 </style>
