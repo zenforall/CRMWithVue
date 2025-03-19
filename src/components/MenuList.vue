@@ -84,12 +84,13 @@ onMounted(async () => {
 </script>
 
 <template>
-  <v-container>
+  <v-container class="bg-background" style="height: 100%;">
     <v-list density="compact" nav open-strategy="single">
       <template v-for="(item, index) in items">
         <v-list-group v-if="hasChildren(item)">
           <template v-slot:activator="{ props }" :key="item.id">
             <v-list-item
+              class="text-text"
               v-bind="props"
               :key="item.id"
               :title="item.title"
@@ -99,6 +100,7 @@ onMounted(async () => {
           </template>
           <div v-for="(child, index) in getNodeChildren(item)">
             <v-list-item
+              class="text-text"
               link
               :key="child.id"
               :title="child.title"
@@ -109,6 +111,7 @@ onMounted(async () => {
           </div>
         </v-list-group>
         <v-list-item v-else
+          class="text-text"
           link
           @click="navigate(item)"
           :title="item.title"

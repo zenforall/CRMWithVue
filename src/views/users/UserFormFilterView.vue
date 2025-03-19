@@ -37,7 +37,7 @@ function doReset(): void {
   filter.value.activationDateTo = null;
   filter.value.enabled = false;
 
-  emitUserFilterEvent('doResetFilterUsersHandler',"DO_RESET");
+  //emitUserFilterEvent('doResetFilterUsersHandler',"DO_RESET");
 }
 </script>
 
@@ -113,12 +113,12 @@ function doReset(): void {
           flex-direction: row;
           justify-content: center;">
         <v-btn
-          color="#42b883"
+          color="primary"
           rounded
           @click="doFilter"
           style="margin-right: 5px;"
           >Search</v-btn>
-        <v-btn color="#42b883" rounded @click="doReset">Reset</v-btn>
+        <v-btn color="secondary" rounded @click="doReset">Clean</v-btn>
       </div>
     </v-col>
   </v-row>

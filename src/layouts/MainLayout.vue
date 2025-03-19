@@ -53,7 +53,8 @@ function manageSearchForMobileView() : void {
     <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
 
     <div style="display: flex; align-items: center;width: 80%;">
-      <v-toolbar-title style="color: #42b883;">CRM*With*Vue</v-toolbar-title>
+      <v-toolbar color="surface">
+      <v-toolbar-title class="text-accent">CRM*With*Vue</v-toolbar-title>
       <v-text-field
           class="d-none d-sm-block"
           density="compact"
@@ -80,6 +81,7 @@ function manageSearchForMobileView() : void {
             class="d-xs-block d-sm-none rounded-circle">
             <v-icon>mdi-magnify</v-icon>
           </v-btn>
+        </v-toolbar>
     </div>
     <div style="width: 20%;display: flex;flex-direction: row;justify-content: end;">
       <v-menu
@@ -102,14 +104,14 @@ function manageSearchForMobileView() : void {
     </div>
   </v-app-bar>
 
-  <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px;">
+  <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px solid black">
       <!--<Menu @breadCrumbHandler="breadCrumbItemsHandler"/>-->
       <MenuList @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->
   <v-main>
-      <v-breadcrumbs :items="items" color="#42b883" style="font-weight: bold;">
+      <v-breadcrumbs :items="items" color="info">
         <template v-slot:divider>
           <!--<v-icon icon="mdi-forward"></v-icon>-->
           >
@@ -119,7 +121,7 @@ function manageSearchForMobileView() : void {
   </v-main>
 
   <!-- Footer -->
-  <v-footer app>
+  <v-footer class="bg-background" app>
     <Footer/>
   </v-footer>
 </template>
@@ -130,11 +132,11 @@ function manageSearchForMobileView() : void {
 }
 
 .v-breadcrumbs-item {
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .v-toolbar-title__placeholder {
-  font-weight: bold;
+  font-weight: normal;
 }
 
 </style>

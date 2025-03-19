@@ -81,6 +81,7 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
             <v-card-text>
               <v-form ref="formRef" lazy-validation>
                 <v-text-field
+                  autofocus
                   label="Email"
                   :rules="[rules.required]"
                   v-model="username">
@@ -103,7 +104,7 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
                   @click="handleLogin"
                   @keydown.enter="handleLogin"
                   rounded
-                  color="#42b883"
+                  color="primary"
                   variant="elevated">
                   Login
                 </v-btn>

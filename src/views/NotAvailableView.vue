@@ -4,6 +4,10 @@
 
 <template>
   <v-container>
-    <div style="text-align: center; font-size: 30px;color: #42b883;">View not Available yet</div>
+    <v-row>
+      <v-col class="text-center">
+        <v-label class="text-error" style="font-size: 30px;">View not Available yet</v-label>
+      </v-col>
+    </v-row>
   </v-container>
 </template>

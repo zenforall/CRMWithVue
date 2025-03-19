@@ -127,7 +127,7 @@
       There were errors saving (check the log)
     </v-snackbar>
 
-    <v-btn color="#42b883" style="margin-bottom: 20px;"  rounded @click="backToUsers">< BACK</v-btn>
+    <v-btn color="primary" style="margin-bottom: 20px;"  rounded @click="backToUsers">&lt; BACK</v-btn>
       <v-form ref="formRef" lazy-validation>
        <v-row>
         <!-- User Name -->
@@ -199,17 +199,17 @@
         <v-col cols="12">
               <div class="right-buttons">
                 <v-btn
-                color="#42b883"
+                color="primary"
                     rounded=""
                     @click="saveUser">
-                Save User
+                Save
               </v-btn>
               <v-btn v-if="userStore.userAction === 'U'"
                       @click="cancel"
-                      color="#42b883"
+                      color="secondary"
                       rounded=""
                       style="margin-left: 5px;">
-                  Cancel
+                  Reset
                 </v-btn>
               </div>
         </v-col>
@@ -233,6 +233,6 @@
   display: flex;              /* Abilita Flexbox per i pulsanti a destra */
   justify-content: end;
   gap: 10px;                  /* Spazio tra i pulsanti a destra */
-  background-color: transparent;
+  /*background-color: transparent;*/
 }
 </style>

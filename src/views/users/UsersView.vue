@@ -169,13 +169,13 @@ import { formatDate }  from "@/utils/formatData";
 
   <v-container>
       <div style="display: flex;direction: row; justify-content: space-between;width: 100%;margin-bottom: 10px;">
-        <v-btn color="#42b883" rounded @click="addNewUser">Add User</v-btn>
+        <v-btn color="primary" rounded @click="addNewUser">+ New</v-btn>
         <div style="display: flex; direction: row; justify-items: end;">
-          <v-btn color="#42b883" rounded @click="displayFilters">Search</v-btn>
+          <v-btn color="primary" rounded @click="displayFilters">Search</v-btn>
         </div>
       </div>
 
-    <v-navigation-drawer app v-model="drawerFilter" location="right" :temporary="true" :permanent="false" style="margin-top: 10px;">
+    <v-navigation-drawer color="background" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false" style="margin-top: 10px;">
       <UserFormFilterView @openCloseUserFilterDrawerHandler="openCloseUserFilterDrawerHandler"
                           @doFilterUsersHandler="doFilterUsersHandler"
                           @doResetFilterUsersHandler="doResetFilterUsersHandler"/>
@@ -190,7 +190,7 @@ import { formatDate }  from "@/utils/formatData";
     ref="vTablee"
     select-strategy="all"
     show-select
-    class="fixed-height-table"
+    class="custom-table"
     :hide-default-header="isMobile"
     :items-per-page-options="[5,10]">
 
@@ -214,8 +214,8 @@ import { formatDate }  from "@/utils/formatData";
     </template>
     <template v-slot:item.actions="{ item }" v-if="!isMobile">
       <div style="text-wrap: nowrap;">
-          <v-icon class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
-          <v-icon class="me-2" size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
+          <v-icon color="secondary" class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
+          <v-icon color="secondary" class="me-2" size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
       </div>
      </template>
 
@@ -226,6 +226,7 @@ import { formatDate }  from "@/utils/formatData";
       v-model="showDeleteConfirmDialog"
       width="auto">
       <v-card
+        class="bg-background"
         max-width="400"
         prepend-icon="mdi-delete-alert"
         title="Confirm Deletion">
@@ -249,9 +250,14 @@ import { formatDate }  from "@/utils/formatData";
 
 </template>
 
-<style>
+<style scoped>
 .fixed-height-table {
 /*max-height: 60vh;*/ /* Imposta un'altezza massima */
 overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
 }
+
+.custom-table {
+  background-color: #F9F9F9; /* Colore di sfondo */
+}
+
 </style>

@@ -93,14 +93,14 @@ const selectedCell = () => {
       <div v-if="isDay">
         <v-row transition="slide-x-transition">
           <v-col cols="12">
-            <v-label>TUESDAY</v-label>
+            <v-label class="text-text">TUESDAY</v-label>
             <br/>
-            <v-label style="font-weight: bold;">{{ format(today,"dd") }}</v-label>
+            <v-label class="text-text" style="font-weight: bold;">{{ format(today,"dd") }}</v-label>
           </v-col>
         </v-row>
         <v-row v-for="hour in allHours" :key="hour">
           <v-col style="padding-top: 20px;padding-bottom: 0px;text-align: right;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">
-            <v-label> {{ hour }} </v-label>
+            <v-label class="text-text"> {{ hour }} </v-label>
           </v-col>
           <v-col class="border p-2" cols="11">
             <!-- Celle della griglia, qui puoi inserire il contenuto desiderato -->
@@ -115,15 +115,15 @@ const selectedCell = () => {
       <v-row transition="slide-x-transition">
           <v-col></v-col>
           <v-col v-for="day in currentWeek" :key="day.date" class="text-center font-bold">
-            <v-label>{{ day.name }}</v-label>
+            <v-label class="text-text">{{ day.name }}</v-label>
             <br/>
-            <v-label style="font-weight: bold;">{{ day.date }}</v-label>
+            <v-label class="text-text" style="font-weight: bold;">{{ day.date }}</v-label>
           </v-col>
         </v-row>
         <!-- Righe con tutte le ore del giorno -->
         <v-row v-for="hour in allHours" :key="hour">
           <v-col style="padding-top: 20px;padding-bottom: 0px;text-align: right;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">
-            <v-label> {{ hour }} </v-label>
+            <v-label class="text-text"> {{ hour }} </v-label>
           </v-col>
           <v-col v-for="day in currentWeek" :key="day.date" class="border p-2">
             <!-- Celle della griglia, qui puoi inserire il contenuto desiderato -->
@@ -137,12 +137,12 @@ const selectedCell = () => {
     <div v-if="isMonth">
       <v-row v-if="isMonth">
         <v-col v-for="day in weekDays" :key="day" class="text-center font-weight-bold">
-          <v-label> {{ day }} </v-label>
+          <v-label class="text-text"> {{ day }} </v-label>
         </v-col>
       </v-row>
       <v-row v-for="(week, index) in monthGrid" :key="index">
-        <v-col @click="selectedCell" :class="selectUnSelectCell" v-for="(day, i) in week" :key="i">
-          <v-label class="font-weight-bold">{{ day || '' }}</v-label>
+        <v-col @click="selectedCell" class="border p-2" v-for="(day, i) in week" :key="i">
+          <v-label class="text-text">{{ day || '' }}</v-label>
         </v-col>
       </v-row>
     </div>
