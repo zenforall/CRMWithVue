@@ -228,18 +228,22 @@ import { useTheme } from 'vuetify'
       width="auto">
       <v-card
         color="background"
-        max-width="400"
-        prepend-icon="mdi-delete-alert"
-        title="Confirm Deletion">
-        <v-card-text>Are you sure to delete User {{userToDelete?.userName}} ?</v-card-text>
+        max-width="400">
+        <v-card-title class="text-error">
+            <v-icon class="me-2" color="error">mdi-delete-alert</v-icon>
+            Confirm Deletion
+        </v-card-title>
+        <v-card-text class="text-text">Are you sure to delete User <strong>{{userToDelete?.userName}} </strong> ?</v-card-text>
         <template v-slot:actions>
           <div style="display: flex;flex-direction: row;justify-content: end;">
             <v-btn
+              color="primary"
               class="ms-auto"
               text="YES"
               @click="doDeleteItem();showDeleteConfirmDialog = false"
             ></v-btn>
             <v-btn
+              color="primary"
               class="ms-auto"
               text="NO"
               @click="showDeleteConfirmDialog = false"
