@@ -7,7 +7,9 @@ import { useI18n } from "vue-i18n";
 import type { BreadCrumbItem } from "@/models/BreadCrumbItem";
 import { useIsMobile } from "@/composables/useIsMobile";
 import { formatDate }  from "@/utils/formatData";
+import { useTheme } from 'vuetify'
 
+    const theme = useTheme();
     const { t } = useI18n();
     const headers = ref<TableHeader[]>([]);
     const users = ref<User[]>([]);
@@ -253,6 +255,23 @@ import { formatDate }  from "@/utils/formatData";
 .fixed-height-table {
 /*max-height: 60vh;*/ /* Imposta un'altezza massima */
 overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
+}
+
+::v-deep(.v-data-table-header__content) {
+  color: v-bind('theme.current.value.colors.info') !important;
+  font-weight: normal;
+}
+
+:deep(.v-data-table__td) {
+  color:v-bind('theme.current.value.colors.text') !important;
+}
+
+:deep(.v-table__wrapper) {
+  background-color: v-bind('theme.current.value.colors.background') !important;
+}
+
+:deep(.v-data-table-footer) {
+  background-color: v-bind('theme.current.value.colors.background') !important;
 }
 
 </style>

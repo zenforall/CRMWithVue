@@ -102,7 +102,10 @@ const todayClick = () => {
         <v-btn color="primary" rounded @click="todayClick">Today</v-btn>
         <v-btn color="secondary" icon="mdi-chevron-left" size="small" style="margin-left: 20px;"></v-btn>
         <v-btn color="secondary" icon="mdi-chevron-right" size="small" style="margin-left: 20px;"></v-btn>
-        <v-label style="margin-left: 20px;" class="text-text">FEBRUARY 2025</v-label>
+        <div style="display: flex; flex-wrap: wrap;margin-left: 5px; ">
+          <v-label class="text-text">SEPTEMBER</v-label>
+          <v-label class="text-text" style="margin-left: 2px;">2025</v-label>
+        </div>
      </v-col>
 
       <!-- >= 960 occupa lo spazio di 6 colonne : il 50 % dello spazio -->

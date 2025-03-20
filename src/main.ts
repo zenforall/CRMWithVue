@@ -25,16 +25,16 @@ import i18n from './i18n'
 const myCustomTheme = {
   dark: false, // Imposta true se vuoi una modalità scura
   colors: {
-    primary: '#00A86B', // Verde Smeraldo
-    secondary: '#005F73', // Blu Profondo
-    accent: '#FF8800', // Arancione Brillante
-    background: '#F9F9F9', // Sfondo Bianco Puro
-    surface: '#FFFFFF', // Superfici principali
-    error: '#D32F2F', // Rosso per errori
-    success: '#388E3C', // Verde per successi
-    warning: '#FBC02D', // Giallo per avvisi
-    info: '#1976D2', // Blu per informazioni
-    text: '#2C3E50', // Testo principale
+    primary: '#00A76F',  // Verde Smeraldo
+    secondary: '#E38B29', // Arancione Vivace
+    accent:  '#FF6B35',//'#FFD700', // Giallo Oro
+    background: '#F4F8F6', // Verde Acqua Chiaro
+    surface: '#FFFFFF', // Bianco Puro
+    error: '#E63946', // Rosso Corallo
+    success: '#2ECC71', // Verde Menta
+    warning: '#F39C12', // Giallo Caldo
+    info: '#3498DB', // Azzurro Brillante
+    text: '#2C3E50', // Grigio Blu
   }
 }
 

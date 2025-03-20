@@ -7,6 +7,10 @@ import { getValidationResult } from "@/utils/formatData";
 import { useAppStore } from "../stores/app"
 import { vuetify } from '../main'; // Importa l'istanza Vuetify
 
+import { useTheme } from "vuetify";
+
+    const theme = useTheme();
+
     const username = ref("");
     const password = ref("");
 
@@ -93,9 +97,9 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
                   v-model="password">
                </v-text-field>
                <v-row style="margin:0">
-                <a href="#">Recover forgotten password</a>
+                <a class="link" href="#">Recover forgotten password</a>
                 <v-row style="margin:0;justify-content: end;">
-                  <a href="#">Sign in</a>
+                  <a class="link" href="#">Sign in</a>
                 </v-row>
                </v-row>
                <br/>
@@ -115,3 +119,13 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
       </v-row>
   </v-container>
 </template>
+
+<style scoped>
+
+.link {
+  text-decoration: none;
+  color: v-bind("theme.current.value.colors.secondary");
+  transition: 0.4s;
+}
+
+</style>
