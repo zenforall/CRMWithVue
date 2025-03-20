@@ -8,6 +8,9 @@ import { useCalendarEventBus } from '@/components/CalendarEventBus';
 import { watch } from 'vue';
 import { VIEWS } from '@/models/CalendarInfoConstants';
 import { it } from 'date-fns/locale';
+import { useTheme } from 'vuetify';
+
+const theme = useTheme();
 
 // Calcolo dei giorni della settimana corrente
 const today = new Date();
@@ -174,8 +177,9 @@ const dbClick = () => {
 }
 
 .selected-cell {
-  border: 1px solid #005F73 !important; /* Bordo verde marcato */
-  background-color: #F9F9F9 !important; /* Leggero verde di sfondo */
+  border: 1px solid v-bind("theme.current.value.colors.accent") !important; /* Bordo verde marcato */
+  /*background-color: #F9F9F9 !important;*/ /* Leggero verde di sfondo */
+  color: v-bind("theme.current.value.colors.accent") !important;
   font-weight: bold;
 }
 </style>
