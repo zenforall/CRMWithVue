@@ -173,11 +173,11 @@ import { useTheme } from 'vuetify'
       <div style="display: flex;direction: row; justify-content: space-between;width: 100%;margin-bottom: 10px;">
         <v-btn color="primary" rounded @click="addNewUser">+ New</v-btn>
         <div style="display: flex; direction: row; justify-items: end;">
-          <v-btn color="primary" rounded @click="displayFilters">Search</v-btn>
+          <v-btn color="primary" rounded @click="displayFilters"><v-icon start>mdi-magnify</v-icon>Search</v-btn>
         </div>
       </div>
 
-    <v-navigation-drawer color="background" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false" style="margin-top: 10px;">
+    <v-navigation-drawer color="background" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false">
       <UserFormFilterView @openCloseUserFilterDrawerHandler="openCloseUserFilterDrawerHandler"
                           @doFilterUsersHandler="doFilterUsersHandler"
                           @doResetFilterUsersHandler="doResetFilterUsersHandler"/>
@@ -203,8 +203,8 @@ import { useTheme } from 'vuetify'
             <v-card-subtitle>Enabled: {{ item.enabled }}</v-card-subtitle>
             <v-card-text>
               <div style="display: flex;direction: row;justify-content: end;">
-                <v-icon color="secondary" class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
-                <v-icon color="secondary" class="me-2" size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
+                <v-icon color="secondary"  size="large" @click="editItem(item)">mdi-pencil</v-icon>
+                <v-icon color="secondary"  size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
               </div>
             </v-card-text>
           </v-card>
@@ -215,8 +215,8 @@ import { useTheme } from 'vuetify'
     </template>
     <template v-slot:item.actions="{ item }" v-if="!isMobile">
       <div style="text-wrap: nowrap;">
-          <v-icon color="secondary" class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
-          <v-icon color="secondary" class="me-2" size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
+          <v-icon color="secondary" class="me-2" size="large" @click="editItem(item)">mdi-pencil</v-icon>
+          <v-icon color="secondary" class="me-2" size="large" @click="askForDeletingItem(item)">mdi-delete</v-icon>
       </div>
      </template>
 
@@ -262,7 +262,7 @@ overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
 }
 
 ::v-deep(.v-data-table-header__content) {
-  color: v-bind('theme.current.value.colors.info') !important;
+  color: v-bind('theme.current.value.colors.primary') !important;
   font-weight: normal;
 }
 

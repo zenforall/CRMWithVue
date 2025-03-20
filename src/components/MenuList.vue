@@ -84,7 +84,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <v-container class="bg-background" style="height: 100%;">
+  <v-container class="bg-surface" style="height: 100%;">
     <v-list density="compact" nav open-strategy="single">
       <template v-for="(item, index) in items">
         <v-list-group v-if="hasChildren(item)">

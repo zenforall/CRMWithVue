@@ -43,9 +43,13 @@ function doReset(): void {
 
 <template>
   <v-row>
-    <v-col cols="12">
+    <v-col cols="2">
       <v-icon class="me-2" size="small" @click="closeDrawer">mdi-close</v-icon>
     </v-col>
+    <v-col style="margin-top: 10px;display: flex; flex-direction: row; justify-content: center;align-content: end;">
+      <v-label class="text-accent">USERS FILTERS</v-label>
+    </v-col>
+
     <v-col cols="12">
       <v-text-field
         v-model="filter.userName"
@@ -117,7 +121,7 @@ function doReset(): void {
           rounded
           @click="doFilter"
           style="margin-right: 5px;"
-          >Search</v-btn>
+          >Apply</v-btn>
         <v-btn color="secondary" rounded @click="doReset">Clean</v-btn>
       </div>
     </v-col>

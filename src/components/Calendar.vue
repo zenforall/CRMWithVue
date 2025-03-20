@@ -40,7 +40,7 @@ onMounted(async () => {
             day: 0,
             month: 0,
             year: 0,
-            viewType :  VIEWS.DAY
+            viewType :  VIEWS.MONTH
   };
 
   emitEvent(info);
@@ -102,9 +102,9 @@ const todayClick = () => {
         <v-btn color="primary" rounded @click="todayClick">Today</v-btn>
         <v-btn color="secondary" icon="mdi-chevron-left" size="small" style="margin-left: 20px;"></v-btn>
         <v-btn color="secondary" icon="mdi-chevron-right" size="small" style="margin-left: 20px;"></v-btn>
-        <div style="display: flex; flex-wrap: wrap;margin-left: 5px; ">
+        <div style="display: flex;flex-wrap: wrap;align-items: center; margin-left: 5px; width: 150px;justify-content: space-between;">
           <v-label class="text-text">SEPTEMBER</v-label>
-          <v-label class="text-text" style="margin-left: 2px;">2025</v-label>
+          <v-label class="text-text">2025</v-label>
         </div>
      </v-col>
 

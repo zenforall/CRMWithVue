@@ -116,7 +116,7 @@ function manageSearchForMobileView() : void {
 
   <!-- Contenuto principale -->
   <v-main>
-      <v-breadcrumbs :items="items" color="info">
+      <v-breadcrumbs :items="items" color="secondary">
         <template v-slot:divider>
           <!--<v-icon icon="mdi-forward"></v-icon>-->
           >
