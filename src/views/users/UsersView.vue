@@ -177,7 +177,7 @@ import { useTheme } from 'vuetify'
         </div>
       </div>
 
-    <v-navigation-drawer color="background" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false">
+    <v-navigation-drawer color="surface" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false">
       <UserFormFilterView @openCloseUserFilterDrawerHandler="openCloseUserFilterDrawerHandler"
                           @doFilterUsersHandler="doFilterUsersHandler"
                           @doResetFilterUsersHandler="doResetFilterUsersHandler"/>
@@ -204,7 +204,7 @@ import { useTheme } from 'vuetify'
             <v-card-text>
               <div style="display: flex;direction: row;justify-content: end;">
                 <v-icon color="secondary"  size="large" @click="editItem(item)">mdi-pencil</v-icon>
-                <v-icon color="secondary"  size="small" @click="askForDeletingItem(item)">mdi-delete</v-icon>
+                <v-icon color="secondary"  size="large" @click="askForDeletingItem(item)">mdi-delete</v-icon>
               </div>
             </v-card-text>
           </v-card>

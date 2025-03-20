@@ -35,6 +35,7 @@ const myCustomTheme = {
     warning: '#F39C12', // Giallo Caldo
     info: '#3498DB', // Azzurro Brillante
     text: '#2C3E50', // Grigio Blu
+    darkAccent: '#B84E24'
   }
 }
 

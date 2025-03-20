@@ -42,7 +42,7 @@ function doReset(): void {
 </script>
 
 <template>
-  <v-row>
+  <v-row class="bg-surface">
     <v-col cols="2">
       <v-icon class="me-2" size="small" @click="closeDrawer">mdi-close</v-icon>
     </v-col>
@@ -108,7 +108,7 @@ function doReset(): void {
       ></v-checkbox>
     </v-col>
   </v-row>
-  <v-row>
+  <v-row class="bg-surface">
     <v-col cols="12" style="padding: 0px">
       <div
         style="

@@ -162,6 +162,9 @@ const dbClick = () => {
       <v-row v-for="(week, index) in monthGrid" :key="index">
         <v-col @dblclick="dbClick" @click="selectCell(index, i)" :class="{'selected-cell': selectedCell?.row === index && selectedCell?.col === i}"  class="border p-2" v-for="(day, i) in week" :key="i">
           <v-label class="text-text">{{ day || '' }}</v-label>
+          <v-card height="10px" color="warning">
+            <v-card-title>Event 1</v-card-title>
+          </v-card>
         </v-col>
       </v-row>
     </div>
