@@ -115,11 +115,10 @@ function doReset(): void {
           justify-content: center;">
         <v-btn
           color="primary"
-          rounded
           @click="doFilter"
           style="margin-right: 5px;"
           >Apply</v-btn>
-        <v-btn color="secondary" rounded @click="doReset">Clean</v-btn>
+        <v-btn color="secondary" @click="doReset">Clean</v-btn>
       </div>
     </v-col>
   </v-row>

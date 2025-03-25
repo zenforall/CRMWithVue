@@ -171,9 +171,9 @@ import { useTheme } from 'vuetify'
 
   <v-container>
       <div style="display: flex;direction: row; justify-content: space-between;width: 100%;margin-bottom: 10px;">
-        <v-btn color="primary" rounded @click="addNewUser">+ New</v-btn>
+        <v-btn color="primary" @click="addNewUser">+ New</v-btn>
         <div style="display: flex; direction: row; justify-items: end;">
-          <v-btn color="primary" rounded @click="displayFilters"><v-icon start>mdi-magnify</v-icon>Search</v-btn>
+          <v-btn color="primary" @click="displayFilters"><v-icon start>mdi-magnify</v-icon>Search</v-btn>
         </div>
       </div>
 

@@ -99,7 +99,7 @@ const todayClick = () => {
     <!-- >= 960 occupa lo spazio di 6 colonne : il 50 % dello spazio -->
     <!-- < 960 occupa lo spazioe di 12 colonne: il 100% dello spazio -->
     <v-col xs="12" sm="6" md="6" style="display: flex;direction: row;align-items:center;justify-content: start;">
-        <v-btn color="primary" rounded @click="todayClick">Today</v-btn>
+        <v-btn color="primary" @click="todayClick">Today</v-btn>
         <v-btn color="secondary" icon="mdi-chevron-left" size="small" style="margin-left: 20px;"></v-btn>
         <v-btn color="secondary" icon="mdi-chevron-right" size="small" style="margin-left: 20px;"></v-btn>
         <div style="display: flex;flex-wrap: wrap;align-items: center; margin-left: 5px; width: 150px;justify-content: space-between;">

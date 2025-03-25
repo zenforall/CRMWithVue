@@ -78,7 +78,7 @@ import { useTheme } from "vuetify";
       Invalid Credentials
     </v-snackbar>
 
-    <v-container style="display: flex; height: 100vh;">
+    <v-container class="background" style="display: flex; height: 100vh;">
       <v-row style="align-content: center;justify-content: center;">
         <v-col cols="12" sm="8" md="4">
           <v-card class="pa-4">
@@ -107,9 +107,8 @@ import { useTheme } from "vuetify";
                   style="display: flex; min-width: 100%;"
                   @click="handleLogin"
                   @keydown.enter="handleLogin"
-                  rounded
                   color="primary"
-                  variant="elevated">
+                  variant="tonal">
                   Login
                 </v-btn>
               </v-form>
@@ -121,6 +120,17 @@ import { useTheme } from "vuetify";
 </template>
 
 <style scoped>
+
+.background_test {
+  background-image: url('../assets/login_page_background.jpg');
+  background-size: cover; /* Copre tutta la pagina */
+  background-position: center center; /* Centra l'immagine */
+  background-attachment: fixed; /* Fissa l'immagine durante lo scroll */
+  height: 100vh; /* Imposta l'altezza a 100% della finestra */
+  margin: 0; /* Rimuove i margini di default */
+  display: flex;
+}
+
 
 .link {
   text-decoration: none;
