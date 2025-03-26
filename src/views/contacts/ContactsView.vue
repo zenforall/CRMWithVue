@@ -1,8 +1,16 @@
 <script setup lang="ts">
 
+import Component1  from './Component1.vue';
+import Component2  from './Component2.vue';
+
 </script>
 
 <template>
+    <v-row>
+      <Component1></Component1>
+      <Component2></Component2>
+    </v-row>
+
     <v-row style="margin-top: 10px;margin-bottom: 10px;">
       <v-col cols="2" style="display: flex;align-items: center">
         <v-label class="text-accent" style="font-size: 25px;margin-left: 5px;">Customers</v-label>
