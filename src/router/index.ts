@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import DashboardView from '@/views/DashboardView.vue'
-import CustomersView from '../views/CustomersView.vue'
 import MyCalendar from '@/views/MyCalendarView.vue'
 import UsersView from '@/views/users/UsersView.vue'
 import UserFormView from '@/views/users/UserFormView.vue'
@@ -11,6 +10,7 @@ import MainLayout from '@/layouts/MainLayout.vue'
 import NotAvailableView from '@/views/NotAvailableView.vue'
 
 import { useAppStore } from "@/stores/app"
+import ContactsViewVue from '@/views/contacts/ContactsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -77,7 +77,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'customers',name: 'Customers', component: NotAvailableView },
+        { path: 'customers',name: 'Customers', component: ContactsViewVue },
       ],
       meta: { requiresAuth: true }
     },

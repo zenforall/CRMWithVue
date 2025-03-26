@@ -42,10 +42,16 @@ function doReset(): void {
 </script>
 
 <template>
-  <v-toolbar color="surface">
-    <v-icon size="large" @click="closeDrawer">mdi-close</v-icon>
-    <v-toolbar-title class="text-accent" style="text-align: center;">Users Filters</v-toolbar-title>
-  </v-toolbar>
+  <v-row style="margin-top:1px;margin-left: 2px;">
+    <v-col style="display: flex;padding: 0; justify-content: start;border: 0px black solid;">
+      <v-icon size="large" title="Close" @click="closeDrawer">mdi-close</v-icon>
+    </v-col>
+  </v-row>
+  <v-row style="margin-top:0px;">
+    <v-col style="display: flex;justify-content: center;">
+      <v-label class="text-accent" style="font-size: 20px;font-weight: 400; opacity: 0.87;">Users Filters</v-label>
+    </v-col>
+  </v-row>
   <v-row class="bg-surface">
     <v-col cols="12">
       <v-text-field

@@ -103,8 +103,8 @@ const todayClick = () => {
         <v-btn color="secondary" icon="mdi-chevron-left" size="small" style="margin-left: 20px;"></v-btn>
         <v-btn color="secondary" icon="mdi-chevron-right" size="small" style="margin-left: 20px;"></v-btn>
         <div style="display: flex;flex-wrap: wrap;align-items: center; margin-left: 5px; width: 150px;justify-content: space-between;">
-          <v-label class="text-text">SEPTEMBER</v-label>
-          <v-label class="text-text">2025</v-label>
+          <v-label class="text-text" style="opacity: 0.87;">SEPTEMBER</v-label>
+          <v-label class="text-text" style="opacity: 0.87;">2025</v-label>
         </div>
      </v-col>
 

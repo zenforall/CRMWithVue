@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref,onMounted } from 'vue';
 import { RouterView } from 'vue-router'
 import MenuList from '@/components/MenuList.vue'
 import Footer from '@/components/Footer.vue'
@@ -45,7 +45,6 @@ function manageSearchForMobileView() : void {
   displayAfterClickingSearchButtonOnMobileView.value = true;
 }
 
-
 </script>
 
 <template>
@@ -54,7 +53,7 @@ function manageSearchForMobileView() : void {
 
     <div style="display: flex; align-items: center;width: 80%;">
       <v-toolbar color="surface">
-      <v-toolbar-title class="text-accent">CRM*With*Vue</v-toolbar-title>
+      <v-toolbar-title  class="text-accent">CRM*With*Vue</v-toolbar-title>
 
       <!--
       <v-text-field
@@ -115,13 +114,13 @@ function manageSearchForMobileView() : void {
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->
-  <v-main>
+  <v-main style="margin-top: 10px;margin-left: 5px;">
+      <!--
       <v-breadcrumbs :items="items" color="secondary">
         <template v-slot:divider>
-          <!--<v-icon icon="mdi-forward"></v-icon>-->
-          >
         </template>
       </v-breadcrumbs>
+    -->
       <RouterView @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-main>
 

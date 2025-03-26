@@ -168,14 +168,21 @@ import { useTheme } from 'vuetify'
 </script>
 
 <template>
-
-  <v-container>
-      <div style="display: flex;direction: row; justify-content: space-between;width: 100%;margin-bottom: 10px;">
-        <v-btn color="primary" @click="addNewUser">+ New</v-btn>
-        <div style="display: flex; direction: row; justify-items: end;">
-          <v-btn color="primary" @click="displayFilters"><v-icon start>mdi-magnify</v-icon>Search</v-btn>
-        </div>
-      </div>
+  <v-panel>
+      <!--<div style="display: flex;direction: row; justify-content: space-around;width: 100%;margin-bottom: 10px;">-->
+        <v-row style="display: flex;align-items: center;background-color: white;">
+          <v-col>
+            <v-label class="text-accent" style="font-size: 20px;font-weight: 400;opacity: 0.87;">Users</v-label>
+            <v-btn color="primary" style="margin-left: 10px;" @click="addNewUser">Create</v-btn>
+          </v-col>
+          <v-col style="display: flex;justify-content: end;margin-right: 5px;">
+              <v-btn color="primary" @click="displayFilters"><v-icon start>mdi-magnify</v-icon>Filters</v-btn>
+          </v-col>
+        </v-row>
+        <v-row style="margin-bottom: 10px;">
+          <v-divider thickness="2"></v-divider>
+        </v-row>
+      <!-- </div> -->
 
     <v-navigation-drawer color="surface" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false">
       <UserFormFilterView @openCloseUserFilterDrawerHandler="openCloseUserFilterDrawerHandler"
@@ -221,7 +228,7 @@ import { useTheme } from 'vuetify'
      </template>
 
   </v-data-table>
-</v-container>
+</v-panel>
 
 <v-dialog
       v-model="showDeleteConfirmDialog"
@@ -229,8 +236,8 @@ import { useTheme } from 'vuetify'
       <v-card
         color="background"
         max-width="400">
-        <v-card-title class="text-error">
-            <v-icon class="me-2" color="error">mdi-delete-alert</v-icon>
+        <v-card-title>
+            <v-icon class="me-2">mdi-delete-alert</v-icon>
             Confirm Deletion
         </v-card-title>
         <v-card-text class="text-text">Are you sure to delete User <strong>{{userToDelete?.userName}} </strong> ?</v-card-text>

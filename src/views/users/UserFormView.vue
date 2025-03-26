@@ -118,7 +118,7 @@
 </script>
 
 <template>
-  <v-container>
+  <v-panel>
     <v-snackbar :timeout="1000" color="success" location="center" v-model="displaySnackBarOK">
       <div style="text-align: center;">User Saved Successfully</div>
     </v-snackbar>
@@ -127,7 +127,18 @@
       There were errors saving (check the log)
     </v-snackbar>
 
-    <v-btn color="primary" style="margin-bottom: 20px;"  @click="backToUsers">&lt; BACK</v-btn>
+    <v-row style="display: flex;align-items: center;background-color: white;">
+      <v-col cols="1">
+        <v-btn color="primary" style="margin-left: 12px;"  @click="backToUsers">&lt; BACK</v-btn>
+      </v-col>
+      <v-col cols="9" style="display: flex;justify-content: start;">
+        <v-label v-if="formData.id == ''" class="text-accent" style="font-size: 20px;font-weight: 400;opacity: 0.87;">Create User</v-label>
+        <v-label v-if="formData.id != ''" class="text-accent" style="font-size: 20px;font-weight: 400;opacity: 0.87;">Edit User</v-label>
+      </v-col>
+    </v-row>
+    <v-row style="margin-bottom: 10px;">
+      <v-divider thickness="2"></v-divider>
+    </v-row>
       <v-form ref="formRef" lazy-validation>
        <v-row>
         <!-- User Name -->
@@ -203,17 +214,18 @@
                     @click="saveUser">
                 Save
               </v-btn>
-              <v-btn v-if="userStore.userAction === 'U'"
+              <!--<v-btn v-if="userStore.userAction === 'U'"-->
+                <v-btn
                       @click="cancel"
                       color="secondary"
                       style="margin-left: 5px;">
-                  Reset
+                  Cancel
                 </v-btn>
               </div>
         </v-col>
       </v-row>
     </v-form>
-  </v-container>
+  </v-panel>
 </template>
 
 <style scoped>

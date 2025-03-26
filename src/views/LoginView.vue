@@ -78,57 +78,54 @@ import { useTheme } from "vuetify";
       Invalid Credentials
     </v-snackbar>
 
-    <v-container class="background" style="display: flex; height: 100vh;">
-      <v-row style="align-content: center;justify-content: center;">
-        <v-col cols="12" sm="8" md="4">
-          <v-card class="pa-4">
-            <v-card-text>
-              <v-form ref="formRef" lazy-validation>
-                <v-text-field
-                  autofocus
-                  label="Email"
-                  :rules="[rules.required]"
-                  v-model="username">
-               </v-text-field>
-                <v-text-field
-                  label="Password"
-                  :rules="[rules.required]"
-                  type="password"
-                  v-model="password">
-               </v-text-field>
-               <v-row style="margin:0">
-                <a class="link" href="#">Recover forgotten password</a>
-                <v-row style="margin:0;justify-content: end;">
-                  <a class="link" href="#">Sign in</a>
+    <div class="background">
+      <v-container>
+        <v-row style="display: flex; height: 98vh;justify-content: center;align-items: center;">
+          <v-col cols="12" sm="8" md="4">
+            <v-card class="pa-4">
+              <v-card-text>
+                <v-form ref="formRef" lazy-validation>
+                  <v-text-field
+                    autofocus
+                    label="Email"
+                    :rules="[rules.required]"
+                    v-model="username">
+                </v-text-field>
+                  <v-text-field
+                    label="Password"
+                    :rules="[rules.required]"
+                    type="password"
+                    v-model="password">
+                </v-text-field>
+                <v-row style="margin:0">
+                  <a class="link" href="#">Recover forgotten password</a>
+                  <v-row style="margin:0;justify-content: end;">
+                    <a class="link" href="#">Sign in</a>
+                  </v-row>
                 </v-row>
-               </v-row>
-               <br/>
-                <v-btn
-                  style="display: flex; min-width: 100%;"
-                  @click="handleLogin"
-                  @keydown.enter="handleLogin"
-                  color="primary"
-                  variant="tonal">
-                  Login
-                </v-btn>
-              </v-form>
-            </v-card-text>
-        </v-card>
-        </v-col>
-      </v-row>
-  </v-container>
+                <br/>
+                  <v-btn
+                    style="display: flex; min-width: 100%;"
+                    @click="handleLogin"
+                    @keydown.enter="handleLogin"
+                    color="primary">
+                    Login
+                  </v-btn>
+                </v-form>
+              </v-card-text>
+          </v-card>
+          </v-col>
+        </v-row>
+    </v-container>
+  </div>
 </template>
 
 <style scoped>
 
-.background_test {
-  background-image: url('../assets/login_page_background.jpg');
+.background {
+  background-image: url('../assets/background_login_5.jpg');
   background-size: cover; /* Copre tutta la pagina */
-  background-position: center center; /* Centra l'immagine */
-  background-attachment: fixed; /* Fissa l'immagine durante lo scroll */
   height: 100vh; /* Imposta l'altezza a 100% della finestra */
-  margin: 0; /* Rimuove i margini di default */
-  display: flex;
 }
 
 
