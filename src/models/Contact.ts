@@ -14,9 +14,12 @@ interface Contact {
   phone1:string,
   phone2:string,
   notes:string,
-  type: ContactType,
-  files:ContactFile[],
-  events:ContactEvent[] // Eventi accaduti al Customer
+  enabled:boolean,
+  locale:string,          // https://www.science.co.il/language/Locale-codes.php
+  localeLanguage:string,  // https://www.science.co.il/language/Locale-codes.php
+  type: ContactType |null,
+  files:ContactFile[] |null,
+  events:ContactEvent[] |null // Eventi accaduti al Customer
 }
 
 enum ContactType {

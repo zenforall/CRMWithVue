@@ -168,7 +168,7 @@ import { useTheme } from 'vuetify'
 </script>
 
 <template>
-  <v-panel>
+  <v-card style="margin-right: 25px;">
       <!--<div style="display: flex;direction: row; justify-content: space-around;width: 100%;margin-bottom: 10px;">-->
         <v-row style="display: flex;align-items: center;background-color: white;">
           <v-col>
@@ -228,7 +228,7 @@ import { useTheme } from 'vuetify'
      </template>
 
   </v-data-table>
-</v-panel>
+</v-card>
 
 <v-dialog
       v-model="showDeleteConfirmDialog"
@@ -269,7 +269,7 @@ overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
 }
 
 ::v-deep(.v-data-table-header__content) {
-  color: v-bind('theme.current.value.colors.primary') !important;
+  color: v-bind('theme.current.value.colors.secondary') !important;
   font-weight: normal;
 }
 
@@ -278,11 +278,11 @@ overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
 }
 
 :deep(.v-table__wrapper) {
-  background-color: v-bind('theme.current.value.colors.background') !important;
+  background-color: white !important;
 }
 
 :deep(.v-data-table-footer) {
-  background-color: v-bind('theme.current.value.colors.background') !important;
+  background-color: /*v-bind('theme.current.value.colors.background')*/ white !important;
 }
 
 </style>

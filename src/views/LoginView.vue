@@ -87,12 +87,14 @@ import { useTheme } from "vuetify";
                 <v-form ref="formRef" lazy-validation>
                   <v-text-field
                     autofocus
+                    variant="underlined"
                     label="Email"
                     :rules="[rules.required]"
                     v-model="username">
                 </v-text-field>
                   <v-text-field
                     label="Password"
+                    variant="underlined"
                     :rules="[rules.required]"
                     type="password"
                     v-model="password">
@@ -123,9 +125,10 @@ import { useTheme } from "vuetify";
 <style scoped>
 
 .background {
-  background-image: url('../assets/background_login_5.jpg');
-  background-size: cover; /* Copre tutta la pagina */
-  height: 100vh; /* Imposta l'altezza a 100% della finestra */
+  background: linear-gradient(135deg, #28a745, #ff7f32); /* Verde e arancione */
+  /*background-image: url('../assets/background_login_5.jpg');*/
+  /*background-size: cover;*/ /* Copre tutta la pagina */
+  /*height: 100vh;*/ /* Imposta l'altezza a 100% della finestra */
 }
 
 

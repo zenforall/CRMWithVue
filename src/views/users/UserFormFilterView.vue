@@ -42,23 +42,22 @@ function doReset(): void {
 </script>
 
 <template>
-  <v-row style="margin-top:1px;margin-left: 2px;">
-    <v-col style="display: flex;padding: 0; justify-content: start;border: 0px black solid;">
-      <v-icon size="large" title="Close" @click="closeDrawer">mdi-close</v-icon>
-    </v-col>
-  </v-row>
   <v-row style="margin-top:0px;">
-    <v-col style="display: flex;justify-content: center;">
-      <v-label class="text-accent" style="font-size: 20px;font-weight: 400; opacity: 0.87;">Users Filters</v-label>
+    <v-col style="display: flex;justify-content: start;align-items: center;">
+      <v-label class="text-accent" style="margin-left: 5px; font-size: 20px;font-weight: 400; opacity: 0.87;">Users Filters</v-label>
+    </v-col>
+    <v-col style="display: flex;margin-right: 10px; justify-content: end;align-items: center; border: 0px black solid;">
+      <v-btn color="secondary" title="Close" @click="closeDrawer" icon="mdi-close" size="x-small"></v-btn>
     </v-col>
   </v-row>
   <v-row class="bg-surface">
     <v-col cols="12">
       <v-text-field
         v-model="filter.userName"
+        variant="underlined"
         label="User Name"
         width="90%"
-        style="margin-left: 5px"
+        style="margin-left: 5px;"
         density="compact"
       >
       </v-text-field>
@@ -68,6 +67,7 @@ function doReset(): void {
     <v-col cols="12">
       <v-text-field
         v-model="filter.email"
+        variant="underlined"
         label="Email"
         width="90%"
         style="margin-left: 5px"
@@ -79,6 +79,7 @@ function doReset(): void {
       <v-text-field
         v-model="filter.company"
         label="Company"
+        variant="underlined"
         width="90%"
         style="margin-left: 5px"
         density="compact"
@@ -90,6 +91,7 @@ function doReset(): void {
         v-model="filter.activationDateFrom"
         label="From"
         width="90%"
+        variant="underlined"
         density="compact"
       >
       </v-date-input>
@@ -98,6 +100,7 @@ function doReset(): void {
       <v-date-input
         v-model="filter.activationDateTo"
         width="90%"
+        variant="underlined"
         label="To"
         density="compact"
       >
@@ -111,7 +114,7 @@ function doReset(): void {
       ></v-checkbox>
     </v-col>
   </v-row>
-  <v-row class="bg-surface">
+  <v-row class="bg-surface" style="margin:0px">
     <v-col cols="12" style="padding: 0px">
       <div
         style="

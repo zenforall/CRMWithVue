@@ -115,19 +115,23 @@ function manageSearchForMobileView() : void {
 
   <!-- Contenuto principale -->
   <v-main style="margin-top: 10px;margin-left: 5px;">
+
       <!--
       <v-breadcrumbs :items="items" color="secondary">
         <template v-slot:divider>
         </template>
-      </v-breadcrumbs>
-    -->
+       </v-breadcrumbs>
+      -->
+
       <RouterView @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-main>
 
   <!-- Footer -->
+  <!--
   <v-footer class="bg-background" app>
     <Footer/>
   </v-footer>
+-->
 </template>
 <style>
 .rounded-circle {

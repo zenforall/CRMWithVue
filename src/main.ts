@@ -28,7 +28,7 @@ const myCustomTheme = {
     primary: '#00A76F',  // Verde Smeraldo
     secondary: '#E38B29', // Arancione Vivace
     accent:  '#FF6B35',//'#FFD700', // Giallo Oro
-    background: '#F4F8F6', // Verde Acqua Chiaro
+    background: '#F4F5FA', // Verde Acqua Chiaro
     surface: '#FFFFFF', // Bianco Puro
     error: '#E63946', // Rosso Corallo
     success: '#2ECC71', // Verde Menta

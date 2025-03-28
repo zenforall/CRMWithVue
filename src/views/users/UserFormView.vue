@@ -136,14 +136,15 @@
         <v-label v-if="formData.id != ''" class="text-accent" style="font-size: 20px;font-weight: 400;opacity: 0.87;">Edit User</v-label>
       </v-col>
     </v-row>
-    <v-row style="margin-bottom: 10px;">
+    <v-row>
       <v-divider thickness="2"></v-divider>
     </v-row>
-      <v-form ref="formRef" lazy-validation>
+      <v-form ref="formRef" lazy-validation style="margin-top: 50px;">
        <v-row>
         <!-- User Name -->
         <v-col cols="12" md="6">
           <v-text-field
+            variant="underlined"
             :rules="[rules.required]"
             v-model="formData.userName"
             label="User Name"
@@ -155,6 +156,7 @@
         <!-- Password -->
         <v-col cols="12" md="6">
           <v-text-field
+            variant="underlined"
             :rules="[rules.required]"
             v-model="formData.password"
             append-inner-icon="mdi-eye"
@@ -168,6 +170,7 @@
         <!-- Email -->
         <v-col cols="12" md="6">
           <v-text-field
+            variant="underlined"
             :rules="[rules.required,rules.emailValidation]"
             v-model="formData.email"
             label="Email"
@@ -180,6 +183,7 @@
         <!-- Company -->
         <v-col cols="12" md="6">
           <v-text-field
+            variant="underlined"
             :rules="[rules.required]"
             v-model="formData.company"
             label="Company"
@@ -190,6 +194,7 @@
         <!-- Activation Date -->
         <v-col cols="12" md="6">
             <v-date-input
+              variant="underlined"
               :rules="[rules.required]"
               :first-day-of-week="1"
               label="Activation Date"
