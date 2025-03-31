@@ -92,13 +92,18 @@ const todayClick = () => {
 </script>
 
 <template>
-  <v-row>
+  <v-card style="margin-right: 5px;background-color: white;">
+  <v-row xs="12" sm="6" md="6">
     <!-- Quando il v-col occupa tutte le 12 colonne i dati contenuti sono visualizzati -->
     <!-- su due righe diverse-->
 
     <!-- >= 960 occupa lo spazio di 6 colonne : il 50 % dello spazio -->
     <!-- < 960 occupa lo spazioe di 12 colonne: il 100% dello spazio -->
-    <v-col xs="12" sm="6" md="6" style="display: flex;direction: row;align-items:center;justify-content: start;">
+    <v-col  style="display: flex;direction: row;
+                                        align-items:center;
+                                        justify-content: start;
+                                        margin-top: 10px;
+                                        margin-left: 5px;">
         <v-btn color="primary" @click="todayClick">Today</v-btn>
         <v-btn color="secondary" icon="mdi-chevron-left" size="small" style="margin-left: 20px;"></v-btn>
         <v-btn color="secondary" icon="mdi-chevron-right" size="small" style="margin-left: 20px;"></v-btn>
@@ -111,12 +116,12 @@ const todayClick = () => {
       <!-- >= 960 occupa lo spazio di 6 colonne : il 50 % dello spazio -->
       <!-- < 960 occupa lo spazioe di 12 colonne: il 100% dello spazio -->
       <!-- Per utilizzare la variabile reattiva filterAlignmentClass utilizzare la proprietà :class-->
-    <v-col  xs="12" sm="6" md="6" :class="filterAlignmentClass">
+    <v-col :class="filterAlignmentClass" style="margin-right: 5px;margin-top: 10px;">
           <v-select label="View type" hide-details variant="solo-filled" density="compact" @update:modelValue="viewSelectChange"
             v-model="selectedValue"
             :items="items"  item-title="text"
                             item-value="value"
-                            style="max-width: 120px;margin-right: 30px; margin-bottom: 0px; padding-bottom: 0px;">
+                            style="max-width: 120px;margin-right: 30px;">
           </v-select>
           <v-date-input variant="solo-filled" hide-details placeholder=""
               @update:model-value="dateSelected"
@@ -131,6 +136,7 @@ const todayClick = () => {
       <CalendarViewType/>
     </v-col>
   </v-row>
+</v-card>
 </template>
 
 <style scoped>

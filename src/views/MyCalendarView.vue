@@ -5,9 +5,7 @@ import Calendar from '@/components/Calendar.vue';
 </script>
 
 <template>
-  <v-container>
-    <Calendar></Calendar>
-  </v-container>
+   <Calendar></Calendar>
 </template>
 
 <style>
