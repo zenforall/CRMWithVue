@@ -28,51 +28,7 @@ const getNodeChildren = (node: TreeNode) => {
 // Funzione di navigazione
 const navigate = (node: TreeNode) => {
   if (node.link) {
-
-    const breadCrumbItems :  BreadCrumbItem[] = [];
-    if (node.id === 3) {
-      breadCrumbItems.push(
-         {
-            title: "Admin",
-            disabled : false,
-            href : ""
-         },
-         {
-            title: "Users",
-            disabled : false,
-            href : ""
-         }
-      );
-    } else if (node.id === 4) {
-        breadCrumbItems.push(
-          {
-              title: "Admin",
-              disabled : false,
-              href : ""
-          },
-          {
-              title: "Companies",
-              disabled : false,
-              href : ""
-          }
-        );
-    } else if (node.id === 70) {
-        breadCrumbItems.push(
-          {
-              title: "My Calendar",
-              disabled : false,
-              href : ""
-          },
-          {
-              title: "",
-              disabled : false,
-              href : ""
-          }
-        );
-    }
-
-    emit("breadCrumbHandler",breadCrumbItems);
-
+    /* Qui si puà mettere della logic ain fase di navigazione */
     router.push(node.link)
   }
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts" >
-import { onMounted,ref } from 'vue';
+import { onMounted } from 'vue';
 import { DoughnutChart,BarChart,LineChart,PieChart } from 'vue-chart-3';
 import { Chart, registerables } from "chart.js";
 

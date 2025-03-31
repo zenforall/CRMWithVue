@@ -28,6 +28,21 @@ import { useTheme } from 'vuetify'
     onMounted(async () => {
         drawerFilter.value = false;
 
+        const breadCrumbItems :  BreadCrumbItem[] = [];
+        breadCrumbItems.push(
+          {
+              title: "Admin",
+              disabled : false,
+              href : ""
+          },
+          {
+              title: "Users",
+              disabled : false,
+              href : ""
+          }
+        );
+        emit("breadCrumbHandler",breadCrumbItems);
+
         headers.value.push({
             title : t("userName"),
             value: "userName",
