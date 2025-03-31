@@ -41,9 +41,11 @@ function logout(): void {
   router.push("/");
 }
 
+/*
 function manageSearchForMobileView() : void {
   displayAfterClickingSearchButtonOnMobileView.value = true;
 }
+*/
 
 </script>
 
@@ -53,7 +55,7 @@ function manageSearchForMobileView() : void {
 
     <div style="display: flex; align-items: center;width: 80%;">
       <v-toolbar color="surface">
-      <v-toolbar-title  class="text-accent">CRM*With*Vue</v-toolbar-title>
+      <v-toolbar-title  class="text-secondary">CRM*With*Vue</v-toolbar-title>
 
       <!--
       <v-text-field
@@ -114,15 +116,12 @@ function manageSearchForMobileView() : void {
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->
-  <v-main style="margin-top: 10px;margin-left: 5px;">
-
-      <!--
+  <v-main style="margin-left: 5px;">
       <v-breadcrumbs :items="items" color="secondary">
         <template v-slot:divider>
+          /
         </template>
        </v-breadcrumbs>
-      -->
-
       <RouterView @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-main>
 

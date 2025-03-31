@@ -168,21 +168,15 @@ import { useTheme } from 'vuetify'
 </script>
 
 <template>
-  <v-card style="margin-right: 25px;">
-      <!--<div style="display: flex;direction: row; justify-content: space-around;width: 100%;margin-bottom: 10px;">-->
-        <v-row style="display: flex;align-items: center;background-color: white;">
-          <v-col>
-            <v-label class="text-accent" style="font-size: 20px;font-weight: 400;opacity: 0.87;">Users</v-label>
+  <v-card style="margin-right: 5px;">
+    <v-row style="display: flex;align-items: center;background-color: white;">
+          <v-col style="margin-top: 10px;">
             <v-btn color="primary" style="margin-left: 10px;" @click="addNewUser">Create</v-btn>
           </v-col>
-          <v-col style="display: flex;justify-content: end;margin-right: 5px;">
+          <v-col style="display: flex;justify-content: end;margin-right: 5px;margin-top: 10px;">
               <v-btn color="primary" @click="displayFilters"><v-icon start>mdi-magnify</v-icon>Filters</v-btn>
           </v-col>
-        </v-row>
-        <v-row style="margin-bottom: 10px;">
-          <v-divider thickness="2"></v-divider>
-        </v-row>
-      <!-- </div> -->
+    </v-row>
 
     <v-navigation-drawer color="surface" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false">
       <UserFormFilterView @openCloseUserFilterDrawerHandler="openCloseUserFilterDrawerHandler"
@@ -240,7 +234,7 @@ import { useTheme } from 'vuetify'
             <v-icon class="me-2">mdi-delete-alert</v-icon>
             Confirm Deletion
         </v-card-title>
-        <v-card-text class="text-text">Are you sure to delete User <strong>{{userToDelete?.userName}} </strong> ?</v-card-text>
+        <v-card-text class="text-secondary">Are you sure to delete User <strong>{{userToDelete?.userName}} </strong> ?</v-card-text>
         <template v-slot:actions>
           <div style="display: flex;flex-direction: row;justify-content: end;">
             <v-btn

@@ -1,5 +1,5 @@
 <script setup lang="ts" >
-import { onMounted,onUnmounted,ref,nextTick } from "vue";
+import { onMounted,onUnmounted,ref} from "vue";
 import { VForm } from "vuetify/components";
 import { useRouter } from 'vue-router'
 import { getValidationResult } from "@/utils/formatData";
@@ -78,11 +78,11 @@ import { useTheme } from "vuetify";
       Invalid Credentials
     </v-snackbar>
 
-    <div class="background">
+    <div>
       <v-container>
-        <v-row style="display: flex; height: 98vh;justify-content: center;align-items: center;">
+        <v-row style=" display: flex; height: 98vh;justify-content: center;align-items: center;">
           <v-col cols="12" sm="8" md="4">
-            <v-card class="pa-4">
+            <v-card class="pa-4" style="background-color: white;">
               <v-card-text>
                 <v-form ref="formRef" lazy-validation>
                   <v-text-field
@@ -125,7 +125,7 @@ import { useTheme } from "vuetify";
 <style scoped>
 
 .background {
-  background: linear-gradient(135deg, #28a745, #ff7f32); /* Verde e arancione */
+  /*background: linear-gradient(135deg, #28a745, #ff7f32);*/ /* Verde e arancione */
   /*background-image: url('../assets/background_login_5.jpg');*/
   /*background-size: cover;*/ /* Copre tutta la pagina */
   /*height: 100vh;*/ /* Imposta l'altezza a 100% della finestra */

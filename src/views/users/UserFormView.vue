@@ -118,7 +118,7 @@
 </script>
 
 <template>
-  <v-panel>
+  <v-card style="background-color: white;margin-right: 5px;">
     <v-snackbar :timeout="1000" color="success" location="center" v-model="displaySnackBarOK">
       <div style="text-align: center;">User Saved Successfully</div>
     </v-snackbar>
@@ -127,19 +127,12 @@
       There were errors saving (check the log)
     </v-snackbar>
 
-    <v-row style="display: flex;align-items: center;background-color: white;">
-      <v-col cols="1">
-        <v-btn color="primary" style="margin-left: 12px;"  @click="backToUsers">&lt; BACK</v-btn>
-      </v-col>
-      <v-col cols="9" style="display: flex;justify-content: start;">
-        <v-label v-if="formData.id == ''" class="text-accent" style="font-size: 20px;font-weight: 400;opacity: 0.87;">Create User</v-label>
-        <v-label v-if="formData.id != ''" class="text-accent" style="font-size: 20px;font-weight: 400;opacity: 0.87;">Edit User</v-label>
+    <v-row style="display: flex;align-items: center;">
+      <v-col cols="1" style="margin-top: 10px;">
+        <v-btn color="primary" style="margin-left: 5px;"  @click="backToUsers">&lt; BACK</v-btn>
       </v-col>
     </v-row>
-    <v-row>
-      <v-divider thickness="2"></v-divider>
-    </v-row>
-      <v-form ref="formRef" lazy-validation style="margin-top: 50px;">
+      <v-form ref="formRef" lazy-validation style="margin-top: 10px;margin-left: 10px;margin-right: 10px;">
        <v-row>
         <!-- User Name -->
         <v-col cols="12" md="6">
@@ -212,7 +205,7 @@
           ></v-checkbox>
         </v-col>
 
-        <v-col cols="12">
+        <v-col cols="12" style="margin-bottom: 10px;">
               <div class="right-buttons">
                 <v-btn
                 color="primary"
@@ -230,7 +223,7 @@
         </v-col>
       </v-row>
     </v-form>
-  </v-panel>
+  </v-card>
 </template>
 
 <style scoped>

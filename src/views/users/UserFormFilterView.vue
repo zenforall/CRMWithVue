@@ -44,10 +44,10 @@ function doReset(): void {
 <template>
   <v-row style="margin-top:0px;">
     <v-col style="display: flex;justify-content: start;align-items: center;">
-      <v-label class="text-accent" style="margin-left: 5px; font-size: 20px;font-weight: 400; opacity: 0.87;">Users Filters</v-label>
+      <v-label class="text-secondary" style="margin-left: 5px; font-size: 20px;font-weight: 400; opacity: 0.87;">Filters</v-label>
     </v-col>
     <v-col style="display: flex;margin-right: 10px; justify-content: end;align-items: center; border: 0px black solid;">
-      <v-btn color="secondary" title="Close" @click="closeDrawer" icon="mdi-close" size="x-small"></v-btn>
+      <v-btn color="primary" title="Close" @click="closeDrawer" icon="mdi-close" size="x-small"></v-btn>
     </v-col>
   </v-row>
   <v-row class="bg-surface">

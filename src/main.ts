@@ -1,4 +1,4 @@
-//import './assets/main.css'
+import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -25,17 +25,17 @@ import i18n from './i18n'
 const myCustomTheme = {
   dark: false, // Imposta true se vuoi una modalità scura
   colors: {
-    primary: '#00A76F',  // Verde Smeraldo
-    secondary: '#E38B29', // Arancione Vivace
-    accent:  '#FF6B35',//'#FFD700', // Giallo Oro
-    background: '#F4F5FA', // Verde Acqua Chiaro
-    surface: '#FFFFFF', // Bianco Puro
-    error: '#E63946', // Rosso Corallo
-    success: '#2ECC71', // Verde Menta
-    warning: '#F39C12', // Giallo Caldo
-    info: '#3498DB', // Azzurro Brillante
-    text: '#2C3E50', // Grigio Blu
-    darkAccent: '#B84E24'
+    primary: '#000000',
+    secondary: '#607D8B',
+    accent: '#FF3B30',
+    background: '#F5F5F5',
+    surface: '#E0E0E0',
+    error: '#D32F2F',
+    success: '#4CAF50',
+    warning: '#FBC02D',
+    info: '#42A5F5',
+    text: '#212121',
+    textSecondary: '#757575',
   }
 }
 
