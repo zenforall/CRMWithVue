@@ -171,7 +171,7 @@ import { useTheme } from 'vuetify'
   <v-card style="margin-right: 5px;">
     <v-row style="display: flex;align-items: center;background-color: white;">
           <v-col style="margin-top: 10px;">
-            <v-btn color="primary" style="margin-left: 10px;" @click="addNewUser">Create</v-btn>
+            <v-btn color="primary" style="margin-left: 5px;" @click="addNewUser">Create</v-btn>
           </v-col>
           <v-col style="display: flex;justify-content: end;margin-right: 5px;margin-top: 10px;">
               <v-btn color="primary" @click="displayFilters"><v-icon start>mdi-magnify</v-icon>Filters</v-btn>

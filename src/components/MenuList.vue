@@ -135,4 +135,11 @@ onMounted(async () => {
   color: white;
 }
 */
+
+:deep(.v-list-item--nav .v-list-item-title) {
+    font-size: .8125rem;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 1rem;
+}
 </style>

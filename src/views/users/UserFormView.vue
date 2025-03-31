@@ -132,7 +132,7 @@
         <v-btn color="primary" style="margin-left: 5px;"  @click="backToUsers">&lt; BACK</v-btn>
       </v-col>
     </v-row>
-      <v-form ref="formRef" lazy-validation style="margin-top: 10px;margin-left: 10px;margin-right: 10px;">
+      <v-form ref="formRef" lazy-validation style="margin-top: 10px;margin-left: 5px;margin-right: 5px;">
        <v-row>
         <!-- User Name -->
         <v-col cols="12" md="6">
@@ -215,8 +215,7 @@
               <!--<v-btn v-if="userStore.userAction === 'U'"-->
                 <v-btn
                       @click="cancel"
-                      color="secondary"
-                      style="margin-left: 5px;">
+                      color="secondary">
                   Cancel
                 </v-btn>
               </div>
@@ -240,7 +239,7 @@
   /*border: solid black 1px;*/
   display: flex;              /* Abilita Flexbox per i pulsanti a destra */
   justify-content: end;
-  gap: 10px;                  /* Spazio tra i pulsanti a destra */
+  gap: 5px;                  /* Spazio tra i pulsanti a destra */
   /*background-color: transparent;*/
 }
 </style>
