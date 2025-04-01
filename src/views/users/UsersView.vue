@@ -226,13 +226,19 @@ import { useTheme } from 'vuetify'
           </v-card>
         </div>
     </template>
+    <template v-slot:item.enabled="{ item }">
+      <div style="text-align: justify"><v-icon>mdi-checkbox-blank-circle-outline</v-icon></div>
+    </template>
     <template v-slot:item.activationDate="{ item }" v-if="!isMobile">
         <span>{{ formatDate( item.activationDate,"it-IT") }}</span>
     </template>
     <template v-slot:item.actions="{ item }" v-if="!isMobile">
       <div style="text-wrap: nowrap;">
-          <v-icon color="secondary" class="me-2" size="large" @click="editItem(item)">mdi-pencil</v-icon>
+          <v-btn icon="mdi-dots-horizontal" size="x-small" color="secondary"></v-btn>
+          <!--
+          <v-btn><v-icon color="secondary" class="me-2" size="large" @click="editItem(item)">mdi-dots-horizontal</v-icon></v-btn>
           <v-icon color="secondary" class="me-2" size="large" @click="askForDeletingItem(item)">mdi-delete</v-icon>
+          -->
       </div>
      </template>
 
