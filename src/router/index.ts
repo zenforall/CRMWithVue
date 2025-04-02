@@ -11,6 +11,7 @@ import NotAvailableView from '@/views/NotAvailableView.vue'
 
 import { useAppStore } from "@/stores/app"
 import ContactsViewVue from '@/views/contacts/ContactsView.vue'
+import ContactFormView from '@/views/contacts/ContactFormView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -78,6 +79,14 @@ const router = createRouter({
       component: MainLayout,
       children: [
         { path: 'customers',name: 'Customers', component: ContactsViewVue },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'contactDetail',name: 'contactDetail', component: ContactFormView },
       ],
       meta: { requiresAuth: true }
     },

@@ -21,6 +21,11 @@ import { useTheme } from 'vuetify'
     const drawerFilter = ref(false);
     const { isMobile } = useIsMobile(); // Verifica se la risoluzione del dispositivo è Mobile
 
+    const items = [] as string[];
+    items.push("Test");
+    items.push("Test1");
+
+
     onUnmounted(async () => {
       //
     })
@@ -227,18 +232,39 @@ import { useTheme } from 'vuetify'
         </div>
     </template>
     <template v-slot:item.enabled="{ item }">
-      <div style="text-align: justify"><v-icon>mdi-checkbox-blank-circle-outline</v-icon></div>
+      <div style="text-align: left;"><v-icon>mdi-checkbox-blank-circle-outline</v-icon></div>
     </template>
     <template v-slot:item.activationDate="{ item }" v-if="!isMobile">
         <span>{{ formatDate( item.activationDate,"it-IT") }}</span>
     </template>
     <template v-slot:item.actions="{ item }" v-if="!isMobile">
-      <div style="text-wrap: nowrap;">
-          <v-btn icon="mdi-dots-horizontal" size="x-small" color="secondary"></v-btn>
+      <div>
+      <v-menu>
+      <template v-slot:activator="{ props }">
+        <v-btn
+          icon="mdi-dots-horizontal" size="x-small" color="secondary" v-bind="props">
+        </v-btn>
+      </template>
+      <v-list style="background-color: white;">
+        <v-list-item @click="editItem(item)">
+          <template v-slot:prepend>
+            <v-icon color="secondary" size="large">mdi-pencil</v-icon>
+          </template>
+          <v-list-item-title>Edit</v-list-item-title>
+        </v-list-item>
+        <v-list-item @click="askForDeletingItem(item)">
+          <template v-slot:prepend>
+            <v-icon color="secondary" size="large">mdi-delete</v-icon>
+          </template>
+          <v-list-item-title>Delete</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
           <!--
           <v-btn><v-icon color="secondary" class="me-2" size="large" @click="editItem(item)">mdi-dots-horizontal</v-icon></v-btn>
           <v-icon color="secondary" class="me-2" size="large" @click="askForDeletingItem(item)">mdi-delete</v-icon>
           -->
+
       </div>
      </template>
 

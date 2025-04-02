@@ -4,13 +4,16 @@ import { useContactStore } from "@/stores/contact"
 import { useIsMobile } from "@/composables/useIsMobile";
 import type { BreadCrumbItem } from "@/models/BreadCrumbItem";
 import { useTheme } from 'vuetify'
+import { useRouter } from 'vue-router'
 
 const headers = ref<TableHeader[]>([]);
 const contacts = ref<Contact[]>([]);
 const contactStore = useContactStore();
 const { isMobile } = useIsMobile();
+const router = useRouter();
 
 const theme = useTheme();
+
 
 onUnmounted(async () => {
       //
@@ -21,7 +24,7 @@ onMounted(async () => {
   const breadCrumbItems :  BreadCrumbItem[] = [];
   breadCrumbItems.push(
     {
-        title: "Admin",
+        title: "Contacts",
         disabled : false,
         href : ""
     },
@@ -65,7 +68,39 @@ const emit =defineEmits<{
 
 function editItem(item: Contact): void {
 
-}
+
+      contactStore.setContactId(item.id);
+      contactStore.getContactDetail();
+      if (contactStore.contactDetail === undefined || contactStore.contactDetail === null) {
+        window.alert("No Contact Detail found --> Maybe has been deleted by another User");
+        return;
+      }
+
+
+      const breadCrumbItems :  BreadCrumbItem[] = [];
+      breadCrumbItems.push(
+         {
+            title: "Admin",
+            disabled : false,
+            href : ""
+         },
+         {
+            title: "Customers",
+            disabled : false,
+            href : ""
+         },
+         {
+            title: "Edit",
+            disabled : false,
+            href : ""
+         }
+      );
+
+      emit("breadCrumbHandler",breadCrumbItems);
+
+      //contactStore.setUserAction("U"); // Azione Update
+      router.push({name:'contactDetail'});
+    }
 
 function askForDeletingItem(item: Contact): void {
 }

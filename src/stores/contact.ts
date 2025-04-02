@@ -14,12 +14,14 @@ export const useContactStore = defineStore('contactStore',{
   },
   actions: {
       async getContactDetail() {
-        try {
-
-        } catch (error) {
-          console.log(error);
-          throw error;
-        }
+          try {
+            if (this.contacts === null || this.contacts.length == 0) {this.contactDetail = null; return;}
+            if (this.contactId === null || this.contactId === "") {this.contactDetail = null; return;}
+            this.contactDetail = this.contacts.find(value => value.id === this.contactId);
+          } catch (error) {
+            console.log(error);
+            throw error;
+          }
       },
       setContactId(id:string) {
         this.contactId = id;
