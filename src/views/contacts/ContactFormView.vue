@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import type { VTab } from 'vuetify/components';
+import ContactSummaryDetail from './ContactSummaryDetail.vue';
 
 const router = useRouter();
 const tab = ref(1);
@@ -40,7 +41,7 @@ function backToContacts() : void {
     <v-card-text>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item :value="1">
-          One
+          <ContactSummaryDetail></ContactSummaryDetail>
         </v-tabs-window-item>
         <v-tabs-window-item :value="2">
           Two
@@ -63,5 +64,10 @@ function backToContacts() : void {
 :deep(.v-btn__content) {
   text-transform: none !important;
 }
+
+:deep(.text-deep-purple-accent-4) {
+  color: black !important; /* Cambia colore testo */
+}
+
 
 </style>
