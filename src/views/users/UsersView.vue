@@ -198,7 +198,7 @@ import { useTheme } from 'vuetify'
           </v-col>
     </v-row>
 
-    <v-navigation-drawer color="surface" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false">
+    <v-navigation-drawer style="background-color: white;" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false">
       <UserFormFilterView @openCloseUserFilterDrawerHandler="openCloseUserFilterDrawerHandler"
                           @doFilterUsersHandler="doFilterUsersHandler"
                           @doResetFilterUsersHandler="doResetFilterUsersHandler"/>

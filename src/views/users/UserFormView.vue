@@ -118,7 +118,7 @@
 </script>
 
 <template>
-  <v-card style="background-color: white;margin-right: 5px;">
+  <v-card style="background-color: white;margin-right: 5px;" elevation="5">
     <v-snackbar :timeout="1000" color="success" location="center" v-model="displaySnackBarOK">
       <div style="text-align: center;">User Saved Successfully</div>
     </v-snackbar>

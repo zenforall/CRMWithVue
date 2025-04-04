@@ -42,15 +42,15 @@ function doReset(): void {
 </script>
 
 <template>
-  <v-row style="margin-top:0px;">
+  <v-row style="background-color: white;margin-top: 2px;">
     <v-col style="display: flex;justify-content: start;align-items: center;">
       <v-label class="text-secondary" style="margin-left: 5px; font-size: 20px;font-weight: 400; opacity: 0.87;">Filters</v-label>
     </v-col>
-    <v-col style="display: flex;margin-right: 10px; justify-content: end;align-items: center; border: 0px black solid;">
+    <v-col style="display: flex;margin-right: 10px; justify-content: end;align-items: center;">
       <v-btn color="secondary" title="Close" @click="closeDrawer" icon="mdi-close" size="x-small"></v-btn>
     </v-col>
   </v-row>
-  <v-row class="bg-surface">
+  <v-row style="background-color: white;">
     <v-col cols="12">
       <v-text-field
         v-model="filter.userName"
@@ -114,8 +114,8 @@ function doReset(): void {
       ></v-checkbox>
     </v-col>
   </v-row>
-  <v-row class="bg-surface" style="margin:0px">
-    <v-col cols="12" style="padding: 0px">
+  <v-row style="background-color: white;">
+    <v-col cols="12">
       <div
         style="
           width: 100%;

@@ -3,8 +3,12 @@
 
 </script>
 <template>
-  Stake Holders
-  </template>
+    <v-row>
+      <v-col>
+        <v-label>Stake Holders</v-label>
+      </v-col>
+    </v-row>
+</template>
 <style scoped>
 
 
