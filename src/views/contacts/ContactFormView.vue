@@ -32,50 +32,69 @@ function backToContacts() : void {
       </v-col>
     </v-row>
 
-    <v-tabs
-      align-tabs="start"
-      v-model="tab">
-      <v-tab :value="1">Summary</v-tab>
-      <v-tab :value="2">Details</v-tab>
-      <v-tab :value="3">Files</v-tab>
-      <v-tab :value="4">Related</v-tab>
-    </v-tabs>
-    <v-card-text>
-      <v-tabs-window v-model="tab">
-        <v-tabs-window-item :value="1">
-          <v-row style="margin-top:5px;padding: 5px;">
-            <v-col>
-              <ContactSummaryDetail></ContactSummaryDetail>
-            </v-col>
-            <v-col>
-              <ContactTimeline></ContactTimeline>
-            </v-col>
-            <v-col>
-               <v-row>
-                  <v-col>
-                    <ContactStakeHoldersDetail></ContactStakeHoldersDetail>
-                  </v-col>
-               </v-row>
-               <v-row>
-                  <v-col>
-                    <ContactCompetitorsDetail></ContactCompetitorsDetail>
-                  </v-col>
-               </v-row>
-            </v-col>
-          </v-row>
-        </v-tabs-window-item>
-        <v-tabs-window-item :value="2">
-          Two
-        </v-tabs-window-item>
-        <v-tabs-window-item :value="3">
-          Three
-        </v-tabs-window-item>
-        <v-tabs-window-item :value="4">
-          Four
-        </v-tabs-window-item>
-      </v-tabs-window>
-    </v-card-text>
-
+    <v-row>
+     <v-col>
+      <v-tabs
+        align-tabs="start"
+        v-model="tab">
+        <v-tab :value="1">Summary</v-tab>
+        <v-tab :value="2">Details</v-tab>
+        <v-tab :value="3">Files</v-tab>
+        <v-tab :value="4">Related</v-tab>
+      </v-tabs>
+      <v-card-text>
+        <v-tabs-window v-model="tab">
+          <v-tabs-window-item :value="1">
+            <v-row style="margin-top:5px;padding: 5px;">
+              <v-col>
+                <ContactSummaryDetail></ContactSummaryDetail>
+              </v-col>
+              <v-col>
+                <ContactTimeline></ContactTimeline>
+              </v-col>
+              <v-col>
+                <v-row>
+                    <v-col>
+                      <ContactStakeHoldersDetail></ContactStakeHoldersDetail>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col>
+                      <ContactCompetitorsDetail></ContactCompetitorsDetail>
+                    </v-col>
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-tabs-window-item>
+          <v-tabs-window-item :value="2">
+            Two
+          </v-tabs-window-item>
+          <v-tabs-window-item :value="3">
+            Three
+          </v-tabs-window-item>
+          <v-tabs-window-item :value="4">
+            Four
+          </v-tabs-window-item>
+        </v-tabs-window>
+      </v-card-text>
+     </v-col>
+    </v-row>
+    <v-row style="margin-right: 5px;">
+      <v-col cols="12" style="margin-bottom: 10px;">
+          <div class="right-buttons">
+            <v-btn
+            color="primary"
+                @click="">
+            SAVE
+          </v-btn>
+          <v-btn
+                  @click=""
+                  color="secondary">
+              CANCEL
+            </v-btn>
+          </div>
+       </v-col>
+    </v-row>
 </v-card>
 
 </template>
@@ -88,6 +107,12 @@ function backToContacts() : void {
 
 :deep(.text-deep-purple-accent-4) {
   color: black !important; /* Cambia colore testo */
+}
+
+.right-buttons {
+  display: flex;              /* Abilita Flexbox per i pulsanti a destra */
+  justify-content: end;
+  gap: 5px;                  /* Spazio tra i pulsanti a destra */
 }
 
 </style>

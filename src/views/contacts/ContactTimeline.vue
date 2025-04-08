@@ -24,11 +24,13 @@ function addNote() : void {
   <v-card color="background" style="padding: 5px;" elevation="5">
     <v-row>
       <v-col>
-        <v-label style="color: black;opacity: 100;">Timeline</v-label>
+        <v-label style="color: black;opacity: 100;">Timeline notes</v-label>
       </v-col>
       <v-col style="display: flex;justify-content: end;padding-bottom: 0;">
-        <v-btn size="x-small" color="secondary"  icon="mdi-content-save" @click="addNote"></v-btn>
+        <v-btn size="x-small" color="secondary"  icon="mdi-comment-plus-outline" @click="addNote"></v-btn>
+        <!--
         <v-btn style="margin-left: 5px;" size="x-small" color="secondary"  icon="mdi-sort"></v-btn>
+         -->
       </v-col>
     </v-row>
     <v-row>
@@ -41,9 +43,11 @@ function addNote() : void {
             rows="3">
           </v-textarea>
       </v-col>
+      <!--
       <v-col style="display: flex;justify-content: start; align-items: end;">
         <v-icon color="secondary" size="x-large">mdi-attachment</v-icon>
       </v-col>
+    -->
     </v-row>
     <v-row v-if="timelines.length > 0">
       <v-data-table
