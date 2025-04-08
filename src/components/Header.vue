@@ -5,4 +5,5 @@ const props = defineProps({toggleDrawer:Event,
 </script>
 
 <template>
+  <b>TEST</b>
 </template>

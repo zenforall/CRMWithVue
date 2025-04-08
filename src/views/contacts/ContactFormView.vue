@@ -43,7 +43,7 @@ function backToContacts() : void {
     <v-card-text>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item :value="1">
-          <v-row style="margin-top:5px">
+          <v-row style="margin-top:5px;padding: 5px;">
             <v-col>
               <ContactSummaryDetail></ContactSummaryDetail>
             </v-col>

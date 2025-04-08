@@ -23,14 +23,44 @@ Chart.register(...registerables);
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" md="6" lg="6">
-        <DoughnutChart :chartData="testData" style="margin-bottom: 10px;"/>
-        <BarChart :chartData="testData" />
+      <v-col>
+        <v-card elevation="5" color="background">
+          <DoughnutChart :chartData="testData" style="margin-bottom: 10px;"/>
+        </v-card>
       </v-col>
+      <v-col>
+        <v-card elevation="5" color="background">
+          <BarChart :chartData="testData" />
+        </v-card>
+      </v-col>
+      <v-col>
+        <v-card elevation="5" color="background">
+          <LineChart :chartData="testData" style="margin-bottom: 10px;"/>
+        </v-card>
+      </v-col>
+      <!--
+      <v-col cols="12" md="3" lg="3">
+        <v-card elevation="5" color="background">
+          <BarChart :chartData="testData" />
+        </v-card>
+      </v-col>
+      <v-col cols="12" md="3" lg="3">
+        <v-card elevation="5" color="background">
+          <LineChart :chartData="testData" style="margin-bottom: 10px;"/>
+        </v-card>
+      </v-col>
+    -->
+    </v-row>
+      <!--
       <v-col cols="12" md="6" lg="6">
-        <LineChart :chartData="testData" style="margin-bottom: 10px;"/>
-        <PieChart :chartData="testData" />
+        <v-card elevation="5" color="background">
+          <LineChart :chartData="testData" style="margin-bottom: 10px;"/>
+        </v-card>
+        <v-card elevation="5">
+          <PieChart :chartData="testData" />
+        </v-card>
       </v-col>
     </v-row>
+  -->
   </v-container>
 </template>

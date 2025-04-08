@@ -50,11 +50,11 @@ function manageSearchForMobileView() : void {
 </script>
 
 <template>
-  <v-app-bar>
+  <v-app-bar color="background">
     <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
 
     <div style="display: flex; align-items: center;width: 80%;">
-      <v-toolbar color="surface">
+      <v-toolbar color="background">
       <v-toolbar-title  class="text-secondary">CRM*With*Vue</v-toolbar-title>
 
       <!--

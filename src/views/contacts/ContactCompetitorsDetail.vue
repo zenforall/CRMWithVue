@@ -6,7 +6,7 @@
 <template>
  <v-row>
       <v-col>
-        <v-label>Competitors</v-label>
+        <v-label style="color: black;opacity: 100;">Competitors</v-label>
       </v-col>
     </v-row>
 </template>

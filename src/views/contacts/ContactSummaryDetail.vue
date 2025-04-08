@@ -3,10 +3,10 @@
 
 </script>
 <template>
-  <v-card color="white" style="padding: 5px;" border>
+  <v-card color="background" elevation="5" style="padding: 5px;">
     <v-row>
       <v-col>
-        <v-label>Customer</v-label>
+        <v-label style="color: black;opacity: 100;">Customer</v-label>
       </v-col>
     </v-row>
     <v-form>
@@ -14,6 +14,7 @@
         <!-- User Name -->
         <v-col>
           <v-text-field
+            style="color: black;"
             variant="underlined"
             label="First name"
             density="compact"
@@ -43,13 +44,10 @@
             density="compact"
             required>
           </v-text-field>
-
         </v-col>
       </v-row>
     </v-form>
     </v-card>
   </template>
 <style scoped>
-
-
 </style>

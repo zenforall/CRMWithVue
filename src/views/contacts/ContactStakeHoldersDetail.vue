@@ -5,7 +5,7 @@
 <template>
     <v-row>
       <v-col>
-        <v-label>Stake Holders</v-label>
+        <v-label style="color: black;opacity: 100;">Stake Holders</v-label>
       </v-col>
     </v-row>
 </template>
