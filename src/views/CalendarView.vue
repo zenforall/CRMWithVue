@@ -59,7 +59,9 @@ const calendarApp = createCalendar({
 <template>
   <v-row class="fill-height">
     <v-col>
+      <!--
       <ScheduleXCalendar :calendar-app="calendarApp" />
+      -->
     </v-col>
   </v-row>
 </template>
