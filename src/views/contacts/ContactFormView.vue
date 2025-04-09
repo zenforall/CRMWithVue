@@ -40,7 +40,6 @@ function backToContacts() : void {
         <v-tab :value="1">Summary</v-tab>
         <v-tab :value="2">Details</v-tab>
         <v-tab :value="3">Files</v-tab>
-        <v-tab :value="4">Related</v-tab>
       </v-tabs>
       <v-card-text>
         <v-tabs-window v-model="tab">
@@ -66,9 +65,6 @@ function backToContacts() : void {
           </v-tabs-window-item>
           <v-tabs-window-item :value="3">
             Three
-          </v-tabs-window-item>
-          <v-tabs-window-item :value="4">
-            Four
           </v-tabs-window-item>
         </v-tabs-window>
       </v-card-text>

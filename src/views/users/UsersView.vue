@@ -77,7 +77,7 @@ import { useTheme } from 'vuetify'
         headers.value.push({
             title : "Actions",
             value: "actions",
-            sortable: true
+            sortable: false
         });
 
         await userStore.getUsers()
@@ -247,16 +247,16 @@ import { useTheme } from 'vuetify'
       </template>
       <v-list style="background-color: white;">
         <v-list-item @click="editItem(item)">
-          <template v-slot:prepend>
+          <div style="display: flex;">
             <v-icon color="secondary" size="large">mdi-pencil</v-icon>
-          </template>
-          <v-list-item-title>Edit</v-list-item-title>
+            <v-list-item-title>Edit</v-list-item-title>
+          </div>
         </v-list-item>
         <v-list-item @click="askForDeletingItem(item)">
-          <template v-slot:prepend>
+          <div style="display: flex;">
             <v-icon color="secondary" size="large">mdi-delete</v-icon>
-          </template>
-          <v-list-item-title>Delete</v-list-item-title>
+            <v-list-item-title>Delete</v-list-item-title>
+          </div>
         </v-list-item>
       </v-list>
     </v-menu>

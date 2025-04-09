@@ -1,12 +1,21 @@
 <script setup lang="ts" >
 import { onMounted } from 'vue';
-import { DoughnutChart,BarChart,LineChart,PieChart } from 'vue-chart-3';
+import { DoughnutChart,BarChart,LineChart } from 'vue-chart-3';
 import { Chart, registerables } from "chart.js";
+import type { BreadCrumbItem } from '@/models/BreadCrumbItem';
 
 Chart.register(...registerables);
 
     onMounted(async () => {
-      ;
+      const breadCrumbItems :  BreadCrumbItem[] = [];
+        breadCrumbItems.push(
+          {
+              title: "Home",
+              disabled : false,
+              href : ""
+          }
+        );
+        emit("breadCrumbHandler",breadCrumbItems);
     })
 
     const testData = {
@@ -18,6 +27,11 @@ Chart.register(...registerables);
         },
       ],
     };
+
+    const emit =defineEmits<{
+      (event: "breadCrumbHandler", message: BreadCrumbItem[]): void;
+    }>();
+
 </script>
 
 <template>

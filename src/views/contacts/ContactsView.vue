@@ -47,6 +47,11 @@ onMounted(async () => {
             sortable: true
         });
         headers.value.push({
+            title : "Mobile phone",
+            value: "phone",
+            sortable: true
+        });
+        headers.value.push({
             title : "Email",
             value: "email",
             sortable: true
@@ -55,7 +60,7 @@ onMounted(async () => {
         headers.value.push({
             title : "Actions",
             value: "actions",
-            sortable: true
+            sortable: false
         });
 
         await contactStore.getContacts("C");
@@ -65,6 +70,10 @@ onMounted(async () => {
 const emit =defineEmits<{
   (event: "breadCrumbHandler", message: BreadCrumbItem[]): void;
 }>();
+
+function printItem(item: Contact) : void {
+
+}
 
 function editItem(item: Contact): void {
 
@@ -105,7 +114,8 @@ function editItem(item: Contact): void {
 function askForDeletingItem(item: Contact): void {
 }
 
-function doDeleteItem() {
+function doDeleteItem() : void {
+  ;
 }
 
 function addNewContact() : void {
@@ -162,9 +172,36 @@ function addNewContact() : void {
     </template>
 
     <template v-slot:item.actions="{ item }" v-if="!isMobile">
-      <div style="text-wrap: nowrap;">
-          <v-icon color="secondary" class="me-2" size="large" @click="editItem(item)">mdi-pencil</v-icon>
-          <v-icon color="secondary" class="me-2" size="large" @click="askForDeletingItem(item)">mdi-delete</v-icon>
+
+      <div>
+        <v-menu>
+        <template v-slot:activator="{ props }">
+          <v-btn
+            icon="mdi-dots-horizontal" size="x-small" color="secondary" v-bind="props">
+          </v-btn>
+        </template>
+        <v-list style="background-color: white;">
+          <v-list-item @click="printItem(item)">
+            <div style="display: flex;">
+              <v-icon color="secondary" size="large">mdi-file-pdf-box</v-icon>
+              <v-list-item-title>Print</v-list-item-title>
+            </div>
+          </v-list-item>
+
+          <v-list-item @click="editItem(item)">
+            <div style="display: flex;">
+              <v-icon color="secondary" size="large">mdi-pencil</v-icon>
+              <v-list-item-title>Edit</v-list-item-title>
+            </div>
+          </v-list-item>
+          <v-list-item @click="askForDeletingItem(item)">
+            <div style="display: flex;">
+              <v-icon color="secondary" size="large">mdi-delete</v-icon>
+              <v-list-item-title>Delete</v-list-item-title>
+            </div>
+          </v-list-item>
+        </v-list>
+      </v-menu>
       </div>
     </template>
 

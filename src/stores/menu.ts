@@ -97,6 +97,20 @@ export const useMenuStore = defineStore('menuStore',{
 
                this.menu.push(myCalendar);
 
+               let customerSupport: TreeNode;
+               customerSupport = {
+                 id: 80,
+                 icon: 'mdi-account-wrench',
+                 title: 'Support',
+                 link : '',
+                 children: [
+                   { id: 81, icon:'mdi-ticket', title: 'Tickets',link: '/tickets' },
+                   { id: 82, icon:'mdi-history', title: 'Chronology',link: '/chronology' },
+                 ]
+               };
+
+               this.menu.push(customerSupport);
+
              } catch (error) {
                console.log(error)
              }

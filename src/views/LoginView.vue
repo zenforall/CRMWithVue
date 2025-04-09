@@ -82,7 +82,7 @@ import { useTheme } from "vuetify";
       <v-container>
         <v-row style=" display: flex; height: 98vh;justify-content: center;align-items: center;">
           <v-col cols="12" sm="8" md="4">
-            <v-card class="pa-4" style="background-color: white;" elevation="5">
+            <v-card class="pa-4" style="background-color: white;" elevation="1">
               <v-card-text>
                 <v-form ref="formRef" lazy-validation>
                   <v-text-field

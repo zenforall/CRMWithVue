@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { formatDate }  from "@/utils/formatData";
 
 const headers = ref<TableHeader[]>([]);
 const timelines = ref<ContactTimeline[]>([]);
 
 const timeLineDescription = ref("");
+
+const page = ref(1)
+
+const itemsPerPage = ref(3)
+
+const pageCount = computed(() => {
+    return Math.ceil(timelines.value.length / itemsPerPage.value)
+  })
 
 onUnmounted(async () => {
       //
@@ -80,6 +88,7 @@ function addNote() : void {
     </v-row>
     <v-row v-if="timelines.length > 0">
       <v-data-table
+      v-model:page="page"
       style="background-color: white;"
       :headers="headers"
       :items="timelines"
@@ -98,6 +107,15 @@ function addNote() : void {
             <v-icon color="secondary" class="me-2" size="large">mdi-delete</v-icon>
         </div>
       </template>
+
+      <template v-slot:bottom>
+      <div class="text-center">
+        <v-pagination
+          v-model="page"
+          :length="pageCount"
+        ></v-pagination>
+      </div>
+    </template>
 
       </v-data-table>
     </v-row>

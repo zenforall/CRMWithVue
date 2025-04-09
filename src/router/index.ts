@@ -134,6 +134,22 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
+        { path: 'tickets',name: 'Tickets', component: NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'chronology',name: 'Chronology', component: NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
         { path: 'mycalendar',name: 'My Calendar', component: MyCalendar },
       ],
       meta: { requiresAuth: true }
