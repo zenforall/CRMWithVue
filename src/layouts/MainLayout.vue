@@ -50,7 +50,7 @@ function manageSearchForMobileView() : void {
 </script>
 
 <template>
-  <v-app-bar color="background">
+  <v-app-bar color="background" elevation="1">
     <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
 
     <div style="display: flex; align-items: center;width: 80%;">
@@ -110,7 +110,7 @@ function manageSearchForMobileView() : void {
     </div>
   </v-app-bar>
 
-  <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px solid black">
+  <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px solid black;" elevation="1">
       <!--<Menu @breadCrumbHandler="breadCrumbItemsHandler"/>-->
       <MenuList @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-navigation-drawer>

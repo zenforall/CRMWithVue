@@ -188,7 +188,7 @@ import { useTheme } from 'vuetify'
 </script>
 
 <template>
-  <v-card style="margin-right: 5px;" elevation="5">
+  <v-card style="margin-right: 5px;" elevation="1">
     <v-row style="display: flex;align-items: center;background-color: white;">
           <v-col style="margin-top: 10px;">
             <v-btn color="primary" style="margin-left: 5px;" @click="addNewUser">Create</v-btn>

@@ -17,7 +17,7 @@ function backToContacts() : void {
 </script>
 
 <template>
-  <v-card style="background-color: white;margin-right: 5px;" elevation="5">
+  <v-card style="background-color: white;margin-right: 5px;" elevation="1">
     <v-snackbar :timeout="1000" color="success" location="center">
       <div style="text-align: center;">User Saved Successfully</div>
     </v-snackbar>
@@ -55,11 +55,6 @@ function backToContacts() : void {
               <v-col>
                 <v-row>
                     <v-col>
-                      <ContactStakeHoldersDetail></ContactStakeHoldersDetail>
-                    </v-col>
-                </v-row>
-                <v-row>
-                    <v-col>
                       <ContactCompetitorsDetail></ContactCompetitorsDetail>
                     </v-col>
                 </v-row>
@@ -79,22 +74,6 @@ function backToContacts() : void {
       </v-card-text>
      </v-col>
     </v-row>
-    <v-row style="margin-right: 5px;">
-      <v-col cols="12" style="margin-bottom: 10px;">
-          <div class="right-buttons">
-            <v-btn
-            color="primary"
-                @click="">
-            SAVE
-          </v-btn>
-          <v-btn
-                  @click=""
-                  color="secondary">
-              CANCEL
-            </v-btn>
-          </div>
-       </v-col>
-    </v-row>
 </v-card>
 
 </template>
@@ -108,11 +87,4 @@ function backToContacts() : void {
 :deep(.text-deep-purple-accent-4) {
   color: black !important; /* Cambia colore testo */
 }
-
-.right-buttons {
-  display: flex;              /* Abilita Flexbox per i pulsanti a destra */
-  justify-content: end;
-  gap: 5px;                  /* Spazio tra i pulsanti a destra */
-}
-
 </style>

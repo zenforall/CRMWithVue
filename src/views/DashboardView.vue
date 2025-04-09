@@ -24,17 +24,17 @@ Chart.register(...registerables);
   <v-container>
     <v-row>
       <v-col>
-        <v-card elevation="5" color="background">
+        <v-card elevation="1" color="background">
           <DoughnutChart :chartData="testData" style="margin-bottom: 10px;"/>
         </v-card>
       </v-col>
       <v-col>
-        <v-card elevation="5" color="background">
+        <v-card elevation="1" color="background">
           <BarChart :chartData="testData" />
         </v-card>
       </v-col>
       <v-col>
-        <v-card elevation="5" color="background">
+        <v-card elevation="1" color="background">
           <LineChart :chartData="testData" style="margin-bottom: 10px;"/>
         </v-card>
       </v-col>
