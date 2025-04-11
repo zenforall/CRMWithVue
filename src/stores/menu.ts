@@ -30,9 +30,9 @@ export const useMenuStore = defineStore('menuStore',{
                  title: 'Admin',
                  link : '',
                  children: [
-                   { id: 3, icon:'mdi-account', title: 'Users',link: '/users' },
-                   { id: 4, icon:'mdi-office-building', title: 'Companies',link: '/companies' },
-                   { id: 5, icon:'mdi-archive-clock', title: 'Scheduler',link: '/scheduler' }
+                   { id: 3, icon:'mdi-account', title: 'Users',link: '/admin/users' },
+                   { id: 4, icon:'mdi-office-building', title: 'Companies',link: '/admin/companies' },
+                   /*{ id: 5, icon:'mdi-archive-clock', title: 'Scheduler',link: '/scheduler' }*/
                  ]
                };
 
@@ -45,9 +45,9 @@ export const useMenuStore = defineStore('menuStore',{
                  title: 'Contacts',
                  link : '',
                  children: [
-                   { id: 21, icon:'mdi-account-tie', title: 'Customers',link: '/customers' },
-                   { id: 22, icon:'mdi-account-tie-hat-outline', title: 'Prospects',link: '/prospects' },
-                   { id: 23, icon:'mdi-account-tie-outline', title: 'Leads',link: '/leads' }
+                   { id: 21, icon:'mdi-account-tie', title: 'Customers',link: '/contacts/customers' },
+                   { id: 22, icon:'mdi-account-tie-hat-outline', title: 'Prospects',link: '/contacts/prospects' },
+                   { id: 23, icon:'mdi-account-tie-outline', title: 'Leads',link: '/contacts/leads' }
                  ]
                };
 
@@ -58,12 +58,29 @@ export const useMenuStore = defineStore('menuStore',{
                  id: 40,
                  icon: 'mdi-hand-coin',
                  title: 'Sales',
-                 children: null,
-                 link: '/sales'
+                 children: [
+                  { id: 41, icon:'mdi-dots-grid', title: 'Pipeline',link: '/sales/pipeline' },
+                 ],
                }
 
                this.menu.push(sales);
 
+
+               let activities: TreeNode;
+               activities = {
+                 id: 90,
+                 icon: 'mdi-puzzle',
+                 title: 'Activities',
+                 children: [
+                  { id: 91, icon:'mdi-calendar', title: 'Calendar',link: '/activities/calendar' },
+                  { id: 92, icon:'mdi-clipboard-list', title: 'Tasks',link: '/activities/tasks' },
+                 ],
+               }
+
+               this.menu.push(activities);
+
+
+               /*
                let calendar: TreeNode;
                calendar = {
                  id: 50,
@@ -74,6 +91,7 @@ export const useMenuStore = defineStore('menuStore',{
                }
 
                this.menu.push(calendar);
+               */
 
                let reports: TreeNode;
                reports = {
@@ -86,6 +104,7 @@ export const useMenuStore = defineStore('menuStore',{
 
                this.menu.push(reports);
 
+               /*
                let myCalendar: TreeNode;
                myCalendar = {
                  id: 70,
@@ -96,7 +115,9 @@ export const useMenuStore = defineStore('menuStore',{
                }
 
                this.menu.push(myCalendar);
+               */
 
+               /*
                let customerSupport: TreeNode;
                customerSupport = {
                  id: 80,
@@ -110,6 +131,7 @@ export const useMenuStore = defineStore('menuStore',{
                };
 
                this.menu.push(customerSupport);
+               */
 
              } catch (error) {
                console.log(error)

@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import DashboardView from '@/views/DashboardView.vue'
-import MyCalendar from '@/views/MyCalendarView.vue'
+import Calendar from '@/views/activites/CalendarView.vue'
 import UsersView from '@/views/users/UsersView.vue'
 import UserFormView from '@/views/users/UserFormView.vue'
-import CalendarView from '@/views/CalendarView.vue'
+//import CalendarView from '@/views/CalendarView.vue'
 import BlankLayout from '@/layouts/BlankLayout.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import NotAvailableView from '@/views/NotAvailableView.vue'
@@ -46,7 +46,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'users', component: UsersView },
+        { path: '/admin/users', component: UsersView },
       ],
       meta: { requiresAuth: true }
     },
@@ -54,7 +54,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'userDetail',name: 'userDetail', component: UserFormView },
+        { path: '/admin/users/userDetail',name: 'userDetail', component: UserFormView },
       ],
       meta: { requiresAuth: true }
     },
@@ -62,10 +62,11 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'companies',name: 'Companies', component: NotAvailableView },
+        { path: '/admin/companies',name: 'Companies', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     },
+    /*
     {
       path: '/',
       component: MainLayout,
@@ -74,11 +75,12 @@ const router = createRouter({
       ],
       meta: { requiresAuth: true }
     },
+    */
     {
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'customers',name: 'Customers', component: ContactsViewVue },
+        { path: '/contacts/customers',name: 'Customers', component: ContactsViewVue },
       ],
       meta: { requiresAuth: true }
     },
@@ -86,7 +88,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'contactDetail',name: 'contactDetail', component: ContactFormView },
+        { path: '/contacts/contactDetail',name: 'contactDetail', component: ContactFormView },
       ],
       meta: { requiresAuth: true }
     },
@@ -94,7 +96,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'prospects',name: 'Prospects', component: NotAvailableView },
+        { path: '/contacts/prospects',name: 'Prospects', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     },
@@ -102,7 +104,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'leads',name: 'Leads', component: NotAvailableView },
+        { path: '/contacts/leads',name: 'Leads', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     },
@@ -110,7 +112,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'sales',name: 'Sales', component: NotAvailableView },
+        { path: '/activities/calendar',name: 'Calendar', component: Calendar },
       ],
       meta: { requiresAuth: true }
     },
@@ -118,7 +120,15 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: 'calendar',name: 'Calendar', component: CalendarView },
+        { path: '/activities/tasks',name: 'Tasks', component: NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: '/sales/pipeline',name: 'Pipeline', component: NotAvailableView },
       ],
       meta: { requiresAuth: true }
     },
@@ -146,14 +156,6 @@ const router = createRouter({
       ],
       meta: { requiresAuth: true }
     },
-    {
-      path: '/',
-      component: MainLayout,
-      children: [
-        { path: 'mycalendar',name: 'My Calendar', component: MyCalendar },
-      ],
-      meta: { requiresAuth: true }
-    }
   ],
 })
 

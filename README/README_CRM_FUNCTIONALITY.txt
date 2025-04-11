@@ -95,3 +95,48 @@ Menu
    - ✉️ Campagne email
    - 🎯 Liste / segmenti
    - 📬 Template
+
+
+   Funzionalità generali di un CRM
+
+   🧭 Sidebar (sinistra)
+📇 Contatti
+
+✅ Attività
+
+📊 Pipeline
+
+⚙️ Impostazioni
+
+📄 Vista principale (centro)
+Elenco contatti (tabella o card)
+
+Dettaglio attività
+
+Board Kanban
+
+📋 Pannello dettagli (destra o popup)
+Info del contatto selezionato
+
+Sidebar (sinistra)
+📇 Contatti
+✅ Attività
+📊 Pipeline
+⚙️ Impostazioni
+
+📄 Vista principale (centro)
+Elenco contatti (tabella o card)
+Dettaglio attività
+Board Kanban
+📋 Pannello dettagli (destra o popup)
+Info del contatto selezionato
+
+Cronologia, note, attività collegate
+
+🎁 Extra (in futuro)
+Notifiche per task imminenti
+
+Tag/etichette per i contatti
+Email automation
+Integrazione con servizi esterni (Google Calendar, Zapier...)
+

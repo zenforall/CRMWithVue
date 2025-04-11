@@ -11,7 +11,7 @@ const router = useRouter();
 const tab = ref(1);
 
 function backToContacts() : void {
-  router.push("/customers");
+  router.push("/contacts/customers");
 }
 
 </script>

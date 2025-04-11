@@ -112,7 +112,7 @@
       );
 
       emit("breadCrumbHandler",breadCrumbItems);
-      router.push("/users");
+      router.push("/admin/users");
     }
 
 </script>
