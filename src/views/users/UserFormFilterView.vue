@@ -19,6 +19,13 @@ const filter = ref<UserFilter>({
   locale: '',
   localeLanguage : '',
   enabled: false,
+  name:null,
+  surname:null,
+  address:null,
+  cap:null,
+  city:null,
+  type:null,
+  phone:null
 })
 
 function closeDrawer(): void {

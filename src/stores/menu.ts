@@ -58,6 +58,7 @@ export const useMenuStore = defineStore('menuStore',{
                  id: 40,
                  icon: 'mdi-hand-coin',
                  title: 'Sales',
+                 link : '',
                  children: [
                   { id: 41, icon:'mdi-dots-grid', title: 'Pipeline',link: '/sales/pipeline' },
                  ],
@@ -71,6 +72,7 @@ export const useMenuStore = defineStore('menuStore',{
                  id: 90,
                  icon: 'mdi-puzzle',
                  title: 'Activities',
+                 link : '',
                  children: [
                   { id: 91, icon:'mdi-calendar', title: 'Calendar',link: '/activities/calendar' },
                   { id: 92, icon:'mdi-clipboard-list', title: 'Tasks',link: '/activities/tasks' },

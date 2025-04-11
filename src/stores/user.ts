@@ -32,7 +32,7 @@ export const useUserStore = defineStore('userStore',{
       async getUsers() {
         try {
           if (this.users.length === 0) {
-            for (var i=1;i<8;i++) {
+            for (let i=1;i<8;i++) {
                    let loc = '' as string;
                    let locLan = '' as string;
                    if ( (i / 2) === 0 ) {
@@ -55,6 +55,13 @@ export const useUserStore = defineStore('userStore',{
                         company:faker.company.name(),
                         activationDate: faker.date.anytime(),
                         locale: loc,
+                        type:null,
+                        address:null,
+                        cap:null,
+                        city:null,
+                        phone:null,
+                        name:null,
+                        surname:"",
                         localeLanguage: locLan,
                         enabled:true
                 })
@@ -69,7 +76,7 @@ export const useUserStore = defineStore('userStore',{
         try {
           if (this.users === null || this.users.length == 0) {return;}
           if (this.userId === null || this.userId === "") {return;}
-          let index:number = this.users.findIndex(value => value.id === this.userId);
+          const index:number = this.users.findIndex(value => value.id === this.userId);
           if (index > -1) {
             this.users.splice(index,1);
           }
@@ -99,7 +106,7 @@ export const useUserStore = defineStore('userStore',{
       async updateUser(user: User) {
         try {
           if (user.id === null || user.id === '') {
-            let currentDate : Date = new Date();
+            const currentDate : Date = new Date();
             user.id =currentDate.toString();
             this.users.push(user);
           } else {
