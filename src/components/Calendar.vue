@@ -88,7 +88,6 @@ const todayClick = () => {
   };
   emitEvent(info);
 }
-
 </script>
 
 <template>
@@ -118,7 +117,8 @@ const todayClick = () => {
       <!-- Per utilizzare la variabile reattiva filterAlignmentClass utilizzare la proprietà :class-->
     <v-col :class="filterAlignmentClass" style="margin-right: 5px;margin-top: 10px;">
           <v-select label="View type" hide-details variant="solo-filled" density="compact" @update:modelValue="viewSelectChange"
-            v-model="selectedValue"
+           v-model="selectedValue"
+           class="custom-select"
             :items="items"  item-title="text"
                             item-value="value"
                             style="max-width: 120px;margin-right: 30px;">
@@ -152,6 +152,11 @@ const todayClick = () => {
   direction: row;
   align-items:center;
   justify-content: center;
+}
+
+.custom-select ::v-deep(.v-field) {
+  background-color: white !important;
+  opacity: 1 !important;
 }
 
 </style>

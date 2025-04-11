@@ -18,12 +18,12 @@ const emit =defineEmits<{
 
     breadCrumbItems.push(
           {
-              title: "My Calendar",
+              title: "Activities",
               disabled : false,
               href : ""
           },
           {
-              title: "",
+              title: "Calendar",
               disabled : false,
               href : ""
           }
