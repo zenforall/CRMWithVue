@@ -90,6 +90,8 @@ const steps: Step[] = [
   <v-row>
     <v-col>
       <div class="stepper">
+
+      <!-- Soluzione più lenta a livello di refresh grafico
       <div
         v-for="step in steps"
         :key="step.value"
@@ -99,6 +101,19 @@ const steps: Step[] = [
         <span><v-label style="opacity: 0.9;" >{{ step.label }} </v-label></span>
         <span class="arrow" />
       </div>
+    -->
+
+      <div v-for="step in steps" :key="step.value" class="step.active" @click="selectStep(step.value)">
+        <div v-if="currentStep === step.value" class="step active">
+          <span><v-label style="opacity: 0.9;" >{{ step.label }} </v-label></span>
+          <span class="arrow active" />
+        </div>
+        <div v-else-if="currentStep != step.value" class="step" @click="selectStep(step.value)">
+          <span><v-label style="opacity: 0.9;" >{{ step.label }} </v-label></span>
+          <span class="arrow" />
+        </div>
+      </div>
+
     </div>
   </v-col>
   </v-row>
