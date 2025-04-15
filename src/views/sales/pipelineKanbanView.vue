@@ -63,6 +63,7 @@ function logEvent(event:unknown) : void {
   console.log(JSON.stringify(event));
 }
 
+/*
 const currentStep = ref(1)
 
 const selectStep = (stepValue: number) => {
@@ -81,17 +82,26 @@ const steps: Step[] = [
   { label: 'Negotiation', value: 4 },
   { label: 'Won', value: 5 }
 ]
-
+*/
 
 </script>
 
 <template>
 
+<v-card style="margin-right: 5px;" elevation="1">
+
+  <v-row style="display: flex;align-items: center;background-color: white;">
+      <v-col style="margin-top: 10px;">
+        <v-btn color="primary" style="margin-left: 5px;">Create</v-btn>
+      </v-col>
+    </v-row>
+
+  <!--
   <v-row>
     <v-col>
       <div class="stepper">
 
-      <!-- Soluzione più lenta a livello di refresh grafico
+
       <div
         v-for="step in steps"
         :key="step.value"
@@ -101,7 +111,7 @@ const steps: Step[] = [
         <span><v-label style="opacity: 0.9;" >{{ step.label }} </v-label></span>
         <span class="arrow" />
       </div>
-    -->
+
 
       <div v-for="step in steps" :key="step.value" class="step.active" @click="selectStep(step.value)">
         <div v-if="currentStep === step.value" class="step active">
@@ -113,13 +123,14 @@ const steps: Step[] = [
           <span class="arrow" />
         </div>
       </div>
-
     </div>
   </v-col>
   </v-row>
-   <v-row>
+-->
+
+   <v-row style="margin-left: 1px;margin-right: 1px;">
     <v-col>
-      <v-label style="font-weight: bold;">New</v-label>
+      <v-label class="pipelineTypeTitle">New</v-label>
       <VueDraggableNext :list="list1" group="people" style="cursor: move;">
          <v-card
           v-for="(element, index) in list1"
@@ -139,6 +150,7 @@ const steps: Step[] = [
               hover
               :length="5"
               :size="32"
+              readonly
               :model-value="3"
               color="secondary"
               active-color="warning"
@@ -148,78 +160,124 @@ const steps: Step[] = [
       </VueDraggableNext>
     </v-col>
     <v-col>
-      <v-label style="font-weight: bold;">Qualified</v-label>
+      <v-label class="pipelineTypeTitle">Qualified</v-label>
       <VueDraggableNext :list="list2" group="people" style="cursor: move;">
         <v-card
           v-for="(element, index) in list2"
           :key="element.id"
          style="margin-bottom: 5px;">
           <template v-slot:title>
+            <v-label style="cursor: pointer;">
             {{ element.name }}
+            </v-label>
           </template>
           <v-card-text>
             Posizione: {{ index }}
             <br/>
             {{element.value}} €
+            <br/>
+            <v-rating
+              hover
+              :length="5"
+              :size="32"
+              readonly
+              :model-value="1"
+              color="secondary"
+              active-color="warning"
+            />
           </v-card-text>
         </v-card>
       </VueDraggableNext>
     </v-col>
     <v-col>
-      <v-label style="font-weight: bold;">Proposition</v-label>
+      <v-label class="pipelineTypeTitle">Proposition</v-label>
       <VueDraggableNext :list="list3" group="people" @change="logEvent" style="cursor: move;">
         <v-card
           v-for="(element, index) in list3"
           :key="element.id"
          style="margin-bottom: 5px;">
           <template v-slot:title>
+            <v-label style="cursor: pointer;">
             {{ element.name }}
+          </v-label>
           </template>
           <v-card-text>
             Posizione: {{ index }}
             <br/>
             {{element.value}} €
+            <v-rating
+              hover
+              :length="5"
+              :size="32"
+              readonly
+              :model-value="4"
+              color="secondary"
+              active-color="warning"
+            />
           </v-card-text>
         </v-card>
       </VueDraggableNext>
     </v-col>
     <v-col>
-      <v-label style="font-weight: bold;">Negotiation</v-label>
+      <v-label class="pipelineTypeTitle">Negotiation</v-label>
       <VueDraggableNext :list="list4" group="people" @change="logEvent" style="cursor: move;">
         <v-card
           v-for="(element, index) in list4"
           :key="element.id"
          style="margin-bottom: 5px;">
           <template v-slot:title>
+            <v-label style="cursor: pointer;">
             {{ element.name }}
+            </v-label>
           </template>
           <v-card-text>
             Posizione: {{ index }}
             <br/>
             {{element.value}} €
+            <v-rating
+              hover
+              :length="5"
+              :size="32"
+              readonly
+              :model-value="2"
+              color="secondary"
+              active-color="warning"
+            />
           </v-card-text>
         </v-card>
       </VueDraggableNext>
     </v-col>
     <v-col>
-      <v-label style="font-weight: bold;">Won</v-label>
+      <v-label class="pipelineTypeTitle">Won</v-label>
       <VueDraggableNext :list="list5" group="people" @change="logEvent" style="cursor: move;">
         <v-card
           v-for="(element, index) in list5"
           :key="element.id"
          style="margin-bottom: 5px;">
           <template v-slot:title>
+            <v-label style="cursor: pointer;">
             {{ element.name }}
+            </v-label>
           </template>
           <v-card-text>
             Posizione: {{ index }}
             <br/>
             {{element.value}} €
+            <v-rating
+              hover
+              :length="5"
+              :size="32"
+              readonly
+              :model-value="5"
+              color="secondary"
+              active-color="warning"
+            />
           </v-card-text>
         </v-card>
       </VueDraggableNext>
     </v-col>
   </v-row>
+</v-card>
 </template>
 
 <style scoped>
@@ -263,6 +321,12 @@ const steps: Step[] = [
 
 .label {
   z-index: 1;
+}
+
+.pipelineTypeTitle {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 18px;
 }
 
 </style>
