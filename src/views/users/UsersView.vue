@@ -188,10 +188,10 @@ import { useTheme } from 'vuetify'
 </script>
 
 <template>
-  <v-card style="margin-right: 5px;" elevation="1">
+  <v-card style="margin-right: 5px;background-color: #f9f9f9;border: 1px solid #03a840;" elevation="0">
     <v-row style="display: flex;align-items: center;background-color: white;">
           <v-col style="margin-top: 10px;">
-            <v-btn color="primary" style="margin-left: 5px;" @click="addNewUser">Create</v-btn>
+            <v-btn  style="margin-left: 5px;background-color:#03a840;color: #fff;" @click="addNewUser">Create</v-btn>
           </v-col>
           <v-col style="display: flex;justify-content: end;margin-right: 5px;margin-top: 10px;">
               <v-btn color="primary" @click="displayFilters"><v-icon start>mdi-magnify</v-icon>Filters</v-btn>
@@ -205,6 +205,7 @@ import { useTheme } from 'vuetify'
     </v-navigation-drawer>
 
     <v-data-table
+    class="custom-table"
     :headers="headers"
     :items="users"
     items-per-page="5"
@@ -321,6 +322,7 @@ overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
 :deep(.v-table__wrapper) {
   background-color: white !important;
 }
+
 
 :deep(.v-data-table-footer) {
   background-color: /*v-bind('theme.current.value.colors.background')*/ white !important;

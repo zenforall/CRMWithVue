@@ -29,7 +29,7 @@ const myCustomTheme = {
     secondary: '#607D8B',
     accent: '#FF3B30',
     background: '#FFFFFF',
-    surface: '#FFFFFF',
+    surface: '#f9f9f9',
     error: '#D32F2F',
     success: '#4CAF50',
     warning: '#FBC02D',

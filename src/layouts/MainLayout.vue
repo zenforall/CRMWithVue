@@ -116,7 +116,7 @@ function manageSearchForMobileView() : void {
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->
-  <v-main style="margin-left: 5px;">
+  <v-main style="margin-left: 5px;background-color: #f9f9f9;">
       <v-breadcrumbs :items="items" color="secondary">
         <template v-slot:divider>
           /
