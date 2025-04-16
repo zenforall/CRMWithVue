@@ -194,7 +194,7 @@ import { useTheme } from 'vuetify'
             <v-btn  style="margin-left: 5px;background-color:#03a840;color: #fff;" @click="addNewUser">Create</v-btn>
           </v-col>
           <v-col style="display: flex;justify-content: end;margin-right: 5px;margin-top: 10px;">
-              <v-btn color="primary" @click="displayFilters"><v-icon start>mdi-magnify</v-icon>Filters</v-btn>
+              <v-btn style="background-color:#03a840;color: #fff;" @click="displayFilters"><v-icon start>mdi-filter-cog</v-icon>Filters</v-btn>
           </v-col>
     </v-row>
 
