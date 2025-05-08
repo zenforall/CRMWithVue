@@ -51,17 +51,20 @@ function doReset(): void {
 <template>
   <v-row style="background-color: white;margin-top: 2px;">
     <v-col style="display: flex;justify-content: start;align-items: center;">
-      <v-label class="text-secondary" style="margin-left: 5px; font-size: 20px;font-weight: 400; opacity: 0.87;">Filters</v-label>
+      <v-label class="text-secondary" style="margin-left: 5px; font-size: x-large;font-weight: bold; opacity: 0.87;">Filters</v-label>
     </v-col>
     <v-col style="display: flex;margin-right: 10px; justify-content: end;align-items: center;">
+      <!--
       <v-btn color="secondary" title="Close" @click="closeDrawer" icon="mdi-close" size="x-small"></v-btn>
+      -->
+      <v-icon color="secondary" size="large" @click="closeDrawer" >mdi-close</v-icon>
     </v-col>
   </v-row>
   <v-row style="background-color: white;">
     <v-col cols="12">
       <v-text-field
         v-model="filter.userName"
-        variant="underlined"
+        variant="outlined"
         label="User Name"
         width="90%"
         style="margin-left: 5px;"
@@ -74,7 +77,7 @@ function doReset(): void {
     <v-col cols="12">
       <v-text-field
         v-model="filter.email"
-        variant="underlined"
+        variant="outlined"
         label="Email"
         width="90%"
         style="margin-left: 5px"
@@ -86,7 +89,7 @@ function doReset(): void {
       <v-text-field
         v-model="filter.company"
         label="Company"
-        variant="underlined"
+        variant="outlined"
         width="90%"
         style="margin-left: 5px"
         density="compact"
@@ -98,7 +101,7 @@ function doReset(): void {
         v-model="filter.activationDateFrom"
         label="From"
         width="90%"
-        variant="underlined"
+        variant="outlined"
         density="compact"
       >
       </v-date-input>
@@ -107,7 +110,7 @@ function doReset(): void {
       <v-date-input
         v-model="filter.activationDateTo"
         width="90%"
-        variant="underlined"
+        variant="outlined"
         label="To"
         density="compact"
       >
@@ -128,13 +131,12 @@ function doReset(): void {
           width: 100%;
           display: flex;
           flex-direction: row;
-          justify-content: center;">
+          justify-content: end;">
+        <v-btn variant="outlined" color="secondary" @click="doReset">Clean</v-btn>
         <v-btn
-          color="primary"
           @click="doFilter"
-          style="margin-right: 5px;"
-          >Apply</v-btn>
-        <v-btn color="secondary" @click="doReset">Clean</v-btn>
+          style="margin-left: 5px;background-color:#03a840;color: #fff;"
+          >Apply Filters</v-btn>
       </div>
     </v-col>
   </v-row>

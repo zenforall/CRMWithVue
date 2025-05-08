@@ -25,8 +25,8 @@ import i18n from './i18n'
 const myCustomTheme = {
   dark: false, // Imposta true se vuoi una modalità scura
   colors: {
-    primary: '#000000',
-    secondary: '#607D8B',
+    primary: '#03a840',
+    secondary: '#4a4a4a',
     accent: '#FF3B30',
     background: '#FFFFFF',
     surface: '#f9f9f9',

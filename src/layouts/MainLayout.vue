@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref,onMounted } from 'vue';
+import { ref } from 'vue';
 import { RouterView } from 'vue-router'
 import MenuList from '@/components/MenuList.vue'
-import Footer from '@/components/Footer.vue'
+//import Footer from '@/components/Footer.vue'
 import { useDisplay } from 'vuetify';
 import { useAppStore } from "@/stores/app"
 import { useRouter } from 'vue-router';
@@ -15,7 +15,7 @@ const display = useDisplay();
 const menu = ref(false); // Stato del menu
 
 const displayOnMobile = ref(false);
-const displayAfterClickingSearchButtonOnMobileView = ref(false);
+//const displayAfterClickingSearchButtonOnMobileView = ref(false);
 
 if ( display.name.value === 'lg') {
   drawer.value = true;
@@ -67,8 +67,8 @@ function manageSearchForMobileView() : void {
           flat
           hide-details
           single-line></v-text-field>
-
-
+      -->
+      <!--
       <v-text-field
           v-show="displayOnMobile"
           density="compact"
@@ -116,12 +116,14 @@ function manageSearchForMobileView() : void {
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->
-  <v-main style="margin-left: 5px;background-color: #f9f9f9;">
+  <v-main style="margin-left: 5px;background-color: #f2f2f2;">
+     <!--
       <v-breadcrumbs :items="items" color="secondary">
         <template v-slot:divider>
           /
         </template>
        </v-breadcrumbs>
+     -->
       <RouterView @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-main>
 

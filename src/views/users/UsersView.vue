@@ -33,6 +33,7 @@ import { useTheme } from 'vuetify'
     onMounted(async () => {
         drawerFilter.value = false;
 
+        /*
         const breadCrumbItems :  BreadCrumbItem[] = [];
         breadCrumbItems.push(
           {
@@ -47,6 +48,7 @@ import { useTheme } from 'vuetify'
           }
         );
         emit("breadCrumbHandler",breadCrumbItems);
+        */
 
         headers.value.push({
             title : t("userName"),
@@ -188,14 +190,43 @@ import { useTheme } from 'vuetify'
 </script>
 
 <template>
-  <v-card style="margin-right: 5px;background-color: #f9f9f9;border: 1px solid #03a840;" elevation="0">
+
+<v-card style="margin-right: 5px;margin-bottom: 10px;margin-top: 10px;background-color: #f9f9f9;" elevation="0">
+  <v-row style="display: flex;align-items: center;background-color: white;border: solid black 0px;">
+    <v-col style="margin-top: 10px;margin-left: 20px;padding: 10px;">
+      <v-breadcrumbs :items="items" color="secondary">
+        <template v-slot:divider>
+          /
+        </template>
+       </v-breadcrumbs>
+    </v-col>
+  </v-row>
+  <v-row style="display: flex;align-items: center;background-color: white;border: 0px solid black;">
+    <v-col style="margin-top: 0px;margin-left: 20px;padding: 10px;">
+       <v-label class="text-secondary" style="font-weight: bold;font-size: x-large;opacity: 0.87;">Users</v-label>
+    </v-col>
+    <v-col style="display: flex;justify-content: end;margin-right: 5px;margin-top: 0px;margin-bottom: 10px;padding: 10px;">
+       <v-btn  style="margin-left: 5px;background-color:#03a840;color: #fff;" @click="addNewUser">Create User</v-btn>
+    </v-col>
+  </v-row>
+</v-card>
+
+  <v-card style="margin-right: 5px;background-color: #f9f9f9;" elevation="0">
     <v-row style="display: flex;align-items: center;background-color: white;">
-          <v-col style="margin-top: 10px;">
-            <v-btn  style="margin-left: 5px;background-color:#03a840;color: #fff;" @click="addNewUser">Create</v-btn>
-          </v-col>
-          <v-col style="display: flex;justify-content: end;margin-right: 5px;margin-top: 10px;">
-              <v-btn style="background-color:#03a840;color: #fff;" @click="displayFilters"><v-icon start>mdi-filter-cog</v-icon>Filters</v-btn>
-          </v-col>
+       <v-col style="display: flex;justify-content: start;align-items: center; margin-right: 5px;margin-top: 10px;">
+            <v-text-field
+              style="max-width: 300px;margin-left: 15px;"
+              class="d-none d-sm-block"
+              density="compact"
+              label="Search"
+              prepend-inner-icon="mdi-magnify"
+              variant="solo-filled"
+              flat
+              hide-details
+              single-line>
+           </v-text-field>
+          <v-btn style="background-color:#03a840;color: #fff;margin-left: 10px;" @click="displayFilters"><!--<v-icon start>mdi-filter-cog</v-icon>-->Filters</v-btn>
+      </v-col>
     </v-row>
 
     <v-navigation-drawer style="background-color: white;" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false">
@@ -203,6 +234,7 @@ import { useTheme } from 'vuetify'
                           @doFilterUsersHandler="doFilterUsersHandler"
                           @doResetFilterUsersHandler="doResetFilterUsersHandler"/>
     </v-navigation-drawer>
+
 
     <v-data-table
     class="custom-table"
@@ -214,7 +246,7 @@ import { useTheme } from 'vuetify'
     ref="vTablee"
     select-strategy="all"
     show-select
-    :hide-default-header="isMobile"
+    :hide-default-footer="isMobile"
     :items-per-page-options="[5,10]">
 
     <template v-slot:body="{ items }" v-if="isMobile">
@@ -240,6 +272,7 @@ import { useTheme } from 'vuetify'
     </template>
     <template v-slot:item.actions="{ item }" v-if="!isMobile">
       <div>
+      <!--
       <v-menu>
       <template v-slot:activator="{ props }">
         <v-btn
@@ -261,11 +294,9 @@ import { useTheme } from 'vuetify'
         </v-list-item>
       </v-list>
     </v-menu>
-          <!--
-          <v-btn><v-icon color="secondary" class="me-2" size="large" @click="editItem(item)">mdi-dots-horizontal</v-icon></v-btn>
-          <v-icon color="secondary" class="me-2" size="large" @click="askForDeletingItem(item)">mdi-delete</v-icon>
-          -->
-
+  -->
+          <v-icon color="secondary" class="me-2" size="large" @click="editItem(item)">mdi-pencil-outline</v-icon>
+          <v-icon color="secondary" class="me-2" size="large" @click="askForDeletingItem(item)">mdi-delete-outline</v-icon>
       </div>
      </template>
 
@@ -326,6 +357,14 @@ overflow-y: auto;  /* Aggiungi uno scroll verticale se necessario */
 
 :deep(.v-data-table-footer) {
   background-color: /*v-bind('theme.current.value.colors.background')*/ white !important;
+}
+
+:deep(.v-breadcrumbs--density-default) {
+  padding: 0px;
+}
+
+:deep(.v-breadcrumbs-item ) {
+  padding:0px;
 }
 
 </style>
