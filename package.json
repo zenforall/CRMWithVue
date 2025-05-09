@@ -21,6 +21,7 @@
     "@mdi/font": "^7.4.47",
     "@schedule-x/theme-default": "^2.19.0",
     "@schedule-x/vue": "^2.17.0",
+    "chart.js": "^4.4.9",
     "crypto-js": "^4.2.0",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
