@@ -229,7 +229,7 @@ import { useTheme } from 'vuetify'
       </v-col>
     </v-row>
 
-    <v-navigation-drawer style="background-color: white;" app v-model="drawerFilter" location="right" :temporary="true" :permanent="false">
+    <v-navigation-drawer style="background-color: white;" app v-model="drawerFilter" :width="320" location="right" :temporary="true" :permanent="false">
       <UserFormFilterView @openCloseUserFilterDrawerHandler="openCloseUserFilterDrawerHandler"
                           @doFilterUsersHandler="doFilterUsersHandler"
                           @doResetFilterUsersHandler="doResetFilterUsersHandler"/>
@@ -246,6 +246,7 @@ import { useTheme } from 'vuetify'
     ref="vTablee"
     select-strategy="all"
     show-select
+    :hide-default-header="isMobile"
     :hide-default-footer="isMobile"
     :items-per-page-options="[5,10]">
 

@@ -51,11 +51,12 @@ function manageSearchForMobileView() : void {
 
 <template>
   <v-app-bar color="background" elevation="1">
-    <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon color="primary" @click="toggleDrawer"></v-app-bar-nav-icon>
 
     <div style="display: flex; align-items: center;width: 80%;">
+      <img src="@/assets/logo.png" alt="CRM With Vue" style="max-height: 200px;width: auto;" />
       <v-toolbar color="background">
-      <v-toolbar-title  class="text-secondary">CRM*With*Vue</v-toolbar-title>
+      <!--<v-toolbar-title  class="text-secondary">CRM*With*Vue</v-toolbar-title> -->
 
       <!--
       <v-text-field
@@ -93,11 +94,12 @@ function manageSearchForMobileView() : void {
       <v-menu
         v-model="menu">
         <template #activator="{ props }">
-          <v-btn
+          <v-btn style="border: #03a840 solid 2px;"
             v-bind="props"
             icon
             class="rounded-circle">
-            <v-icon>mdi-account</v-icon>
+            <!-- <v-icon color="#03a840">mdi-account</v-icon> -->
+             SG
           </v-btn>
         </template>
             <!-- Menu a discesa -->
@@ -116,7 +118,7 @@ function manageSearchForMobileView() : void {
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->
-  <v-main style="margin-left: 5px;background-color: #f2f2f2;">
+  <v-main style="margin-left: 0px;background-color: #f2f2f2;">
      <!--
       <v-breadcrumbs :items="items" color="secondary">
         <template v-slot:divider>

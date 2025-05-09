@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import DashboardView from '@/views/DashboardView.vue'
-import Calendar from '@/views/activites/CalendarView.vue'
+//import Calendar from '@/views/activites/CalendarView.vue'
 import UsersView from '@/views/users/UsersView.vue'
 import UserFormView from '@/views/users/UserFormView.vue'
 //import CalendarView from '@/views/CalendarView.vue'
@@ -109,6 +109,7 @@ const router = createRouter({
       ],
       meta: { requiresAuth: true }
     },
+    /*
     {
       path: '/',
       component: MainLayout,
@@ -117,6 +118,7 @@ const router = createRouter({
       ],
       meta: { requiresAuth: true }
     },
+    */
     {
       path: '/',
       component: MainLayout,
