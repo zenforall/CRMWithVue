@@ -115,10 +115,14 @@
       router.push("/admin/users");
     }
 
+ const items = [] as string[];
+    items.push("Test");
+    items.push("Test1");
+
 </script>
 
 <template>
-  <v-card style="background-color: white;margin-right: 5px;" elevation="1">
+  <!--<v-card style="background-color: white;margin-right: 5px;" elevation="1"> -->
     <v-snackbar :timeout="1000" color="success" location="center" v-model="displaySnackBarOK">
       <div style="text-align: center;">User Saved Successfully</div>
     </v-snackbar>
@@ -127,21 +131,46 @@
       There were errors saving (check the log)
     </v-snackbar>
 
+    <!--
     <v-row style="display: flex;align-items: center;">
       <v-col cols="1" style="margin-top: 10px;">
         <v-btn color="primary" style="margin-left: 5px;"  @click="backToUsers">&lt; BACK</v-btn>
       </v-col>
     </v-row>
+  -->
+
+<v-card style="margin-right: 5px;margin-bottom: 10px;margin-top: 10px;background-color: #f9f9f9;" elevation="0">
+  <v-row style="display: flex;align-items: center;background-color: white;border: solid black 0px;">
+    <v-col style="margin-top: 10px;margin-left: 20px;padding: 10px;">
+      <v-breadcrumbs :items="items" color="secondary">
+        <template v-slot:divider>
+          /
+        </template>
+       </v-breadcrumbs>
+    </v-col>
+  </v-row>
+  <v-row style="display: flex;align-items: center;background-color: white;border: 0px solid black;">
+    <v-col style="margin-top: 0px;margin-left: 20px;padding: 10px;">
+       <v-label class="text-secondary" style="font-weight: bold;font-size: x-large;opacity: 0.87;">Create/Edit User</v-label>
+    </v-col>
+    <v-col style="display: flex;justify-content: end;margin-right: 5px;margin-top: 0px;margin-bottom: 10px;padding: 10px;">
+       <v-btn variant="outlined" color="secondary" @click="backToUsers">Back</v-btn>
+       <v-btn  style="margin-left: 5px;background-color:#03a840;color: #fff;" @click="saveUser">Save User</v-btn>
+    </v-col>
+  </v-row>
+</v-card>
+
+<v-card style="margin-right: 5px;margin-bottom: 10px;margin-top: 5px;background-color: white" elevation="0">
       <v-form ref="formRef" lazy-validation style="margin-top: 10px;margin-left: 5px;margin-right: 5px;">
        <v-row>
         <!-- User Name -->
         <v-col cols="12" md="6">
           <v-text-field
-            variant="underlined"
             :rules="[rules.required]"
             v-model="formData.userName"
             label="User Name"
             density="compact"
+            variant="outlined"
             required
           ></v-text-field>
         </v-col>
@@ -149,7 +178,7 @@
         <!-- Password -->
         <v-col cols="12" md="6">
           <v-text-field
-            variant="underlined"
+            variant="outlined"
             :rules="[rules.required]"
             v-model="formData.password"
             append-inner-icon="mdi-eye"
@@ -163,7 +192,7 @@
         <!-- Email -->
         <v-col cols="12" md="6">
           <v-text-field
-            variant="underlined"
+            variant="outlined"
             :rules="[rules.required,rules.emailValidation]"
             v-model="formData.email"
             label="Email"
@@ -176,7 +205,7 @@
         <!-- Company -->
         <v-col cols="12" md="6">
           <v-text-field
-            variant="underlined"
+            variant="outlined"
             :rules="[rules.required]"
             v-model="formData.company"
             label="Company"
@@ -187,7 +216,7 @@
         <!-- Activation Date -->
         <v-col cols="12" md="6">
             <v-date-input
-              variant="underlined"
+              variant="outlined"
               :rules="[rules.required]"
               :first-day-of-week="1"
               label="Activation Date"
@@ -203,22 +232,6 @@
             label="Enabled"
             density="compact"
           ></v-checkbox>
-        </v-col>
-
-        <v-col cols="12" style="margin-bottom: 10px;">
-              <div class="right-buttons">
-                <v-btn
-                color="primary"
-                    @click="saveUser">
-                Save
-              </v-btn>
-              <!--<v-btn v-if="userStore.userAction === 'U'"-->
-                <v-btn
-                      @click="cancel"
-                      color="secondary">
-                  Cancel
-                </v-btn>
-              </div>
         </v-col>
       </v-row>
     </v-form>
@@ -242,4 +255,13 @@
   gap: 5px;                  /* Spazio tra i pulsanti a destra */
   /*background-color: transparent;*/
 }
+
+:deep(.v-breadcrumbs--density-default) {
+  padding: 0px;
+}
+
+:deep(.v-breadcrumbs-item ) {
+  padding:0px;
+}
+
 </style>

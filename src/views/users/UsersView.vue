@@ -220,7 +220,7 @@ import { useTheme } from 'vuetify'
               density="compact"
               label="Search"
               prepend-inner-icon="mdi-magnify"
-              variant="solo-filled"
+              variant="outlined"
               flat
               hide-details
               single-line>
@@ -311,23 +311,20 @@ import { useTheme } from 'vuetify'
         color="background"
         max-width="400">
         <v-card-title>
-            <v-icon class="me-2">mdi-delete-alert</v-icon>
-            Confirm Deletion
+            <v-label class="text-secondary" style="font-weight: bold;font-size: large;opacity: 0.87;">Are you sure ?</v-label>
         </v-card-title>
         <v-card-text class="text-secondary">Are you sure to delete User <strong>{{userToDelete?.userName}} </strong> ?</v-card-text>
         <template v-slot:actions>
           <div style="display: flex;flex-direction: row;justify-content: end;">
             <v-btn
-              color="primary"
-              class="ms-auto"
-              text="YES"
-              @click="doDeleteItem();showDeleteConfirmDialog = false"
+              variant="outlined" color="secondary"
+              text="Disagree"
+              @click="showDeleteConfirmDialog = false"
             ></v-btn>
             <v-btn
-              color="primary"
-              class="ms-auto"
-              text="NO"
-              @click="showDeleteConfirmDialog = false"
+              style="background-color:#03a840;color: #fff;font-weight: bold;"
+              text="Agree"
+              @click="doDeleteItem();showDeleteConfirmDialog = false"
             ></v-btn>
           </div>
         </template>

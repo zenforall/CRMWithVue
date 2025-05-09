@@ -44,7 +44,7 @@ onMounted(async () => {
     <v-list density="compact" nav open-strategy="single">
       <template v-for="(item, index) in items">
         <v-list-group v-if="hasChildren(item)">
-          <template v-slot:activator="{ props }" :key="item.id">
+          <template v-slot:activator="{ props }">
             <v-list-item
               class="text-text"
               v-bind="props"
@@ -69,6 +69,7 @@ onMounted(async () => {
         <v-list-item v-else
           class="text-text"
           link
+          :key="item.id"
           @click="navigate(item)"
           :title="item.title"
           :prepend-icon="item.icon"
@@ -93,6 +94,7 @@ onMounted(async () => {
 */
 
 :deep(.v-list-item--nav .v-list-item-title) {
+    color: #4a4a4a;
     font-size: .8125rem;
     font-weight: normal;
     letter-spacing: normal;

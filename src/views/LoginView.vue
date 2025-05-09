@@ -87,14 +87,14 @@ import { useTheme } from "vuetify";
                 <v-form ref="formRef" lazy-validation>
                   <v-text-field
                     autofocus
-                    variant="underlined"
                     label="Email"
+                    variant="outlined"
                     :rules="[rules.required]"
                     v-model="username">
                 </v-text-field>
                   <v-text-field
                     label="Password"
-                    variant="underlined"
+                    variant="outlined"
                     :rules="[rules.required]"
                     type="password"
                     v-model="password">

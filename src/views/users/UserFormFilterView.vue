@@ -68,6 +68,7 @@ function doReset(): void {
         label="User Name"
         width="90%"
         style="margin-left: 5px;"
+        hide-details
         density="compact"
       >
       </v-text-field>
@@ -79,6 +80,7 @@ function doReset(): void {
         v-model="filter.email"
         variant="outlined"
         label="Email"
+        hide-details
         width="90%"
         style="margin-left: 5px"
         density="compact"
@@ -90,6 +92,7 @@ function doReset(): void {
         v-model="filter.company"
         label="Company"
         variant="outlined"
+        hide-details
         width="90%"
         style="margin-left: 5px"
         density="compact"
@@ -101,6 +104,7 @@ function doReset(): void {
         v-model="filter.activationDateFrom"
         label="From"
         width="90%"
+        hide-details
         variant="outlined"
         density="compact"
       >
@@ -109,6 +113,7 @@ function doReset(): void {
     <v-col cols="12">
       <v-date-input
         v-model="filter.activationDateTo"
+        hide-details
         width="90%"
         variant="outlined"
         label="To"
@@ -120,6 +125,7 @@ function doReset(): void {
       <v-checkbox
         v-model="filter.enabled"
         label="Enabled"
+        hide-details
         density="compact"
       ></v-checkbox>
     </v-col>
