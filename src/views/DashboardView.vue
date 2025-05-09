@@ -4,7 +4,7 @@ import { DoughnutChart,BarChart,LineChart } from 'vue-chart-3';
 //import { Chart, registerables } from "chart.js";
 import type { BreadCrumbItem } from '@/models/BreadCrumbItem';
 
-Chart.register(...registerables);
+//Chart.register(...registerables);
 
     onMounted(async () => {
       const breadCrumbItems :  BreadCrumbItem[] = [];
