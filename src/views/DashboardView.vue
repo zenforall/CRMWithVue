@@ -1,7 +1,7 @@
 <script setup lang="ts" >
 import { onMounted } from 'vue';
 import { DoughnutChart,BarChart,LineChart } from 'vue-chart-3';
-import { Chart, registerables } from "chart.js";
+//import { Chart, registerables } from "chart.js";
 import type { BreadCrumbItem } from '@/models/BreadCrumbItem';
 
 Chart.register(...registerables);
