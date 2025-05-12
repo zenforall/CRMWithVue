@@ -322,7 +322,7 @@ import { useTheme } from 'vuetify'
               @click="showDeleteConfirmDialog = false"
             ></v-btn>
             <v-btn
-              style="background-color:#03a840;color: #fff;font-weight: bold;"
+              style="background-color:#03a840;color: #fff;font-weight: bold;margin-left: 5px;"
               text="Agree"
               @click="doDeleteItem();showDeleteConfirmDialog = false"
             ></v-btn>
