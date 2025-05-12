@@ -78,41 +78,47 @@ import { useTheme } from "vuetify";
       Invalid Credentials
     </v-snackbar>
 
-    <div>
+    <div style="background-color: #f2f2f2;">
       <v-container>
         <v-row style=" display: flex; height: 98vh;justify-content: center;align-items: center;">
           <v-col cols="12" sm="8" md="4">
+            <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center;margin-bottom: 20px;">
+              <img src="@/assets/logo.png?id=123" alt="CRM With Vue" />
+            </div>
             <v-card class="pa-4" style="background-color: white;" elevation="1">
+              <v-label class="text-secondary" style="font-weight: bold;font-size: x-large;opacity: 0.87;">Login in</v-label>
+              <v-divider :thickness="2" style="margin-top: 15px;margin-bottom: 15px;"></v-divider>
               <v-card-text>
                 <v-form ref="formRef" lazy-validation>
                   <v-text-field
                     autofocus
                     label="Email"
                     variant="outlined"
+                    density="compact"
                     :rules="[rules.required]"
                     v-model="username">
                 </v-text-field>
                   <v-text-field
                     label="Password"
+                    density="compact"
                     variant="outlined"
                     :rules="[rules.required]"
                     type="password"
                     v-model="password">
                 </v-text-field>
-                <v-row style="margin:0">
-                  <a class="link" href="#">Recover forgotten password</a>
+                <v-row style="display: flex;align-items: center; margin-top: 15px;">
+                  <v-divider :thickness="2" style="margin-bottom: 15px;"></v-divider>
+                  <v-lavel>Forget password ?</v-lavel>
                   <v-row style="margin:0;justify-content: end;">
-                    <a class="link" href="#">Sign in</a>
+                    <v-btn
+                      style="display: flex;"
+                      @click="handleLogin"
+                      @keydown.enter="handleLogin"
+                      color="primary">
+                      Login
+                    </v-btn>
                   </v-row>
                 </v-row>
-                <br/>
-                  <v-btn
-                    style="display: flex; min-width: 100%;"
-                    @click="handleLogin"
-                    @keydown.enter="handleLogin"
-                    color="primary">
-                    Login
-                  </v-btn>
                 </v-form>
               </v-card-text>
           </v-card>
