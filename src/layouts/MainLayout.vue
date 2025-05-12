@@ -112,7 +112,13 @@ function manageSearchForMobileView() : void {
           </v-btn>
         </template>
             <!-- Menu a discesa -->
-            <v-list style="margin-top: 5px">
+            <v-list style="margin-top: 5px" class="custom-list">
+              <v-list-item disabled>
+                <v-list-item-title>Version 0.6</v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-divider></v-divider>
+              </v-list-item>
               <v-list-item link @click="logout">
                 <v-list-item-title><v-icon>mdi-logout</v-icon> Logout</v-list-item-title>
               </v-list-item>
@@ -157,6 +163,12 @@ function manageSearchForMobileView() : void {
 
 .v-toolbar-title__placeholder {
   font-weight: normal;
+}
+
+.custom-list .v-list-item--density-default.v-list-item--one-line {
+  min-height: 10px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
 }
 
 </style>
