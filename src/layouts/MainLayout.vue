@@ -120,7 +120,7 @@ function manageSearchForMobileView() : void {
                 <v-divider></v-divider>
               </v-list-item>
               <v-list-item link @click="logout">
-                <v-list-item-title><v-icon>mdi-logout</v-icon> Log out</v-list-item-title>
+                <v-list-item-title>Log out</v-list-item-title>
               </v-list-item>
             </v-list>
       </v-menu>

@@ -86,7 +86,7 @@ import { useTheme } from "vuetify";
               <img src="@/assets/logo.png?id=123" alt="CRM With Vue" />
             </div>
             <v-card class="pa-4" style="background-color: white;" elevation="1">
-              <v-label class="text-secondary" style="font-weight: bold;font-size: x-large;opacity: 0.87;">Log in</v-label>
+              <v-label class="text-secondary" style="font-weight: bold;font-size: x-large;opacity: 0.87;">Sign in</v-label>
               <v-divider :thickness="2" style="margin-top: 15px;margin-bottom: 15px;"></v-divider>
               <v-card-text>
                 <v-form ref="formRef" lazy-validation>
@@ -115,7 +115,7 @@ import { useTheme } from "vuetify";
                       @click="handleLogin"
                       @keydown.enter="handleLogin"
                       color="primary">
-                      Log in
+                      Sign in
                     </v-btn>
                   </v-row>
                 </v-row>
