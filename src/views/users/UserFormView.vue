@@ -116,8 +116,9 @@
     }
 
  const items = [] as string[];
-    items.push("Test");
-    items.push("Test1");
+    items.push("Admin");
+    items.push("Users");
+    items.push("Create-Edit User");
 
 </script>
 

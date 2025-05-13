@@ -22,8 +22,8 @@ import { useTheme } from 'vuetify'
     const { isMobile } = useIsMobile(); // Verifica se la risoluzione del dispositivo è Mobile
 
     const items = [] as string[];
-    items.push("Test");
-    items.push("Test1");
+    items.push("Admin");
+    items.push("Users");
 
 
     onUnmounted(async () => {

@@ -1,8 +1,37 @@
 <script setup lang="ts">
 
 import { VueDraggableNext } from 'vue-draggable-next'
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import type { BreadCrumbItem } from '@/models/BreadCrumbItem';
+
+const items = [] as string[];
+items.push("Sales");
+items.push("Pipeline");
+
+const showWonList = ref(true);
+const showLostList = ref(true);
+const showWonListDiv = ref("block");
+const showLostListDiv = ref(true);
+
+
+watch(showWonList, (newVal, oldVal) => {
+  if (newVal == oldVal) return;
+  if (newVal) {
+      showWonListDiv.value = "block";
+  } else {
+    showWonListDiv.value = "none";
+  }
+});
+
+watch(showLostList, (newVal, oldVal) => {
+  if (newVal == oldVal) return;
+  if (newVal) {
+      showLostListDiv.value = true;
+  } else {
+    showLostListDiv.value = false;
+  }
+});
+
 
 onMounted(async () => {
 
@@ -84,18 +113,74 @@ const steps: Step[] = [
 ]
 */
 
+function addNewPipeline() : void {
+
+}
+
+
 </script>
 
 <template>
 
-<v-card style="margin-right: 5px;" elevation="1">
+<v-card style="margin-right: 5px;margin-bottom: 10px;margin-top: 10px;background-color: #f9f9f9;" elevation="0">
+  <v-row style="display: flex;align-items: center;background-color: white;border: solid black 0px;">
+    <v-col style="margin-top: 10px;margin-left: 20px;padding: 10px;">
+      <v-breadcrumbs :items="items" color="secondary">
+        <template v-slot:divider>
+          /
+        </template>
+       </v-breadcrumbs>
+    </v-col>
+  </v-row>
+  <v-row style="display: flex;align-items: center;background-color: white;border: 0px solid black;">
+    <v-col style="margin-top: 0px;margin-left: 20px;padding: 10px;">
+       <v-label class="text-secondary" style="font-weight: bold;font-size: x-large;opacity: 0.87;">Pipeline</v-label>
+    </v-col>
+    <v-col style="display: flex;justify-content: end;margin-right: 5px;margin-top: 0px;margin-bottom: 10px;padding: 10px;">
+       <v-btn  style="margin-left: 5px;background-color:#03a840;color: #fff;" @click="addNewPipeline">Create Pipeline</v-btn>
+    </v-col>
+  </v-row>
+</v-card>
 
-  <v-row style="display: flex;align-items: center;background-color: white;">
-      <v-col style="margin-top: 10px;">
-        <v-btn color="primary" style="margin-left: 5px;">Create</v-btn>
-      </v-col>
+  <v-card style="margin-right: 5px;background-color: #f9f9f9;" elevation="0">
+    <v-row style="display: flex;align-items: center;background-color: white;">
+       <v-col style="display: flex;justify-content: start;align-items: center; margin-right: 5px;margin-top: 10px;">
+            <v-text-field
+              style="max-width: 300px;margin-left: 15px;"
+              class="d-none d-sm-block"
+              density="compact"
+              label="Search"
+              prepend-inner-icon="mdi-magnify"
+              variant="outlined"
+              flat
+              hide-details
+              single-line>
+           </v-text-field>
+          <v-btn style="background-color:#03a840;color: #fff;margin-left: 10px;"><!--<v-icon start>mdi-filter-cog</v-icon>-->Filters</v-btn>
+          <div style="flex-grow: 1; display: flex;flex-direction: row;justify-content: end;">
+            <v-switch
+                v-model="showWonList"
+                color="success"
+                hide-details>
+                <template #label>
+                  <span style="font-weight: bold;">Won</span>
+                </template>
+            </v-switch>
+            <v-switch
+                v-model="showLostList"
+                style="margin-left: 10px;"
+                color="error"
+                hide-details>
+                <template #label>
+                  <span style="font-weight: bold;">Lost</span>
+                </template>
+            </v-switch>
+            </div>
+        </v-col>
     </v-row>
 
+    <v-navigation-drawer style="background-color: white;" app :width="320" location="right" :temporary="true" :permanent="false">
+    </v-navigation-drawer>
   <!--
   <v-row>
     <v-col>
@@ -128,9 +213,9 @@ const steps: Step[] = [
   </v-row>
 -->
 
-   <v-row style="margin-left: 1px;margin-right: 1px;">
-    <v-col>
-      <v-label class="pipelineTypeTitle">New</v-label>
+   <v-row style="margin-left: 1px;margin-right: 1px;margin-top: 5px;">
+    <v-col style="background-color: white;" class="draggable-container">
+      <v-label class="text-secondary" style="font-weight: bold;font-size: large;opacity: 0.87;">New</v-label>
       <VueDraggableNext :list="list1" group="people" style="cursor: move;">
          <v-card
           v-for="(element, index) in list1"
@@ -159,38 +244,8 @@ const steps: Step[] = [
         </v-card>
       </VueDraggableNext>
     </v-col>
-    <v-col>
-      <v-label class="pipelineTypeTitle">Qualified</v-label>
-      <VueDraggableNext :list="list2" group="people" style="cursor: move;">
-        <v-card
-          v-for="(element, index) in list2"
-          :key="element.id"
-         style="margin-bottom: 5px;">
-          <template v-slot:title>
-            <v-label style="cursor: pointer;">
-            {{ element.name }}
-            </v-label>
-          </template>
-          <v-card-text>
-            Posizione: {{ index }}
-            <br/>
-            {{element.value}} €
-            <br/>
-            <v-rating
-              hover
-              :length="5"
-              :size="32"
-              readonly
-              :model-value="1"
-              color="secondary"
-              active-color="warning"
-            />
-          </v-card-text>
-        </v-card>
-      </VueDraggableNext>
-    </v-col>
-    <v-col>
-      <v-label class="pipelineTypeTitle">Proposition</v-label>
+    <v-col style="background-color: white;" class="draggable-container">
+      <v-label class="text-secondary" style="font-weight: bold;font-size: large;opacity: 0.87;">Proposition</v-label>
       <VueDraggableNext :list="list3" group="people" @change="logEvent" style="cursor: move;">
         <v-card
           v-for="(element, index) in list3"
@@ -218,8 +273,8 @@ const steps: Step[] = [
         </v-card>
       </VueDraggableNext>
     </v-col>
-    <v-col>
-      <v-label class="pipelineTypeTitle">Negotiation</v-label>
+    <v-col style="background-color: white;" class="draggable-container">
+      <v-label class="text-secondary" style="font-weight: bold;font-size: large;opacity: 0.87;">Negotiation</v-label>
       <VueDraggableNext :list="list4" group="people" @change="logEvent" style="cursor: move;">
         <v-card
           v-for="(element, index) in list4"
@@ -247,8 +302,8 @@ const steps: Step[] = [
         </v-card>
       </VueDraggableNext>
     </v-col>
-    <v-col>
-      <v-label class="pipelineTypeTitle">Won</v-label>
+    <v-col :style="{ display : showWonListDiv }" style="background-color: white;" class="draggable-container">
+      <v-label class="text-primary" style="font-weight: bold;font-size: large;opacity: 0.87;">Won</v-label>
       <VueDraggableNext :list="list5" group="people" @change="logEvent" style="cursor: move;">
         <v-card
           v-for="(element, index) in list5"
@@ -269,6 +324,36 @@ const steps: Step[] = [
               :size="32"
               readonly
               :model-value="5"
+              color="secondary"
+              active-color="warning"
+            />
+          </v-card-text>
+        </v-card>
+      </VueDraggableNext>
+    </v-col>
+    <v-col style="background-color: white;" class="draggable-container" v-show="showLostListDiv" >
+      <v-label color="error" style="color: rgb(211, 47, 47);font-weight: bold;font-size: large;opacity: 0.87;">Lost</v-label>
+      <VueDraggableNext :list="list2" group="people" style="cursor: move;">
+        <v-card
+          v-for="(element, index) in list2"
+          :key="element.id"
+         style="margin-bottom: 5px;">
+          <template v-slot:title>
+            <v-label style="cursor: pointer;">
+            {{ element.name }}
+            </v-label>
+          </template>
+          <v-card-text>
+            Posizione: {{ index }}
+            <br/>
+            {{element.value}} €
+            <br/>
+            <v-rating
+              hover
+              :length="5"
+              :size="32"
+              readonly
+              :model-value="1"
               color="secondary"
               active-color="warning"
             />
@@ -328,5 +413,20 @@ const steps: Step[] = [
   margin-bottom: 5px;
   font-size: 18px;
 }
+
+:deep(.v-breadcrumbs--density-default) {
+  padding: 0px;
+}
+
+:deep(.v-breadcrumbs-item ) {
+  padding:0px;
+}
+
+.draggable-container {
+  max-height: 600px; /* o height: 300px; se vuoi una altezza fissa */
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
 
 </style>
