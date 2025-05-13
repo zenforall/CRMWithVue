@@ -11,7 +11,7 @@ import { useIsMobile } from "@/composables/useIsMobile";
 
 const { isMobile } = useIsMobile(); // Verifica se la risoluzione del dispositivo è Mobile
 const router = useRouter();
-const drawer = ref(false);
+const drawer = ref(true);
 const appStore = useAppStore();
 //const display = useDisplay();
 const menu = ref(false); // Stato del menu
@@ -54,13 +54,13 @@ function manageSearchForMobileView() : void {
 </script>
 
 <template>
-  <v-app-bar color="background" elevation="1">
+  <v-app-bar color="background" elevation="0">
     <v-app-bar-nav-icon color="primary" @click="toggleDrawer"></v-app-bar-nav-icon>
 
     <div style="display: flex; align-items: center;border: 0px solid black;">
       <img src="@/assets/logo.png" alt="CRM With Vue" style="max-height: 200px;width: auto;" />
     </div>
-    <div v-show="!isMobile"style="width: 80%;display: flex;flex-direction: row;justify-content: center;border: 0px solid black;">
+    <div v-show="!isMobile" style="width: 80%;display: flex;flex-direction: row;justify-content: center;border: 0px solid black;">
       <v-text-field
           class="d-none d-sm-block"
           density="compact"
@@ -127,7 +127,7 @@ function manageSearchForMobileView() : void {
     </div>
   </v-app-bar>
 
-  <v-navigation-drawer app v-model="drawer" :permanent="false" style="border: 0px solid black;" elevation="1">
+  <v-navigation-drawer app v-model="drawer" :permanent="true" elevation="0">
       <!--<Menu @breadCrumbHandler="breadCrumbItemsHandler"/>-->
       <MenuList @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-navigation-drawer>
