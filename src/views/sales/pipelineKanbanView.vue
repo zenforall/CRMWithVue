@@ -423,9 +423,10 @@ function addNewPipeline() : void {
 }
 
 .draggable-container {
-  max-height: 600px; /* o height: 300px; se vuoi una altezza fissa */
+  max-height: 400px; /* o height: 300px; se vuoi una altezza fissa */
   overflow-y: auto;
   scrollbar-width: thin;
+  margin-bottom: 10px;
 }
 
 
