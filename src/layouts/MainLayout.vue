@@ -114,7 +114,7 @@ function manageSearchForMobileView() : void {
             <!-- Menu a discesa -->
             <v-list style="margin-top: 5px" class="custom-list">
               <v-list-item disabled>
-                <v-list-item-title>Version 0.6</v-list-item-title>
+                <v-list-item-title>Version 0.6.1</v-list-item-title>
               </v-list-item>
               <v-list-item>
                 <v-divider></v-divider>
