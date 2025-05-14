@@ -172,7 +172,7 @@ function manageSearchForMobileView() : void {
 }
 
 .v-navigation-drawer--left {
-  border: 0;
+ border-right-width: 0px !important;
 }
 
 </style>
