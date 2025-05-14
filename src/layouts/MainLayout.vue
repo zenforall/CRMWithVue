@@ -127,9 +127,9 @@ function manageSearchForMobileView() : void {
     </div>
   </v-app-bar>
 
-  <v-navigation-drawer app v-model="drawer" :permanent="true" elevation="0">
+  <v-navigation-drawer app v-model="drawer" :permanent="true">
       <!--<Menu @breadCrumbHandler="breadCrumbItemsHandler"/>-->
-      <MenuList @breadCrumbHandler="breadCrumbItemsHandler"/>
+    <MenuList @breadCrumbHandler="breadCrumbItemsHandler"/>
   </v-navigation-drawer>
 
   <!-- Contenuto principale -->
@@ -169,6 +169,10 @@ function manageSearchForMobileView() : void {
   min-height: 10px !important;
   padding-top: 0px !important;
   padding-bottom: 0px !important;
+}
+
+.v-navigation-drawer--left {
+  border: 0;
 }
 
 </style>

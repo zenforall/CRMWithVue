@@ -37,17 +37,17 @@ Chart.register(...registerables);
 <template>
   <v-container>
     <v-row>
-      <v-col>
+      <v-col cols="12" md="4" lg="4">
         <v-card elevation="1" color="background">
           <DoughnutChart :chartData="testData" style="margin-bottom: 10px;"/>
         </v-card>
       </v-col>
-      <v-col>
+      <v-col cols="12" md="4" lg="4">
         <v-card elevation="1" color="background">
           <BarChart :chartData="testData" />
         </v-card>
       </v-col>
-      <v-col>
+      <v-col cols="12" md="4" lg="4">
         <v-card elevation="1" color="background">
           <LineChart :chartData="testData" style="margin-bottom: 10px;"/>
         </v-card>
