@@ -1,0 +1,11 @@
+<svg width="420" height="100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { font: bold 40px sans-serif; fill: #000; }
+  </style>
+  <text x="10" y="60" class="text">CRM With</text>
+  <g transform="translate(200,10)">
+    <polygon points="0,0 30,52.5 60,0" fill="#41B883"/>
+    <polygon points="15,0 30,26.25 45,0" fill="#35495E"/>
+    <polygon points="22.5,0 30,13.125 37.5,0" fill="#FFFFFF"/>
+  </g>
+</svg>
