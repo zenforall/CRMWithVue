@@ -175,7 +175,6 @@
             required
           ></v-text-field>
         </v-col>
-
         <!-- Password -->
         <v-col cols="12" md="6">
           <v-text-field
