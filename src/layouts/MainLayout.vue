@@ -55,75 +55,78 @@ function manageSearchForMobileView() : void {
 
 <template>
   <v-app-bar color="background" elevation="0">
-    <v-app-bar-nav-icon color="primary" @click="toggleDrawer"></v-app-bar-nav-icon>
+    <div style="border: 0px solid black;display: flex;width: 80%;flex-direction: row;">
+      <v-app-bar-nav-icon color="primary" @click="toggleDrawer"></v-app-bar-nav-icon>
 
-    <div style="display: flex; align-items: center;border: 0px solid black;">
-      <img src="@/assets/logo.png" alt="CRM With Vue" style="max-height: 200px;width: auto;" />
+      <div style="display: flex; align-items: center;border: 0px solid black;">
+        <img src="@/assets/logo.png" alt="CRM With Vue" style="max-height: 200px;width: auto;" />
+      </div>
+      <div v-show="!isMobile" style="width: 80%;display: flex;flex-direction: row;justify-content: center;border: 0px solid black;">
+        <v-text-field
+            class="d-none d-sm-block"
+            density="compact"
+            label="Mega Search"
+            prepend-inner-icon="mdi-magnify"
+            variant="outlined"
+            style="max-width: 600px;"
+            flat
+            hide-details
+            single-line>
+        </v-text-field>
+        <v-btn style="border: #03a840 solid 2px;margin-left: 10px;"
+          icon
+          size="small"
+          class="rounded-circle">
+          <v-icon color="#03a840">mdi-plus</v-icon>
+        </v-btn>
+
+        <!--
+        <v-text-field
+            v-show="displayOnMobile"
+            density="compact"
+            label="Search"
+            prepend-inner-icon="mdi-magnify"
+            variant="solo-filled"
+            flat
+            hide-details
+            single-line></v-text-field>
+
+            <v-btn
+                @click="manageSearchForMobileView"
+              icon
+              class="d-xs-block d-sm-none rounded-circle">
+              <v-icon>mdi-magnify</v-icon>
+            </v-btn>
+          -->
+      </div>
     </div>
-    <div v-show="!isMobile" style="width: 80%;display: flex;flex-direction: row;justify-content: center;border: 0px solid black;">
-      <v-text-field
-          class="d-none d-sm-block"
-          density="compact"
-          label="Mega Search"
-          prepend-inner-icon="mdi-magnify"
-          variant="outlined"
-          style="max-width: 600px;"
-          flat
-          hide-details
-          single-line>
-      </v-text-field>
-      <v-btn style="border: #03a840 solid 2px;margin-left: 10px;"
-        icon
-        size="small"
-        class="rounded-circle">
-        <v-icon color="#03a840">mdi-plus</v-icon>
-      </v-btn>
-
-      <!--
-      <v-text-field
-          v-show="displayOnMobile"
-          density="compact"
-          label="Search"
-          prepend-inner-icon="mdi-magnify"
-          variant="solo-filled"
-          flat
-          hide-details
-          single-line></v-text-field>
-
-          <v-btn
-              @click="manageSearchForMobileView"
-            icon
-            class="d-xs-block d-sm-none rounded-circle">
-            <v-icon>mdi-magnify</v-icon>
-          </v-btn>
-        -->
-    </div>
-
-    <div style="width: 20%;display: flex;flex-direction: row;justify-content: end;border: 0px solid black;">
-      <v-menu
-        v-model="menu">
-        <template #activator="{ props }">
-          <v-btn style="border: #03a840 solid 2px;"
-            v-bind="props"
-            icon
-            class="rounded-circle">
-            <!-- <v-icon color="#03a840">mdi-account</v-icon> -->
-             SG
-          </v-btn>
-        </template>
-            <!-- Menu a discesa -->
-            <v-list style="margin-top: 5px" class="custom-list">
-              <v-list-item disabled>
-                <v-list-item-title>Version 0.6.1</v-list-item-title>
-              </v-list-item>
-              <v-list-item>
-                <v-divider></v-divider>
-              </v-list-item>
-              <v-list-item link @click="logout">
-                <v-list-item-title>Log out</v-list-item-title>
-              </v-list-item>
-            </v-list>
-      </v-menu>
+    <div style="border: 0px solid black;display: flex;width: 20%;flex-direction: row;justify-content: end;">
+      <div style="display: flex;flex-direction: row;justify-content: end;border: 0px solid black;">
+        <v-menu
+          v-model="menu">
+          <template #activator="{ props }">
+            <v-btn style="border: #03a840 solid 2px;"
+              v-bind="props"
+              icon
+              class="rounded-circle">
+              <!-- <v-icon color="#03a840">mdi-account</v-icon> -->
+              SG
+            </v-btn>
+          </template>
+              <!-- Menu a discesa -->
+              <v-list style="margin-top: 5px" class="custom-list">
+                <v-list-item disabled>
+                  <v-list-item-title>Version 0.6.1</v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-divider></v-divider>
+                </v-list-item>
+                <v-list-item link @click="logout">
+                  <v-list-item-title>Log out</v-list-item-title>
+                </v-list-item>
+              </v-list>
+        </v-menu>
+      </div>
     </div>
   </v-app-bar>
 
