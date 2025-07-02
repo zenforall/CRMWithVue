@@ -34,7 +34,7 @@
     "vue-router": "^4.4.5",
     "vue-simple-calendar": "^7.1.0",
     "vuedraggable": "^4.1.0",
-    "vuetify": "^3.7.0-beta.1"
+    "vuetify": "^3.8.11"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",

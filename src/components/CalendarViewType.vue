@@ -180,7 +180,7 @@ const dbClick = () => {
 }
 
 .selected-cell {
-  border: 1px solid v-bind("theme.current.value.colors.accent") !important; /* Bordo verde marcato */
+  border: 2px solid v-bind("theme.current.value.colors.accent") !important; /* Bordo verde marcato */
   /*background-color: #F9F9F9 !important;*/ /* Leggero verde di sfondo */
   color: v-bind("theme.current.value.colors.accent") !important;
   font-weight: bold;
