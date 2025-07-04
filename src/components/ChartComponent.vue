@@ -1,4 +1,8 @@
+
+
 <script lang="ts">
+
+/*
 import { defineComponent, computed, type PropType, type DefineComponent } from 'vue'
 import { PieChart, BarChart, LineChart, RadarChart } from 'vue-chart-3'
 
@@ -45,8 +49,12 @@ const ChartComponent: DefineComponent<{
 })
 
 export default ChartComponent
+
+*/
 </script>
 
 <template>
   <component :is="chartComponent" :chart-data="chartData" :options="chartOptions" />
 </template>
+
+
