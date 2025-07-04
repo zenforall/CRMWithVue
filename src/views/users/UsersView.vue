@@ -260,7 +260,7 @@ import { useTheme } from 'vuetify'
       <tr>
         <th
           v-for="column in columns"
-          :key="column.key"
+          :key="column.key ?? 'fallback-key-' + column.title"
           :class="[
             column.key === 'enabled' ? 'text-center' : 'text-start'
           ]">
