@@ -37,27 +37,32 @@ onMounted(async () => {
   emit("breadCrumbHandler",breadCrumbItems);
 
   headers.value.push({
+            key: "name",
             title : "Name",
             value: "name",
             sortable: true
         });
         headers.value.push({
+            key: "surname",
             title : "Surname",
             value: "surname",
             sortable: true
         });
         headers.value.push({
+            key: "phone",
             title : "Mobile phone",
             value: "phone",
             sortable: true
         });
         headers.value.push({
+            key: "email",
             title : "Email",
             value: "email",
             sortable: true
         });
 
         headers.value.push({
+            key: "actions",
             title : "Actions",
             value: "actions",
             sortable: false
