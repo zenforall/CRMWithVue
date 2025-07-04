@@ -51,32 +51,38 @@ import { useTheme } from 'vuetify'
         */
 
         headers.value.push({
+            key: "userName",
             title : t("userName"),
             value: "userName",
             sortable: true
         });
         headers.value.push({
+            key: "email",
             title : "Email",
             value: "email",
             sortable: true
         });
         headers.value.push({
+            key: "company",
             title : "Company",
             value: "company",
             sortable: true
         });
         headers.value.push({
+            key: "activationDate",
             title : "Activation",
             value: "activationDate",
             sortable: true
         });
         headers.value.push({
+            key: "enabled",
             title : t("enabled"),
             value: "enabled",
             sortable: true
         });
 
         headers.value.push({
+            key: "actions",
             title : "Actions",
             value: "actions",
             sortable: false
@@ -250,6 +256,19 @@ import { useTheme } from 'vuetify'
     :hide-default-footer="isMobile"
     :items-per-page-options="[5,10]">
 
+<template #headers="{ columns }">
+      <tr>
+        <th
+          v-for="column in columns"
+          :key="column.key"
+          :class="[
+            column.key === 'enabled' ? 'text-center' : 'text-start'
+          ]">
+          {{ column.title }}
+        </th>
+      </tr>
+    </template>
+
     <template v-slot:body="{ items }" v-if="isMobile">
       <div v-for="item in items" :key="item.id" class="mobile-row">
           <v-card class="mb-2">
@@ -266,7 +285,7 @@ import { useTheme } from 'vuetify'
         </div>
     </template>
     <template v-slot:item.enabled="{ item }">
-      <div style="text-align: left;"><v-icon>mdi-checkbox-blank-circle-outline</v-icon></div>
+      <div style="text-align: center;"><v-icon>mdi-checkbox-blank-circle-outline</v-icon></div>
     </template>
     <template v-slot:item.activationDate="{ item }" v-if="!isMobile">
         <span>{{ formatDate( item.activationDate,"it-IT") }}</span>

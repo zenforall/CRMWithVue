@@ -1,41 +1,15 @@
-<template>
-  <div style="margin: 1px solid black;">
-    <ChartJS :type="type" :chart-data="chartData" :options="chartOptions" />
-  </div>
-</template>
-
 <script lang="ts">
-import { defineComponent, type PropType, computed } from 'vue'
-import { PieChart, BarChart, LineChart, RadarChart } from 'vue-chart-3'
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-  BarElement,
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  RadialLinearScale,
-} from 'chart.js'
+import { defineComponent, computed, PropType, DefineComponent } from 'vue'
+import PieChart from './charts/PieChart.vue'
+import BarChart from './charts/BarChart.vue'
+import LineChart from './charts/LineChart.vue'
+import RadarChart from './charts/RadarChart.vue'
 
-// Registra i moduli di Chart.js
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-  BarElement,
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  RadialLinearScale
-)
-
-export default defineComponent({
+const ChartComponent: DefineComponent<{
+  type: 'pie' | 'bar' | 'line' | 'radar',
+  chartData: any,
+  chartOptions?: any,
+}> = defineComponent({
   name: 'ChartComponent',
   props: {
     type: {
@@ -43,16 +17,15 @@ export default defineComponent({
       required: true,
     },
     chartData: {
-      type: Object as PropType<any>, // Tipo basato su Chart.js
+      type: Object as PropType<any>,
       required: true,
     },
     chartOptions: {
-      type: Object as PropType<any>, // Tipo basato su Chart.js
+      type: Object as PropType<any>,
       default: () => ({}),
     },
   },
   setup(props) {
-    // Mappa il tipo al componente appropriato
     const chartComponent = computed(() => {
       switch (props.type) {
         case 'pie':
@@ -73,4 +46,10 @@ export default defineComponent({
     }
   },
 })
+
+export default ChartComponent
 </script>
+
+<template>
+  <component :is="chartComponent" :chart-data="chartData" :options="chartOptions" />
+</template>
