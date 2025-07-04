@@ -1,9 +1,6 @@
 <script lang="ts">
-import { defineComponent, computed, PropType, DefineComponent } from 'vue'
-import PieChart from './charts/PieChart.vue'
-import BarChart from './charts/BarChart.vue'
-import LineChart from './charts/LineChart.vue'
-import RadarChart from './charts/RadarChart.vue'
+import { defineComponent, computed, type PropType, type DefineComponent } from 'vue'
+import { PieChart, BarChart, LineChart, RadarChart } from 'vue-chart-3'
 
 const ChartComponent: DefineComponent<{
   type: 'pie' | 'bar' | 'line' | 'radar',
