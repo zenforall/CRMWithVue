@@ -247,7 +247,7 @@ import { useTheme } from 'vuetify'
     :headers="headers"
     :items="users"
     items-per-page="5"
-    item-key="username"
+    item-key="id"
     density="compact"
     ref="vTablee"
     select-strategy="all"
