@@ -20,18 +20,21 @@ onUnmounted(async () => {
 })
 onMounted(async () => {
   headers.value.push({
+            key: "description",
             title : "Note",
             value: "description",
             sortable: true
         });
 
   headers.value.push({
+      key: "creationDate",
       title : "Date",
       value: "creationDate",
       sortable: true
   });
 
   headers.value.push({
+      key: "actions",
       title : "Actions",
       value: "actions",
       sortable: true
