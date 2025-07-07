@@ -44,5 +44,3 @@ git branch -D [branch_name]
 
 // Permette di eseguire il merge del branch [branch_name] nel branch master
 git merge master [branch_name]
-
-TEST_MASTER
