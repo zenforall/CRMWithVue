@@ -27,8 +27,14 @@ git push -f git@github.com:zenforall/CRMWithVue.git master:test_branch
 -- Gestione dei branch
 E' buona norma creare un nuovo branch quando ci si appresta a sviluppare una funzionalità 
 
-// Permette di avere la lista dei branch disponibili: master è il branch principale
+// Permette di avere la lista dei branch locali disponibili: master è il branch principale
 git branch 
+
+// Permette di avere la lista dei branch locali e remoti : i branch remoti hanno il prefisso "remotes"
+git branch -a 
+
+// Permette di avere la lista solo dei branch remoti
+git branch -r
 
 // Permette di creare un nuovo branch
 git branch test_branch
@@ -36,11 +42,14 @@ git branch test_branch
 // Permette di puntare al nuovo branch per eseguire i commit dei sorgenti modificati
 git checkout test_branch
 
-// Permette di eliminare un branch se è completamente "mergiato"
+// Permette di eliminare un branch locale se è completamente "mergiato"
 git branch -d [branch_name]
 
-// Permette di eliminare un branch in maniera forzata sebbene non sia totalmente "mergiato"
+// Permette di eliminare un branch locale in maniera forzata sebbene non sia totalmente "mergiato"
 git branch -D [branch_name]
+
+// Permtte di eliminare un branch remoto
+git push origin --delete [branch_name]
 
 // Permette di eseguire il merge del branch [branch_name] nel branch master
 git merge master [branch_name]
