@@ -66,6 +66,14 @@ const router = createRouter({
       ],
       meta: { requiresAuth: true }
     },
+ {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: '/admin/roles',name: 'Roles', component: NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
     /*
     {
       path: '/',

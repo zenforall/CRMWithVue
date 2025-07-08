@@ -32,6 +32,7 @@ export const useMenuStore = defineStore('menuStore',{
                  children: [
                    { id: 3, icon:'mdi-account-outline', title: 'Users',link: '/admin/users' },
                    { id: 4, icon:'mdi-office-building-outline', title: 'Companies',link: '/admin/companies' },
+                   { id: 5, icon:'mdi-account-cog-outline', title: 'Roles', link:'/admin/roles'}
                    /*{ id: 5, icon:'mdi-archive-clock', title: 'Scheduler',link: '/scheduler' }*/
                  ]
                };
