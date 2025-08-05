@@ -7,6 +7,9 @@ const emitUserFilterEvent = defineEmits<{
   (event: 'doResetFilterUsersHandler', message: string): void
 }>()
 
+const fromDateMenu = ref(false);
+const toDateMenu = ref(false);
+
 const filter = ref<UserFilter>({
   userName: '',
   activationDateFrom: null,
@@ -46,6 +49,7 @@ function doReset(): void {
 
   //emitUserFilterEvent('doResetFilterUsersHandler',"DO_RESET");
 }
+
 </script>
 
 <template>
@@ -99,26 +103,40 @@ function doReset(): void {
       ></v-text-field>
     </v-col>
 
-    <v-col cols="12">
+    <v-col cols="12" style="margin-left: 5px;">
       <v-date-input
+        v-model:menu="toDateMenu"
         v-model="filter.activationDateFrom"
         label="From"
         width="90%"
         hide-details
         variant="outlined"
-        density="compact"
-      >
+        prepend-inner-icon=""
+        prepend-icon=""
+        density="compact">
+
+    <template #append>
+      <v-icon class="calendar-icon" @click="toDateMenu = true">mdi-calendar</v-icon>
+    </template>
+
       </v-date-input>
     </v-col>
-    <v-col cols="12">
+    <v-col cols="12" style="margin-left: 5px;">
       <v-date-input
+        v-model:menu="fromDateMenu"
         v-model="filter.activationDateTo"
         hide-details
         width="90%"
         variant="outlined"
+        prepend-inner-icon=""
+        prepend-icon=""
         label="To"
         density="compact"
       >
+    <template #append>
+      <v-icon  class="calendar-icon" @click="fromDateMenu = true">mdi-calendar</v-icon>
+    </template>
+
       </v-date-input>
     </v-col>
     <v-col cols="12">
@@ -148,4 +166,5 @@ function doReset(): void {
   </v-row>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
