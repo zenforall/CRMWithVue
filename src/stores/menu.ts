@@ -61,7 +61,9 @@ export const useMenuStore = defineStore('menuStore',{
                  title: 'Sales',
                  link : '',
                  children: [
-                  { id: 41, icon:'mdi-dots-grid', title: 'Pipeline',link: '/sales/pipeline' },
+                  { id: 41, icon:'mdi-archive-outline', title: 'Products',link: '/sales/products' },
+                  { id: 42, icon:'mdi-file-document-outline', title: 'Quotes',link: '/sales/quotes' },
+                  { id: 43, icon:'mdi-dots-grid', title: 'Pipeline',link: '/sales/pipeline' },
                  ],
                }
 

@@ -136,6 +136,8 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
+        { path: '/sales/products',name: 'Products', component: NotAvailableView },
+        { path: '/sales/quotes',name: 'Quotes', component: NotAvailableView },
         { path: '/sales/pipeline',name: 'Pipeline', component: PipelineKanbanView },
       ],
       meta: { requiresAuth: true }
