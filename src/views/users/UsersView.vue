@@ -8,6 +8,7 @@ import type { BreadCrumbItem } from "@/models/BreadCrumbItem";
 import { useIsMobile } from "@/composables/useIsMobile";
 import { formatDate }  from "@/utils/formatData";
 import { useTheme } from 'vuetify'
+import type { User } from "@/models/User";
 
     const theme = useTheme();
     const { t } = useI18n();

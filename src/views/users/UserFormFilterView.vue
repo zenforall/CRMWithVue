@@ -7,8 +7,10 @@ const emitUserFilterEvent = defineEmits<{
   (event: 'doResetFilterUsersHandler', message: string): void
 }>()
 
+/*
 const fromDateMenu = ref(false);
 const toDateMenu = ref(false);
+*/
 
 const filter = ref<UserFilter>({
   userName: '',
@@ -103,6 +105,7 @@ function doReset(): void {
       ></v-text-field>
     </v-col>
 
+    <!--
     <v-col cols="12" style="margin-left: 5px;">
       <v-date-input
         v-model:menu="toDateMenu"
@@ -139,6 +142,30 @@ function doReset(): void {
 
       </v-date-input>
     </v-col>
+  -->
+
+    <v-col cols="12" style="margin-left: 5px;">
+      <v-date-input
+        v-model="filter.activationDateFrom"
+        label="From"
+        width="90%"
+        hide-details
+        variant="outlined"
+        density="compact">
+      </v-date-input>
+    </v-col>
+    <v-col cols="12" style="margin-left: 5px;">
+      <v-date-input
+        v-model="filter.activationDateTo"
+        hide-details
+        width="90%"
+        variant="outlined"
+        label="To"
+        density="compact"
+      >
+      </v-date-input>
+    </v-col>
+
     <v-col cols="12">
       <v-checkbox
         v-model="filter.enabled"

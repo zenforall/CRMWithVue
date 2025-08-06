@@ -4,6 +4,7 @@
     import { useUserStore } from "@/stores/user";
     import { getValidationResult } from "@/utils/formatData";
     import type { BreadCrumbItem } from "@/models/BreadCrumbItem";
+    import type { User } from "@/models/User";
 
     const router = useRouter();
     const userStore = useUserStore();

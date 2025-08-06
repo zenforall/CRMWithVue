@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface User {
+export interface User {
   id: string,
   name:string | null,
   surname:string | null,
@@ -18,7 +18,7 @@ interface User {
   enabled: boolean
 }
 
-enum UserType {
+export enum UserType {
   SELLER,
   EMPLOYEE
 }
