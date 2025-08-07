@@ -12,6 +12,7 @@ import { useAppStore } from "@/stores/app"
 import ContactsViewVue from '@/views/contacts/ContactsView.vue'
 import ContactFormView from '@/views/contacts/ContactFormView.vue'
 import PipelineKanbanView from '@/views/sales/pipelineKanbanView.vue'
+import TasksView from '@/views/tasks/TasksView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -128,7 +129,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: '/activities/tasks',name: 'Tasks', component: NotAvailableView },
+        { path: '/activities/tasks',name: 'Tasks', component: TasksView },
       ],
       meta: { requiresAuth: true }
     },

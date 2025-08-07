@@ -3,7 +3,7 @@ export interface User {
   id: string,
   name:string | null,
   surname:string | null,
-  phone:string | null,
+  phone?:string | null ,
   address: string | null,
   cap:string | null,
   city:string |null,

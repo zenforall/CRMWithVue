@@ -1,10 +1,11 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+//import { ref } from "vue";
 import { faker } from '@faker-js/faker';
+import type { User } from "@/models/User";
 
 export const useUserStore = defineStore('userStore',{
     state: () => ({
-        users: ref([] as User[]),
+        users: [] as User[],   //ref([] as User[]),
         userId: "",
         userDetail: null as User | null | undefined,
         userAction: "",
@@ -13,6 +14,14 @@ export const useUserStore = defineStore('userStore',{
         // Metodi che sfruttano la variabile di stato menu
     },
     actions: {
+
+      // Ottiene lo User con l'id uguale a quello in input oppure ritorna NULL
+      async getUser(id:string): Promise<User | null> {
+        if (this.users.length === 0 || !id) return null;
+        return this.users.find(u => u.id === id) ?? null;
+      },
+
+      // Ottiene lo User, e lo salva nella variabile di stato userDetail
       async getUserDetail() {
         try {
           if (this.users === null || this.users.length == 0) {this.userDetail = null; return;}

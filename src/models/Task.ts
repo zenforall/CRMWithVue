@@ -1,4 +1,6 @@
-enum TaskStatus {
+import type { User } from "./User";
+
+export enum TaskStatus {
   OPEN,
   IN_PROGRESS,
   COMPLETED,
@@ -6,7 +8,7 @@ enum TaskStatus {
   CLOSED
 }
 
-enum TaskPriority {
+export enum TaskPriority {
   LOW,
   MEDIUM,
   HIGH,
@@ -17,8 +19,8 @@ export interface Task {
   id: string;
   title: string;
   description: string;
-  assignedBy: User,
-  assignedTo: User;
+  assignedBy: User | null,
+  assignedTo: User | null;
   dueDate: Date;
   status: TaskStatus;
   priority: TaskPriority;
@@ -30,4 +32,31 @@ export interface Task {
 
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface TaskNote {
+  id: string;
+  author: User;
+  message: string;
+  createdAt: Date;
+}
+
+export interface TaskAttachment {
+  id: string;
+  fileName: string;
+  url: string;
+  uploadedAt: Date;
+}
+
+export interface TaskImage {
+  id: string;
+  caption?: string;
+  url: string;
+}
+
+export interface TaskHistoryEntry {
+  id: string;
+  action: string;
+  author: User;
+  timestamp: Date;
 }
