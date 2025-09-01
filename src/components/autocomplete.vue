@@ -21,7 +21,8 @@ const highlightedIndex = ref(-1);
 const filteredOptions = computed(() => {
   if (!query.value) return [];
   return props.options.filter(opt =>
-    opt.toLowerCase().includes(query.value.toLowerCase())
+    opt.toLowerCase().includes(query.value.toLowerCase())  /*la lettera è inclusa nella lista della stringa */
+    /*opt.toLowerCase().startsWith(query.value.toLowerCase())*/
   );
 });
 
