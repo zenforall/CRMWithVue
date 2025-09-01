@@ -9,6 +9,8 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
 
 import { useTheme } from "vuetify";
 
+import Autocomplete from "@/components/autocomplete.vue"
+
     const theme = useTheme();
 
     const username = ref("");
@@ -70,9 +72,20 @@ import { useTheme } from "vuetify";
     onUnmounted(() => {
     })
 
+
+function onSelect(val) {
+  console.log("Selezionato:", val);
+}
+
 </script>
 
 <template>
+
+  <Autocomplete
+    :options="['Roma','RRoma', 'Milano', 'Napoli', 'Torino', 'Firenze']"
+    placeholder="Cerca città..."
+    @select="onSelect"
+  />
 
     <v-snackbar :timeout="1000" location="center" color="error" v-model="loginKO">
       Invalid Credentials
@@ -87,7 +100,7 @@ import { useTheme } from "vuetify";
             </div>
             <v-card class="pa-4" style="background-color: white;" elevation="1">
               <v-label class="text-secondary" style="font-weight: bold;font-size: x-large;opacity: 0.87;">Sign in</v-label>
-              <br/> 
+              <br/>
               <v-label class="text-secondary" style="font-weight: bold;font-size: medium;opacity: 0.87;">(Credentials: admin/admin)</v-label>
               <v-divider :thickness="2" style="margin-top: 15px;margin-bottom: 15px;"></v-divider>
               <v-card-text>
