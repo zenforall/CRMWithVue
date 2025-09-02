@@ -9,8 +9,6 @@ import { vuetify } from '../main'; // Importa l'istanza Vuetify
 
 import { useTheme } from "vuetify";
 
-import Autocomplete from "@/components/autocomplete.vue"
-
     const theme = useTheme();
 
     const username = ref("");
@@ -72,21 +70,9 @@ import Autocomplete from "@/components/autocomplete.vue"
     onUnmounted(() => {
     })
 
-
-function onSelect(val) {
-  console.log("Selezionato:", val);
-}
-
 </script>
 
 <template>
-
-  <Autocomplete
-    :options="['Roma','RRoma', 'Milano', 'Napoli', 'Torino', 'Firenze']"
-    placeholder="Cerca città..."
-    @select="onSelect"
-  />
-
     <v-snackbar :timeout="1000" location="center" color="error" v-model="loginKO">
       Invalid Credentials
     </v-snackbar>

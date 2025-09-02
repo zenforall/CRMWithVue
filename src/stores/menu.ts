@@ -109,6 +109,17 @@ export const useMenuStore = defineStore('menuStore',{
 
                this.menu.push(reports);
 
+               let testPage : TreeNode;
+               testPage = {
+                id: 70,
+                icon: 'mdi-test-tube-empty',
+                title: 'Test Page',
+                children: null,
+                link: '/testPage'
+               }
+
+               this.menu.push(testPage);
+
                /*
                let myCalendar: TreeNode;
                myCalendar = {

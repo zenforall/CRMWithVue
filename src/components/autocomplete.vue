@@ -91,6 +91,7 @@ function onKeyDown(e) {
 input {
   width: 100%;
   padding: 6px;
+  border: 1px solid black;
   box-sizing: border-box;
 }
 
@@ -116,6 +117,6 @@ input {
 
 .dropdown li.highlighted,
 .dropdown li:hover {
-  background: pink;
+  background: lightgreen;
 }
 </style>

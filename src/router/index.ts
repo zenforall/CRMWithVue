@@ -13,6 +13,7 @@ import ContactsViewVue from '@/views/contacts/ContactsView.vue'
 import ContactFormView from '@/views/contacts/ContactFormView.vue'
 import PipelineKanbanView from '@/views/sales/pipelineKanbanView.vue'
 import TasksView from '@/views/tasks/TasksView.vue'
+import TestPageView from '@/views/TestPageView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -148,6 +149,14 @@ const router = createRouter({
       component: MainLayout,
       children: [
         { path: 'reports',name: 'Reports', component: NotAvailableView },
+      ],
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/',
+      component: MainLayout,
+      children: [
+        { path: 'testPage',name: 'TestPage', component: TestPageView },
       ],
       meta: { requiresAuth: true }
     },
