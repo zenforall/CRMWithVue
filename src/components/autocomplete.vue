@@ -41,8 +41,6 @@ function selectOption(option) {
 function onKeyDown(e) {
   if (!isOpen.value || filteredOptions.value.length === 0) return;
 
-  console.log(e.key);
-
   if (e.key === "ArrowDown") {
     highlightedIndex.value = (highlightedIndex.value + 1) % filteredOptions.value.length;
     e.preventDefault();
